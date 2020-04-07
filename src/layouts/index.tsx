@@ -1,50 +1,32 @@
-import * as React from 'react'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react'
+// import { StaticQuery, graphql } from 'gatsby'
+import { Box, Flex } from 'rebass'
+import { Global } from '@emotion/core'
 
 import 'modern-normalize'
-import '../styles/normalize'
 
-import Header from '../components/Header'
-import LayoutRoot from '../components/LayoutRoot'
-import LayoutMain from '../components/LayoutMain'
-
-interface StaticQueryProps {
-  site: {
-    siteMetadata: {
-      title: string
-      description: string
-      keywords: string
-    }
-  }
-}
+import SEO from '../components/SEO'
+import Header from '../components/Layout/Header'
+import Footer from '../components/Layout/Footer'
+import globalStyle from '../styles/globalStyle'
+import Container from '../components/Layout/Container'
 
 const IndexLayout: React.FC = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query IndexLayoutQuery {
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-      }
-    `}
-    render={(data: StaticQueryProps) => (
-      <LayoutRoot>
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: data.site.siteMetadata.description },
-            { name: 'keywords', content: data.site.siteMetadata.keywords }
-          ]}
-        />
-        <Header title={data.site.siteMetadata.title} />
-        <LayoutMain>{children}</LayoutMain>
-      </LayoutRoot>
-    )}
-  />
+  <>
+    <Global styles={globalStyle} />
+    <SEO />
+    <Flex flexDirection="column" height="100%">
+      <Container>
+        <Header />
+      </Container>
+      <Flex flex="1 1 auto" flexDirection="column">
+        <Container>{children}</Container>
+      </Flex>
+      <Container>
+        <Footer />
+      </Container>
+    </Flex>
+  </>
 )
 
 export default IndexLayout

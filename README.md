@@ -1,15 +1,6 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  gatsby-starter-typescript-plus
-</h1>
+# Hey there!
 
-> A starter kit for TypeScript-based Gatsby projects with sensible defaults.
-
-This is a starter kit for [Gatsby.js](https://www.gatsbyjs.org/) websites written in TypeScript. It includes the bare essentials for you to get started (styling, Markdown parsing, minimal toolset).
+I bootstrapped this project with [Gatsby.js](https://www.gatsbyjs.org/).
 
 ## 🗒️ Features
 
@@ -17,7 +8,11 @@ This is a starter kit for [Gatsby.js](https://www.gatsbyjs.org/) websites writte
 - ESLint (with custom ESLint rules)
 - Markdown rendering with Remark
 - Basic component structure
-- Styling with [emotion](https://emotion.sh/)
+- CSS-in-JS powered by [emotion](https://emotion.sh/)
+- Primative UI Components by [Rebassjs](https://rebassjs.org)
+- Style props by [styled-system](https://styled-system.com/)
+- Theme graphing by [theme-ui](https://theme-ui.com)
+
 
 ## 🚀 Quick start
 
@@ -84,11 +79,3 @@ This is a starter kit for [Gatsby.js](https://www.gatsbyjs.org/) websites writte
     # using yarn
     yarn deploy
     ```
-
-## ❤️ Credits
-
-Built with [Gatsby](https://www.gatsbyjs.org/) - the blazing-fast static site generator for [React](https://facebook.github.io/react/).
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/resir014/gatsby-starter-typescript-plus)

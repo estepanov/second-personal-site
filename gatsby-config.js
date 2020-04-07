@@ -1,15 +1,15 @@
-'use strict'
-
 module.exports = {
   siteMetadata: {
-    title: 'gatsby-starter-typescript-plus',
-    description: 'A starter kit for TypeScript-based Gatsby projects with sensible defaults.',
-    keywords: 'gatsbyjs, gatsby, javascript, sample, something',
-    siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
+    titleTemplate: '%s | Evans Stepanov',
+    title: 'Evans Stepanov',
+    description: 'Some information and a collection of musings.',
+    keywords: 'javascript, react, node, portfolio, resume, coding',
+    siteUrl: 'https://estepanov.io',
+    image: '',
+    twitterUsername: '',
     author: {
-      name: 'Resi Respati',
-      url: 'https://twitter.com/resir014',
-      email: 'resir014@gmail.com'
+      name: 'Evans Stepanov',
+      url: 'https://estepanov.io'
     }
   },
   plugins: [
@@ -52,6 +52,7 @@ module.exports = {
       }
     },
     'gatsby-plugin-emotion',
+    'gatsby-plugin-theme-ui',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
