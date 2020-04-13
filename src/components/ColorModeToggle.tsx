@@ -1,20 +1,31 @@
+import React from 'react'
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
-import { Flex, Text, Button } from 'rebass'
+import { Text, Box } from 'rebass'
 import { Switch } from '@rebass/forms'
 import { Modes } from '../styles/colors'
 
 const options = Object.keys(Modes)
 
 const MODE_TEXT = {
-  [Modes.dark]: 'Dark Mode',
-  [Modes.light]: 'Light Mode'
+  // [Modes.dark]: 'Dark Mode',
+  [Modes.dark]: (
+    <React.Fragment>
+      <i className="fad fa-moon-stars" />
+    </React.Fragment>
+  ),
+  [Modes.light]: (
+    <React.Fragment>
+      <i className="fad fa-sun" />
+    </React.Fragment>
+  )
+  // [Modes.light]: 'Light Mode'
 }
 
 export default props => {
   const [mode, setMode] = useColorMode()
   return (
-    <Button
+    <Box
       display="flex"
       alignItems="center"
       bg="transparent"
@@ -24,10 +35,10 @@ export default props => {
         setMode(next)
       }}
     >
-      <Switch checked={mode === Modes.dark} />
-      <Text ml={2} color="primary" fontSize={0}>
+      <Text mr={2} color="primary" fontSize={3} key={mode}>
         {MODE_TEXT[mode]}
       </Text>
-    </Button>
+      <Switch checked={mode === Modes.dark} />
+    </Box>
   )
 }

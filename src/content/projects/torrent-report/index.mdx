@@ -1,3 +1,27 @@
+---
+layout: project
+title: Torrent Report
+date: May 15
+tech:
+  - node
+  - postgres
+  - redis
+  - styled-components
+images:
+  - ./1.png
+  - ./2.png
+  - ./3.png
+  - ./4.png
+  - ./5.png
+  - ./6.png
+  - ./7.png
+---
+
+import { Box, Heading, Text } from 'rebass'
+
+Now we'reghadhaskjhdkgjhasdjkghasjhkas
+
+```js
 const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path')
 
@@ -10,7 +34,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         const value = createFilePath({ node, getNode })
         const { permalink } = node.frontmatter
         let slug = permalink ? `/${permalink}/` : undefined
-        let isMain = false
         if (!slug) {
           const isPage = node.fileAbsolutePath.indexOf('/src/content/pages/')
           if (isPage >= 0) {
@@ -19,33 +42,19 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
             const noncontent = node.fileAbsolutePath.indexOf('/src/content/')
             const { length } = '/src/content/'
             const full = path.parse(node.fileAbsolutePath.slice(noncontent + length))
-            if (full.name.toLowerCase() === 'index') {
-              isMain = true
-              slug = `/${full.dir}/`
-            } else {
-              slug = `/${full.dir}/${full.name}/`
-            }
+            slug = `/${full.dir}/${full.name}/`
           }
         }
-        // isMain determine is page is the index page for content
-        createNodeField({
-          name: 'isMain',
-          node,
-          value: isMain
-        })
-        // Slugs determine how we route to content
         createNodeField({
           name: 'slug',
           node,
           value: slug || ''
         })
-        const fullPath = node.fileAbsolutePath.match(/src\/content\/(.*)\//)
-        const contentFolder = fullPath[1].split('/')[0]
-        // types help query content by which folder the content is in
+        const type = node.fileAbsolutePath.match(/src\/content\/(.*)\//)
         createNodeField({
           name: 'type',
           node,
-          value: contentFolder || ''
+          value: type[1] || ''
         })
       }
       break
@@ -171,3 +180,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   //     })
   //   })
 }
+
+```
+
+<Box>
+  <Heading ml="4">Here's a JSX block</Heading>
+  <Text color="red">It's pretty neat</Text>
+</Box>
+
+This starter has out-of-the-box support for basic Markdown rendering. The `content/` directory is where you put all of your Markdown content in. Gatsby will build your pages out of it. Gatsby will also follow the directory structure of your files too,dsdjfksjdhfkjsdhfkjhsdkfjhsd so when you store a page at e.g. `content/projects/large-hadron-collider.md`, it will be built in `/projects/large-hadron-collider/`.
+
+```jsx
+
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { Link } from 'gatsby'
+
+export default props => (
+  <Link
+    {...props}
+    partiallyActive
+    activeClassName="active"
+    sx={{
+      variant: 'links.nav'
+    }}
+  />
+)
+
+
+```
+
+[That's cool! Okay, take me back home.](/)

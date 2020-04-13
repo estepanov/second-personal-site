@@ -5,12 +5,10 @@ import { Link } from 'gatsby'
 export default props => (
   <Link
     {...props}
+    partiallyActive
     activeClassName="active"
     sx={{
-      color: 'inherit',
-      '&.active': {
-        color: 'primary'
-      }
+      variant: 'links.nav'
     }}
   />
 )

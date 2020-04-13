@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box } from 'rebass'
 
-const Container: React.FC = ({ children }) => (
-  <Box maxWidth="1024px" width="100%" mx="auto">
+const Container: React.FC = ({ children, image }) => (
+  <Box maxWidth="1024px" width="100%" mx="auto" px={4}>
     {children}
   </Box>
 )

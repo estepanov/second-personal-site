@@ -4,7 +4,7 @@ import MDX from '../components/MDX'
 
 import Layout from '../layouts'
 
-interface PageTemplateProps {
+interface ProjectProps {
   data: {
     site: {
       siteMetadata: {
@@ -26,16 +26,16 @@ interface PageTemplateProps {
   }
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = ({ data }) => (
+const Project: React.FC<ProjectProps> = ({ data }) => (
   <Layout>
     <MDX>{data.post.body}</MDX>
   </Layout>
 )
 
-export default PageTemplate
+export default Project
 
 export const query = graphql`
-  query PageTemplateQuery($slug: String!) {
+  query ProjectQuery($slug: String!) {
     site {
       siteMetadata {
         title
@@ -50,6 +50,7 @@ export const query = graphql`
       body
       excerpt
       frontmatter {
+        tech
         title
       }
     }

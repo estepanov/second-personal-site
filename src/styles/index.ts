@@ -20,6 +20,7 @@ export const defaultTheme = {
   // space: { ...space },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
+    nav: "'Nunito', sans-serif",
     body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
     heading: 'inherit',
     monospace: 'Menlo, monospace'
@@ -55,16 +56,30 @@ export const defaultTheme = {
       boxShadow: 'inset 0 0 0 2px'
     }
   },
-  variants: {
+  links: {
     nav: {
-      fontWeight: 'bold',
+      paddingTop: 2,
+      paddingBottom: 2,
+      paddingLeft: 3,
+      paddingRight: 3,
+      fontSize: 3,
+      // fontFamily: 'nav',
+      fontWeight: '500',
       color: 'secondary',
+      '&:visited': {
+        color: 'secondary'
+      },
       textDecoration: 'none',
       '&:hover': {
+        color: 'primary'
+      },
+      '&.active': {
+        // backgroundColor: 'muted',
         color: 'primary'
       }
     }
   },
+  variants: {},
   styles: {
     Container: {
       p: 3,
@@ -118,7 +133,7 @@ export const defaultTheme = {
     },
     code: {
       fontFamily: 'monospace',
-      color: 'secondary',
+      // color: 'secondary',
       fontSize: 1
     },
     inlineCode: {
@@ -171,7 +186,7 @@ export const defaultTheme = {
       color: 'primary'
     },
     '.selector,.attr-name,.string,.char,.bultin,.inserted': {
-      color: 'secondary'
+      color: 'text'
     }
   }
 }

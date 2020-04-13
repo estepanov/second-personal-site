@@ -1,4 +1,5 @@
 import * as CSS from 'csstype'
+import { } from 'polished'
 
 export enum Modes {
   dark = 'dark',
@@ -30,22 +31,23 @@ export interface ModeTypes {
 
 export const modes: ModeTypes = {
   [Modes.light]: {
-    text: 'hsl(230, 25%, 18%)',
-    background: '#F5FFFF'
+    text: '#2A2D34',
+    background: '#FFFFFA',
+    muted: '#6761A8'
   },
   [Modes.dark]: {
-    text: 'hsl(210, 50%, 96%)',
-    background: 'hsl(230, 25%, 18%)'
+    text: '#C9DEF0',
+    background: '#2F2F2E',
+    muted: '#423E6B'
   }
 }
 
 export const colors: ColorMode = {
-  text: 'hsl(210, 50%, 96%)',
-  background: 'hsl(230, 25%, 18%)',
-  primary: '#7EB731',
-  secondary: '#6970CF',
-  // highlight: '#945FFF',
-  highlight: 'yellow',
-  muted: '#C8C3F7',
-  gray: 'hsl(210, 50%, 60%)'
+  text: '#C9DEF0',
+  background: '#2A2D34',
+  primary: '#009DDC',
+  muted: '#B3BDD0',
+  secondary: '#F26430',
+  highlight: '#009B72',
+  gray: '#B1B2B5'
 }

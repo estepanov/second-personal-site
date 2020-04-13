@@ -1,6 +1,6 @@
 import React from 'react'
 // import { StaticQuery, graphql } from 'gatsby'
-import { Box, Flex } from 'rebass'
+import { Flex, Box } from 'rebass'
 import { Global } from '@emotion/core'
 
 import 'modern-normalize'
@@ -19,7 +19,7 @@ const IndexLayout: React.FC = ({ children }) => (
       <Container>
         <Header />
       </Container>
-      <Flex flex="1 1 auto" flexDirection="column">
+      <Flex flex="1 0 auto" flexDirection="column">
         <Container>{children}</Container>
       </Flex>
       <Container>

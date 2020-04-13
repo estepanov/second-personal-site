@@ -1,5 +1,7 @@
 import React from 'react'
-import { Button, Box, Flex, Link as StyledLink } from 'rebass'
+import { Link } from 'gatsby'
+import { Button, Box, Flex } from 'rebass'
+import NavLink from '../../elements/NavLink'
 import Name from '../../logo/Name'
 import Logo from '../../logo/Logo'
 
@@ -7,20 +9,19 @@ const Header = () => {
   return (
     <Flex py={4} sx={{ flexDirection: 'column' }}>
       <Flex color="white" alignItems="center" sx={{ flexDirection: ['column', 'row'] }}>
-        <Logo my={2} color="secondary" height={['90px', '30px']} />
-        <Name my={2} ml="20px" color="secondary" height={['30px']} />
+        <Link to="/">
+          <Logo my={2} color="secondary" height={['90px', '30px']} />
+          <Name my={2} ml="20px" color="secondary" height={['30px']} />
+        </Link>
         <Box mx="auto" />
-        <Box sx={{ display: ['none', 'block'] }}>
-          <StyledLink variant="nav" href="/page-2">
-            About
-          </StyledLink>
-          <StyledLink variant="nav" href="/page-2" ml={4}>
-            Projects
-          </StyledLink>
-          <StyledLink variant="nav" href="/page-3" ml={4}>
-            Blog
-          </StyledLink>
-        </Box>
+        <Flex sx={{ display: ['none', 'flex'] }} flexDirection="row">
+          <Box ml={4}>
+            <NavLink to="/projects">Projects</NavLink>
+          </Box>
+          <Box ml={4}>
+            <NavLink to="/blog">Blog</NavLink>
+          </Box>
+        </Flex>
       </Flex>
       <Box sx={{ display: ['block', 'none'] }}>
         <Button

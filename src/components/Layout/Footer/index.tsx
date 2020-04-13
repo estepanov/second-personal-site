@@ -5,12 +5,11 @@ import ColorModeToggle from '../../ColorModeToggle'
 
 const Header = () => {
   return (
-    <Flex px={4} py={4} sx={{ flexDirection: 'column' }}>
+    <Flex py={4} flexDirection="column">
       <Flex color="white" alignItems="center" sx={{ flexDirection: ['column', 'row'] }}>
         {/* <Logo color="secondary" height={['30px']} /> */}
-        <Box mr="auto">
-          <ColorModeToggle />
-        </Box>
+        <ColorModeToggle />
+
         <Box mx="auto" />
         <Box>
           <StyledLink bg="transparent" color="secondary" fontSize={4} p={1} ml={4}>

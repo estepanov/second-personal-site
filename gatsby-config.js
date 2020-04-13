@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     titleTemplate: '%s | Evans Stepanov',
-    title: 'Evans Stepanov',
+    title: 'Full stack engineer',
     description: 'Some information and a collection of musings.',
     keywords: 'javascript, react, node, portfolio, resume, coding',
     siteUrl: 'https://estepanov.io',
@@ -16,21 +16,27 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'content',
-        path: `${__dirname}/src/content`
+        name: 'pages',
+        path: `${__dirname}/src/content/pages`
       }
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-source-filesystem',
       options: {
-        plugins: [
+        name: 'projects',
+        path: `${__dirname}/src/content/projects`
+      }
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-responsive-iframe',
             options: {
               wrapperStyle: 'margin-bottom: 1rem'
             }
           },
-          'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           {
@@ -40,6 +46,13 @@ module.exports = {
               quality: 90,
               linkImagesToOriginal: false
             }
+          },
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_self',
+              rel: 'nofollow'
+            }
           }
         ]
       }
@@ -48,7 +61,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com'
+        siteUrl: 'https://estepanov.io'
       }
     },
     'gatsby-plugin-emotion',
@@ -56,6 +69,7 @@ module.exports = {
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet'
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-mdx'
   ]
 }
