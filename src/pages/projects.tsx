@@ -1,18 +1,24 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { jsx, Text } from 'theme-ui'
 import { graphql, Link } from 'gatsby'
 import { Card } from 'rebass'
 
-import MainLink from '../components/elements/Link'
-
 import Layout from '../layouts'
 
-interface ProjectSummaary {
+interface Images {
+  id: string
+  publicURL: string
+}
+
+interface ProjectSumary {
+  id: string
   excerpt: string
   timeToRead: number
   frontmatter: {
     title: string
+    images: Images[]
+    tech: string[]
   }
   fields: {
     slug: string
@@ -20,7 +26,7 @@ interface ProjectSummaary {
 }
 
 interface EdgeNode {
-  node: ProjectSummaary
+  node: ProjectSumary
 }
 
 interface ProjectProps {
@@ -35,27 +41,26 @@ interface ProjectProps {
         }
       }
     }
-    posts: {
+    post: {
       edges: EdgeNode[]
     }
   }
 }
 
 const Projects: React.FC<ProjectProps> = ({ data }) => {
-  console.log('data', data)
   return (
     <Layout>
-      <MainLink to="/a-markdown-page/">Show me some Markdown!</MainLink>
-      <br />
-      <MainLink to="/">Take me back home.</MainLink>
-      <br />
       {data.post.edges.map(({ node }) => {
         return (
-          <Card my={2} p={2} bg="primary">
-            <Link sx={{ color: 'white', textDecoration: 'none' }} to={node.fields.slug}>
-              {node.frontmatter.title}
-            </Link>
-          </Card>
+          <Link key={node.id} sx={{ color: 'white', textDecoration: 'none' }} to={node.fields.slug}>
+            <Card my={2} p={2} bg="gray">
+              <Text sx={{ fontSize: 4 }}>{node.frontmatter.title}</Text>
+              <Text sx={{ fontSize: 2 }}>{node.excerpt}</Text>
+              {node.frontmatter.images.map(imgs => {
+                return <img key={imgs.id} src={imgs.publicURL} sx={{ maxWidth: 100 }} alt={`${node.frontmatter.title} project`} />
+              })}
+            </Card>
+          </Link>
         )
       })}
     </Layout>
@@ -75,12 +80,14 @@ export const query = graphql`
     post: allMdx(filter: { fields: { type: { eq: "projects" }, isMain: { eq: true } } }) {
       edges {
         node {
+          id
           excerpt
           timeToRead
           frontmatter {
             title
             tech
             images {
+              id
               publicURL
             }
           }

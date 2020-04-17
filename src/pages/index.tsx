@@ -6,15 +6,23 @@ import useInterval from '../hooks/useInterval'
 const whatIAmDoing = [
   {
     icon: 'far fa-code',
-    title: 'coding'
+    title: 'building night mode features'
   },
   {
     icon: 'fal fa-skiing',
     title: 'enjoying fresh pow'
   },
   {
+    icon: 'fad fa-snowflakes',
+    title: 'praying for snow'
+  },
+  {
+    icon: 'fad fa-snowboarding',
+    title: 'thinking about fresh pow'
+  },
+  {
     icon: 'fal fa-truck-container',
-    title: 'deploying a new project'
+    title: 'signing for a package'
   },
   {
     icon: 'fal fa-bullseye-arrow',
