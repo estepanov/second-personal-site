@@ -63,18 +63,16 @@ export const defaultTheme = {
       paddingLeft: 3,
       paddingRight: 3,
       fontSize: 3,
-      // fontFamily: 'nav',
       fontWeight: '500',
-      color: 'secondary',
+      color: 'gray',
       '&:visited': {
-        color: 'secondary'
+        color: 'gray'
       },
       textDecoration: 'none',
       '&:hover': {
         color: 'primary'
       },
       '&.active': {
-        // backgroundColor: 'muted',
         color: 'primary'
       }
     }

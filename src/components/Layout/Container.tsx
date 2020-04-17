@@ -1,10 +1,10 @@
 import React from 'react'
-import { Box } from 'rebass'
+import { Flex } from 'rebass'
 
-const Container: React.FC = ({ children, image }) => (
-  <Box maxWidth="1024px" width="100%" mx="auto" px={4}>
+const Container: React.FC = ({ children, ...props }) => (
+  <Flex maxWidth="1024px" width="100%" mx="auto" px={4} flexDirection="column" {...props}>
     {children}
-  </Box>
+  </Flex>
 )
 
 export default Container

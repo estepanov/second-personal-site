@@ -1,32 +1,36 @@
 import React from 'react'
-import { Box, Flex, Link as StyledLink } from 'rebass'
+import { Box, Flex } from 'rebass'
+import IconLink from '../../elements/IconLink'
 // import Logo from '../../logo/Logo'
-import ColorModeToggle from '../../ColorModeToggle'
 
 const Header = () => {
   return (
     <Flex py={4} flexDirection="column">
       <Flex color="white" alignItems="center" sx={{ flexDirection: ['column', 'row'] }}>
         {/* <Logo color="secondary" height={['30px']} /> */}
-        <ColorModeToggle />
 
         <Box mx="auto" />
         <Box>
-          <StyledLink bg="transparent" color="secondary" fontSize={4} p={1} ml={4}>
+          <IconLink p={1} ml={4} href="https://twitter.com/evans_stepanov">
             <i className="fab fa-twitter" />
-          </StyledLink>
-          <StyledLink bg="transparent" color="secondary" fontSize={4} p={1} ml={4}>
+            <span>Twitter</span>
+          </IconLink>
+          <IconLink p={1} ml={4} href="https://www.linkedin.com/in/evansstepanov/">
             <i className="fab fa-linkedin-in" />
-          </StyledLink>
-          <StyledLink bg="transparent" color="secondary" fontSize={4} p={1} ml={4}>
+            <span>LinkedIn</span>
+          </IconLink>
+          <IconLink p={1} ml={4} href="https://angel.co/evans-alexis-stepanov">
             <i className="fab fa-angellist" />
-          </StyledLink>
-          <StyledLink bg="transparent" color="secondary" fontSize={4} p={1} ml={4}>
+            <span>Angellist</span>
+          </IconLink>
+          <IconLink p={1} ml={4} href="https://stackoverflow.com/users/9340787/evans">
             <i className="fab fa-stack-overflow" />
-          </StyledLink>
-          <StyledLink bg="transparent" color="secondary" fontSize={4} p={1} ml={4}>
+            <span>Stack Overflow</span>
+          </IconLink>
+          <IconLink p={1} ml={4} href="https://github.com/estepanov">
             <i className="fab fa-github" />
-          </StyledLink>
+            <span>Github</span>
+          </IconLink>
         </Box>
       </Flex>
     </Flex>
