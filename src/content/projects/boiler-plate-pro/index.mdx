@@ -1,0 +1,42 @@
+---
+layout: project
+title: Boiler Plate Pro
+date: May 15
+tech:
+  - node
+  - postgres
+  - redis
+  - styled-components
+images:
+  - ./1.png
+  - ./2.png
+  - ./3.png
+  - ./4.png
+  - ./5.png
+  - ./6.png
+---
+
+A web app for developers that solve's the perplexing problem of choosing a boilerplate and beginning a project.
+
+### How to use it.
+
+ Users start out by logging in with GitHub, which allows Boilerplate Pro access to all the necessary data to make new repos and clone data for a user.
+ Upon login the user will see a list of boilerplates that are available for selection and sorting, but more importantly they can search for a specific word that exists in the README, title and package.JSON.
+ This allows users complete control over their search. Users can then view a rendered version of the selected boilerplates README and, if they decide to build it, choose a name and start the Hyperclone™ process.
+ The user will then see a link to the newly created GitHub repo on their account and options for Travis CI as well as Heroku for deployment.
+
+ ### How it works.
+
+ Boilerplate Pro uses Googles Firestore for realtime, NoSQL, database for data which posed interesting challenges for our team.
+ Because we had no traditional backend we could not make API requests and we initially attempted to use cloud functions to circumvent this issue.
+ However, timeout constraints forced us to forgo this and build out a backend in addtion to the Firestore.
+ The backend eventually helped us utilize Travis for continuous integration on every project.
+ The process of scraping the necessary boilerplates is very resource and time intensive, so much so that we had to build a rate limited and time based method to work in line with GitHubs API constraints.
+ This process scrapes the boilerplate itself as well as the README and the dependencies which are necessary to make searching work.
+
+ We also had unique challenges in determing the best way to streamline the user experience in terms of forking or cloning.
+ The Hyperclone™ process condenses initial cloning, remote adding, pulling, adding, commiting and pushing into one button for the user.
+
+ Heroku was the most difficult challenge of the project and is still not fully working in the current build.
+ Not all boilerplates are immediately deployable and the Heroku button will not function for every single boilerplate.
+ Every boilerplate is different and may be missing one of any necessary files to enable working deployment.
