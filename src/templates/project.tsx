@@ -23,7 +23,7 @@ interface ProjectProps {
   }
 }
 
-const Project: React.FC<ProjectProps> = ({ data }) => (
+const ProjectPage: React.FC<ProjectProps> = ({ data }) => (
   <Layout>
     <Heading as="h1" color="primary">
       {data.post.frontmatter.title}
@@ -37,7 +37,7 @@ const Project: React.FC<ProjectProps> = ({ data }) => (
   </Layout>
 )
 
-export default Project
+export default ProjectPage
 
 export const query = graphql`
   query ProjectQuery($slug: String!) {
