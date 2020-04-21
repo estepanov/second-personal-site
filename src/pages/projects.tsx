@@ -1,32 +1,13 @@
 import React from 'react'
-/** @jsx jsx */
-import { jsx, Text } from 'theme-ui'
-import { graphql, Link } from 'gatsby'
-import { Card } from 'rebass'
+import { graphql } from 'gatsby'
 
 import Layout from '../layouts'
+import ProjectListItem from '../components/projects/ProjectListItem'
 
-interface Images {
-  id: string
-  publicURL: string
-}
-
-interface ProjectSumary {
-  id: string
-  excerpt: string
-  timeToRead: number
-  frontmatter: {
-    title: string
-    images: Images[]
-    tech: string[]
-  }
-  fields: {
-    slug: string
-  }
-}
+import { Project } from '../interfaces/Project'
 
 interface EdgeNode {
-  node: ProjectSumary
+  node: Project
 }
 
 interface ProjectProps {
@@ -51,17 +32,7 @@ const Projects: React.FC<ProjectProps> = ({ data }) => {
   return (
     <Layout>
       {data.post.edges.map(({ node }) => {
-        return (
-          <Link key={node.id} sx={{ color: 'white', textDecoration: 'none' }} to={node.fields.slug}>
-            <Card my={2} p={2} bg="gray">
-              <Text sx={{ fontSize: 4 }}>{node.frontmatter.title}</Text>
-              <Text sx={{ fontSize: 2 }}>{node.excerpt}</Text>
-              {node.frontmatter.images.map(imgs => {
-                return <img key={imgs.id} src={imgs.publicURL} sx={{ maxWidth: 100 }} alt={`${node.frontmatter.title} project`} />
-              })}
-            </Card>
-          </Link>
-        )
+        return <ProjectListItem key={node.id} project={node} />
       })}
     </Layout>
   )
