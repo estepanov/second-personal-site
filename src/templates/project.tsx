@@ -25,7 +25,7 @@ interface ProjectProps {
 
 const ProjectPage: React.FC<ProjectProps> = ({ data }) => (
   <Layout>
-    <Heading as="h1" color="primary">
+    <Heading as="h1" color="secondary">
       {data.post.frontmatter.title}
     </Heading>
     <Flex my={2} sx={{ flexDirection: 'row' }}>

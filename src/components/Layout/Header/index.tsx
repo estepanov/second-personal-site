@@ -9,15 +9,19 @@ import Container from '../Container'
 import ColorModeToggle from '../../ColorModeToggle'
 
 const Header = () => {
-  // <Box sx={{ backgroundImage: 'linear-gradient(to bottom right, #61BBFD, #4C80BA)' }}>
   return (
     <Box>
       <Container>
         <Flex py={4} sx={{ flexDirection: 'column' }}>
           <Flex alignItems="center" sx={{ flexDirection: ['column', 'row'] }}>
-            <Link to="/">
-              <Logo my={2} color="gray" height={['90px', '30px']} />
-              <Name my={2} ml="20px" color="gray" height={['30px']} />
+            <Link
+              to="/"
+              sx={{
+                variant: 'links.nav'
+              }}
+            >
+              <Logo my={2} height={['90px', '30px']} />
+              <Name my={2} ml="20px" height={['30px']} />
             </Link>
             <Box mx="auto" />
             <Flex sx={{ display: ['none', 'flex'] }} flexDirection="row">

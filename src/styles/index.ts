@@ -58,6 +58,7 @@ export const defaultTheme = {
   },
   links: {
     nav: {
+      transition: 'ease-in-out 0.5s',
       paddingTop: 2,
       paddingBottom: 2,
       paddingLeft: 3,
