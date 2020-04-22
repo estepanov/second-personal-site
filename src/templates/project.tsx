@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Heading, Flex } from 'theme-ui'
+import { Heading, Flex, Text } from 'theme-ui'
 
 import MDX from '../components/MDX'
 import Layout from '../layouts'
@@ -28,7 +28,8 @@ const ProjectPage: React.FC<ProjectProps> = ({ data }) => (
     <Heading as="h1" color="secondary">
       {data.post.frontmatter.title}
     </Heading>
-    <Flex my={2} sx={{ flexDirection: 'row' }}>
+    <Flex my={2} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+      {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
       {data.post.frontmatter.tech.map(tag => {
         return <TechLogoBox key={tag} tag={tag} />
       })}
@@ -55,6 +56,7 @@ export const query = graphql`
       body
       excerpt
       frontmatter {
+        date
         tech
         title
       }

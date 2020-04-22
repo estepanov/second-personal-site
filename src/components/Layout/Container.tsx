@@ -1,8 +1,20 @@
 import React from 'react'
-import { Flex } from 'rebass'
+/** @jsx jsx */
+import { jsx, Flex } from 'theme-ui'
 
-const Container: React.FC = ({ children, ...props }) => (
-  <Flex maxWidth="1024px" width="100%" mx="auto" px={4} flexDirection="column" {...props}>
+const Container: React.FC = ({ children, sx, ...props }) => (
+  <Flex
+    sx={{
+      ...sx,
+      flexShrink: 0,
+      maxWidth: 1024,
+      width: '100%',
+      flexDirection: 'column'
+    }}
+    mx="auto"
+    px={[3, 4]}
+    {...props}
+  >
     {children}
   </Flex>
 )

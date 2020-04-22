@@ -66,11 +66,18 @@ const lightTheme = {
   primary: mains.blue,
   primaryLight: lighten(0.2)(mains.blue),
   primaryDark: darken(0.2)(mains.blue),
-  text: mains.gray800, // added
+  text: mains.gray700, // added
   background: mains.gray100, // added
   secondary: mains.cyan, // added
   muted: mains.gray200, // added
   gray: mains.gray700,
+  logo: mains.gray700,
+  logoActive: mains.gray200,
+  headerActive: mains.gray900,
+  headerMobile: mains.gray500,
+  headerMobileActive: mains.gray200,
+  headerMobileBg: mains.gray800,
+  headerMobileBgActive: mains.gray400,
   /// GENERAL
   highlight: mains.indigo, // added
   success: mains.green,
@@ -90,10 +97,18 @@ export const modes: ModeTypes = {
   },
   [Modes.dark]: {
     ...lightTheme,
-    text: mains.gray200,
+    logo: mains.gray500,
+    logoActive: mains.gray300,
+    headerActive: mains.gray300,
+    headerMobile: mains.gray400,
+    headerMobileActive: mains.gray200,
+    headerMobileBg: mains.gray800,
+    headerMobileBgActive: mains.gray300,
+
+    text: mains.gray400,
     background: mains.gray900,
     muted: mains.gray800,
-    gray: mains.gray300,
+    // gray: mains.gray300,
     listBg: mains.gray900,
     listBgAlt: mains.gray800,
     listContent: mains.gray400,

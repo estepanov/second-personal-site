@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex } from 'rebass'
+import { Flex } from 'theme-ui'
 import { Global } from '@emotion/core'
 
 import 'modern-normalize'
@@ -14,11 +14,14 @@ const IndexLayout: React.FC = ({ children }) => (
   <>
     <Global styles={globalStyle} />
     <SEO />
-    <Flex flexDirection="column" height="100%">
+    <Flex
+      sx={{
+        height: '100%',
+        flexDirection: 'column'
+      }}
+    >
       <Header />
-      <Flex flex="1 0 auto" flexDirection="column">
-        <Container flex="1 0 auto">{children}</Container>
-      </Flex>
+      <Container sx={{ flex: '1 0 auto' }}>{children}</Container>
       <Container>
         <Footer />
       </Container>

@@ -4,7 +4,7 @@ import IconLink from '../../elements/IconLink'
 
 const Footer = () => {
   return (
-    <Flex py={4} sx={{ flexShrink: 0, flexDirection: 'row' }}>
+    <Flex py={[2, 4]} sx={{ flexShrink: 0, flexDirection: 'row' }}>
       <Flex sx={{ flex: 1 }} />
       <Flex color="white" sx={{ flexDirection: 'row', alignItems: 'center' }}>
         <IconLink p={1} ml={4} href="https://twitter.com/evans_stepanov">

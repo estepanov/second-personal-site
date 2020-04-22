@@ -48,13 +48,17 @@ export const query = graphql`
         description
       }
     }
-    post: allMdx(filter: { fields: { type: { eq: "projects" }, isMain: { eq: true } } }) {
+    post: allMdx(
+      filter: { fields: { type: { eq: "projects" }, isMain: { eq: true } } }
+      sort: { fields: [frontmatter___date, frontmatter___title], order: [DESC, DESC] }
+    ) {
       edges {
         node {
           id
           excerpt
           timeToRead
           frontmatter {
+            date
             title
             tech
             images {

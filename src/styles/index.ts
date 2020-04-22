@@ -1,4 +1,3 @@
-// import { Theme } from 'styled-system'
 import { colors, modes } from './colors'
 
 const heading = {
@@ -57,6 +56,28 @@ export const defaultTheme = {
     }
   },
   links: {
+    mobileNav: {
+      transition: 'ease-in-out 0.5s',
+      marginTop: 2,
+      marginBottom: 2,
+      fontSize: 4,
+      fontWeight: '500',
+      color: 'headerMobile',
+      '&:visited': {
+        color: 'headerMobile'
+      },
+      textDecoration: 'none',
+      '&:hover': {
+        color: 'headerMobileActive'
+      },
+      '&.active': {
+        color: 'headerMobileActive',
+        paddingRight: 2,
+        borderRightColor: 'headerMobileBgActive',
+        borderRightWidth: 2,
+        borderRightStyle: 'solid'
+      }
+    },
     nav: {
       transition: 'ease-in-out 0.5s',
       paddingTop: 2,
@@ -65,16 +86,19 @@ export const defaultTheme = {
       paddingRight: 3,
       fontSize: 3,
       fontWeight: '500',
-      color: 'gray',
+      color: 'text',
       '&:visited': {
-        color: 'gray'
+        color: 'text'
       },
       textDecoration: 'none',
       '&:hover': {
-        color: 'primary'
+        color: 'headerActive'
       },
       '&.active': {
-        color: 'primary'
+        color: 'headerActive',
+        borderBottomColor: 'headerMobileBgActive',
+        borderBottomWidth: 2,
+        borderBottomStyle: 'solid'
       }
     }
   },

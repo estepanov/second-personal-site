@@ -9,7 +9,6 @@ I bootstrapped this project with [Gatsby.js](https://www.gatsbyjs.org/).
 - Markdown rendering with Remark
 - Basic component structure
 - CSS-in-JS powered by [emotion](https://emotion.sh/)
-- Primative UI Components by [Rebassjs](https://rebassjs.org)
 - Style props by [styled-system](https://styled-system.com/)
 - Theme graphing by [theme-ui](https://theme-ui.com)
 

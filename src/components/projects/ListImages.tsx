@@ -15,6 +15,7 @@ const ListImages: React.FC<ListImagesProps> = ({ items }) => {
   return itemsToRender.map(img => {
     return (
       <div
+        key={img.id}
         sx={{
           flexShrink: 0,
           overflow: 'hidden',

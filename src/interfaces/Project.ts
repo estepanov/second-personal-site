@@ -9,6 +9,7 @@ export interface Project {
   body: string
   excerpt: string
   frontmatter: {
+    date: string
     title: string
     images: Images[]
     tech: string[]

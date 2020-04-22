@@ -8,7 +8,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     case 'MarkdownRemark':
       {
         const value = createFilePath({ node, getNode })
-        const { permalink } = node.frontmatter
+        const { permalink, date } = node.frontmatter
         let slug = permalink ? `/${permalink}/` : undefined
         let isMain = false
         if (!slug) {
@@ -27,6 +27,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
             }
           }
         }
+        // Date field
+        createNodeField({
+          name: 'date',
+          node,
+          value: date ? new Date(date) : null
+        })
         // isMain determine is page is the index page for content
         createNodeField({
           name: 'isMain',

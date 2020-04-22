@@ -26,12 +26,10 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
         flexDirection: ['column', 'row'],
         flexWrap: 'wrap',
         overflow: 'hidden',
-        backgroundColor: 'listBg',
         transition: 'ease-in 0.3s',
         transform: 'scale(1)',
         '&:hover': {
           transform: 'scale(1.025)',
-          backgroundColor: 'listBgAlt',
           h1: {
             color: 'secondary'
           }
@@ -51,6 +49,8 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
         </Heading>
         <Text sx={{ fontSize: 1 }}>{project.excerpt}</Text>
         <Flex my={2} sx={{ flexDirection: 'row' }}>
+          {project.frontmatter.date && <TechLogo tag={new Date(project.frontmatter.date).getFullYear()} />}
+
           {project.frontmatter.tech.map(tag => {
             return <TechLogo tag={tag} key={tag} />
           })}
