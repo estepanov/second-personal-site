@@ -6,7 +6,6 @@ import NavLink from '../../elements/NavLink'
 import Name from '../../logo/Name'
 import Logo from '../../logo/Logo'
 import Container from '../Container'
-import ColorModeToggle from '../../ColorModeToggle'
 
 const LINKS = [
   {
@@ -16,11 +15,11 @@ const LINKS = [
   {
     title: 'Blog',
     to: '/blog'
-  },
-  {
-    title: 'ColorMode',
-    Component: ColorModeToggle
   }
+  // {
+  //   title: 'ColorMode',
+  //   Component: ColorModeToggle
+  // }
 ]
 
 const Header = () => {

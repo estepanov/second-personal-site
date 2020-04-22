@@ -35,7 +35,7 @@ export default props => {
         cursor: 'pointer',
         transition: 'ease-in-out 0.3s',
         display: 'flex',
-        flexDirection: 'row',
+        height: 'max-content',
         alignItems: 'center',
         borderStyle: 'solid',
         borderWidth: 1,

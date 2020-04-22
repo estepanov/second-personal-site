@@ -10,6 +10,8 @@ const globalStyle = css`
   #___gatsby,
   #gatsby-focus-wrapper {
     height: 100%;
+    width: 100%;
+    overflow-x: hidden;
   }
 `
 
