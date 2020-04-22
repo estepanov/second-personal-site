@@ -12,7 +12,7 @@ const Container: React.FC = ({ children, sx, ...props }) => (
       flexDirection: 'column'
     }}
     mx="auto"
-    px={[3, 4]}
+    px={4}
     {...props}
   >
     {children}

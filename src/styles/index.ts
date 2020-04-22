@@ -6,8 +6,6 @@ const heading = {
   lineHeight: 'heading'
 }
 
-export const breakpoints: string[] = ['319px', '424px', '767px', '1023px']
-
 export const defaultTheme = {
   useColorSchemeMediaQuery: true,
   colors: {
@@ -58,9 +56,12 @@ export const defaultTheme = {
   links: {
     mobileNav: {
       transition: 'ease-in-out 0.5s',
-      marginTop: 2,
-      marginBottom: 2,
-      fontSize: 4,
+      marginTop: 1,
+      marginBottom: 1,
+      paddingTop: 1,
+      paddingBottom: 1,
+      paddingRight: 2,
+      fontSize: 3,
       fontWeight: '500',
       color: 'headerMobile',
       '&:visited': {
@@ -72,7 +73,6 @@ export const defaultTheme = {
       },
       '&.active': {
         color: 'headerMobileActive',
-        paddingRight: 2,
         borderRightColor: 'headerMobileBgActive',
         borderRightWidth: 2,
         borderRightStyle: 'solid'

@@ -39,7 +39,7 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
       <Flex
         sx={{
           minWidth: 200,
-          flex: 1,
+          flex: 2,
           flexShrink: 0,
           flexDirection: 'column'
         }}
@@ -59,9 +59,11 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
       <Flex
         sx={{
           flexDirection: 'row',
-          flexWrap: 'wrap',
+          // flexWrap: 'wrap',
           flexShrink: 0,
-          alignItems: 'center'
+          alignItems: 'center',
+          overflow: 'scroll',
+          flex: 3
         }}
       >
         <ListImages items={project.frontmatter.images} />
