@@ -40,8 +40,6 @@ const Header = () => {
           showMobileMenu
             ? t => `linear-gradient(to bottom left, ${lighten('headerMobileBg', 0.05)(t)}, ${darken('headerMobileBg', 0.05)(t)})`
             : null,
-          null,
-          null,
           null
         ],
         backgroundColor: 'background'

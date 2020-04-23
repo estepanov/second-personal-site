@@ -2,6 +2,7 @@ import React from 'react'
 import { Flex, Text } from 'theme-ui'
 import IconLink from '../../elements/IconLink'
 import ColorModeToggle from '../../ColorModeToggle'
+import Container from '../Container'
 
 const SOCIAL = [
   {
@@ -33,29 +34,33 @@ const SOCIAL = [
 
 const Footer = () => {
   return (
-    <Flex
-      my={4}
-      // py={4}
-      sx={{
-        flexShrink: 0,
-        flexDirection: ['column-reverse', 'row'],
-        paddingTop: 4
-      }}
-    >
-      <Flex sx={{ flex: '1 0 auto', justifyContent: ['space-between', null], alignItems: 'center', paddingTop: [4, 0] }}>
-        <Text sx={{ color: 'gray', paddingRight: 3, fontSize: 1 }}>© {new Date().getFullYear()} Evans Stepanov</Text>
-        <ColorModeToggle />
-      </Flex>
-      <Flex sx={{ flexDirection: 'row', alignItems: 'center', justifyContent: ['space-between'] }}>
-        {SOCIAL.map(social => {
-          return (
-            <IconLink px={[2, 4]} key={social.title} href={social.href}>
-              <i className={social.icon} />
-              <span>{social.title}</span>
-            </IconLink>
-          )
-        })}
-      </Flex>
+    <Flex>
+      <Container>
+        <Flex
+          my={4}
+          // py={4}
+          sx={{
+            flexShrink: 0,
+            flexDirection: ['column-reverse', 'row'],
+            paddingTop: 4
+          }}
+        >
+          <Flex sx={{ flex: '1 0 auto', justifyContent: ['space-between', null], alignItems: 'center', paddingY: [4, 0] }}>
+            <Text sx={{ color: 'gray', paddingRight: 2, fontSize: 1 }}>© {new Date().getFullYear()} Evans Stepanov</Text>
+            <ColorModeToggle />
+          </Flex>
+          <Flex sx={{ flexDirection: 'row', alignItems: 'center', justifyContent: ['space-between'] }}>
+            {SOCIAL.map(social => {
+              return (
+                <IconLink px={[2, 4]} key={social.title} href={social.href}>
+                  <i className={social.icon} />
+                  <span>{social.title}</span>
+                </IconLink>
+              )
+            })}
+          </Flex>
+        </Flex>
+      </Container>
     </Flex>
   )
 }

@@ -26,9 +26,7 @@ const IndexLayout: React.FC<Props> = ({ children, container = true }) => (
     >
       <Header />
       {container ? <Container sx={{ flex: '1 0 auto' }}>{children}</Container> : children}
-      <Container>
-        <Footer />
-      </Container>
+      <Footer />
     </Flex>
   </>
 )

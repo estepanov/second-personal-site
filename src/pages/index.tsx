@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-// import { Text, Box } from 'theme-ui'
+import React from 'react'
+import { Flex } from 'theme-ui'
 import Layout from '../layouts'
 // import useInterval from '../hooks/useInterval'
 
@@ -56,12 +56,18 @@ const IndexPage = () => {
   // }, 6000)
   return (
     <Layout container={false}>
-      <Container
+      <Flex
         sx={{
+          backgroundImage: 'url(/shoulder.gif)',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundPosition: ['70% 50%', '50% 50%'],
+          minHeight: 400,
           flex: '1 0 auto'
         }}
       >
-        {/* <Box mx="auto" my="auto" p={4} sx={{ fontSize: 4 }}>
+        <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingY: 4 }}>
+          {/* <Box mx="auto" my="auto" p={4} sx={{ fontSize: 4 }}>
           Right now I am{' '}
           <Box color="primary" css={{ display: 'inline-block', minWidth: 200 }}>
             <Text sx={{ fontSize: 6, paddingX: 1 }} key={whatIAmDoing[activeIndex].icon}>
@@ -70,7 +76,8 @@ const IndexPage = () => {
             <Text>{whatIAmDoing[activeIndex].title}</Text>
           </Box>
         </Box> */}
-      </Container>
+        </Container>
+      </Flex>
       <About />
     </Layout>
   )
