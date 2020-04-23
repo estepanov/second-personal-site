@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Link } from 'theme-ui'
+import { lighten, darken } from '@theme-ui/color'
 
 export default props => (
   <Link
@@ -17,7 +18,10 @@ export default props => (
         bottom: 0,
         left: 0,
         visibility: 'hidden',
-        backgroundColor: 'primary',
+        // backgroundColor: 'primary',
+        // backgroundImage: t => `linear-gradient(to bottom right, ${lighten('primary', 0.1)(t)}, ${t.colors.primary})`,
+        backgroundImage: t => `linear-gradient(to top left, ${lighten('primary', 0.1)(t)}, ${darken('primary', 0.01)(t)})`,
+
         opacity: 0,
         fontSize: 1
       },

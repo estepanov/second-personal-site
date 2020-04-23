@@ -1,5 +1,4 @@
 import * as CSS from 'csstype'
-import { lighten, darken } from 'polished'
 
 export enum Modes {
   dark = 'dark',
@@ -64,8 +63,6 @@ const mains = {
 
 const lightTheme = {
   primary: mains.blue,
-  primaryLight: lighten(0.2)(mains.blue),
-  primaryDark: darken(0.2)(mains.blue),
   text: mains.gray700, // added
   background: mains.gray100, // added
   secondary: mains.cyan, // added
@@ -108,7 +105,7 @@ export const modes: ModeTypes = {
     text: mains.gray400,
     background: mains.gray900,
     muted: mains.gray800,
-    // gray: mains.gray300,
+    gray: mains.gray600,
     listBg: mains.gray900,
     listBgAlt: mains.gray800,
     listContent: mains.gray400,

@@ -10,7 +10,11 @@ import Footer from '../components/Layout/Footer'
 import globalStyle from '../styles/globalStyle'
 import Container from '../components/Layout/Container'
 
-const IndexLayout: React.FC = ({ children }) => (
+interface Props {
+  container?: boolean
+}
+
+const IndexLayout: React.FC<Props> = ({ children, container = true }) => (
   <>
     <Global styles={globalStyle} />
     <SEO />
@@ -21,7 +25,7 @@ const IndexLayout: React.FC = ({ children }) => (
       }}
     >
       <Header />
-      <Container sx={{ flex: '1 0 auto' }}>{children}</Container>
+      {container ? <Container sx={{ flex: '1 0 auto' }}>{children}</Container> : children}
       <Container>
         <Footer />
       </Container>

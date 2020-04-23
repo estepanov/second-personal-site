@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex } from 'theme-ui'
+import { Flex, Text } from 'theme-ui'
 import IconLink from '../../elements/IconLink'
 import ColorModeToggle from '../../ColorModeToggle'
 
@@ -38,13 +38,15 @@ const Footer = () => {
       // py={4}
       sx={{
         flexShrink: 0,
-        flexDirection: ['column', 'row']
+        flexDirection: ['column-reverse', 'row'],
+        paddingTop: 4
       }}
     >
-      <Flex sx={{ flex: '1 0 auto', alignItems: 'center', mb: [2, 0] }}>
+      <Flex sx={{ flex: '1 0 auto', justifyContent: ['space-between', null], alignItems: 'center', paddingTop: [4, 0] }}>
+        <Text sx={{ color: 'gray', paddingRight: 3, fontSize: 1 }}>© {new Date().getFullYear()} Evans Stepanov</Text>
         <ColorModeToggle />
       </Flex>
-      <Flex color="white" sx={{ flexDirection: 'row', alignItems: 'center', justifyContent: ['space-between'] }}>
+      <Flex sx={{ flexDirection: 'row', alignItems: 'center', justifyContent: ['space-between'] }}>
         {SOCIAL.map(social => {
           return (
             <IconLink px={[2, 4]} key={social.title} href={social.href}>

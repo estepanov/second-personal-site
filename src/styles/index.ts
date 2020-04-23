@@ -17,9 +17,9 @@ export const defaultTheme = {
   // space: { ...space },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    nav: "'Nunito', sans-serif",
-    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: 'inherit',
+    nav: "'Roboto Slab', serif",
+    body: "'Lato', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+    heading: "'Roboto Slab', serif",
     monospace: 'Menlo, monospace'
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
@@ -55,6 +55,7 @@ export const defaultTheme = {
   },
   links: {
     mobileNav: {
+      fontFamily: 'nav',
       transition: 'ease-in-out 0.5s',
       marginTop: 1,
       marginBottom: 1,
@@ -79,11 +80,13 @@ export const defaultTheme = {
       }
     },
     nav: {
+      fontFamily: 'nav',
+
       transition: 'ease-in-out 0.5s',
       paddingTop: 2,
       paddingBottom: 2,
-      paddingLeft: 3,
-      paddingRight: 3,
+      paddingLeft: 2,
+      paddingRight: 2,
       fontSize: 3,
       fontWeight: '500',
       color: 'text',

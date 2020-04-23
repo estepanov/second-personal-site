@@ -1,6 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { jsx, useColorMode, Text } from 'theme-ui'
+import { darken, alpha } from '@theme-ui/color'
 import { Modes } from '../styles/colors'
 
 const options = Object.keys(Modes)
@@ -30,20 +31,23 @@ export default props => {
       type="button"
       key={mode}
       sx={{
-        // borderRadius: 5,
+        // borderRadius: 10,
         position: 'relative',
         cursor: 'pointer',
         transition: 'ease-in-out 0.3s',
         display: 'flex',
         height: 'max-content',
         alignItems: 'center',
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: 'headerMobileBgActive',
-        color: 'logoActive',
-        padding: 2,
+        border: 'none',
+        background: 'none',
+        // borderStyle: 'solid',
+        // borderWidth: 1,
+        // // borderColor: 'headerMobileBgActive',
+        color: 'text',
+        paddingX: 2,
+        paddingY: 2,
         overflow: 'hidden',
-        backgroundColor: 'headerMobileBg',
+        // backgroundColor: 'headerMobileBg',
         '&:hover': {
           backgroundColor: 'text',
           color: 'background'

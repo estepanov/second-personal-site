@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
+import { lighten, darken } from '@theme-ui/color'
 /** @jsx jsx */
 import { jsx, Button, Box, Flex } from 'theme-ui'
 import NavLink from '../../elements/NavLink'
@@ -15,6 +16,10 @@ const LINKS = [
   {
     title: 'Blog',
     to: '/blog'
+  },
+  {
+    title: 'Contact',
+    to: '/contact'
   }
   // {
   //   title: 'ColorMode',
@@ -30,8 +35,17 @@ const Header = () => {
       sx={{
         paddingY: 4,
         // marginBottom: [2, 0],
-        transition: ['ease 0.2s', 'none'],
-        backgroundColor: [showMobileMenu ? 'headerMobileBg' : 'background', 'background']
+        transition: ['ease-in-out 0.3s', 'none'],
+        backgroundImage: [
+          showMobileMenu
+            ? t => `linear-gradient(to bottom left, ${lighten('headerMobileBg', 0.05)(t)}, ${darken('headerMobileBg', 0.05)(t)})`
+            : null,
+          null,
+          null,
+          null
+        ],
+        backgroundColor: 'background'
+        // backgroundColor: [showMobileMenu ? 'headerMobileBg' : 'background', 'background']
       }}
     >
       <Flex
@@ -41,7 +55,7 @@ const Header = () => {
           flexDirection: 'row',
           alignItems: 'flex-end',
           justifyContent: 'space-between',
-          transition: 'ease-in-out 0.5s, opacity ease 0.3s',
+          transition: 'ease-in-out 0.5s, opacity ease-in-out 0.3s',
           visibility: showMobileMenu ? 'visible' : 'collapse',
           overflow: 'hidden',
           opacity: showMobileMenu ? 1 : 0,
@@ -49,21 +63,23 @@ const Header = () => {
         }}
       >
         <Flex sx={{ width: 190, height: 90, justifyContent: 'center' }}>
-          <Logo
-            sx={{
-              // left: 50,
-              // top: '100',
-              // position: 'absolute',
-              color: 'logoActive',
-              transition: 'ease-in-out 0.3s',
-              // transform: showMobileMenu ? 'translate(0,0)' : 'translate(0,-100px)',
-              transform: showMobileMenu ? 'opacity(1) translate(0,0)' : 'opacity(0.4) translate(0,-100px)',
-              // transform: showMobileMenu ? 'rotate(-25deg) scale(1.4)' : 'rotate(0deg) scale(1)',
-              width: 100
-              // marginBottom: 4,
-              // marginLeft: 4
-            }}
-          />
+          <Link to="/">
+            <Logo
+              sx={{
+                // left: 50,
+                // top: '100',
+                // position: 'absolute',
+                color: 'logoActive',
+                transition: 'ease-in-out 0.3s',
+                // transform: showMobileMenu ? 'translate(0,0)' : 'translate(0,-100px)',
+                transform: showMobileMenu ? 'opacity(1) translate(0,0)' : 'opacity(0.4) translate(0,-100px)',
+                // transform: showMobileMenu ? 'rotate(-25deg) scale(1.4)' : 'rotate(0deg) scale(1)',
+                width: 100
+                // marginBottom: 4,
+                // marginLeft: 4
+              }}
+            />
+          </Link>
         </Flex>
         <Flex sx={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end' }}>
           {LINKS.map(item => {
@@ -152,14 +168,6 @@ const Header = () => {
               alignItems: 'center'
             }}
           >
-            {/* <Logo
-              sx={{
-                width: 30,
-                transition: 'ease 1s',
-                transform: showMobileMenu ? 'rotate(90deg)' : 'rotate(0deg)'
-              }}
-            /> */}
-
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -182,58 +190,6 @@ const Header = () => {
           </Button>
         </Box>
       </Flex>
-      {/* <Flex
-        sx={{
-          // position: 'relative',
-          display: ['flex', 'none'],
-          flexDirection: 'row',
-          alignItems: 'flex-end',
-          justifyContent: 'space-between',
-          transition: 'ease-in-out 0.5s, opacity ease 0.3s',
-          visibility: showMobileMenu ? 'visible' : 'collapse',
-          overflow: 'hidden',
-          opacity: showMobileMenu ? 1 : 0,
-          maxHeight: showMobileMenu ? 1000 : 0
-        }}
-      >
-        <Flex sx={{ width: 190, height: 90, justifyContent: 'center' }}>
-          <Logo
-            sx={{
-              // left: 50,
-              // top: '100',
-              // position: 'absolute',
-              transition: 'ease-in-out 0.3s',
-              // transform: showMobileMenu ? 'translate(0,0)' : 'translate(0,-100px)',
-              transform: showMobileMenu ? 'opacity(1) translate(0,0)' : 'opacity(0.4) translate(0,-100px)',
-              // transform: showMobileMenu ? 'rotate(-25deg) scale(1.4)' : 'rotate(0deg) scale(1)',
-              width: 120
-              // marginBottom: 4,
-              // marginLeft: 4
-            }}
-          />
-        </Flex>
-        <Flex sx={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end' }}>
-          <Box mt={4} />
-          {LINKS.map(item => {
-            if (item.Component) {
-              return <item.Component key={item.title} />
-            }
-            return (
-              <Link
-                key={item.title}
-                partiallyActive
-                activeClassName="active"
-                sx={{
-                  variant: 'links.mobileNav'
-                }}
-                to={item.to}
-              >
-                {item.title}
-              </Link>
-            )
-          })}
-        </Flex>
-      </Flex> */}
     </Container>
   )
 }

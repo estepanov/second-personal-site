@@ -27,14 +27,14 @@ const ListImages: React.FC<ListImagesProps> = ({ items }) => {
           width: [125, 150],
           objectFit: 'cover',
           opacity: 1,
-          transition: 'ease-in 0.5s',
+          transition: 'ease-in-out 0.3s',
           transform: 'scale(1)',
           '&:hover': {
-            transform: 'scale(1.20)',
-            opacity: 1,
-            '& img': {
-              transform: 'rotate(0deg) scale(1) translate(0%, 0%)'
-            }
+            transform: 'scale(1.10)',
+            opacity: 1
+            // '& img': {
+            //   transform: 'rotate(0deg) scale(1) translate(0%, 0%)'
+            // }
           }
         }}
       >
@@ -42,11 +42,12 @@ const ListImages: React.FC<ListImagesProps> = ({ items }) => {
           key={img.id}
           src={img.publicURL}
           sx={{
+            filter: 'grayscale(0.9)',
             height: '100%',
             width: '100%',
-            objectFit: 'cover',
-            transform: 'rotate(-25deg) scale(1.5) translate(5%, 5%)',
-            transition: 'ease-out 1s'
+            objectFit: 'cover'
+            // transform: 'rotate(-25deg) scale(1.5) translate(5%, 5%)',
+            // transition: 'ease-out 1s'
           }}
           alt=""
         />
