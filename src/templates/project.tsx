@@ -6,6 +6,7 @@ import MDX from '../components/MDX'
 import Layout from '../layouts'
 import TechLogoBox from '../components/projects/TechLogoBox'
 import { Project } from '../interfaces/Project'
+import NextPrev from '../components/projects/NextPrevious'
 
 interface ProjectProps {
   data: {
@@ -20,23 +21,30 @@ interface ProjectProps {
       }
     }
     post: Project
+    pageContext: {
+      next: Project
+      previous: Project
+    }
   }
 }
 
-const ProjectPage: React.FC<ProjectProps> = ({ data }) => (
-  <Layout>
-    <Heading as="h1" color="secondary">
-      {data.post.frontmatter.title}
-    </Heading>
-    <Flex my={2} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-      {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
-      {data.post.frontmatter.tech.map(tag => {
-        return <TechLogoBox key={tag} tag={tag} />
-      })}
-    </Flex>
-    <MDX>{data.post.body}</MDX>
-  </Layout>
-)
+const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
+  return (
+    <Layout>
+      <Heading as="h1" color="secondary">
+        {data.post.frontmatter.title}
+      </Heading>
+      <Flex my={2} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+        {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
+        {data.post.frontmatter.tech.map(tag => {
+          return <TechLogoBox key={tag} tag={tag} />
+        })}
+      </Flex>
+      <MDX>{data.post.body}</MDX>
+      <NextPrev next={pageContext.next} previous={pageContext.previous} />
+    </Layout>
+  )
+}
 
 export default ProjectPage
 
