@@ -1,0 +1,19 @@
+{
+  "languages": [
+    "JavaScript",
+    "TypeScript"
+  ],
+  "buildingBlocks": [
+    "HTML5",
+    "CSS3",
+    "SCSS"
+  ],
+  "frontend": [
+    "react",
+    "styled-components"
+  ],
+  "backend": [
+    "node",
+    "express"
+  ]
+}

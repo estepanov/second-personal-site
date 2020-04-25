@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { lighten, darken } from '@theme-ui/color'
+
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
 
@@ -10,13 +12,14 @@ interface TechLogoProps {
 }
 
 const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
+  const color = TAG_MAP[tag] ? TAG_MAP[tag].color : 'primaryLight'
   return (
     <Flex
       sx={{
         position: 'relative',
         fontSize: TAG_MAP[tag] ? 3 : 1,
         cursor: 'pointer',
-        color: TAG_MAP[tag] ? TAG_MAP[tag].color : 'primaryLight',
+        color,
         transition: 'ease-in 0.3s',
         paddingX: 2,
         paddingY: 1,
@@ -26,14 +29,14 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
         '& span': {
           transition: 'ease-in-out 0.5s',
           wordBreak: 'keep-all',
-          padding: 1,
+          padding: 2,
           position: 'absolute',
           bottom: 0,
           left: 0,
           visibility: 'hidden',
-          backgroundColor: TAG_MAP[tag] ? TAG_MAP[tag].color : 'primaryLight',
+          backgroundColor: color,
           opacity: 0,
-          fontSize: 0
+          fontSize: 1
         },
         '&:hover': {
           '& span': {
@@ -43,7 +46,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
             color: 'white',
             bottom: '100%'
           },
-          color: TAG_MAP[tag] ? TAG_MAP[tag].color : 'primaryLight'
+          color
         }
       }}
       key={tag}

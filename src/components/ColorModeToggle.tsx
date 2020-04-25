@@ -1,7 +1,6 @@
 import React from 'react'
 /** @jsx jsx */
 import { jsx, useColorMode, Text } from 'theme-ui'
-import { darken, alpha } from '@theme-ui/color'
 import { Modes } from '../styles/colors'
 
 const options = Object.keys(Modes)

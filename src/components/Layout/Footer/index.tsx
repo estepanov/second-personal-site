@@ -39,11 +39,18 @@ const Footer = () => {
         my={4}
         sx={{
           flexShrink: 0,
-          flexDirection: ['column-reverse', 'row'],
-          paddingTop: 4
+          flexDirection: ['column-reverse', 'row']
+          // paddingTop: 4
         }}
       >
-        <Flex sx={{ flex: '1 0 auto', justifyContent: ['space-between', null], alignItems: 'center', paddingY: [4, 0] }}>
+        <Flex
+          sx={{
+            flex: '1 0 auto',
+            justifyContent: ['space-between', null],
+            alignItems: 'center'
+            // paddingY: [4, 0]
+          }}
+        >
           <Text sx={{ color: 'gray', paddingRight: 2, fontSize: 1 }}>© {new Date().getFullYear()} Evans Stepanov</Text>
           <ColorModeToggle />
         </Flex>

@@ -28,6 +28,14 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `about`,
+        path: `${__dirname}/src/content/about`,
+        plugins: [`gatsby-transformer-json`]
+      }
+    },
+    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
@@ -67,7 +75,14 @@ module.exports = {
     'gatsby-plugin-emotion',
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 100
+      }
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-mdx'
