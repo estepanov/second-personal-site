@@ -83,8 +83,8 @@ const lightTheme = {
   warning: mains.yellow,
   danger: mains.red,
 
-  listBg: mains.gray200,
-  listBgAlt: mains.gray300,
+  listBg: mains.gray300,
+  listBgAlt: mains.gray500,
   listContent: mains.gray600,
   listHeader: mains.gray900
 }
@@ -108,8 +108,8 @@ export const modes: ModeTypes = {
     muted: mains.gray800,
     mutedText: mains.gray500, // added
     gray: mains.gray600,
-    listBg: mains.gray900,
-    listBgAlt: mains.gray800,
+    listBg: mains.gray800,
+    listBgAlt: mains.gray700,
     listContent: mains.gray400,
     listHeader: mains.gray100
   }

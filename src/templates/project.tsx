@@ -7,6 +7,7 @@ import Layout from '../layouts'
 import TechLogoBox from '../components/projects/TechLogoBox'
 import { Project } from '../interfaces/Project'
 import NextPrev from '../components/projects/NextPrevious'
+import ImageGallery from '../components/projects/ImageGallery'
 
 interface ProjectProps {
   data: {
@@ -30,8 +31,16 @@ interface ProjectProps {
 
 const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
   return (
-    <Layout>
-      <Heading as="h1" color="secondary">
+    <Layout
+      title={data.post.frontmatter.title}
+      description={data.post.excerpt}
+      image={
+        data.post.frontmatter.images && data.post.frontmatter.images[0]
+          ? data.post.frontmatter.images[0].childImageSharp?.resize.src
+          : undefined
+      }
+    >
+      <Heading as="h1" color="secondary" my={2}>
         {data.post.frontmatter.title}
       </Heading>
       <Flex my={2} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -40,6 +49,7 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
           return <TechLogoBox key={tag} tag={tag} />
         })}
       </Flex>
+      <ImageGallery items={data.post.frontmatter.images} />
       <MDX>{data.post.body}</MDX>
       <NextPrev next={pageContext.next} previous={pageContext.previous} />
     </Layout>
@@ -67,6 +77,15 @@ export const query = graphql`
         date
         tech
         title
+        images {
+          id
+          publicURL
+          childImageSharp {
+            resize(height: 300, width: 300, cropFocus: NORTH) {
+              src
+            }
+          }
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Text } from 'theme-ui'
 import IconLink from '../../elements/IconLink'
-import ColorModeToggle from '../../ColorModeToggle'
+import ColorModeToggle from '../../ColorModeToggleText'
 import Container from '../Container'
 
 const SOCIAL = [

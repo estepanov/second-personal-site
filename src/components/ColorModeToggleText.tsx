@@ -43,13 +43,12 @@ export default props => {
         // borderWidth: 1,
         // // borderColor: 'headerMobileBgActive',
         color: 'text',
-        backgroundColor: 'headerMobileBg',
         paddingX: 2,
         paddingY: 2,
         overflow: 'hidden',
+        textDecoration: 'none',
         '&:hover': {
-          backgroundColor: 'text',
-          color: 'background'
+          textDecoration: 'underline'
         }
       }}
       onClick={() => {
@@ -58,8 +57,7 @@ export default props => {
         setMode(next)
       }}
     >
-      <Text>{MODE_ICON_REVERSE[mode]}</Text>
-      {/* <span sx={{ marginLeft: 2, fontSize: 0 }}>{MODE_TEXT_REVERSE[mode]}</span> */}
+      <span sx={{ marginLeft: 2, fontSize: 0 }}>{MODE_TEXT_REVERSE[mode]}</span>
     </button>
   )
 }

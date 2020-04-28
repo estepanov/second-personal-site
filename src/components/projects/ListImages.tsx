@@ -18,36 +18,25 @@ const ListImages: React.FC<ListImagesProps> = ({ items }) => {
         key={img.id}
         sx={{
           flexShrink: 0,
+          overflowX: 'scroll',
           overflow: 'hidden',
-          margin: [2, 3],
-          // borderColor: 'white',
-          // borderStyle: 'solid',
-          // borderWidth: 4,
+          marginX: [2, 3],
           height: [125, 150],
           width: [125, 150],
-          objectFit: 'cover',
           opacity: 1,
-          transition: 'ease-in-out 0.3s',
-          transform: 'scale(1)',
-          '&:hover': {
-            transform: 'scale(1.10)',
-            opacity: 1
-            // '& img': {
-            //   transform: 'rotate(0deg) scale(1) translate(0%, 0%)'
-            // }
-          }
+          transition: 'ease-in-out 0.3s'
+          // '&:hover': {
+          //   transform: 'scale(1.10)',
+          // }
         }}
       >
         <img
           key={img.id}
-          src={img.publicURL}
+          src={img.childImageSharp.resize.src}
           sx={{
-            filter: 'grayscale(0.9)',
             height: '100%',
             width: '100%',
             objectFit: 'cover'
-            // transform: 'rotate(-25deg) scale(1.5) translate(5%, 5%)',
-            // transition: 'ease-out 1s'
           }}
           alt=""
         />

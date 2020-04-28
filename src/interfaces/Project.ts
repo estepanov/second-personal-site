@@ -1,6 +1,11 @@
 export interface Images {
   id: string
   publicURL: string
+  childImageSharp?: {
+    resize: {
+      src: string
+    }
+  }
 }
 
 export interface Project {

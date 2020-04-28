@@ -7,20 +7,21 @@ import NavLink from '../../elements/NavLink'
 import Name from '../../logo/Name'
 import Logo from '../../logo/Logo'
 import Container from '../Container'
+// import ColorModeToggle from '../../ColorModeToggle'
 
 const LINKS = [
   {
     title: 'Projects',
     to: '/projects'
-  },
-  {
-    title: 'Blog',
-    to: '/blog'
-  },
-  {
-    title: 'Contact',
-    to: '/contact'
   }
+  // {
+  //   title: 'Blog',
+  //   to: '/blog'
+  // },
+  // {
+  //   title: 'Contact',
+  //   to: '/contact'
+  // }
   // {
   //   title: 'ColorMode',
   //   Component: ColorModeToggle
@@ -34,7 +35,6 @@ const Header = () => {
     <Container
       sx={{
         paddingY: 4,
-        // marginBottom: [2, 0],
         transition: ['ease-in-out 0.3s', 'none'],
         backgroundImage: [
           showMobileMenu
@@ -43,12 +43,10 @@ const Header = () => {
           null
         ],
         backgroundColor: 'background'
-        // backgroundColor: [showMobileMenu ? 'headerMobileBg' : 'background', 'background']
       }}
     >
       <Flex
         sx={{
-          // position: 'relative',
           display: ['flex', 'none'],
           flexDirection: 'row',
           alignItems: 'flex-end',
@@ -64,17 +62,13 @@ const Header = () => {
           <Link to="/">
             <Logo
               sx={{
-                // left: 50,
-                // top: '100',
-                // position: 'absolute',
                 color: 'logoActive',
                 transition: 'ease-in-out 0.3s',
-                // transform: showMobileMenu ? 'translate(0,0)' : 'translate(0,-100px)',
                 transform: showMobileMenu ? 'opacity(1) translate(0,0)' : 'opacity(0.4) translate(0,-100px)',
-                // transform: showMobileMenu ? 'rotate(-25deg) scale(1.4)' : 'rotate(0deg) scale(1)',
-                width: 100
-                // marginBottom: 4,
-                // marginLeft: 4
+                width: 100,
+                ':hover': {
+                  color: 'primary'
+                }
               }}
             />
           </Link>
@@ -118,7 +112,11 @@ const Header = () => {
               justifyContent: 'center',
               alignItems: 'center',
               padding: 0,
-              color: [showMobileMenu ? 'logoActive' : 'logo', 'logo']
+              transition: 'ease-in-out 0.2s',
+              color: [showMobileMenu ? 'logoActive' : 'logo', 'logo'],
+              ':hover': {
+                color: 'primary'
+              }
             }}
           >
             <Logo height="30px" sx={{ display: ['none', 'block'] }} />

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Flex } from 'theme-ui'
 import { Global } from '@emotion/core'
 
 import 'modern-normalize'
@@ -12,22 +11,20 @@ import Container from '../components/Layout/Container'
 
 interface Props {
   container?: boolean
+  title?: string
+  description?: string
+  image?: string
+  pathname?: string
+  article?: boolean
 }
 
-const IndexLayout: React.FC<Props> = ({ children, container = true }) => (
+const IndexLayout: React.FC<Props> = ({ children, container = true, title, description, image, article, pathname }) => (
   <>
     <Global styles={globalStyle} />
-    <SEO />
-    <Flex
-      sx={{
-        height: '100%',
-        flexDirection: 'column'
-      }}
-    >
-      <Header />
-      {container ? <Container sx={{ flex: '1 0 auto' }}>{children}</Container> : children}
-      <Footer />
-    </Flex>
+    <SEO title={title} description={description} image={image} article={article} pathname={pathname} />
+    <Header />
+    {container ? <Container sx={{ flex: '1 0 auto' }}>{children}</Container> : children}
+    <Footer />
   </>
 )
 

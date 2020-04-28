@@ -30,7 +30,7 @@ interface ProjectProps {
 
 const Projects: React.FC<ProjectProps> = ({ data }) => {
   return (
-    <Layout>
+    <Layout title="Projects" description="Some projects I have worked on in the past.">
       {data.post.edges.map(({ node }) => {
         return <ProjectListItem key={node.id} project={node} />
       })}
@@ -64,6 +64,22 @@ export const query = graphql`
             images {
               id
               publicURL
+              childImageSharp {
+                resize(
+                  height: 300
+                  width: 300
+                  cropFocus: NORTH
+                  jpegProgressive: true
+                  quality: 100
+                  pngQuality: 100
+                  pngCompressionLevel: 1
+                  pngCompressionSpeed: 10
+                  jpegQuality: 100
+                  grayscale: true
+                ) {
+                  src
+                }
+              }
             }
           }
           fields {

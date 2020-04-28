@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     titleTemplate: '%s | Evans Stepanov',
-    title: 'Full stack engineer',
+    title: 'Full Stack Engineer',
     description: 'Some information and a collection of musings.',
     keywords: 'javascript, react, node, portfolio, resume, coding',
     siteUrl: 'https://estepanov.io',
@@ -78,8 +78,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        useMozJpeg: false,
-        stripMetadata: true,
         defaultQuality: 100
       }
     },

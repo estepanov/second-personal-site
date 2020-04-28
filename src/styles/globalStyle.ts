@@ -5,19 +5,21 @@ const globalStyle = css`
   @import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Slab&display=swap');
 
   html {
+    width: 100%;
     height: 100%;
     overflow: auto;
-    overflow-x: hidden;
-  }
-  body {
-    height: 100%;
-    margin: 0;
   }
 
   #___gatsby,
   #gatsby-focus-wrapper {
     height: 100%;
     width: 100%;
+    overflow-x: hidden;
+  }
+  #gatsby-focus-wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
   }
 `
 

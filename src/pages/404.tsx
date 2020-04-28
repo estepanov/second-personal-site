@@ -6,7 +6,7 @@ import { jsx, Heading, AspectImage, Box } from 'theme-ui'
 import Layout from '../layouts'
 
 const NotFoundPage = () => (
-  <Layout>
+  <Layout title="Page not found">
     <Box mt={4} sx={{ maxHeight: 270 }}>
       <AspectImage ratio={16 / 9} src="/great-success.gif" alt="great success" />
     </Box>
