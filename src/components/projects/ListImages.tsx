@@ -18,7 +18,6 @@ const ListImages: React.FC<ListImagesProps> = ({ items }) => {
         key={img.id}
         sx={{
           flexShrink: 0,
-          overflowX: 'scroll',
           overflow: 'hidden',
           marginX: [2, 3],
           height: [125, 150],

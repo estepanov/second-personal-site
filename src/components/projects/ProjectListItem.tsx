@@ -2,12 +2,13 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx, Text, Box, Flex, Heading } from 'theme-ui'
 import { Link } from 'gatsby'
-import { lighten, darken, alpha } from '@theme-ui/color'
+import { lighten, darken } from '@theme-ui/color'
 
 import TechLogo from './TechLogo'
 import ListImages from './ListImages'
 
-import { Project } from '../../interfaces/Project'
+import { Project, ProjectSizeEnum } from '../../interfaces/Project'
+import Banner from './Banners'
 
 interface Props {
   project: Project
@@ -31,7 +32,7 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
         backgroundColor: 'background',
         '&:hover': {
           transform: 'scale(1.02)',
-          backgroundColor: t => lighten('listBg', 0.01)(t),
+          backgroundColor: t => darken('listBg', 0.1)(t),
           backgroundImage: t => `linear-gradient(to bottom right, ${lighten('listBg', 0.01)(t)}, ${darken('listBg', 0.1)(t)})`,
           // boxShadow: t => `0px 0px 20px ${lighten('gray', 0.1)(t)}`
           h1: {
@@ -49,18 +50,21 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
           flexDirection: 'column'
         }}
       >
-        <Heading
-          as="h1"
-          my={2}
-          sx={{
-            fontSize: 3,
-            color: 'listHeader',
-            transition: 'ease-in-out 0.3s'
-            // textDecoration: 'none'
-          }}
-        >
-          {project.frontmatter.title}
-        </Heading>
+        <Flex sx={{ alignItems: 'center' }}>
+          <Heading
+            as="h1"
+            my={2}
+            sx={{
+              fontSize: 3,
+              color: 'listHeader',
+              transition: 'ease-in-out 0.3s'
+              // textDecoration: 'none'
+            }}
+          >
+            {project.frontmatter.title}
+          </Heading>
+          {project.frontmatter.banners ? project.frontmatter.banners.map(item => <Banner key={item} type={item} />) : null}
+        </Flex>
         <Text sx={{ fontSize: 1, color: 'text' }}>{project.excerpt}</Text>
         <Flex my={2} sx={{ flexDirection: 'row' }}>
           {project.frontmatter.date && <TechLogo tag={new Date(project.frontmatter.date).getFullYear()} />}
@@ -70,39 +74,41 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
           })}
         </Flex>
       </Flex>
-      <Flex
-        sx={{
-          flexDirection: 'row',
-          // flexWrap: 'wrap',
-          flexShrink: 0,
-          alignItems: 'center',
-          overflowX: 'scroll',
-          flex: 3,
-          paddingY: 2,
-          '::-webkit-scrollbar': {
-            cursor: 'all-scroll',
-            height: 3
-          },
-          /* Arrow buttons */
-          '::-webkit-scrollbar-button': {
-            display: 'none'
-          },
-          /* Track */
-          '::-webkit-scrollbar-track': {
-            background: 'none'
-          },
-          /* Handle */
-          '::-webkit-scrollbar-thumb': {
-            backgroundColor: 'listBg'
-          },
-          /* Handle on hover */
-          '::-webkit-scrollbar-thumb:hover': {
-            backgroundColor: 'listBgAlt'
-          }
-        }}
-      >
-        <ListImages items={project.frontmatter.images} />
-      </Flex>
+      {ProjectSizeEnum.small !== project.frontmatter.size && (
+        <Flex
+          sx={{
+            flexDirection: 'row',
+            // flexWrap: 'wrap',
+            flexShrink: 0,
+            alignItems: 'center',
+            overflowX: 'scroll',
+            flex: 3,
+            paddingY: 2,
+            '::-webkit-scrollbar': {
+              cursor: 'all-scroll',
+              height: 5
+            },
+            /* Arrow buttons */
+            '::-webkit-scrollbar-button': {
+              display: 'none'
+            },
+            /* Track */
+            '::-webkit-scrollbar-track': {
+              background: 'none'
+            },
+            /* Handle */
+            '::-webkit-scrollbar-thumb': {
+              backgroundColor: 'listBgAlt'
+            },
+            /* Handle on hover */
+            '::-webkit-scrollbar-thumb:hover': {
+              backgroundColor: 'listBgAlt'
+            }
+          }}
+        >
+          <ListImages items={project.frontmatter.images} />
+        </Flex>
+      )}
     </Link>
   )
 }

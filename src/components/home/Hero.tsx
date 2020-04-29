@@ -11,8 +11,11 @@ const Hero = ({ children }) => {
         backgroundSize: 'cover',
         backgroundPosition: ['70% 50%', '50% 50%'],
         minHeight: 400,
-        height: 'calc(100vh - 90px - 160px - 120px)',
-        flex: '1 0 auto'
+        height: `calc(100vh - ${90 + 189 + 100}px)`,
+        flex: '1 0 auto',
+        opacity: 0.7
+        // filter: ' hue-rotate(100deg)'
+        // filter: 'grayscale(1)'
       }}
     >
       <video

@@ -6,6 +6,7 @@ export default props => (
   <Link
     {...props}
     sx={{
+      mx: [2, 3],
       position: 'relative',
       fontSize: 4,
       cursor: 'pointer',
@@ -16,7 +17,7 @@ export default props => (
         transition: 'ease-in 0.3s',
         position: 'absolute',
         bottom: 0,
-        left: 0,
+        right: 0,
         visibility: 'hidden',
         // backgroundColor: 'primary',
         // backgroundImage: t => `linear-gradient(to bottom right, ${lighten('primary', 0.1)(t)}, ${t.colors.primary})`,

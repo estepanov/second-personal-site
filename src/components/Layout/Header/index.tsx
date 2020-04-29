@@ -65,10 +65,7 @@ const Header = () => {
                 color: 'logoActive',
                 transition: 'ease-in-out 0.3s',
                 transform: showMobileMenu ? 'opacity(1) translate(0,0)' : 'opacity(0.4) translate(0,-100px)',
-                width: 100,
-                ':hover': {
-                  color: 'primary'
-                }
+                width: 100
               }}
             />
           </Link>
@@ -115,7 +112,7 @@ const Header = () => {
               transition: 'ease-in-out 0.2s',
               color: [showMobileMenu ? 'logoActive' : 'logo', 'logo'],
               ':hover': {
-                color: 'primary'
+                color: 'mutedText'
               }
             }}
           >

@@ -43,7 +43,7 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
       {TAG_MAP[tag] ? (
         <React.Fragment>
           {TAG_MAP[tag].icon}
-          <span>{tag}</span>
+          <span>{TAG_MAP[tag].name}</span>
         </React.Fragment>
       ) : (
           tag

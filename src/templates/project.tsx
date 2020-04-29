@@ -8,6 +8,7 @@ import TechLogoBox from '../components/projects/TechLogoBox'
 import { Project } from '../interfaces/Project'
 import NextPrev from '../components/projects/NextPrevious'
 import ImageGallery from '../components/projects/ImageGallery'
+import Banner from '../components/projects/Banners'
 
 interface ProjectProps {
   data: {
@@ -43,11 +44,14 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
       <Heading as="h1" color="secondary" my={2}>
         {data.post.frontmatter.title}
       </Heading>
-      <Flex my={2} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+      <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
         {data.post.frontmatter.tech.map(tag => {
           return <TechLogoBox key={tag} tag={tag} />
         })}
+      </Flex>
+      <Flex my={1} sx={{ alignItems: 'center' }}>
+        {data.post.frontmatter.banners ? data.post.frontmatter.banners.map(item => <Banner key={item} type={item} />) : null}
       </Flex>
       <ImageGallery items={data.post.frontmatter.images} />
       <MDX>{data.post.body}</MDX>
@@ -74,6 +78,7 @@ export const query = graphql`
       body
       excerpt
       frontmatter {
+        banners
         date
         tech
         title
@@ -86,6 +91,7 @@ export const query = graphql`
             }
           }
         }
+        repo
       }
     }
   }

@@ -57,7 +57,7 @@ const Footer = () => {
         <Flex sx={{ flexDirection: 'row', alignItems: 'center', justifyContent: ['space-between'] }}>
           {SOCIAL.map(social => {
             return (
-              <IconLink px={[2, 4]} key={social.title} href={social.href}>
+              <IconLink key={social.title} href={social.href}>
                 <i className={social.icon} />
                 <span>{social.title}</span>
               </IconLink>

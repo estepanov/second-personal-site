@@ -58,6 +58,8 @@ export const query = graphql`
           excerpt
           timeToRead
           frontmatter {
+            size
+            banners
             date
             title
             tech
@@ -81,6 +83,7 @@ export const query = graphql`
                 }
               }
             }
+            repo
           }
           fields {
             slug

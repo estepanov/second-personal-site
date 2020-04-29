@@ -1,7 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { lighten, darken } from '@theme-ui/color'
-
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
 
@@ -12,7 +9,7 @@ interface TechLogoProps {
 }
 
 const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
-  const color = TAG_MAP[tag] ? TAG_MAP[tag].color : 'primaryLight'
+  const color = TAG_MAP[tag] ? TAG_MAP[tag].color : 'mutedText'
   return (
     <Flex
       sx={{
@@ -54,7 +51,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
       {TAG_MAP[tag] ? (
         <React.Fragment>
           {TAG_MAP[tag].icon}
-          <span>{tag}</span>
+          <span>{TAG_MAP[tag].name}</span>
         </React.Fragment>
       ) : (
           tag

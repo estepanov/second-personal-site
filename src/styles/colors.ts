@@ -67,7 +67,7 @@ const lightTheme = {
   background: mains.gray100, // added
   secondary: mains.cyan, // added
   muted: mains.gray300, // added
-  mutedText: mains.gray600, // added
+  mutedText: mains.gray500, // added
   gray: mains.gray700,
   logo: mains.gray700,
   logoActive: mains.gray200,
@@ -106,7 +106,7 @@ export const modes: ModeTypes = {
     text: mains.gray400,
     background: mains.gray900,
     muted: mains.gray800,
-    mutedText: mains.gray500, // added
+    mutedText: mains.gray600, // added
     gray: mains.gray600,
     listBg: mains.gray800,
     listBgAlt: mains.gray700,

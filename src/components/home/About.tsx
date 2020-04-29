@@ -1,6 +1,6 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, Box, Text } from 'theme-ui'
+import { jsx, Box, Text, Flex } from 'theme-ui'
 import { lighten } from '@theme-ui/color'
 import Container from '../Layout/Container'
 
@@ -14,26 +14,34 @@ const About: React.FC = () => {
         color: 'white'
       }}
     >
-      <Container>
-        <Box>
-          <img
-            alt="me"
-            src="/me.jpg"
-            sx={{
-              flexShrink: 0,
-              filter: 'grayscale(1)',
-              height: 100,
-              width: 100,
-              float: 'left',
-              marginRight: 4
-              // marginBottom: 4
-            }}
-          />
-          <Text sx={{ fontSize: 2 }}>
+      <Container sx={{ display: 'flex', alignItems: 'center' }}>
+        <Flex
+          sx={{
+            // maxWidth: 600
+            flexDirection: ['column', 'row'],
+            alignItems: 'center'
+          }}
+        >
+          <Text sx={{ fontSize: 2, float: 'left', marginRight: [0, 4], marginBottom: [4, 0], lineHeight: 1.8 }}>
             I spend most of my time coding, reading code, or reading about software. Winter is my favorite season and skiing on fresh powder
             is the highlight of every winter. Occasionally, I can be found binge-playing Halo on Xbox or Battlefield One on the PC.
           </Text>
-        </Box>
+          <img
+            alt="me"
+            src="/me2-small.png"
+            sx={{
+              flexShrink: 0,
+              filter: 'grayscale(1)',
+              height: 125,
+              width: 125,
+              alignSelf: 'flex-end'
+              // float: 'left',
+              // // marginRight: 4
+              // marginLeft: 4
+              // marginBottom: 4
+            }}
+          />
+        </Flex>
       </Container>
     </Box>
   )

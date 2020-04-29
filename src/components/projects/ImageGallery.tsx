@@ -32,15 +32,15 @@ const ButtonImage: React.FC<ButtonImageProps> = ({ img, onClick, size = ButtonSi
         height: [ButtonSizes.small, ButtonSizes.medium],
         width: [ButtonSizes.small, ButtonSizes.medium],
         objectFit: 'cover',
-        opacity: 1,
+        opacity: 0.8,
         transition: 'ease-in-out 0.3s',
         transform: 'scale(1)',
         '&:hover': {
-          transform: 'scale(1.05)',
+          transform: [null, 'scale(1.05)'],
           opacity: 1
         },
         '&:focus': {
-          transform: 'scale(1.05)',
+          transform: [null, 'scale(1.05)'],
           opacity: 1
         }
       }}
