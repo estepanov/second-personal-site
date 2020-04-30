@@ -15,17 +15,13 @@ const About: React.FC = () => {
       }}
     >
       <Container sx={{ display: 'flex', alignItems: 'center' }}>
-        <Flex
+        <Box
           sx={{
-            // maxWidth: 600
-            flexDirection: ['column', 'row'],
-            alignItems: 'center'
+            maxWidth: 800,
+            fontSize: 2,
+            lineHeight: 1.8
           }}
         >
-          <Text sx={{ fontSize: 2, float: 'left', marginRight: [0, 4], marginBottom: [4, 0], lineHeight: 1.8 }}>
-            I spend most of my time coding, reading code, or reading about software. Winter is my favorite season and skiing on fresh powder
-            is the highlight of every winter. Occasionally, I can be found binge-playing Halo on Xbox or Battlefield One on the PC.
-          </Text>
           <img
             alt="me"
             src="/me2-small.png"
@@ -34,14 +30,13 @@ const About: React.FC = () => {
               filter: 'grayscale(1)',
               height: 125,
               width: 125,
-              alignSelf: 'flex-end'
-              // float: 'left',
-              // // marginRight: 4
-              // marginLeft: 4
-              // marginBottom: 4
+              float: 'right'
             }}
           />
-        </Flex>
+          <Box sx={{ textAlign: 'right', fontSize: 3, fontFamily: 'heading' }}>Howdy 👋 I'm Evans</Box> Usually you can find me coding or
+          reading about software. Winter is my favorite season and ⛷ or 🏂 on fresh powder 🌨 is the highlight of every winter. Occasionally,
+          I can be found binge-playing Halo on 🎮 or Battlefield One on 🖱.
+        </Box>
       </Container>
     </Box>
   )

@@ -13,7 +13,7 @@ const Hero = ({ children }) => {
         minHeight: 400,
         height: `calc(100vh - ${90 + 189 + 100}px)`,
         flex: '1 0 auto',
-        opacity: 0.7
+        opacity: 0.85
         // filter: ' hue-rotate(100deg)'
         // filter: 'grayscale(1)'
       }}

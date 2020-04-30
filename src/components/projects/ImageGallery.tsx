@@ -32,7 +32,7 @@ const ButtonImage: React.FC<ButtonImageProps> = ({ img, onClick, size = ButtonSi
         height: [ButtonSizes.small, ButtonSizes.medium],
         width: [ButtonSizes.small, ButtonSizes.medium],
         objectFit: 'cover',
-        opacity: 0.8,
+        opacity: [1, 0.8],
         transition: 'ease-in-out 0.3s',
         transform: 'scale(1)',
         '&:hover': {
@@ -64,6 +64,10 @@ interface ImageGallery {
 }
 
 const ImageGallery: React.FC<ImageGallery> = ({ items = [] }) => {
+  if (!items || !items.length || !Array.isArray(items)) {
+    return null
+  }
+
   const [active, setActive] = React.useState<Images>(null)
   const reset = React.useCallback(() => setActive(null), [setActive])
   const nextImage = () => {

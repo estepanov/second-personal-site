@@ -40,15 +40,14 @@ const Footer = () => {
         sx={{
           flexShrink: 0,
           flexDirection: ['column-reverse', 'row']
-          // paddingTop: 4
         }}
       >
         <Flex
           sx={{
             flex: '1 0 auto',
             justifyContent: ['space-between', null],
-            alignItems: 'center'
-            // paddingY: [4, 0]
+            alignItems: 'center',
+            paddingTop: [4, 0]
           }}
         >
           <Text sx={{ color: 'gray', paddingRight: 2, fontSize: 1 }}>© {new Date().getFullYear()} Evans Stepanov</Text>

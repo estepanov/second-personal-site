@@ -4,6 +4,7 @@ title: Torrent Report
 date: "2018-01-10"
 tech:
   - react
+  - redux
   - styled-components
   - node
   - postgres
@@ -23,15 +24,18 @@ A platform that actively scrapes and aggregates information on popular files fro
 The server autonomously scrapes torrent sources and collects a time series download statistics on files.
 
 The platform visits torrent sites to gather download statistics and collects time series download statistics of popular files.
-This project is setup with continuous integration and deployment, and is hosted on various cloud providers like Digital Ocean, Heroku, and Amazon Web Services.
+This project is setup with continuous integration and deployment, and is hosted on various cloud providers like Digital Ocean, Heroku, and
+Amazon Web Services.
 
-### Back end
+#### Backend
 
 The backend has a fully automated modularized scrape engine for scraping torrent sites utilizing Puppeteer to mimic an end user.
-The backend is a production ready Express server application with proxy setup, REST API, API rate limiting, compression, Redis cache of complex queries, and secure headers.
+The backend is a production ready Express server application with proxy setup, REST API, API rate limiting, compression, Redis cache of
+complex queries, and secure headers.
 
-### Front end
+### Frontend
 
-The front end is a React application with Redux for the data store and web workers for searching locally stored data.
-I origininally built the front end style using SASS without any CSS framework but I have now fully converted the site over to [styled-components](https://www.styled-components.com/), and the website is optimized for mobile with a flexbox solution.
+The frontend is a React application with Redux for the data store and web workers for searching locally stored data.
+I originally built the front end style using SASS without any CSS framework but I have now fully converted the site over to
+[styled-components](https://www.styled-components.com/), and the website is optimized for mobile with a flexbox solution.
 Set up with continous integration and delivery.

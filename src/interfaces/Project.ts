@@ -8,6 +8,11 @@ export interface Images {
   }
 }
 
+export interface DemoImages {
+  id: string
+  publicURL: string
+}
+
 export enum ProjectSizeEnum {
   small = 'small',
   medium = 'medium'
@@ -28,6 +33,7 @@ export interface Project {
     date: string
     title: string
     images: Images[]
+    demos: DemoImages[]
     tech: string[]
     repo: string
   }

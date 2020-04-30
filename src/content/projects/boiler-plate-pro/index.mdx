@@ -20,16 +20,16 @@ repo: https://github.com/team-made/boilerplate-pro
 
 A web app for developers that solve's the perplexing problem of choosing a boilerplate and beginning a project.
 
-### How to use it.
+#### How to use it.
 
  Users start out by logging in with GitHub, which allows Boilerplate Pro access to all the necessary data to make new repos and clone data for a user.
  Upon login the user will see a list of boilerplates that are available for selection and sorting, but more importantly they can search for a specific word that exists in the README, title and package.JSON.
  This allows users complete control over their search. Users can then view a rendered version of the selected boilerplates README and, if they decide to build it, choose a name and start the Hyperclone™ process.
  The user will then see a link to the newly created GitHub repo on their account and options for Travis CI as well as Heroku for deployment.
 
- ### How it works.
+ #### How it works.
 
- Boilerplate Pro uses Googles Firestore for realtime, NoSQL, database for data which posed interesting challenges for our team.
+ Boilerplate Pro uses Google's Firestore for realtime, NoSQL, database for data which posed interesting challenges for our team.
  Because we had no traditional backend we could not make API requests and we initially attempted to use cloud functions to circumvent this issue.
  However, timeout constraints forced us to forgo this and build out a backend in addtion to the Firestore.
  The backend eventually helped us utilize Travis for continuous integration on every project.

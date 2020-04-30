@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Heading, Flex, Text } from 'theme-ui'
+import { Heading, Flex } from 'theme-ui'
 
 import MDX from '../components/MDX'
 import Layout from '../layouts'
@@ -9,6 +9,7 @@ import { Project } from '../interfaces/Project'
 import NextPrev from '../components/projects/NextPrevious'
 import ImageGallery from '../components/projects/ImageGallery'
 import Banner from '../components/projects/Banners'
+import Demos from '../components/projects/Demos'
 
 interface ProjectProps {
   data: {
@@ -41,18 +42,19 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
           : undefined
       }
     >
-      <Heading as="h1" color="secondary" my={2}>
-        {data.post.frontmatter.title}
-      </Heading>
+      <Flex my={1} sx={{ alignItems: 'center', flexDirection: 'row' }}>
+        <Heading as="h1" color="secondary" my={1}>
+          {data.post.frontmatter.title}
+        </Heading>
+        {data.post.frontmatter.banners ? data.post.frontmatter.banners.map(item => <Banner key={item} type={item} />) : null}
+      </Flex>
       <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
         {data.post.frontmatter.tech.map(tag => {
           return <TechLogoBox key={tag} tag={tag} />
         })}
       </Flex>
-      <Flex my={1} sx={{ alignItems: 'center' }}>
-        {data.post.frontmatter.banners ? data.post.frontmatter.banners.map(item => <Banner key={item} type={item} />) : null}
-      </Flex>
+      <Demos items={data.post.frontmatter.demos} />
       <ImageGallery items={data.post.frontmatter.images} />
       <MDX>{data.post.body}</MDX>
       <NextPrev next={pageContext.next} previous={pageContext.previous} />
@@ -82,6 +84,10 @@ export const query = graphql`
         date
         tech
         title
+        demos {
+          id
+          publicURL
+        }
         images {
           id
           publicURL

@@ -1,0 +1,39 @@
+---
+layout: project
+size: small
+title: Repair Game
+banners:
+  - hackathon
+date: "2020-02-02"
+tech:
+  - node
+  - react
+  - redux
+demos:
+  - ./demo.gif
+images:
+repo: https://github.com/RepairGameJam
+---
+
+Grandma's electronics are broken. Compete against your sublings in a racing fix her devices.
+All players join a lobby and can start a three round game. Gain points for droping circuits into the corresponding slots.
+
+I mostly built the backend, client-server communications, and server managed game state on clients.
+
+A submission made to the [Global Game Jam](https://globalgamejam.org) 2020.
+This was a friday through sunday spent working with a small cross functional team consisting of cool developers, designers, and musicians.
+
+
+
+#### Frontend
+
+A create-react-app with that connects using [feathers](https://feathersjs.com) client and [socket.io](https://socket.io) to communicate
+with a server.
+
+#### Backend
+
+The backend is Node based utilizing [feathers](https://feathersjs.com).
+There is a single lobby for all connections to join. Once they join the server maintains game state and keeps it synchronized across clients.
+
+
+

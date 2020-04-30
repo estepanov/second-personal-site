@@ -13,15 +13,15 @@ const LINKS = [
   {
     title: 'Projects',
     to: '/projects'
-  }
+  },
   // {
   //   title: 'Blog',
   //   to: '/blog'
   // },
-  // {
-  //   title: 'Contact',
-  //   to: '/contact'
-  // }
+  {
+    title: 'Contact',
+    to: '/contact'
+  }
   // {
   //   title: 'ColorMode',
   //   Component: ColorModeToggle
@@ -151,8 +151,10 @@ const Header = () => {
             sx={{
               outlineColor: 'primary',
               transition: 'ease 0.2s',
-              backgroundColor: showMobileMenu ? 'headerMobileBgActive' : 'headerMobileBg',
-              color: showMobileMenu ? 'headerMobileBg' : 'headerMobileBgActive',
+              // backgroundColor: showMobileMenu ? 'headerMobileBgActive' : 'background',
+              // color: showMobileMenu ? 'headerMobileBg' : 'logo',
+              backgroundColor: 'transparent',
+              color: showMobileMenu ? 'logoAlt' : 'logo',
               padding: 1,
               cursor: 'pointer',
               borderRadius: 0,
@@ -168,10 +170,11 @@ const Header = () => {
               fill="currentcolor"
               viewBox="0 0 24 24"
               sx={{
-                transition: 'ease-in-out 0.3s',
+                transition: 'ease-in-out 0.4s',
                 opacity: 1,
                 display: 'block',
-                margin: 0
+                margin: 0,
+                transform: `rotate(${showMobileMenu ? 90 : 0}deg)`
               }}
             >
               {showMobileMenu ? (

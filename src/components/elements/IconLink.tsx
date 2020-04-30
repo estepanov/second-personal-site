@@ -19,6 +19,8 @@ export default props => (
         bottom: 0,
         right: 0,
         visibility: 'hidden',
+        pointerEvents: 'none',
+        color: 'white',
         // backgroundColor: 'primary',
         // backgroundImage: t => `linear-gradient(to bottom right, ${lighten('primary', 0.1)(t)}, ${t.colors.primary})`,
         backgroundImage: t => `linear-gradient(to top left, ${lighten('primary', 0.1)(t)}, ${darken('primary', 0.01)(t)})`,
@@ -28,10 +30,10 @@ export default props => (
       },
       '&:hover': {
         '& span': {
+          pointerEvents: 'auto',
           visibility: 'visible',
           display: 'block',
           opacity: 1,
-          color: 'white',
           bottom: '100%'
         },
         color: 'primary'

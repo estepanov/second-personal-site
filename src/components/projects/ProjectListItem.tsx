@@ -36,8 +36,8 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
           backgroundImage: t => `linear-gradient(to bottom right, ${lighten('listBg', 0.01)(t)}, ${darken('listBg', 0.1)(t)})`,
           // boxShadow: t => `0px 0px 20px ${lighten('gray', 0.1)(t)}`
           h1: {
-            //   color: 'secondary'
-            textDecoration: 'underline'
+            color: 'secondary'
+            // textDecoration: 'underline'
           }
         }
       }}
