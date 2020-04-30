@@ -37,18 +37,7 @@ export interface ModeTypes {
   [Modes.dark]: ThemeColors
 }
 
-const mains = {
-  white: '#fff',
-  gray100: '#f8f9fa',
-  gray200: '#f7f7f9',
-  gray300: '#eceeef',
-  gray400: '#ced4da',
-  gray500: '#adb5bd',
-  gray600: '#919aa1',
-  gray700: '#55595c',
-  gray800: '#343a40',
-  gray900: '#1a1a1a',
-  black: '#000',
+const mainColors = {
   blue: '#2780E3',
   indigo: '#6610f2',
   purple: '#613d7c',
@@ -61,7 +50,23 @@ const mains = {
   cyan: '#9954BB'
 }
 
+const mains = {
+  white: '#fff',
+  gray100: '#f8f9fa',
+  gray200: '#f7f7f9',
+  gray300: '#eceeef',
+  gray400: '#ced4da',
+  gray500: '#adb5bd',
+  gray600: '#919aa1',
+  gray700: '#55595c',
+  gray800: '#343a40',
+  gray900: '#1a1a1a',
+  black: '#000',
+  ...mainColors
+}
+
 const lightTheme = {
+  ...mainColors,
   primary: mains.blue,
   text: mains.gray700, // added
   background: mains.gray100, // added

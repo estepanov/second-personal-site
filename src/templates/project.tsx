@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Heading, Flex } from 'theme-ui'
+import { Heading, Flex, Box } from 'theme-ui'
 
 import MDX from '../components/MDX'
 import Layout from '../layouts'
@@ -42,11 +42,18 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
           : undefined
       }
     >
-      <Flex my={1} sx={{ alignItems: 'center', flexDirection: 'row' }}>
-        <Heading as="h1" color="secondary" my={1}>
+      <Flex my={1} sx={{ alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap' }}>
+        <Heading as="h1" color="secondary" my={1} sx={{ width: ['100%', 'auto'] }}>
           {data.post.frontmatter.title}
         </Heading>
-        {data.post.frontmatter.banners ? data.post.frontmatter.banners.map(item => <Banner key={item} type={item} />) : null}
+        {data.post.frontmatter.banners ? (
+          <>
+            <Box sx={{ marginRight: [0, 4] }} />
+            {data.post.frontmatter.banners.map(item => (
+              <Banner key={item} type={item} />
+            ))}
+          </>
+        ) : null}
       </Flex>
       <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}

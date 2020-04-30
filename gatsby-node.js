@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 const { createFilePath } = require('gatsby-source-filesystem')
 const path = require('path')
 
@@ -30,6 +34,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         // Date field
         createNodeField({
           name: 'date',
+          node,
+          value: date ? new Date(date) : null
+        })
+        // startDate field
+        createNodeField({
+          name: 'startDate',
+          node,
+          value: date ? new Date(date) : null
+        })
+        // endDate field
+        createNodeField({
+          name: 'endDate',
           node,
           value: date ? new Date(date) : null
         })

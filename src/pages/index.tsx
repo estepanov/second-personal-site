@@ -4,6 +4,7 @@ import Layout from '../layouts'
 
 import About from '../components/home/About'
 import Hero from '../components/home/Hero'
+import Work from '../components/home/Work'
 
 // const whatIAmDoing = [
 //   {
@@ -68,6 +69,7 @@ const IndexPage = () => {
       </Hero>
 
       <About />
+      <Work />
     </Layout>
   )
 }

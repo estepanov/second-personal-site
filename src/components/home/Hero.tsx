@@ -11,7 +11,7 @@ const Hero = ({ children }) => {
         backgroundSize: 'cover',
         backgroundPosition: ['70% 50%', '50% 50%'],
         minHeight: 400,
-        height: `calc(100vh - ${90 + 189 + 100}px)`,
+        height: `calc(100vh - ${90 + 189}px)`,
         flex: '1 0 auto',
         opacity: 0.85
         // filter: ' hue-rotate(100deg)'
@@ -20,7 +20,7 @@ const Hero = ({ children }) => {
     >
       <video
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        playsinline="playsinline"
+        playsInline="playsinline"
         autoPlay="autoplay"
         muted="muted"
         loop="loop"

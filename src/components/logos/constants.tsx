@@ -20,7 +20,7 @@ const TAG_MAP = {
   },
   javascript: {
     name: 'JavaScript',
-    color: '##ffd603',
+    color: '#ffd603',
     icon: <JavaScript />
     // icon: <i className="fab fa-js" />
   },

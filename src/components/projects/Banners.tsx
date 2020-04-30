@@ -16,8 +16,8 @@ const Banner: React.FC<BannerProps> = ({ type }) => {
     paddingY: 1,
     fontSize: 0,
     textTransform: 'uppercase',
-    marginY: 1,
-    marginX: 2
+    marginRight: 1,
+    marginY: 1
   }
   switch (type) {
     case ProjectBannersEnum.hackathon:

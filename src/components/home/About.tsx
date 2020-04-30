@@ -30,7 +30,8 @@ const About: React.FC = () => {
               filter: 'grayscale(1)',
               height: 125,
               width: 125,
-              float: 'right'
+              float: 'right',
+              marginLeft: 3
             }}
           />
           <Box sx={{ textAlign: 'right', fontSize: 3, fontFamily: 'heading' }}>Howdy 👋 I'm Evans</Box> Usually you can find me coding or

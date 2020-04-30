@@ -50,20 +50,37 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
           flexDirection: 'column'
         }}
       >
-        <Flex sx={{ alignItems: 'center' }}>
+        <Flex
+          sx={{
+            alignItems: 'center',
+            flexDirection: 'row',
+            // alignItems: ['flex-start', 'center'],
+            // flexDirection: ['column', 'row'],
+            flexWrap: 'wrap'
+          }}
+        >
           <Heading
             as="h1"
             my={2}
             sx={{
+              width: ['100%', 'auto'],
               fontSize: 3,
               color: 'listHeader',
-              transition: 'ease-in-out 0.3s'
+              transition: 'ease-in-out 0.3s',
+              float: 'left'
               // textDecoration: 'none'
             }}
           >
             {project.frontmatter.title}
           </Heading>
-          {project.frontmatter.banners ? project.frontmatter.banners.map(item => <Banner key={item} type={item} />) : null}
+          {project.frontmatter.banners ? (
+            <React.Fragment>
+              <Box sx={{ marginRight: [0, 3] }} />
+              {project.frontmatter.banners.map(item => (
+                <Banner key={item} type={item} />
+              ))}
+            </React.Fragment>
+          ) : null}
         </Flex>
         <Text sx={{ fontSize: 1, color: 'text' }}>{project.excerpt}</Text>
         <Flex my={2} sx={{ flexDirection: 'row' }}>

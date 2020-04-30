@@ -28,6 +28,13 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'work',
+        path: `${__dirname}/src/content/work`
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `about`,
@@ -69,7 +76,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://estepanov.io'
+        siteUrl: 'https://estep.nyc'
       }
     },
     'gatsby-plugin-emotion',
@@ -83,6 +90,12 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-mdx'
+    'gatsby-plugin-mdx',
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_ID
+      }
+    }
   ]
 }
