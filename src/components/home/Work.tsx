@@ -15,10 +15,7 @@ interface NodeWork {
 
 const currentQuery = graphql`
   query Work {
-    allMdx(
-      filter: { fields: { type: { eq: "work" } }, frontmatter: { endDate: { eq: "" } } }
-      sort: { fields: [frontmatter___title], order: [DESC, DESC] }
-    ) {
+    allMdx(filter: { fields: { type: { eq: "work" } } }, sort: { fields: [frontmatter___title], order: [DESC, DESC] }) {
       edges {
         node {
           id
@@ -53,6 +50,14 @@ const WorkSection: React.FC<WorkProps> = () => (
           const allLanguages = list.reduce((all, item) => {
             return all.concat(item.node.frontmatter.languages)
           }, [])
+          const currentPositions = list.reduce<NodeWork[]>((all, item) => {
+            if (item.node.frontmatter.endDate === '') all.push(item)
+            return all
+          }, [])
+          const previousPositions = list.reduce<NodeWork[]>((all, item) => {
+            if (item.node.frontmatter.endDate !== '') all.push(item)
+            return all
+          }, [])
           return (
             <Flex
               sx={{
@@ -62,20 +67,38 @@ const WorkSection: React.FC<WorkProps> = () => (
                 color: 'white'
               }}
             >
-              <Box sx={{ marginBottom: 2, flex: 1 }}>
-                <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
-                  Currently
-                </Heading>
-                <Flex>
-                  {list.map(item => {
-                    return (
-                      <Box sx={{ padding: 2 }} key={item.node.id}>
-                        {item.node.frontmatter.position} @ <span sx={{ fontWeight: 'bold' }}>{item.node.frontmatter.companyName}</span>
-                      </Box>
-                    )
-                  })}
-                </Flex>
-              </Box>
+              {currentPositions.length ? (
+                <Box sx={{ marginBottom: 2, flex: 1 }}>
+                  <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
+                    Currently
+                  </Heading>
+                  <Flex>
+                    {currentPositions.map(item => {
+                      return (
+                        <Box sx={{ padding: 2 }} key={item.node.id}>
+                          {item.node.frontmatter.position} @ <span sx={{ fontWeight: 'bold' }}>{item.node.frontmatter.companyName}</span>
+                        </Box>
+                      )
+                    })}
+                  </Flex>
+                </Box>
+              ) : null}
+              {previousPositions.length ? (
+                <Box sx={{ marginBottom: 2, flex: 1 }}>
+                  <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
+                    Previously
+                  </Heading>
+                  <Flex>
+                    {currentPositions.map(item => {
+                      return (
+                        <Box sx={{ padding: 2 }} key={item.node.id}>
+                          {item.node.frontmatter.position} @ <span sx={{ fontWeight: 'bold' }}>{item.node.frontmatter.companyName}</span>
+                        </Box>
+                      )
+                    })}
+                  </Flex>
+                </Box>
+              ) : null}
               <Box sx={{ marginBottom: 2, flex: 1 }}>
                 <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
                   Languages
