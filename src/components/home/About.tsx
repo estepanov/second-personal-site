@@ -35,8 +35,8 @@ const About: React.FC = () => {
             }}
           />
           <Box sx={{ textAlign: 'right', fontSize: 3, fontFamily: 'heading' }}>Howdy 👋 I'm Evans</Box> Usually you can find me coding or
-          reading about software. Winter is my favorite season and ⛷ or 🏂 on fresh powder 🌨 is the highlight of every winter. Occasionally,
-          I can be found binge-playing Halo on 🎮 or Battlefield One on 🖱.
+          reading about software. Winter is my favorite season and ⛷ or 🏂 on fresh pow 🌨 is the highlight of every winter. Occasionally, I
+          can be found binge-playing Halo on 🎮 or Battlefield One on 🖱.
         </Box>
       </Container>
     </Box>

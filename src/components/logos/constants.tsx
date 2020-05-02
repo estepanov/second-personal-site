@@ -11,12 +11,19 @@ import Heroku from './Heroku'
 import AWS from './AWS'
 import Azure from './Azure'
 import ReactNative from './ReactNative'
+import MongoDB from './MongoDB'
+import Express from './Express'
 
 const TAG_MAP = {
   node: {
     name: 'Node',
     color: '#69bd47',
     icon: <i className="fab fa-node" />
+  },
+  express: {
+    name: 'Express',
+    color: '#000',
+    icon: <Express />
   },
   javascript: {
     name: 'JavaScript',
@@ -54,6 +61,11 @@ const TAG_MAP = {
     color: '#32668f',
     icon: <Postgres />
   },
+  mongodb: {
+    name: 'MongoDB',
+    color: '#4caf50',
+    icon: <MongoDB />
+  },
   redis: {
     name: 'Redis',
     color: '#d92a21',
@@ -73,6 +85,11 @@ const TAG_MAP = {
     name: 'CSS3',
     color: '#2168ed',
     icon: <i className="fab fa-css3-alt" />
+  },
+  html5: {
+    name: 'HTML5',
+    color: '#e44e27',
+    icon: <i className="fab fa-html5" />
   },
   heroku: {
     name: 'Heroku',

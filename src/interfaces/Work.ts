@@ -11,14 +11,18 @@ export interface Images {
 export interface Work {
   id: string
   excerpt: string
+  fields: {
+    type: string
+  }
   frontmatter: {
-    banners?: ProjectBannersEnum[]
-    startDare: string
+    // banners?: ProjectBannersEnum[]
+    startDate: string
     endDate: string
     // images: Images[]
     website: string
     companyName: string
     position: string
     languages: string[]
+    tech: string[]
   }
 }
