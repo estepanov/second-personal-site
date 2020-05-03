@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 import { lighten, darken } from '@theme-ui/color'
 
 import TechLogo from './TechLogo'
+import TechLogoList from './TechLogoList'
 import ListImages from './ListImages'
 
 import { Project, ProjectSizeEnum } from '../../interfaces/Project'
@@ -85,10 +86,7 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
         <Text sx={{ fontSize: 1, color: 'text' }}>{project.excerpt}</Text>
         <Flex my={2} sx={{ flexDirection: 'row' }}>
           {project.frontmatter.date && <TechLogo tag={new Date(project.frontmatter.date).getFullYear()} />}
-
-          {project.frontmatter.tech.map(tag => {
-            return <TechLogo tag={tag} key={tag} />
-          })}
+          <TechLogoList tags={project.frontmatter.tech} />
         </Flex>
       </Flex>
       {ProjectSizeEnum.small !== project.frontmatter.size && (

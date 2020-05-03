@@ -15,7 +15,7 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
         // cursor: 'pointer',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: TAG_MAP[tag] ? 3 : 1,
+        // fontSize: TAG_MAP[tag] ? 3 : 1,
         color: TAG_MAP[tag] ? TAG_MAP[tag].color : 'primaryLight',
         paddingX: 2,
         paddingY: 1,
@@ -24,7 +24,7 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
         '& span': {
           // transition: 'ease-in 0.3s',
           whiteSpace: 'nowrap',
-          fontSize: 1,
+          // fontSize: 1,
           marginLeft: 2,
           padding: 1,
           opacity: 0.8

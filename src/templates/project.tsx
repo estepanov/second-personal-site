@@ -5,6 +5,7 @@ import { Heading, Flex, Box } from 'theme-ui'
 import MDX from '../components/MDX'
 import Layout from '../layouts'
 import TechLogoBox from '../components/projects/TechLogoBox'
+import TechLogoList from '../components/projects/TechLogoList'
 import { Project } from '../interfaces/Project'
 import NextPrev from '../components/projects/NextPrevious'
 import ImageGallery from '../components/projects/ImageGallery'
@@ -57,9 +58,7 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
       </Flex>
       <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
-        {data.post.frontmatter.tech.map(tag => {
-          return <TechLogoBox key={tag} tag={tag} />
-        })}
+        <TechLogoList tags={data.post.frontmatter.tech} renderItem={TechLogoBox} />
       </Flex>
       <Demos items={data.post.frontmatter.demos} />
       <ImageGallery items={data.post.frontmatter.images} />

@@ -1,14 +1,13 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, Box, Flex, Heading, Text } from 'theme-ui'
+import { jsx, Box, Flex, Heading } from 'theme-ui'
 import { lighten } from '@theme-ui/color'
 
 import { StaticQuery, graphql } from 'gatsby'
 
 import { Work } from '../../interfaces/Work'
 import Container from '../Layout/Container'
-import TechLogo from '../projects/TechLogo'
-
+import TechLogoList from '../projects/TechLogoList'
 import WorkItem from './WorkItem'
 
 interface NodeWork {
@@ -120,10 +119,8 @@ const WorkSection: React.FC<WorkProps> = () => (
               <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
                 Languages
               </Heading>
-              <Flex sx={{ fontSize: 6 }}>
-                {Array.from(allLanguages).map(item => {
-                  return <TechLogo key={item} tag={item} />
-                })}
+              <Flex sx={{ fontSize: 6, flexWrap: 'wrap' }}>
+                <TechLogoList tags={Array.from(allLanguages)} />
               </Flex>
             </Box>
           </Container>
@@ -132,10 +129,8 @@ const WorkSection: React.FC<WorkProps> = () => (
               <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
                 Technologies
               </Heading>
-              <Flex sx={{ fontSize: 4 }}>
-                {Array.from(allTech).map(item => {
-                  return <TechLogo key={item} tag={item} />
-                })}
+              <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
+                <TechLogoList tags={Array.from(allTech)} />
               </Flex>
             </Box>
           </Container>
