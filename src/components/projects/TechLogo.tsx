@@ -13,6 +13,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
   return (
     <Flex
       sx={{
+        flexShrink: 0,
         position: 'relative',
         fontSize: 'inherit',
         cursor: 'default',
@@ -24,6 +25,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
         alignItems: 'center',
         marginY: 'auto',
         '& span': {
+          pointerEvents: 'none',
           whiteSpace: 'nowrap',
           transition: 'ease-in-out 0.5s',
           wordBreak: 'keep-all',
