@@ -11,6 +11,7 @@ import NextPrev from '../components/projects/NextPrevious'
 import ImageGallery from '../components/projects/ImageGallery'
 import Banner from '../components/projects/Banners'
 import Demos from '../components/projects/Demos'
+import ProjectLinks from '../components/projects/ProjectLinks'
 
 interface ProjectProps {
   data: {
@@ -60,6 +61,7 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
         {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
         <TechLogoList tags={data.post.frontmatter.tech} renderItem={TechLogoBox} />
       </Flex>
+      <ProjectLinks repo={data.post.frontmatter.repo} website={data.post.frontmatter.website} />
       <Demos items={data.post.frontmatter.demos} />
       <ImageGallery items={data.post.frontmatter.images} />
       <MDX>{data.post.body}</MDX>
@@ -104,6 +106,7 @@ export const query = graphql`
           }
         }
         repo
+        website
       }
     }
   }

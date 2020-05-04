@@ -14,7 +14,6 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
     <Flex
       sx={{
         position: 'relative',
-        // fontSize: TAG_MAP[tag] ? 3 : 1,
         fontSize: 'inherit',
         cursor: 'default',
         color,
@@ -25,6 +24,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
         alignItems: 'center',
         marginY: 'auto',
         '& span': {
+          whiteSpace: 'nowrap',
           transition: 'ease-in-out 0.5s',
           wordBreak: 'keep-all',
           padding: 2,

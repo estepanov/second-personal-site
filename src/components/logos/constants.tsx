@@ -13,10 +13,24 @@ import Azure from './Azure'
 import ReactNative from './ReactNative'
 import MongoDB from './MongoDB'
 import Express from './Express'
+import MobxStateTree from './MobxStateTree'
+import Next from './Next'
+import Parse from './Parse'
+import Sequelize from './Sequelize'
+import Gatsby from './Gatsby'
+import GraphQL from './GraphQL'
+import Python from './Python'
+import Docker from './Docker'
 
 import { TagMap } from '../../interfaces/TechTag'
 
 const TAG_MAP: TagMap = {
+  python: {
+    order: 0,
+    name: 'Python',
+    color: '#0277BD',
+    icon: <Python />
+  },
   node: {
     order: 0,
     name: 'Node',
@@ -47,6 +61,24 @@ const TAG_MAP: TagMap = {
     name: 'React',
     color: '#60dafb',
     icon: <i className="fab fa-react" />
+  },
+  next: {
+    order: 1,
+    name: 'Next.js',
+    color: '#000',
+    icon: <Next />
+  },
+  gatsby: {
+    order: 1,
+    name: 'Gatsby',
+    color: '#639',
+    icon: <Gatsby />
+  },
+  graphql: {
+    order: 1,
+    name: 'GraphQL',
+    color: '#e10098',
+    icon: <GraphQL />
   },
   'react-native': {
     order: 1,
@@ -96,6 +128,12 @@ const TAG_MAP: TagMap = {
     color: '#da9a62',
     icon: <>💅</>
   },
+  'mobx-state-tree': {
+    order: 2,
+    name: 'Mobx-State-Tree',
+    color: '#ff7102',
+    icon: <MobxStateTree />
+  },
   css3: {
     order: 2,
     name: 'CSS3',
@@ -125,6 +163,24 @@ const TAG_MAP: TagMap = {
     name: 'Azure',
     color: '#035bda',
     icon: <Azure />
+  },
+  parse: {
+    order: 4,
+    name: 'Parse.js',
+    color: '#169cee',
+    icon: <Parse />
+  },
+  sequelize: {
+    order: 1,
+    name: 'Sequelize',
+    color: '#03afef',
+    icon: <Sequelize />
+  },
+  docker: {
+    order: 1,
+    name: 'Docker',
+    color: '#394d54',
+    icon: <Docker />
   }
 }
 

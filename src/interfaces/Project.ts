@@ -36,6 +36,7 @@ export interface Project {
     demos: DemoImages[]
     tech: string[]
     repo: string
+    website: string
   }
   fields: {
     slug: string
