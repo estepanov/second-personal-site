@@ -1,18 +1,16 @@
 import React from 'react'
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
 
 const GraphQL = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      sx={{
+      style={{
         display: 'inline-block',
         fontSize: 'inherit',
         height: '1em',
         width: '1em'
       }}
-      viewBox="0 0 29.999 30"
+      viewBox="0 0 30 30"
       fill="currentColor"
     >
       <path d="M4.08 22.864l-1.1-.636L15.248.98l1.1.636z" />

@@ -1,12 +1,10 @@
 import React from 'react'
-/** @jsx jsx */
-import { jsx } from 'theme-ui'
 
 const ReactNative = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      sx={{
+      style={{
         display: 'inline-block',
         fontSize: 'inherit',
         height: '1em',
