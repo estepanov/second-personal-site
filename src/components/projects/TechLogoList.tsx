@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import TechLogo from './TechLogo'
 
 import TAG_MAP from '../logos/constants'
@@ -15,8 +15,9 @@ const techSort = (a: string, b: string) => {
 }
 
 const TechLogoList: React.FC<TechLogoListProps> = ({ tags, renderItem }) => {
+  const sorted = useMemo(() => tags.sort(techSort), [tags])
   const Render = renderItem || TechLogo
-  return tags.sort(techSort).map(tag => {
+  return sorted.map(tag => {
     return <Render tag={tag} key={tag} />
   })
 }
