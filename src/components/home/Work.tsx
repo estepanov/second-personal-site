@@ -9,7 +9,7 @@ import { Work } from '../../interfaces/Work'
 import Container from '../Layout/Container'
 import TechLogoList from '../projects/TechLogoList'
 import WorkItem from './WorkItem'
-// import TechLogo from '../projects/TechLogo'
+import TechLogo from '../projects/TechLogo'
 // import { techTagFilter } from '../logos/constants'
 // import { TechRunTimeEnv } from '../../interfaces/TechTag'
 // import { TechTag } from '../../interfaces/TechTag'
@@ -133,7 +133,7 @@ const WorkSection: React.FC<WorkProps> = () => (
                 Languages
               </Heading>
               <Flex sx={{ fontSize: 6, flexWrap: 'wrap' }}>
-                <TechLogoList tags={data.allLanguages} />
+                <TechLogoList tags={data.allLanguages} renderItem={TechLogo} />
               </Flex>
             </Box>
           </Container>
@@ -143,7 +143,7 @@ const WorkSection: React.FC<WorkProps> = () => (
                 Technologies
               </Heading>
               <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
-                <TechLogoList tags={data.allTech} />
+                <TechLogoList tags={data.allTech} renderItem={TechLogo} />
               </Flex>
             </Box>
           </Container>
