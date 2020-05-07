@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 /** @jsx jsx */
 import { jsx, Box, Flex, Heading } from 'theme-ui'
 import { lighten } from '@theme-ui/color'
@@ -9,6 +9,10 @@ import { Work } from '../../interfaces/Work'
 import Container from '../Layout/Container'
 import TechLogoList from '../projects/TechLogoList'
 import WorkItem from './WorkItem'
+// import TechLogo from '../projects/TechLogo'
+// import { techTagFilter } from '../logos/constants'
+// import { TechRunTimeEnv } from '../../interfaces/TechTag'
+// import { TechTag } from '../../interfaces/TechTag'
 
 interface NodeWork {
   node: Work
@@ -45,32 +49,41 @@ const WorkSection: React.FC<WorkProps> = () => (
     query={currentQuery}
     render={({ allMdx }) => {
       const list: NodeWork[] = allMdx.edges
-      const allLanguages = new Set<string>()
-      const currentPositions: Work[] = []
-      const previousPositions: Work[] = []
-      const allTech = new Set<string>()
-      list.forEach(item => {
-        if (item.node.fields.type === 'work') {
-          // is it current or previous job?
-          if (item.node.frontmatter.endDate === '') {
-            currentPositions.push(item.node)
-          } else {
-            previousPositions.push(item.node)
+      const data = useMemo(() => {
+        const allLanguages = new Set<string>()
+        const currentPositions: Work[] = []
+        const previousPositions: Work[] = []
+        const allTech = new Set<string>()
+        list.forEach(item => {
+          if (item.node.fields.type === 'work') {
+            // is it current or previous job?
+            if (item.node.frontmatter.endDate === '') {
+              currentPositions.push(item.node)
+            } else {
+              previousPositions.push(item.node)
+            }
           }
+          // get the languages
+          if (item.node.frontmatter.languages) {
+            item.node.frontmatter.languages.forEach(lang => {
+              if (!allLanguages.has(lang)) allLanguages.add(lang)
+            })
+          }
+          // get the tech
+          if (item.node.frontmatter.tech) {
+            item.node.frontmatter.tech.forEach(lang => {
+              if (!allTech.has(lang)) allTech.add(lang)
+            })
+          }
+        })
+        return {
+          allLanguages: Array.from(allLanguages),
+          currentPositions,
+          previousPositions,
+          allTech: Array.from(allTech)
         }
-        // get the languages
-        if (item.node.frontmatter.languages) {
-          item.node.frontmatter.languages.forEach(lang => {
-            if (!allLanguages.has(lang)) allLanguages.add(lang)
-          })
-        }
-        // get the tech
-        if (item.node.frontmatter.tech) {
-          item.node.frontmatter.tech.forEach(lang => {
-            if (!allTech.has(lang)) allTech.add(lang)
-          })
-        }
-      })
+      }, [list])
+
       return (
         <React.Fragment>
           <Box
@@ -87,25 +100,25 @@ const WorkSection: React.FC<WorkProps> = () => (
                   color: 'white'
                 }}
               >
-                {currentPositions.length ? (
+                {data.currentPositions.length ? (
                   <Box sx={{ marginBottom: 2, flex: 1 }}>
                     <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
                       Currently
                     </Heading>
                     <Flex>
-                      {currentPositions.map(item => {
+                      {data.currentPositions.map(item => {
                         return <WorkItem item={item} key={item.id} />
                       })}
                     </Flex>
                   </Box>
                 ) : null}
-                {previousPositions.length ? (
+                {data.previousPositions.length ? (
                   <Box sx={{ marginBottom: 2, flex: 1 }}>
                     <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
                       Previously
                     </Heading>
                     <Flex>
-                      {previousPositions.map(item => {
+                      {data.previousPositions.map(item => {
                         return <WorkItem item={item} key={item.id} />
                       })}
                     </Flex>
@@ -120,7 +133,7 @@ const WorkSection: React.FC<WorkProps> = () => (
                 Languages
               </Heading>
               <Flex sx={{ fontSize: 6, flexWrap: 'wrap' }}>
-                <TechLogoList tags={Array.from(allLanguages)} />
+                <TechLogoList tags={data.allLanguages} />
               </Flex>
             </Box>
           </Container>
@@ -130,7 +143,7 @@ const WorkSection: React.FC<WorkProps> = () => (
                 Technologies
               </Heading>
               <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
-                <TechLogoList tags={Array.from(allTech)} />
+                <TechLogoList tags={data.allTech} />
               </Flex>
             </Box>
           </Container>

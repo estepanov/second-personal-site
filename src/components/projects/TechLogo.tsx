@@ -49,7 +49,6 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
           color
         }
       }}
-      key={tag}
     >
       {TAG_MAP[tag] ? (
         <React.Fragment>
