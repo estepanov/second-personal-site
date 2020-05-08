@@ -11,7 +11,11 @@ interface TechLogoListProps {
 const techSort = (a: string, b: string) => {
   const left = TAG_MAP[a] || {}
   const right = TAG_MAP[b] || {}
-  return left.order - right.order
+  if (left.order > right.order) return 1
+  if (left.order < right.order) return -1
+  if (a > b) return 1
+  if (a < b) return -1
+  return 0
 }
 
 const TechLogoList: React.FC<TechLogoListProps> = ({ tags, renderItem }) => {

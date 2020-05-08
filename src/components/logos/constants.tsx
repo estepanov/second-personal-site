@@ -231,7 +231,7 @@ const TAG_MAP: TagMap = {
     icon: <Sequelize />
   },
   docker: {
-    order: 1,
+    order: 2,
     name: 'Docker',
     color: '#394d54',
     type: TechTypes.devops,
