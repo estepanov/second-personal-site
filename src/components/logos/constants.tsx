@@ -42,8 +42,8 @@ const TAG_MAP: TagMap = {
     icon: <i className="fab fa-node" />
   },
   express: {
-    order: 2,
-    name: 'Express',
+    order: 3,
+    name: 'Express.js',
     color: '#000',
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
@@ -66,7 +66,7 @@ const TAG_MAP: TagMap = {
     icon: <TypeScript />
   },
   react: {
-    order: 1,
+    order: 2,
     name: 'React',
     color: '#60dafb',
     type: TechTypes.framebrary,
@@ -75,7 +75,7 @@ const TAG_MAP: TagMap = {
     icon: <i className="fab fa-react" />
   },
   nextjs: {
-    order: 1,
+    order: 2.1,
     name: 'Next.js',
     color: '#000',
     type: TechTypes.framebrary,
@@ -84,7 +84,7 @@ const TAG_MAP: TagMap = {
     icon: <NextJs />
   },
   gatsby: {
-    order: 1,
+    order: 2.2,
     name: 'Gatsby',
     color: '#639',
     type: TechTypes.framebrary,
@@ -100,7 +100,7 @@ const TAG_MAP: TagMap = {
     icon: <GraphQL />
   },
   'react-native': {
-    order: 1,
+    order: 2.3,
     name: 'React Native',
     color: '#000000',
     type: TechTypes.framebrary,
@@ -109,7 +109,7 @@ const TAG_MAP: TagMap = {
     icon: <ReactNative />
   },
   redux: {
-    order: 2,
+    order: 3,
     name: 'Redux',
     color: '#7e57c2',
     type: TechTypes.framebrary,
@@ -118,7 +118,7 @@ const TAG_MAP: TagMap = {
     icon: <Redux />
   },
   electron: {
-    order: 2,
+    order: 2.3,
     name: 'Electron',
     color: '#2B2E3A',
     type: TechTypes.framebrary,
@@ -127,7 +127,7 @@ const TAG_MAP: TagMap = {
     icon: <ElectronLogo />
   },
   postgres: {
-    order: 1,
+    order: 1.1,
     name: 'PostgreSQL',
     color: '#32668f',
     type: TechTypes.database,
@@ -143,7 +143,7 @@ const TAG_MAP: TagMap = {
     icon: <MongoDB />
   },
   redis: {
-    order: 1,
+    order: 1.2,
     name: 'Redis',
     type: TechTypes.database,
     environment: TechRunTimeEnv.backend,
@@ -151,7 +151,7 @@ const TAG_MAP: TagMap = {
     icon: <Redis />
   },
   firebase: {
-    order: 2,
+    order: 4,
     name: 'Firebase',
     color: '#ff8f00',
     type: TechTypes.database,
@@ -160,7 +160,7 @@ const TAG_MAP: TagMap = {
     icon: <Firebase />
   },
   'styled-components': {
-    order: 2,
+    order: 3,
     name: 'styled-components',
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
@@ -169,7 +169,7 @@ const TAG_MAP: TagMap = {
     icon: <>💅</>
   },
   'mobx-state-tree': {
-    order: 2,
+    order: 3,
     name: 'Mobx-State-Tree',
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
@@ -192,7 +192,7 @@ const TAG_MAP: TagMap = {
     icon: <i className="fab fa-html5" />
   },
   heroku: {
-    order: 2,
+    order: 4,
     name: 'Heroku',
     color: '#7e57c2',
     type: TechTypes.deployment,
@@ -206,14 +206,14 @@ const TAG_MAP: TagMap = {
     icon: <AWS />
   },
   azure: {
-    order: 2,
+    order: 4,
     name: 'Azure',
     color: '#035bda',
     type: TechTypes.deployment,
     icon: <Azure />
   },
   parse: {
-    order: 4,
+    order: 3,
     name: 'Parse.js',
     color: '#169cee',
     type: TechTypes.framebrary,
@@ -222,7 +222,7 @@ const TAG_MAP: TagMap = {
     icon: <Parse />
   },
   sequelize: {
-    order: 1,
+    order: 3,
     name: 'Sequelize',
     color: '#03afef',
     type: TechTypes.framebrary,
@@ -231,7 +231,7 @@ const TAG_MAP: TagMap = {
     icon: <Sequelize />
   },
   docker: {
-    order: 2,
+    order: 5,
     name: 'Docker',
     color: '#394d54',
     type: TechTypes.devops,

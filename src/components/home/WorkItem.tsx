@@ -36,7 +36,7 @@ const getMonth = (dateString: string): string | null => {
 
 const WorkItem: React.FC<WorkItemProps> = ({ item }) => {
   return (
-    <Box sx={{ padding: 2 }}>
+    <Box sx={{ marginLeft: 2, marginBottom: 2 }}>
       <Text>
         {item.frontmatter.position} @&nbsp;
         <a
@@ -47,9 +47,6 @@ const WorkItem: React.FC<WorkItemProps> = ({ item }) => {
             fontWeight: 'bold',
             color: 'white',
             transition: 'ease-in-out 0.3s',
-            '&:hover': {
-              color: 'primary'
-            },
             '&:visited': {
               color: 'white'
             }

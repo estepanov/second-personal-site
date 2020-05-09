@@ -78,8 +78,12 @@ const WorkSection: React.FC<WorkProps> = () => (
         })
         return {
           allLanguages: Array.from(allLanguages),
-          currentPositions,
-          previousPositions,
+          currentPositions: currentPositions.sort((a, b) => {
+            return new Date(b.frontmatter.startDate) - new Date(a.frontmatter.startDate)
+          }),
+          previousPositions: previousPositions.sort((a, b) => {
+            return new Date(b.frontmatter.endDate) - new Date(a.frontmatter.endDate)
+          }),
           allTech: Array.from(allTech)
         }
       }, [list])
@@ -105,7 +109,7 @@ const WorkSection: React.FC<WorkProps> = () => (
                     <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
                       Currently
                     </Heading>
-                    <Flex>
+                    <Flex sx={{ flexDirection: 'column' }}>
                       {data.currentPositions.map(item => {
                         return <WorkItem item={item} key={item.id} />
                       })}
