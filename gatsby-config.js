@@ -4,12 +4,12 @@ module.exports = {
     title: 'Full Stack Engineer',
     description: 'Some information and a collection of musings.',
     keywords: 'javascript, react, node, portfolio, resume, coding',
-    siteUrl: 'https://estepanov.io',
+    siteUrl: 'https://estep.nyc',
     image: '',
     twitterUsername: '',
     author: {
       name: 'Evans Stepanov',
-      url: 'https://estepanov.io'
+      url: 'https://estep.nyc'
     }
   },
   plugins: [

@@ -21,6 +21,11 @@ import Gatsby from './Gatsby'
 import GraphQL from './GraphQL'
 import Python from './Python'
 import Docker from './Docker'
+import Mongoose from './Mongoose'
+import SocketIO from './SocketIO'
+import Node from './Node'
+import Sass from './Sass'
+import Angular from './Angular'
 
 import { TechTag, TagMap, TechTypes, TechRunTimeEnv } from '../../interfaces/TechTag'
 
@@ -39,7 +44,7 @@ const TAG_MAP: TagMap = {
     type: TechTypes.runtime,
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
-    icon: <i className="fab fa-node" />
+    icon: <Node />
   },
   express: {
     order: 3,
@@ -64,6 +69,15 @@ const TAG_MAP: TagMap = {
     type: TechTypes.language,
     color: '#294e80',
     icon: <TypeScript />
+  },
+  angular: {
+    order: 3,
+    name: 'Angular',
+    color: '#e23237',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.frontend,
+    language: 'javascript',
+    icon: <Angular />
   },
   react: {
     order: 2,
@@ -131,7 +145,7 @@ const TAG_MAP: TagMap = {
     name: 'PostgreSQL',
     color: '#32668f',
     type: TechTypes.database,
-    environment: TechRunTimeEnv.backend,
+    // environment: TechRunTimeEnv.backend,
     icon: <Postgres />
   },
   mongodb: {
@@ -139,14 +153,14 @@ const TAG_MAP: TagMap = {
     name: 'MongoDB',
     color: '#4caf50',
     type: TechTypes.database,
-    environment: TechRunTimeEnv.backend,
+    // environment: TechRunTimeEnv.backend,
     icon: <MongoDB />
   },
   redis: {
     order: 1.2,
     name: 'Redis',
     type: TechTypes.database,
-    environment: TechRunTimeEnv.backend,
+    // environment: TechRunTimeEnv.backend,
     color: '#d92a21',
     icon: <Redis />
   },
@@ -155,7 +169,7 @@ const TAG_MAP: TagMap = {
     name: 'Firebase',
     color: '#ff8f00',
     type: TechTypes.database,
-    environment: TechRunTimeEnv.frontend,
+    // environment: TechRunTimeEnv.frontend,
     language: 'javascript',
     icon: <Firebase />
   },
@@ -167,6 +181,14 @@ const TAG_MAP: TagMap = {
     language: 'javascript',
     color: '#da9a62',
     icon: <>💅</>
+  },
+  sass: {
+    order: 3,
+    name: 'SASS',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.frontend,
+    color: '#cf649a',
+    icon: <Sass />
   },
   'mobx-state-tree': {
     order: 3,
@@ -230,23 +252,39 @@ const TAG_MAP: TagMap = {
     language: 'javascript',
     icon: <Sequelize />
   },
+  mongoose: {
+    order: 3,
+    name: 'Mongoose',
+    color: '#880000',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.backend,
+    language: 'javascript',
+    icon: <Mongoose />
+  },
   docker: {
     order: 5,
     name: 'Docker',
     color: '#394d54',
     type: TechTypes.devops,
-    environment: TechRunTimeEnv.backend,
     language: 'javascript',
     icon: <Docker />
+  },
+  socketio: {
+    order: 4,
+    name: 'Socket.io',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.backend,
+    color: '#010101',
+    icon: <SocketIO />
   }
 }
 
 export default TAG_MAP
 
-export const techTagFilter: TechTag[] = (list: TechTag[], field: string, value: string) => {
-  return list.filter(tag => {
-    const data = TAG_MAP[tag]
-    if (!data) return false
-    return data[field] === value
-  })
+export const techTagFilter = (field: string, value: string) => {
+  return (tag: TechTag) => {
+    const fullTag = TAG_MAP[tag]
+    if (!fullTag || !fullTag[field]) return false
+    return fullTag[field] === value
+  }
 }

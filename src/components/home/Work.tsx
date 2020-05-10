@@ -10,7 +10,8 @@ import Container from '../Layout/Container'
 import TechLogoList from '../projects/TechLogoList'
 import WorkItem from './WorkItem'
 import TechLogo from '../projects/TechLogo'
-// import { techTagFilter } from '../logos/constants'
+import { techTagFilter } from '../logos/constants'
+import { TechRunTimeEnv, TechTypes } from '../../interfaces/TechTag'
 // import { TechRunTimeEnv } from '../../interfaces/TechTag'
 // import { TechTag } from '../../interfaces/TechTag'
 
@@ -141,13 +142,55 @@ const WorkSection: React.FC<WorkProps> = () => (
               </Flex>
             </Box>
           </Container>
-          <Container>
+          {/* <Container>
             <Box sx={{ marginY: 4 }}>
               <Heading as="h2" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
                 Technologies
               </Heading>
               <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
                 <TechLogoList tags={data.allTech} renderItem={TechLogo} />
+              </Flex>
+            </Box>
+          </Container> */}
+          <Container sx={{ flexDirection: ['column', 'row'], flexWrap: 'wrap' }}>
+            <Box sx={{ marginY: 2, marginRight: 4 }}>
+              <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
+                Frontend Tech
+              </Heading>
+              <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
+                <TechLogoList tags={data.allTech.filter(techTagFilter('environment', TechRunTimeEnv.frontend))} renderItem={TechLogo} />
+              </Flex>
+            </Box>
+            <Box sx={{ marginY: 2, marginRight: 4 }}>
+              <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
+                Backend Tech
+              </Heading>
+              <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
+                <TechLogoList tags={data.allTech.filter(techTagFilter('environment', TechRunTimeEnv.backend))} renderItem={TechLogo} />
+              </Flex>
+            </Box>
+            <Box sx={{ marginY: 2, marginRight: 4 }}>
+              <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
+                Data Stores
+              </Heading>
+              <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
+                <TechLogoList tags={data.allTech.filter(techTagFilter('type', TechTypes.database))} renderItem={TechLogo} />
+              </Flex>
+            </Box>
+            <Box sx={{ marginY: 2, marginRight: 4 }}>
+              <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
+                DevOps
+              </Heading>
+              <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
+                <TechLogoList tags={data.allTech.filter(techTagFilter('type', TechTypes.devops))} renderItem={TechLogo} />
+              </Flex>
+            </Box>
+            <Box sx={{ marginY: 2, marginRight: 4 }}>
+              <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
+                Deployment
+              </Heading>
+              <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
+                <TechLogoList tags={data.allTech.filter(techTagFilter('type', TechTypes.deployment))} renderItem={TechLogo} />
               </Flex>
             </Box>
           </Container>
