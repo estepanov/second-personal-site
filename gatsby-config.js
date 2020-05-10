@@ -34,14 +34,15 @@ module.exports = {
         path: `${__dirname}/src/content/work`
       }
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `about`,
-        path: `${__dirname}/src/content/about`,
-        plugins: [`gatsby-transformer-json`]
-      }
-    },
+    // not using json at the moment...
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `about`,
+    //     path: `${__dirname}/src/content/about`,
+    //     plugins: [`gatsby-transformer-json`]
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

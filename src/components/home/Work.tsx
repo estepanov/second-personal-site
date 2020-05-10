@@ -155,7 +155,7 @@ const WorkSection: React.FC<WorkProps> = () => (
           <Container sx={{ flexDirection: ['column', 'row'], flexWrap: 'wrap' }}>
             <Box sx={{ marginY: 2, marginRight: 4 }}>
               <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
-                Frontend Tech
+                Frontend
               </Heading>
               <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
                 <TechLogoList tags={data.allTech.filter(techTagFilter('environment', TechRunTimeEnv.frontend))} renderItem={TechLogo} />
@@ -163,7 +163,7 @@ const WorkSection: React.FC<WorkProps> = () => (
             </Box>
             <Box sx={{ marginY: 2, marginRight: 4 }}>
               <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
-                Backend Tech
+                Backend
               </Heading>
               <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
                 <TechLogoList tags={data.allTech.filter(techTagFilter('environment', TechRunTimeEnv.backend))} renderItem={TechLogo} />
@@ -171,7 +171,7 @@ const WorkSection: React.FC<WorkProps> = () => (
             </Box>
             <Box sx={{ marginY: 2, marginRight: 4 }}>
               <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2 }}>
-                Data Stores
+                Data Store
               </Heading>
               <Flex sx={{ fontSize: 4, flexWrap: 'wrap' }}>
                 <TechLogoList tags={data.allTech.filter(techTagFilter('type', TechTypes.database))} renderItem={TechLogo} />
