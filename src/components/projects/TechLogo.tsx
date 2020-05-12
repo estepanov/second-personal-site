@@ -17,12 +17,9 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
         position: 'relative',
         fontSize: 'inherit',
         cursor: 'default',
-        padding: 2,
+        padding: 1,
         color,
         transition: 'ease-in 0.3s',
-        // paddingX: 2,
-        // paddingY: 1,
-        // padding: '0.2em',
         justifyContent: 'center',
         alignItems: 'center',
         '&:hover': {

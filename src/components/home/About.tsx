@@ -17,7 +17,7 @@ const About: React.FC = () => {
       <Container sx={{ display: 'flex', alignItems: 'center' }}>
         <Box
           sx={{
-            maxWidth: 800,
+            // maxWidth: 800,
             fontSize: 2,
             lineHeight: 1.8
           }}

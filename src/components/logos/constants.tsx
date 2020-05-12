@@ -200,16 +200,18 @@ const TAG_MAP: TagMap = {
     icon: <MobxStateTree />
   },
   css3: {
-    order: 2,
+    order: 9,
     name: 'CSS3',
     type: TechTypes.language,
+    environment: TechRunTimeEnv.frontend,
     color: '#2168ed',
     icon: <i className="fab fa-css3-alt" />
   },
   html5: {
-    order: 2,
+    order: 9,
     name: 'HTML5',
     type: TechTypes.language,
+    environment: TechRunTimeEnv.frontend,
     color: '#e44e27',
     icon: <i className="fab fa-html5" />
   },

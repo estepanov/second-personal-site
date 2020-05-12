@@ -10,7 +10,7 @@ const Node = () => {
         height: '1em',
         width: '1em'
       }}
-      viewBox="0 0 64 64"
+      viewBox="0 0 48 48"
     >
       <path
         fill="currentColor"
