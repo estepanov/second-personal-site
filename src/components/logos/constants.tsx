@@ -26,6 +26,7 @@ import SocketIO from './SocketIO'
 import Node from './Node'
 import Sass from './Sass'
 import Angular from './Angular'
+import StyledComponents from './StyledComponents'
 
 import { TechTag, TagMap, TechTypes, TechRunTimeEnv } from '../../interfaces/TechTag'
 
@@ -180,7 +181,7 @@ const TAG_MAP: TagMap = {
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
     color: '#da9a62',
-    icon: <>💅</>
+    icon: <StyledComponents />
   },
   sass: {
     order: 3,

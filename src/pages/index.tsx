@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../layouts'
+
 // import useInterval from '../hooks/useInterval'
 
 import About from '../components/home/About'
@@ -49,13 +50,17 @@ import Work from '../components/home/Work'
 //   return currentIndex === whatIAmDoing.length - 1 ? 0 : currentIndex + 1
 // }
 
-const IndexPage = () => {
+interface IndexProps {
+  location: Location
+}
+
+const IndexPage: React.FC<IndexProps> = ({ location }) => {
   // const [activeIndex, setActiveIndex] = useState(0)
   // useInterval(() => {
   //   setActiveIndex(getNextIndex(activeIndex))
   // }, 6000)
   return (
-    <Layout container={false}>
+    <Layout container={false} pathname={location.pathname}>
       <Hero>
         {/* <Box mx="auto" my="auto" p={4} sx={{ fontSize: 4 }}>
       Right now I am{' '}

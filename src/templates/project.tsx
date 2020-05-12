@@ -14,6 +14,7 @@ import Demos from '../components/projects/Demos'
 import ProjectLinks from '../components/projects/ProjectLinks'
 
 interface ProjectProps {
+  location: Location
   data: {
     site: {
       siteMetadata: {
@@ -33,7 +34,7 @@ interface ProjectProps {
   }
 }
 
-const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
+const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) => {
   return (
     <Layout
       title={data.post.frontmatter.title}
@@ -43,6 +44,7 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext }) => {
           ? data.post.frontmatter.images[0].childImageSharp?.resize.src
           : undefined
       }
+      pathname={location.pathname}
     >
       <Flex my={1} sx={{ alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap' }}>
         <Heading as="h1" color="secondary" my={1} sx={{ width: ['100%', 'auto'] }}>

@@ -5,6 +5,7 @@ import MDX from '../components/MDX'
 import Layout from '../layouts'
 
 interface PageTemplateProps {
+  location: Location
   data: {
     site: {
       siteMetadata: {
@@ -26,8 +27,8 @@ interface PageTemplateProps {
   }
 }
 
-const PageTemplate: React.FC<PageTemplateProps> = ({ data }) => (
-  <Layout>
+const PageTemplate: React.FC<PageTemplateProps> = ({ data, location }) => (
+  <Layout pathname={location.pathname}>
     <MDX>{data.post.body}</MDX>
   </Layout>
 )

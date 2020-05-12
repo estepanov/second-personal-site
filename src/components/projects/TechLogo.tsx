@@ -5,23 +5,26 @@ import { jsx, Flex } from 'theme-ui'
 import TAG_MAP from '../logos/constants'
 
 interface TechLogoProps {
-  tag?: string
+  tag?: string | number
+  marginRight?: number
 }
 
-const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
+const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) => {
   const color = TAG_MAP[tag] ? TAG_MAP[tag].color : 'mutedText'
   return (
     <Flex
       sx={{
         flexShrink: 0,
         position: 'relative',
-        fontSize: 'inherit',
+        fontSize: TAG_MAP[tag] ? 'inherit' : '0.6em',
         cursor: 'default',
-        padding: 1,
+        padding: 0,
         color,
         transition: 'ease-in 0.3s',
         justifyContent: 'center',
         alignItems: 'center',
+        marginRight,
+        marginBottom,
         '&:hover': {
           '& span': {
             visibility: 'visible',
@@ -29,7 +32,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag }) => {
             left: 0,
             opacity: 1,
             color: 'white',
-            bottom: '100%'
+            bottom: '105%'
           },
           color
         }

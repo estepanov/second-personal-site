@@ -16,11 +16,11 @@ interface TechLogoGroupProps {
 const TechLogoGroup: React.FC<TechLogoGroupProps> = ({ tags, title, renderItem, headerSize }) => {
   return (
     <Box sx={{ marginY: 2, marginRight: 4 }}>
-      <Heading as="h4" sx={{ paddingBottom: 1, paddingLeft: 2, fontSize: headerSize }}>
+      <Heading as="h4" sx={{ paddingBottom: 1, fontSize: headerSize }}>
         {title}
       </Heading>
       <Flex sx={{ flexWrap: 'wrap' }}>
-        <TechLogoList tags={tags} renderItem={renderItem} />
+        <TechLogoList marginRight={3} marginBottom={3} tags={tags} renderItem={renderItem} />
       </Flex>
     </Box>
   )

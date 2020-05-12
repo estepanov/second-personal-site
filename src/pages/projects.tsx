@@ -11,6 +11,7 @@ interface EdgeNode {
 }
 
 interface ProjectProps {
+  location: Location
   data: {
     site: {
       siteMetadata: {
@@ -28,9 +29,9 @@ interface ProjectProps {
   }
 }
 
-const Projects: React.FC<ProjectProps> = ({ data }) => {
+const Projects: React.FC<ProjectProps> = ({ data, location }) => {
   return (
-    <Layout title="Projects" description="Some projects I have worked on in the past.">
+    <Layout title="Projects" description="Some projects I have worked on in the past." pathname={location.pathname}>
       {data.post.edges.map(({ node }) => {
         return <ProjectListItem key={node.id} project={node} />
       })}

@@ -84,9 +84,9 @@ const ProjectListItem: React.FC<Props> = ({ project }) => {
           ) : null}
         </Flex>
         <Text sx={{ fontSize: 1, color: 'text' }}>{project.excerpt}</Text>
-        <Flex my={2} sx={{ flexDirection: 'row' }}>
-          {project.frontmatter.date && <TechLogo tag={new Date(project.frontmatter.date).getFullYear()} />}
-          <TechLogoList tags={project.frontmatter.tech} />
+        <Flex my={2} sx={{ flexDirection: 'row', fontSize: 4 }}>
+          {project.frontmatter.date && <TechLogo marginRight={3} marginBottom={3} tag={new Date(project.frontmatter.date).getFullYear()} />}
+          <TechLogoList tags={project.frontmatter.tech} marginRight={3} marginBottom={3} />
         </Flex>
       </Flex>
       {ProjectSizeEnum.small !== project.frontmatter.size && (
