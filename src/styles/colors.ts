@@ -66,7 +66,7 @@ const mains = {
 }
 
 const lightTheme = {
-  ...mainColors,
+  ...mains,
   primary: mains.blue,
   text: mains.gray700, // added
   background: mains.gray100, // added

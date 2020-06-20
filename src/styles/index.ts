@@ -19,13 +19,14 @@ export const defaultTheme = {
   fonts: {
     nav: "'Roboto Slab', serif",
     body: "'Lato', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+    // heading: "'DM Mono', monospace",
     heading: "'Roboto Slab', serif",
     monospace: 'Menlo, monospace'
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
     body: 400,
-    heading: 700,
+    heading: 400,
     display: 900
   },
   lineHeights: {

@@ -116,8 +116,14 @@ const Header = () => {
               }
             }}
           >
-            <Logo height="30px" sx={{ display: ['none', 'block'] }} />
-            <Name ml={[0, 3]} height={['25px', '30px']} />
+            <Logo sx={{ display: ['none', 'block'], height: '30px' }} />
+            <Name
+              sx={{
+                height: ['25px', '30px'],
+                width: '230px',
+                marginLeft: [0, 3]
+              }}
+            />
           </Link>
           {/* DESKTOP NAV */}
           <Flex sx={{ display: ['none', 'flex'] }}>

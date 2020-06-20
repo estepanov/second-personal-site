@@ -3,6 +3,7 @@ import React from 'react'
 import ElectronLogo from './Electron'
 import Postgres from './Postgres'
 import Redis from './Redis'
+import Feathers from './Feathers'
 import Firebase from './Firebase'
 import Redux from './Redux'
 import TypeScript from './TypeScript'
@@ -27,6 +28,7 @@ import Node from './Node'
 import Sass from './Sass'
 import Angular from './Angular'
 import StyledComponents from './StyledComponents'
+import ThemeUI from './ThemeUI'
 
 import { TechTag, TagMap, TechTypes, TechRunTimeEnv } from '../../interfaces/TechTag'
 
@@ -108,10 +110,11 @@ const TAG_MAP: TagMap = {
     icon: <Gatsby />
   },
   graphql: {
-    order: 1,
+    order: 4,
     name: 'GraphQL',
     color: '#e10098',
     type: TechTypes.language,
+    environment: TechRunTimeEnv.backend,
     icon: <GraphQL />
   },
   'react-native': {
@@ -190,6 +193,22 @@ const TAG_MAP: TagMap = {
     environment: TechRunTimeEnv.frontend,
     color: '#cf649a',
     icon: <Sass />
+  },
+  'theme-ui': {
+    order: 3,
+    name: 'Theme-UI',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.frontend,
+    color: '#000',
+    icon: <ThemeUI />
+  },
+  feathers: {
+    order: 3,
+    name: 'FeathersJS',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.frontend,
+    color: '#333',
+    icon: <Feathers />
   },
   'mobx-state-tree': {
     order: 3,

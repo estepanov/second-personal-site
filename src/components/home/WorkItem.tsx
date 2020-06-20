@@ -45,10 +45,10 @@ const WorkItem: React.FC<WorkItemProps> = ({ item }) => {
           href={item.frontmatter.website}
           sx={{
             fontWeight: 'bold',
-            color: 'white',
+            color: 'gray200',
             transition: 'ease-in-out 0.3s',
             '&:visited': {
-              color: 'white'
+              color: 'gray200'
             }
           }}
         >
