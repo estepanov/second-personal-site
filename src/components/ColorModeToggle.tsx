@@ -1,19 +1,20 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, useColorMode, Text } from 'theme-ui'
+import { jsx, useColorMode, Text, IconButton } from 'theme-ui'
 import { Modes } from '../styles/colors'
 
-const options = Object.keys(Modes)
+const options = Object.values(Modes)
 
-const MODE_TEXT = {
-  [Modes.dark]: 'Dark Mode',
-  [Modes.light]: 'Light Mode'
-}
+// const MODE_TEXT = {
+//   [Modes.dark]: 'Dark Mode',
+//   [Modes.light]: 'Light Mode'
+// }
 
-const MODE_TEXT_REVERSE = {
-  [Modes.dark]: MODE_TEXT.light,
-  [Modes.light]: MODE_TEXT.dark
-}
+// const MODE_TEXT_REVERSE = {
+//   [Modes.dark]: MODE_TEXT.light,
+//   [Modes.light]: MODE_TEXT.dark
+// }
+
 const MODE_ICON = {
   [Modes.dark]: <i className="fad fa-moon-stars" />,
   [Modes.light]: <i className="fad fa-sun" />
@@ -23,12 +24,17 @@ const MODE_ICON_REVERSE = {
   [Modes.light]: MODE_ICON.dark
 }
 
-export default props => {
-  const [mode, setMode] = useColorMode()
+interface ColorModeToggle {
+  variant: string
+}
+
+const ColorModeToggle: React.FC<ColorModeToggle> = ({ variant }) => {
+  const [mode, setMode] = useColorMode<Modes>()
   return (
-    <button
-      type="button"
+    <IconButton
+      aria-label="Toggle dark mode"
       key={mode}
+      variant={variant}
       sx={{
         // borderRadius: 10,
         position: 'relative',
@@ -43,13 +49,13 @@ export default props => {
         // borderWidth: 1,
         // // borderColor: 'headerMobileBgActive',
         color: 'text',
-        backgroundColor: 'headerMobileBg',
+        backgroundColor: 'none',
         paddingX: 2,
         paddingY: 2,
         overflow: 'hidden',
         '&:hover': {
-          backgroundColor: 'text',
-          color: 'background'
+          // backgroundColor: 'text',
+          color: 'mutedText'
         }
       }}
       onClick={() => {
@@ -60,6 +66,8 @@ export default props => {
     >
       <Text>{MODE_ICON_REVERSE[mode]}</Text>
       {/* <span sx={{ marginLeft: 2, fontSize: 0 }}>{MODE_TEXT_REVERSE[mode]}</span> */}
-    </button>
+    </IconButton>
   )
 }
+
+export default ColorModeToggle

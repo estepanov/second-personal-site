@@ -5,6 +5,9 @@ import Layout from '../layouts'
 import ProjectListItem from '../components/projects/ProjectListItem'
 
 import { Project } from '../interfaces/Project'
+import SectionHeader from '../components/Layout/SectionHeader'
+import Pagination from '../components/Pagination'
+import HR from '../components/elements/HR'
 
 interface EdgeNode {
   node: Project
@@ -27,14 +30,40 @@ interface ProjectProps {
       edges: EdgeNode[]
     }
   }
+  pageContext: {
+    currentPage: number
+    limit: number
+    nextPage: null | number
+    pages: number
+    previousPage: null | number
+    skip: number
+  }
 }
 
-const Projects: React.FC<ProjectProps> = ({ data, location }) => {
+const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
+  const title = 'Projects'
+  const description = 'Random stuff I have built.'
   return (
-    <Layout title="Projects" description="Some projects I have worked on in the past." pathname={location.pathname}>
-      {data.post.edges.map(({ node }) => {
-        return <ProjectListItem key={node.id} project={node} />
+    <Layout title={title} description={description} pathname={location.pathname}>
+      <SectionHeader title={title} subtitle={description} />
+      {data.post.edges.map(({ node }, ind) => {
+        return (
+          <React.Fragment key={node.id}>
+            <HR />
+            <ProjectListItem project={node} />
+            {ind + 1 === data.post.edges.length && <HR />}
+          </React.Fragment>
+        )
       })}
+      <Pagination
+        displayRange={5}
+        getPath={(page: number) => {
+          const base = '/projects'
+          return page === 1 ? base : `${base}/pages/${page}`
+        }}
+        currentPage={pageContext.currentPage}
+        max={pageContext.pages}
+      />
     </Layout>
   )
 }
@@ -42,7 +71,7 @@ const Projects: React.FC<ProjectProps> = ({ data, location }) => {
 export default Projects
 
 export const query = graphql`
-  query projectListQuery {
+  query projectListQuery($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -51,6 +80,8 @@ export const query = graphql`
     }
     post: allMdx(
       filter: { fields: { type: { eq: "projects" }, isMain: { eq: true } } }
+      limit: $limit
+      skip: $skip
       sort: { fields: [frontmatter___date, frontmatter___title], order: [DESC, DESC] }
     ) {
       edges {

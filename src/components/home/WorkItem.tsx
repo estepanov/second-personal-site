@@ -1,6 +1,6 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, Box, Text } from 'theme-ui'
+import { jsx, Box, Text, Heading } from 'theme-ui'
 
 import { Work } from '../../interfaces/Work'
 
@@ -36,8 +36,8 @@ const getMonth = (dateString: string): string | null => {
 
 const WorkItem: React.FC<WorkItemProps> = ({ item }) => {
   return (
-    <Box sx={{ marginLeft: 2, marginBottom: 2 }}>
-      <Text>
+    <Box sx={{ marginRight: 2 }}>
+      <Text sx={{ fontSize: 2, fontStyle: 'italic' }}>
         {item.frontmatter.position} @&nbsp;
         <a
           target="_blank"
@@ -45,10 +45,10 @@ const WorkItem: React.FC<WorkItemProps> = ({ item }) => {
           href={item.frontmatter.website}
           sx={{
             fontWeight: 'bold',
-            color: 'gray200',
+            color: 'secondary',
             transition: 'ease-in-out 0.3s',
             '&:visited': {
-              color: 'gray200'
+              color: 'secondary'
             }
           }}
         >

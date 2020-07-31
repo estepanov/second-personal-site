@@ -11,6 +11,7 @@ interface ListImagesProps {
 const MAX_ITEMS = 3
 
 const ListImages: React.FC<ListImagesProps> = ({ items }) => {
+  if (!items || !items.length) return null
   const itemsToRender = useMemo(() => (items.length > MAX_ITEMS ? items.slice(0, MAX_ITEMS) : items), [items])
   return itemsToRender.map(img => {
     return (
