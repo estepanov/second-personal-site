@@ -49,7 +49,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
           node,
           value: date ? new Date(date) : null
         })
-        // isMain determine is page is the index page for content
+        // isMain determines if the page is the index page for folder of content
         createNodeField({
           name: 'isMain',
           node,
@@ -79,7 +79,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
+  const BlogPostListTemplate = require.resolve('./src/templates/blog-post-list.tsx')
+  const BlogPostTemplate = require.resolve('./src/templates/blog-post.tsx')
   const ProjectTemplate = require.resolve('./src/templates/project.tsx')
+  const ProjectListTemplate = require.resolve('./src/templates/project-list.tsx')
   const PageTemplate = require.resolve('./src/templates/page.tsx')
 
   const allMarkdownQuery = await graphql(`
@@ -104,35 +107,54 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panic(allMarkdownQuery.errors)
   }
 
-  // const postPerPageQuery = await graphql(`
-  //   {
-  //     site {
-  //       siteMetadata {
-  //         postsPerPage
-  //       }
-  //     }
-  //   }
-  // `)
+  const postPerPageQuery = await graphql(`
+    {
+      site {
+        siteMetadata {
+          postsPerPage
+        }
+      }
+    }
+  `)
 
   const markdownFiles = allMarkdownQuery.data.allMarkdown.edges
 
   const projects = markdownFiles.filter(item => item.node.fileAbsolutePath.includes('/content/projects/'))
-  // console.log('projectsprojectsprojectsprojectsprojectsprojectsprojectsprojectsprojectsprojects', projects) // generate paginated post list
-  // const postsPerPage = postPerPageQuery.data.site.siteMetadata.postsPerPage
-  // const nbPages = Math.ceil(posts.length / postsPerPage)
+  const blogPosts = markdownFiles.filter(item => item.node.fileAbsolutePath.includes('/content/blog/'))
 
-  // Array.from({ length: nbPages }).forEach((_, i) => {
-  //   createPage({
-  //     path: i === 0 ? `/` : `/pages/${i + 1}`,
-  //     component: ListPostsTemplate,
-  //     context: {
-  //       limit: postsPerPage,
-  //       skip: i * postsPerPage,
-  //       currentPage: i + 1,
-  //       nbPages: nbPages,
-  //     },
-  //   })
-  // })
+  const { postsPerPage } = postPerPageQuery.data.site.siteMetadata
+  const numberProjectPages = Math.ceil(projects.length / postsPerPage)
+  const numberBlogPostPages = Math.ceil(blogPosts.length / postsPerPage) || 1 // allow an empty first page
+
+  Array.from({ length: numberBlogPostPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog` : `/blog/pages/${i + 1}`,
+      component: BlogPostListTemplate,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        currentPage: i + 1,
+        nextPage: i === postsPerPage - 1 ? null : i + 2,
+        previousPage: i === 0 ? null : i - 1,
+        pages: numberBlogPostPages
+      }
+    })
+  })
+
+  Array.from({ length: numberProjectPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/projects` : `/projects/pages/${i + 1}`,
+      component: ProjectListTemplate,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        currentPage: i + 1,
+        nextPage: i === postsPerPage - 1 ? null : i + 2,
+        previousPage: i === 0 ? null : i - 1,
+        pages: numberProjectPages
+      }
+    })
+  })
 
   // generate projects pages
   projects.forEach((post, index, posts) => {
@@ -142,6 +164,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       path: post.node.fields.slug,
       component: ProjectTemplate,
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next
+      }
+    })
+  })
+
+  // generate blog post pages
+  blogPosts.forEach((post, index, posts) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node
+    const next = index === 0 ? null : posts[index - 1].node
+
+    createPage({
+      path: post.node.fields.slug,
+      component: BlogPostTemplate,
       context: {
         slug: post.node.fields.slug,
         previous,

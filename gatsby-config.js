@@ -5,7 +5,32 @@ require('dotenv').config({
   path: `.env.${activeEnv}`
 })
 
+const githubQuery = `query {
+  viewer {
+    login
+    contributionsCollection {
+      contributionCalendar {
+        weeks {
+          contributionDays {
+            contributionCount
+          }
+          firstDay
+        }
+      }
+    }
+  }
+}`
+
 const plugins = [
+  {
+    resolve: `gatsby-source-github-api`,
+    options: {
+      url: 'https://api.github.com/graphql',
+      token: process.env.GITHUB_TOKEN,
+      graphQLQuery: githubQuery,
+      variables: {}
+    }
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -18,6 +43,13 @@ const plugins = [
     options: {
       name: 'projects',
       path: `${__dirname}/src/content/projects`
+    }
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'blog',
+      path: `${__dirname}/src/content/blog`
     }
   },
   {
@@ -108,7 +140,9 @@ module.exports = {
     author: {
       name: 'Evans Stepanov',
       url: 'https://estep.nyc'
-    }
+    },
+    postsPerPage: 10,
+    buildDate: new Date().toISOString()
   },
   plugins
 }

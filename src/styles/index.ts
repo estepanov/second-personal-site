@@ -99,10 +99,7 @@ export const defaultTheme = {
         color: 'headerActive'
       },
       '&.active': {
-        color: 'headerActive',
-        borderBottomColor: 'headerMobileBgActive',
-        borderBottomWidth: 2,
-        borderBottomStyle: 'solid'
+        color: 'headerActive'
       }
     }
   },

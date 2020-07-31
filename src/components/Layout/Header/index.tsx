@@ -7,25 +7,25 @@ import NavLink from '../../elements/NavLink'
 import Name from '../../logo/Name'
 import Logo from '../../logo/Logo'
 import Container from '../Container'
-// import ColorModeToggle from '../../ColorModeToggle'
+import ColorModeToggle from '../../ColorModeToggle'
 
 const LINKS = [
   {
     title: 'Projects',
     to: '/projects'
   },
-  // {
-  //   title: 'Blog',
-  //   to: '/blog'
-  // },
+  {
+    title: 'Blog',
+    to: '/blog'
+  },
   {
     title: 'Contact',
     to: '/contact'
+  },
+  {
+    title: 'ColorMode',
+    Component: ColorModeToggle
   }
-  // {
-  //   title: 'ColorMode',
-  //   Component: ColorModeToggle
-  // }
 ]
 
 const Header = () => {
@@ -73,7 +73,7 @@ const Header = () => {
         <Flex sx={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-end' }}>
           {LINKS.map(item => {
             if (item.Component) {
-              return <item.Component key={item.title} />
+              return <item.Component key={item.title} variant="links.mobileNav" />
             }
             return (
               <Link
@@ -130,7 +130,7 @@ const Header = () => {
             {LINKS.map(item => {
               let component
               if (item.Component) {
-                component = <item.Component />
+                component = <item.Component variant="links.nav" key={item.title} />
               }
               if (item.to) {
                 component = (
@@ -151,14 +151,10 @@ const Header = () => {
         <Box sx={{ display: ['block', 'none'], flexShrink: 0, marginLeft: 'auto' }}>
           <Button
             onClick={toggleMobileMenu}
-            // onTouchStart={toggleMobileMenu}
-            // onTouchStart={toggleMobileMenu}
             title="Toggle Menu"
             sx={{
               outlineColor: 'primary',
               transition: 'ease 0.2s',
-              // backgroundColor: showMobileMenu ? 'headerMobileBgActive' : 'background',
-              // color: showMobileMenu ? 'headerMobileBg' : 'logo',
               backgroundColor: 'transparent',
               color: showMobileMenu ? 'logoAlt' : 'logo',
               padding: 1,

@@ -32,6 +32,10 @@ interface ProjectProps {
       previous: Project
     }
   }
+  pageContext: {
+    next: Project
+    previous: Project
+  }
 }
 
 const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) => {
