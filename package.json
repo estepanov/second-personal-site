@@ -10,7 +10,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "clean": "rimraf public",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "dev": "gatsby develop",
