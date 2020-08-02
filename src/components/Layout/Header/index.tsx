@@ -120,7 +120,7 @@ const Header = () => {
             <Name
               sx={{
                 height: ['25px', '30px'],
-                width: '230px',
+                width: ['200px', '230px'],
                 marginLeft: [0, 3]
               }}
             />

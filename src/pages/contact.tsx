@@ -1,7 +1,8 @@
 import React from 'react'
-import { Text } from 'theme-ui'
 
 import Layout from '../layouts'
+import { Contact } from '../components/Contact'
+import SectionHeader from '../components/Layout/SectionHeader'
 
 interface ContactProps {
   location: Location
@@ -10,12 +11,11 @@ interface ContactProps {
 const ContactPage: React.FC<ContactProps> = ({ location }) => {
   return (
     <Layout pathname={location.pathname}>
-      {/* <Flex sx={{ justifyContent: 'center', padding: 4 }}>
-        <img src="/great-success.gif" />
-      </Flex> */}
-      <Text sx={{ fontSize: 3, textAlign: 'center', padding: 4 }}>
-        I am still working on this page right now. <br />
-      </Text>
+      <SectionHeader
+        title="Contact"
+        subtitle="Interested in working together or just want to chat about cool tech? Feel free to reach out to me :)"
+      />
+      <Contact />
     </Layout>
   )
 }

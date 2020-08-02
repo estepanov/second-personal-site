@@ -16,6 +16,7 @@ import MongoDB from './MongoDB'
 import Express from './Express'
 import MobxStateTree from './MobxStateTree'
 import NextJs from './NextJs'
+import Netlify from './Netlify'
 import Parse from './Parse'
 import Sequelize from './Sequelize'
 import Gatsby from './Gatsby'
@@ -23,6 +24,7 @@ import GraphQL from './GraphQL'
 import Python from './Python'
 import Docker from './Docker'
 import Mongoose from './Mongoose'
+import Serverless from './Serverless'
 import SocketIO from './SocketIO'
 import Node from './Node'
 import Sass from './Sass'
@@ -256,6 +258,13 @@ const TAG_MAP: TagMap = {
     type: TechTypes.deployment,
     icon: <Azure />
   },
+  netlify: {
+    order: 4,
+    name: 'Netlify',
+    color: '#20C6B7',
+    type: TechTypes.deployment,
+    icon: <Netlify />
+  },
   parse: {
     order: 3,
     name: 'Parse.js',
@@ -273,6 +282,15 @@ const TAG_MAP: TagMap = {
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
     icon: <Sequelize />
+  },
+  serverless: {
+    order: 3,
+    name: 'Serverless',
+    color: '#fd5750',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.backend,
+    language: 'Serverless',
+    icon: <Serverless />
   },
   mongoose: {
     order: 3,
