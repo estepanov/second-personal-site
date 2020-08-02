@@ -24,7 +24,9 @@ export const Captcha = React.forwardRef<{}, CaptchaProps>(({ onChange, errors, n
       >
         Are you human?
       </Label>
-      <HCaptcha size="normal" ref={ref} sitekey={process.env.HCAPTCHA_SITE_ID} onVerify={onChange} theme={context.colorMode} />
+      <div>
+        <HCaptcha size="normal" ref={ref} sitekey={process.env.HCAPTCHA_SITE_ID} onVerify={onChange} theme={context.colorMode} />
+      </div>
       <Error errors={errors} name={name} />
     </Box>
   )
