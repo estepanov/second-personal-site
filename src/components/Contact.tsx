@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
+import HCaptcha from '@hcaptcha/react-hcaptcha'
 
 /** @jsx jsx */
-import { jsx, Box, Input, Textarea, Button, Message, Spinner, Flex } from 'theme-ui'
+import { jsx, Box, Label, Input, Textarea, Button, Message, Spinner, Flex } from 'theme-ui'
 import * as yup from 'yup'
 import { InputGroup } from './elements/Form/InputGroup'
-import { Captcha } from './Captcha'
+import { Error } from './elements/Form/Error'
+// import { Captcha } from './Captcha'
 
 import { api } from '../Request'
 
@@ -123,13 +125,18 @@ export const Contact: React.FC = () => {
           control={control}
           name="captchaToken"
           render={({ onChange }) => (
-            <Captcha
-              errors={errors}
-              name="captchaToken"
-              ref={captchaRef}
-              onChange={onChange}
-              error={errors.captchaToken && 'Please verify you are human :)'}
-            />
+            <React.Fragment>
+              <Label
+                sx={{
+                  marginBottom: 1
+                  // color: hasError ? 'red' : undefined
+                }}
+              >
+                Are you human?
+              </Label>
+              <HCaptcha size="normal" ref={captchaRef} sitekey={process.env.HCAPTCHA_SITE_ID} onVerify={onChange} />
+              <Error errors={errors} name="captchaToken" />
+            </React.Fragment>
           )}
         />
         <Flex>
