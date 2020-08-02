@@ -1,16 +1,16 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers'
-import HCaptcha from '@hcaptcha/react-hcaptcha'
+// import HCaptcha from '@hcaptcha/react-hcaptcha'
 
 /** @jsx jsx */
-import { jsx, Box, Label, Input, Textarea, Button, Message, Spinner, Flex } from 'theme-ui'
+import { jsx, Box, Input, Textarea, Button, Message, Spinner, Flex } from 'theme-ui'
 import * as yup from 'yup'
 import { InputGroup } from './elements/Form/InputGroup'
-import { Error } from './elements/Form/Error'
-// import { Captcha } from './Captcha'
+// import { Error } from './elements/Form/Error'
 
 import { api } from '../Request'
+import { Captcha } from './Captcha'
 
 const ContactSchema = yup.object().shape({
   name: yup
@@ -70,6 +70,8 @@ export const Contact: React.FC = () => {
     setIsStending(false)
   })
 
+  useEffect(() => register({ name: 'captchaToken' }, { required: true }))
+
   return (
     <React.Fragment>
       {isSuccess && (
@@ -124,21 +126,18 @@ export const Contact: React.FC = () => {
         <Controller
           control={control}
           name="captchaToken"
-          render={({ onChange }) => (
-            <React.Fragment>
-              <Label
-                sx={{
-                  marginBottom: 1
-                  // color: hasError ? 'red' : undefined
-                }}
-              >
-                Are you human?
-              </Label>
-              <HCaptcha size="normal" ref={captchaRef} sitekey={process.env.HCAPTCHA_SITE_ID} onVerify={onChange} />
-              <Error errors={errors} name="captchaToken" />
-            </React.Fragment>
-          )}
+          render={({ onChange }) => <Captcha ref={captchaRef} name="captchaToken" onChange={onChange} errors={errors} />}
         />
+        {/* <HCaptcha
+          size="normal"
+          ref={captchaRef}
+          sitekey={process.env.GATSBY_HCAPTCHA_SITE_ID}
+          onVerify={tok => setValue('captchaToken', tok, { shouldDirty: true, shouldValidate: true })}
+          onExpire={() => setValue('captchaToken', null, { shouldDirty: true, shouldValidate: true })}
+          onError={err => console.error('Hcap error', err)}
+        />
+        <Error errors={errors} name="captchaToken" /> */}
+
         <Flex>
           <Button type="submit" disabled={isSending}>
             {isSending ? 'Sending...' : 'Send'}
