@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{title}}/index"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "slug", name: "slug", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "projects"
+    label: "Project"
+    folder: "content/projects"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{title}}/index"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "slug", name: "slug", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "work"
+    label: "Work"
+    folder: "content/work"
+    create: true
+    slug: "index"
+    media_folder: ""
+    public_folder: ""
+    path: "{{title}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "website", name: "website", widget: "string" }
+      - { label: "position", name: "position", widget: "string" }
+      - { label: "Start Date", name: "startDate", widget: "datetime" }
+      - { label: "End Date", name: "endDate", widget: "datetime" }
+      - { label: "slug", name: "slug", widget: "string" }
+      - { label: "companyName", name: "body", widget: "markdown" }

@@ -116,7 +116,8 @@ const plugins = [
   },
   'gatsby-transformer-sharp',
   'gatsby-plugin-react-helmet',
-  'gatsby-plugin-mdx'
+  'gatsby-plugin-mdx',
+  'gatsby-plugin-netlify-cms'
 ]
 
 if (process.env.GA_ID) {
