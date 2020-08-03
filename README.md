@@ -1,6 +1,11 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/estepanov/personal-site)
+
 # Hey there!
 
-I bootstrapped this project with [Gatsby.js](https://www.gatsbyjs.org/).
+I bootstrapped this project with [Gatsby.js](https://www.gatsbyjs.org/). All my written (and job info) content lives in `~src/content`.
+Github commit data is pulled at build time using a GraphQL query passed to `gatsby-source-github-api`.
+
+The backend for this site is a TypeScript Serverless project which can be found here https://github.com/estepanov/personal-site-api
 
 ## 🗒️ Features
 
