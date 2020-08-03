@@ -126,7 +126,7 @@ export const Contact: React.FC = () => {
         <Controller
           control={control}
           name="captchaToken"
-          render={({ onChange }) => <Captcha ref={captchaRef} name="captchaToken" onChange={onChange} errors={errors} />}
+          render={({ onChange }) => <Captcha id="contact-form" ref={captchaRef} name="captchaToken" onChange={onChange} errors={errors} />}
         />
         {/* <HCaptcha
           size="normal"
