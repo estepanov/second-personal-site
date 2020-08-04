@@ -10,9 +10,12 @@ backend:
 
 media_folder: static/img
 public_folder: /img
+logo_url: https://estep.nyc/logo/full-logo.svg
 
 collections:
   - name: "blog"
+    extension: mdx
+    format: frontmatter
     label: "Blog"
     folder: "src/content/blog"
     create: true
@@ -28,6 +31,8 @@ collections:
       - { label: "slug", name: "slug", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "projects"
+    extension: mdx
+    format: frontmatter
     label: "Project"
     folder: "src/content/projects"
     create: true
@@ -45,6 +50,8 @@ collections:
   - name: "work"
     label: "Work"
     folder: "src/content/work"
+    extension: mdx
+    format: frontmatter
     create: true
     slug: "index"
     media_folder: ""
