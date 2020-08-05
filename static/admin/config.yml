@@ -8,6 +8,9 @@ backend:
     uploadMedia: "[skip ci] Upload “{{path}}”"
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
+# when using the default proxy server port
+# local_backend: true
+
 media_folder: static/
 public_folder: /
 logo_url: https://estep.nyc/logo/full-logo.svg
@@ -42,7 +45,8 @@ collections:
     label_singular: "Blog Post"
     folder: "src/content/blog"
     create: true
-    slug: "{{year}}/{{month}}/{{title}}/index"
+    slug: "{{title}}/index"
+    path: "{{year}}/{{month}}/{{slug}}"
     media_folder: ""
     public_folder: ""
     preview_path: "blog/{{year}}/{{month}}/{{title}}"
@@ -66,7 +70,8 @@ collections:
     label_singular: "Project"
     folder: "src/content/projects"
     create: true
-    slug: "{{title}}/index"
+    slug: "index"
+    path: "{{title}}/{{slug}}"
     media_folder: ""
     public_folder: ""
     preview_path: "projects/{{title}}"
@@ -166,26 +171,24 @@ collections:
           widget: "list",
           field: { label: Image, name: image, widget: "file" },
         }
-      - { label: "Git Repository URL", name: "repo", widget: "string" }
+      - {
+          label: "Git Repository URL",
+          name: "repo",
+          widget: "string",
+          required: false,
+        }
   - name: "work"
     label: "Work Experience"
     folder: "src/content/work"
     extension: mdx
     format: frontmatter
-    create: false
+    create: true
     slug: "{{companyName}}-{{position}}"
     media_folder: ""
     public_folder: ""
     identifier_field: companyName
     summary: "{{position}} @ {{companyName}} ({{startDate}} - {{endDate}})"
     sortableFields: ["companyName", "position", "startDate", "endDate"]
-    view_filters:
-      - label: "Previous Jobs"
-        field: endDate
-        pattern: true
-      - label: "Current Jobs"
-        field: endDate
-        pattern: false
     fields:
       - {
           label: "Company",
@@ -206,7 +209,7 @@ collections:
           widget: "date",
           required: true,
         }
-      - { label: "End Date", name: "endDate", widget: "date" }
+      - { label: "End Date", name: "endDate", widget: "date", required: false }
       - {
           label: "Languages",
           name: "languages",
@@ -259,4 +262,4 @@ collections:
               "socketio",
             ],
         }
-      - { label: "Summary", name: "body", widget: "markdown" }
+      - { label: "Summary", name: "body", widget: "markdown", required: false }
