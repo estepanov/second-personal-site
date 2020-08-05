@@ -17,6 +17,24 @@ slug:
   clean_accents: true
 
 collections:
+  - name: "page"
+    extension: "mdx"
+    format: frontmatter
+    label: "Pages"
+    label_singular: "Page"
+    folder: "src/content/pages"
+    create: true
+    slug: "{{permalink}}"
+    media_folder: ""
+    public_folder: ""
+    summary: "{{title}} ({{permalink}})"
+    sortableFields: ["title", "permalink", "date"]
+    preview_path: "{{permalink}}"
+    fields:
+      - { label: "Permalink", name: "permalink", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Body", name: "body", widget: "markdown" }
   - name: "blog"
     extension: mdx
     format: frontmatter
@@ -24,16 +42,22 @@ collections:
     label_singular: "Blog Post"
     folder: "src/content/blog"
     create: true
-    slug: "index"
+    slug: "{{year}}/{{month}}/{{title}}/index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}/index"
-    editor:
-      preview: false
+    preview_path: "blog/{{year}}/{{month}}/{{title}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "slug", name: "slug", widget: "string" }
+      - {
+          label: "Display size",
+          name: "size",
+          widget: "select",
+          default: "small",
+          multiple: false,
+          options: ["normal", "small"],
+          required: true,
+        }
       - { label: "Body", name: "body", widget: "markdown" }
   - name: "projects"
     extension: mdx
@@ -42,14 +66,30 @@ collections:
     label_singular: "Project"
     folder: "src/content/projects"
     create: true
-    slug: "index"
+    slug: "{{title}}/index"
     media_folder: ""
     public_folder: ""
-    path: "{{title}}/index"
-    editor:
-      preview: false
+    preview_path: "projects/{{title}}"
+    sortableFields: ["title", "date", "size"]
+    view_filters:
+      - label: "JavaScript"
+        field: languages
+        pattern: "javascript"
+      - label: "TypeScript"
+        field: languages
+        pattern: "typescript"
+      - label: "Has banner"
+        field: banners
+        pattern: true
+      - label: "Small"
+        field: size
+        pattern: "small"
+      - label: "Normal"
+        field: size
+        pattern: "normal"
     fields:
       - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
       - {
           label: "Display size",
           name: "size",
@@ -63,7 +103,7 @@ collections:
       - {
           label: "Banners",
           name: "banners",
-          widget: "list",
+          widget: "select",
           options: ["hackathon"],
           multiple: true,
           required: false,
@@ -120,21 +160,32 @@ collections:
           required: true,
           options: ["javascript", "typescript", "python"],
         }
-      - { label: "Images", name: "images", widget: "file" }
+      - {
+          label: "Images",
+          name: "images",
+          widget: "list",
+          field: { label: Image, name: image, widget: "file" },
+        }
       - { label: "Git Repository URL", name: "repo", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown", required: true }
   - name: "work"
     label: "Work Experience"
     folder: "src/content/work"
     extension: mdx
     format: frontmatter
-    create: true
-    slug: "index"
+    create: false
+    slug: "{{companyName}}-{{position}}"
     media_folder: ""
     public_folder: ""
-    path: "{{companyName}}"
-    editor:
-      preview: false
+    identifier_field: companyName
+    summary: "{{position}} @ {{companyName}} ({{startDate}} - {{endDate}})"
+    sortableFields: ["companyName", "position", "startDate", "endDate"]
+    view_filters:
+      - label: "Previous Jobs"
+        field: endDate
+        pattern: true
+      - label: "Current Jobs"
+        field: endDate
+        pattern: false
     fields:
       - {
           label: "Company",
@@ -149,9 +200,21 @@ collections:
           widget: "string",
           required: true,
         }
-      - { label: "Start Date", name: "startDate", widget: "date" }
+      - {
+          label: "Start Date",
+          name: "startDate",
+          widget: "date",
+          required: true,
+        }
       - { label: "End Date", name: "endDate", widget: "date" }
-      - { label: "companyName", name: "body", widget: "markdown" }
+      - {
+          label: "Languages",
+          name: "languages",
+          widget: "select",
+          multiple: true,
+          required: true,
+          options: ["javascript", "typescript", "python"],
+        }
       - {
           label: "Technologies Used",
           name: "tech",
@@ -196,11 +259,4 @@ collections:
               "socketio",
             ],
         }
-      - {
-          label: "Languages",
-          name: "languages",
-          widget: "select",
-          multiple: true,
-          required: true,
-          options: ["javascript", "typescript", "python"],
-        }
+      - { label: "Summary", name: "body", widget: "markdown" }
