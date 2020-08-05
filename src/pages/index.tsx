@@ -1,9 +1,8 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, Box, Text, Flex, Heading } from 'theme-ui'
+import { jsx, Box, Text, Flex } from 'theme-ui'
 import Layout from '../layouts'
 
-import Banner from '../components/home/Banner'
 import Work from '../components/home/Work'
 import Container from '../components/Layout/Container'
 import GitHubActivity from '../components/GitHubActivity'
@@ -47,11 +46,6 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
           <TechSection />
         </Flex>
       </Container>
-      <Banner>
-        <Heading>Are you a nonprofit looking for technical advice or expertise?</Heading>
-        <Text>I am available for pro-bono consulting. Please contact me and lets setup a time to chat.</Text>
-      </Banner>
-      {/* <About /> */}
     </Layout>
   )
 }

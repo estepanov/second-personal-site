@@ -22,13 +22,14 @@ interface PageTemplateProps {
       excerpt: string
       frontmatter: {
         title: string
+        description: string
       }
     }
   }
 }
 
 const PageTemplate: React.FC<PageTemplateProps> = ({ data, location }) => (
-  <Layout pathname={location.pathname}>
+  <Layout title={data.post.frontmatter.title} description={data.post.frontmatter.description} pathname={location.pathname}>
     <MDX>{data.post.body}</MDX>
   </Layout>
 )
@@ -52,6 +53,7 @@ export const query = graphql`
       excerpt
       frontmatter {
         title
+        description
       }
     }
   }
