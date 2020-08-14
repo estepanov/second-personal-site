@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui'
 import { useCookies } from 'react-cookie'
@@ -12,13 +12,16 @@ interface ControlledBanerProps extends BasicBanerProps {
 }
 
 const ControlledBanner: React.FC<ControlledBanerProps> = ({ id, isClosable = false, heading, text, children }) => {
-  const [cookies, setCookie] = useCookies([id])
-  const toggleCookie = useCallback(() => {
-    if (id && isClosable) {
-      setCookie(id, !cookies[id], { path: '/' })
-    }
-  }, [cookies, setCookie, id, isClosable])
-  if (cookies[id]) return null
+  // const [cookies, setCookie] = useCookies([id])
+  // const toggleCookie = useCallback(() => {
+  //   if (id && isClosable) {
+  //     setCookie(id, !cookies[id], { path: '/' })
+  //   }
+  // }, [cookies, setCookie, id, isClosable])
+  // if (cookies[id]) return null
+  const [hidden, setHidden] = useState(false)
+  const onClose = () => setHidden(true)
+  if (hidden) return null
   return (
     <BasicBanner heading={heading} text={text}>
       {children}
@@ -31,7 +34,7 @@ const ControlledBanner: React.FC<ControlledBanerProps> = ({ id, isClosable = fal
             color: 'background',
             cursor: 'pointer'
           }}
-          onClick={toggleCookie}
+          onClick={onClose}
         >
           <i className="fas fa-times" />
         </Button>
