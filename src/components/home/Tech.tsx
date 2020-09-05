@@ -96,6 +96,7 @@ const TechSection: React.FC<WorkProps> = () => (
                 title="Backend"
                 tags={data.allTech.filter(techTagFilter('environment', TechRunTimeEnv.backend))}
               />
+              <TechLogoGroup headerSize={3} title="Testing" tags={data.allTech.filter(techTagFilter('type', TechTypes.testing))} />
               <TechLogoGroup headerSize={3} title="Data" tags={data.allTech.filter(techTagFilter('type', TechTypes.database))} />
               <TechLogoGroup headerSize={3} title="DevOps" tags={data.allTech.filter(techTagFilter('type', TechTypes.devops))} />
               <TechLogoGroup headerSize={3} title="Deployment" tags={data.allTech.filter(techTagFilter('type', TechTypes.deployment))} />

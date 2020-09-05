@@ -33,6 +33,10 @@ import StyledComponents from './StyledComponents'
 import ThemeUI from './ThemeUI'
 
 import { TechTag, TagMap, TechTypes, TechRunTimeEnv } from '../../interfaces/TechTag'
+import Tailwind from './Tailwind'
+import Emotion from './Emotion'
+import Jest from './Jest'
+import Cypress from './Cypress'
 
 const TAG_MAP: TagMap = {
   python: {
@@ -50,6 +54,28 @@ const TAG_MAP: TagMap = {
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
     icon: <Node />
+  },
+  emotion: {
+    order: 4,
+    name: 'Emotion CSS-in-JS',
+    color: '#b71c91',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.frontend,
+    icon: <Emotion />
+  },
+  jest: {
+    order: 3,
+    name: 'Jest',
+    color: '#14c213',
+    type: TechTypes.testing,
+    icon: <Jest />
+  },
+  cypress: {
+    order: 4,
+    name: 'Cypress.io',
+    color: '#4A4A4D',
+    type: TechTypes.testing,
+    icon: <Cypress />
   },
   express: {
     order: 3,
@@ -208,7 +234,7 @@ const TAG_MAP: TagMap = {
     order: 3,
     name: 'FeathersJS',
     type: TechTypes.framebrary,
-    environment: TechRunTimeEnv.frontend,
+    environment: TechRunTimeEnv.backend,
     color: '#333',
     icon: <Feathers />
   },
@@ -291,6 +317,14 @@ const TAG_MAP: TagMap = {
     environment: TechRunTimeEnv.backend,
     language: 'Serverless',
     icon: <Serverless />
+  },
+  tailwind: {
+    order: 3,
+    name: 'Tailwind CSS',
+    color: '#2298BD',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.frontend,
+    icon: <Tailwind />
   },
   mongoose: {
     order: 3,

@@ -1,0 +1,44 @@
+---
+layout: project
+size: small
+banners:
+  - boilerplate
+title: Gatsby Typescript Tailwind CSS Starter Kit
+date: "2020-08-01"
+tech:
+  - gatsby
+  - graphql
+  - tailwind
+  - emotion
+languages:
+  - typescript
+images:
+repo: https://github.com/estepanov/gatsby-typescript-tailwind-starter
+website: https://gatsby-typescript-tailwind-starter-kit.netlify.app/
+---
+
+TypeScript Gatsby and Tailwind CSS (using emotion) starter kit. [Tailwind CSS](https://tailwindcss.com/) is a CSS framework that provides basic utilities for building custom designs.
+This [Gatsby.js](https://www.gatsbyjs.com/) boilerplate comes with Tailwind CSS support by using [`twin.macro`](https://github.com/ben-rogerson/twin.macro) and [emotion](https://github.com/emotion-js/emotion) to handle underlying css-in-js.
+
+- [x] TypeScript
+- [x] Aliased imports `~/components` -> `./src/components`
+- [x] Build components utilizing [Tailwind CSS](https://tailwindcss.com/) class names via [`twin.macro`](https://github.com/ben-rogerson/twin.macro) and powered by [emotion CSS-in-JS](https://github.com/emotion-js/emotion).
+  You can use `css` prop
+
+  ```jsx
+  import tw from "twin.macro";
+
+  <div css={tw`container py-3`}>{children}</div>
+  ```
+
+  ***or***
+
+  You can use the custom provided `tw` pragma prop but you will need to add an import
+  ```jsx
+  import "twin.macro";
+
+  <div tw="container py-3">{children}</div>
+  ```
+
+- [x] Automatically generated TypeScript types for your GraphQL queries.
+

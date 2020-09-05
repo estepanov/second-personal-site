@@ -15,6 +15,8 @@ const Link: React.FC<LinkProps> = ({ href, name, icon }) => {
       target="_blank"
       rel="noopener noreferrer"
       sx={{
+        marginRight: 2,
+        marginBottom: 2,
         borderColor: 'primary',
         borderStyle: 'solid',
         borderWidth: 1,
@@ -24,7 +26,7 @@ const Link: React.FC<LinkProps> = ({ href, name, icon }) => {
         paddingX: 2,
         transition: 'ease-in-out 0.3s',
         '&:hover': {
-          backgroundImage: t => `linear-gradient(to top left, ${lighten('primary', 0.1)(t)}, ${darken('primary', 0.01)(t)})`,
+          backgroundImage: t => `linear-gradient(to top left, ${lighten('primary', 0.2)(t)}, ${darken('primary', 0.1)(t)})`,
           color: 'white'
         }
       }}

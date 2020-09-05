@@ -13,6 +13,7 @@ export default props => (
       color: 'gray',
       transition: 'ease-in 0.3s',
       '& span': {
+        transform: 'scale(0.95)',
         padding: 2,
         transition: 'ease-in 0.3s',
         position: 'absolute',
@@ -23,12 +24,24 @@ export default props => (
         color: 'white',
         // backgroundColor: 'primary',
         // backgroundImage: t => `linear-gradient(to bottom right, ${lighten('primary', 0.1)(t)}, ${t.colors.primary})`,
-        backgroundImage: t => `linear-gradient(to top left, ${lighten('primary', 0.1)(t)}, ${darken('primary', 0.01)(t)})`,
+        backgroundImage: t => `linear-gradient(to top left, ${lighten('primary', 0.1)(t)}, ${darken('primary', 0.1)(t)})`,
         opacity: 0,
         fontSize: 1
       },
       '&:hover': {
         '& span': {
+          transform: 'scale(1)',
+          pointerEvents: 'auto',
+          visibility: 'visible',
+          display: 'block',
+          opacity: 1,
+          bottom: '100%'
+        },
+        color: 'primary'
+      },
+      '&:focus': {
+        '& span': {
+          transform: 'scale(1)',
           pointerEvents: 'auto',
           visibility: 'visible',
           display: 'block',

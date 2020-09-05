@@ -17,6 +17,7 @@ export enum TechTypes {
   database = 'Databases',
   framebrary = 'Frameworks & Libraries', // library OR framework
   runtime = 'Runtimes',
+  testing = 'Testing',
   devops = 'DevOps',
   deployment = 'Deployments'
 }

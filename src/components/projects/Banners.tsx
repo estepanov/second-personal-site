@@ -1,6 +1,6 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, Box } from 'theme-ui'
+import { jsx, Box, SxStyleProp } from 'theme-ui'
 import { lighten, darken } from '@theme-ui/color'
 
 import { ProjectBannersEnum } from '../../interfaces/Project'
@@ -10,7 +10,10 @@ interface BannerProps {
 }
 
 const Banner: React.FC<BannerProps> = ({ type }) => {
-  const sx = {
+  const sx: SxStyleProp = {
+    backgroundColor: undefined,
+    backgroundImage: undefined,
+    color: 'text',
     flexShrink: 0,
     paddingX: 2,
     paddingY: 1,
@@ -23,6 +26,11 @@ const Banner: React.FC<BannerProps> = ({ type }) => {
     case ProjectBannersEnum.hackathon:
       sx.backgroundColor = 'secondary'
       sx.backgroundImage = t => `linear-gradient(to bottom right, ${lighten('secondary', 0.15)(t)}, ${darken('secondary', 0.2)(t)})`
+      sx.color = 'white'
+      break
+    case ProjectBannersEnum.boilerplate:
+      sx.backgroundColor = 'pink'
+      sx.backgroundImage = t => `linear-gradient(to bottom right, ${lighten('pink', 0.15)(t)}, ${darken('pink', 0.2)(t)})`
       sx.color = 'white'
       break
     default:

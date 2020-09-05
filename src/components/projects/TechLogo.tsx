@@ -27,6 +27,19 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) =
         marginBottom,
         '&:hover': {
           '& span': {
+            transform: 'scale(1)',
+            visibility: 'visible',
+            display: 'block',
+            left: 0,
+            opacity: 1,
+            color: 'white',
+            bottom: '105%'
+          },
+          color
+        },
+        '&:focus': {
+          '& span': {
+            transform: 'scale(1)',
             visibility: 'visible',
             display: 'block',
             left: 0,
@@ -54,7 +67,8 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) =
               visibility: 'hidden',
               backgroundColor: color,
               opacity: 0,
-              fontSize: 1
+              fontSize: 1,
+              transform: 'scale(0.9)'
             }}
           >
             {TAG_MAP[tag].name}

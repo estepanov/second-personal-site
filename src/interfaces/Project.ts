@@ -19,6 +19,7 @@ export enum ProjectSizeEnum {
 }
 
 export enum ProjectBannersEnum {
+  boilerplate = 'boilerplate',
   hackathon = 'hackathon'
 }
 
