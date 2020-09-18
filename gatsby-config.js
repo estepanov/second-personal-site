@@ -45,13 +45,13 @@ const plugins = [
       path: `${__dirname}/src/content/projects`
     }
   },
-  // {
-  //   resolve: 'gatsby-source-filesystem',
-  //   options: {
-  //     name: 'blog',
-  //     path: `${__dirname}/src/content/blog`
-  //   }
-  // },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'blog',
+      path: `${__dirname}/src/content/blog`
+    }
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {

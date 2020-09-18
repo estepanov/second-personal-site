@@ -3,23 +3,24 @@ title: An introduction to MobX in React
 date: 2020-09-18T22:10:00.384Z
 size: small
 ---
+
+# An introduction to MobX in React
+
 _This is a high level introduction to MobX in React based on a Lunch and Learn session I held at work. The original presentation can be found [here on Google Slides](https://docs.google.com/presentation/d/1PyKOPfLLVSORgLBGHto6xN4xpB214JDA4glOVx9ETvw/edit#slide=id.g8ebf37b0f0_3_249)._
-
-# Introduction
-
-...
 
 ## What is MobX?
 
 Michel Weststrate, the creator of MobX, [described it](https://codeburst.io/the-curious-case-of-mobx-state-tree-7b4e22d461f) best when he said to think of MobX as "data flow library, that enables you to roll your own state management architecture with minimal effort".
 
-> **MobX is a battle tested library that makes state management simple and scalable by transparently applying functional reactive programming (TFRP)** _[- the docs](https://mobx.js.org/README.html)_
+The [documentation](https://mobx.js.org/README.html) goes more in depth:
+
+> **MobX is a battle tested library that makes state management simple and scalable by transparently applying functional reactive programming (TFRP)**
 
 MobX is a library that can help us manage application state in a simple and scalable way. But what exactly does it mean to do that _"transparently applying functional reactive programming"_?
 
 __Transparent__
 
-Under the hood MobX is following an observable pattern which requires subscribing to values and handling update notifications. It makes this whole abstraction layer _transparent_. All we need to worry about is making a store and a component. 
+Under the hood MobX is following an observable pattern which requires subscribing to values and handling update notifications. It makes this whole abstraction layer _transparent_. All we need to worry about is making a store and a component.
 
 __Reactive__
 
@@ -27,7 +28,7 @@ By marking a value as an `observable` value and a React component that consumes 
 
 __Functional__
 
-When values change we perform functional transformations such as map, reduce, filter, and compose. 
+When values change we perform functional transformations such as map, reduce, filter, and compose.
 
 MobX alone simply provides the core functionality of dealing with make data observable. In order to have React components actually _react_ to our data we need a binding like [mobx-react](https://github.com/mobxjs/mobx-react) or its aptly named sibling that sounds like the name of a domestic beer [mobx-react-lite](https://github.com/mobxjs/mobx-react-lite).
 
@@ -35,15 +36,15 @@ MobX alone simply provides the core functionality of dealing with make data obse
 
 __Benefits__
 
-- MobX doesn't make assumptions about our data. That means its pretty flexible and doesn't care about data not being normalized or your graph data structure.  
+- MobX doesn't make assumptions about our data. That means its pretty flexible and doesn't care about data not being normalized or your graph data structure.
 - Allows for clear encapsulation of data and logic with classes.
-- Minimal boilerplate code. It is declarative. We simply mark functions and values to focus on the what of domain logic, rather than the how to achieve it 
+- Minimal boilerplate code. It is declarative. We simply mark functions and values to focus on the what of domain logic, rather than the how to achieve it
 - Provides out-of-the-box efficiency. MobX internally tracks dependencies and caches results to only recompute if necessary. Meaning we have no need for redux selector memoization!
 - Supports value-oriented programming. Value-oriented programming focuses on value changes rather than how they change. We would think of a stream of changing values propagating versus a stream of events propagating changes
 
 __Drawbacks__
 
 - Not immutable
-- Unable to revert to previous states 
-- Requires greater understanding of the API 
+- Unable to revert to previous states
+- Requires greater understanding of the API
 - Slight increase in complexity while working across multiple domains or stores.

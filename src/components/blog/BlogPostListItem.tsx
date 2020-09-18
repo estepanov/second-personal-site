@@ -10,7 +10,7 @@ interface BlogPostListItemProps {
 const BlogPostListItem: React.FC<BlogPostListItemProps> = ({ post }) => {
   return (
     <PageListItem
-      linkTo={post.frontmatter.title}
+      linkTo={post.fields.slug}
       size={post.frontmatter.size}
       images={post.frontmatter.images}
       tech={post.frontmatter.tech}
