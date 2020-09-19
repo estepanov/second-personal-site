@@ -90,7 +90,7 @@ const lightTheme = {
 
   listBg: mains.gray300,
   listBgAlt: mains.gray500,
-  listContent: mains.gray600,
+  listContent: mains.gray700,
   listHeader: mains.gray900
 }
 
@@ -115,7 +115,7 @@ export const modes: ModeTypes = {
     gray: mains.gray600,
     listBg: mains.gray800,
     listBgAlt: mains.gray700,
-    listContent: mains.gray400,
+    listContent: mains.gray600,
     listHeader: mains.gray100
   }
 }
