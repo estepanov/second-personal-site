@@ -1,7 +1,22 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx } from 'theme-ui'
+import { css, jsx } from 'theme-ui'
 import { lighten } from '@theme-ui/color'
+import { Transition } from 'react-transition-group'
+
+const transitionStyles = {
+  entering: { opacity: 1, transform: 'scale(1.05)' },
+  entered: { opacity: 1, transform: 'scale(1)' },
+  exiting: { opacity: 0, transform: 'scale(0.8)' },
+  exited: { opacity: 0, transform: 'scale(0.8)' }
+}
+
+const baseStyle = {
+  display: 'inline-flex',
+  transition: 'all ease-in-out 500ms'
+}
+
+const TIMEOUT = 500
 
 interface ToggleProps {
   id: string
@@ -21,7 +36,6 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, CheckedIcon
         alignItems: 'center',
         paddingX: '0.5em',
         flexDirection: 'row',
-        justifyContent: checked ? 'flex-start' : 'flex-end',
         width: '3.75em',
         height: '2.125em',
         backgroundColor: t => lighten('listBgAlt', 0.1)(t),
@@ -47,8 +61,33 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, CheckedIcon
         checked={checked}
         onChange={onChange}
       />
-      {!checked && UncheckedIcon ? <UncheckedIcon /> : null}
-      {checked && CheckedIcon ? <CheckedIcon /> : null}
+      <div
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: '100%'
+        }}
+      >
+        <Transition in={checked && CheckedIcon} timeout={TIMEOUT}>
+          {state => {
+            return (
+              <span css={css({ ...transitionStyles[state], ...baseStyle })}>
+                <CheckedIcon />
+              </span>
+            )
+          }}
+        </Transition>
+        <Transition in={!checked && UncheckedIcon} timeout={TIMEOUT}>
+          {state => {
+            return (
+              <span css={css({ ...transitionStyles[state], ...baseStyle })}>
+                <UncheckedIcon />
+              </span>
+            )
+          }}
+        </Transition>
+      </div>
       <span
         id="slider"
         sx={{
