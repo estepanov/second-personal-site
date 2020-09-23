@@ -16,6 +16,10 @@ const LINKS = [
     to: '/projects'
   },
   {
+    title: 'Books',
+    to: '/books'
+  },
+  {
     title: 'Blog',
     to: '/blog'
   },

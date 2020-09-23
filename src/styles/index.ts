@@ -56,6 +56,7 @@ export const defaultTheme = {
   },
   links: {
     mobileNav: {
+      flexShrink: 0,
       fontFamily: 'nav',
       transition: 'ease-in-out 0.5s',
       marginTop: 1,
@@ -82,6 +83,7 @@ export const defaultTheme = {
       }
     },
     nav: {
+      flexShrink: 0,
       fontFamily: 'nav',
       textTransform: 'uppercase',
       transition: 'ease-in-out 0.5s',

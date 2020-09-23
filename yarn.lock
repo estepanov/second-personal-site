@@ -1486,6 +1486,13 @@
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-0.1.0.tgz#30f5cf17a3a5590ca90dcfa834492e515e17d0a5"
   integrity sha512-/6cnDycgWhmvUpRmYY7506qJlym+hirk4tbt2waY3C2rOjFn+4/Gt4CuVLzjrsNJvOJkN36bx+OSlccecBgsrg==
 
+"@hueyy/gatsby-source-goodreads@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@hueyy/gatsby-source-goodreads/-/gatsby-source-goodreads-0.5.0.tgz#a99e1ecd80a26a92aa35b7c97040789bee2795c1"
+  integrity sha512-yW0Z4Xn/R8RUYH4ScVBJTSVcLjdg6d9UrTqIIzdzZyEn+3NWb2sos+XqUE/SxGlgrFsUbR5/odUJdYdAsTAA0A==
+  dependencies:
+    node-goodreads "^0.3.1"
+
 "@iarna/toml@2.2.5":
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"
@@ -12221,6 +12228,16 @@ node-forge@0.9.0:
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.9.0.tgz#d624050edbb44874adca12bb9a52ec63cb782579"
   integrity sha512-7ASaDa3pD+lJ3WvXFsxekJQelBKRpne+GOVbLbtHYdd7pFspyeuJHnWfLplGf3SwKGbfs/aYl5V/JCIaHVUKKQ==
 
+node-goodreads@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/node-goodreads/-/node-goodreads-0.3.1.tgz#343fff34991b4b1daa9abd4a643c01702f9551bc"
+  integrity sha512-N5lY3adawhlDlTwyn8RcRzi0Gx55o12djRYQ3svHhKGfo4wrmwNbQ9tv0EIvmQUEOSplqip6P1QgbgCSXDq8bw==
+  dependencies:
+    axios "^0.19.2"
+    oauth "^0.9.15"
+    query-string "^6.13.1"
+    xml2js ">= 0.1.9"
+
 node-libs-browser@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/node-libs-browser/-/node-libs-browser-2.2.1.tgz#b64f513d18338625f90346d27b0d235e631f6425"
@@ -12412,6 +12429,11 @@ oauth-sign@~0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
   integrity sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==
+
+oauth@^0.9.15:
+  version "0.9.15"
+  resolved "https://registry.yarnpkg.com/oauth/-/oauth-0.9.15.tgz#bd1fefaf686c96b75475aed5196412ff60cfb9c1"
+  integrity sha1-vR/vr2hslrdUda7VGWQS/2DPucE=
 
 object-assign@^3.0.0:
   version "3.0.0"
@@ -14003,6 +14025,15 @@ query-string@^6.11.1:
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.12.0.tgz#fa0fe5b3ddf4d040d1236b80672949ab33d5cf80"
   integrity sha512-aoiFW9ZU7jP8Itjqfpw80Qe7RoyCIhFrW522sdsp9LG92pat6CCG3d8qNZBaUi71FsEjIfLjx9Ky347FtVoqXA==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
+query-string@^6.13.1:
+  version "6.13.2"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.2.tgz#3585aa9412c957cbd358fd5eaca7466f05586dda"
+  integrity sha512-BMmDaUiLDFU1hlM38jTFcRt7HYiGP/zt1sRzrIWm5zpeEuO1rkbPS0ELI3uehoLuuhHDCS8u8lhFN3fEN4JzPQ==
   dependencies:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
@@ -18382,7 +18413,7 @@ xml-parse-from-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/xml-parse-from-string/-/xml-parse-from-string-1.0.1.tgz#a9029e929d3dbcded169f3c6e28238d95a5d5a28"
   integrity sha1-qQKekp09vN7RafPG4oI42VpdWig=
 
-xml2js@^0.4.5:
+"xml2js@>= 0.1.9", xml2js@^0.4.5:
   version "0.4.23"
   resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
   integrity sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==

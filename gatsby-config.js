@@ -117,6 +117,17 @@ const plugins = [
   'gatsby-transformer-sharp',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-mdx',
+  {
+    resolve: '@hueyy/gatsby-source-goodreads',
+    options: {
+      apiKey: process.env.GATSBY_GOODREADS_API_KEY,
+      apiSecret: process.env.GATSBY_GOODREADS_API_SECRET,
+      oauthToken: process.env.GATSBY_GOODREADS_OATH_TOKEN,
+      oauthSecret: process.env.GATSBY_GOODREADS_OATH_SECRET,
+      userId: process.env.GATSBY_GOODREADS_USERID,
+      shelf: ['to-read‎', 'currently-reading', 'read'] // optional, defaults to currently-reading
+    }
+  },
   'gatsby-plugin-netlify-cms'
 ]
 
