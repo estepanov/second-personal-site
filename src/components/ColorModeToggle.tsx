@@ -1,11 +1,59 @@
 import React from 'react'
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
+import { keyframes } from '@emotion/core'
 import { Modes } from '../styles/colors'
 import Toggle from './elements/Toggle'
 
 const options = Object.values(Modes)
 
+const floatingAnimation = keyframes`
+    from {
+      /* opacity: 0.3; */
+      transform: translate3d(-150%, -150%, 0em) scale(0.7) rotate(-90deg);
+      }
+    to   {
+      /* opacity: 0.7; */
+      transform: translate3d(150%, 150%, 0em) scale(1) rotate(-90deg);
+      }
+`
+const slidingCloudAnimation = keyframes`
+    from {
+      /* opacity: 0.3; */
+      transform: translate3d(-100%, 0em, 0em);
+      }
+    to   {
+      /* opacity: 0.7; */
+      transform: translate3d(300%, 0em, 0em);
+      }
+`
+
+const rotateAnimation = keyframes`
+    from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+// const pulsingStarAnimation = keyframes`
+//     from {
+//       /* opacity: 0.3; */
+//       transform: scale(0.9) rotate(-90deg);
+//       }
+//       36% {
+//         transform: scale(1.1) rotate(-90deg);
+
+//       }
+//       66% {
+//         transform: scale(0.8) rotate(-90deg);
+
+//       }
+//     to   {
+//       /* opacity: 0.7; */
+//       transform: scale(1) rotate(-90deg);
+//       }
+// `
 // const MODE_TEXT = {
 //   [Modes.dark]: 'Dark Mode',
 //   [Modes.light]: 'Light Mode'
@@ -15,6 +63,218 @@ const options = Object.values(Modes)
 //   [Modes.dark]: MODE_TEXT.light,
 //   [Modes.light]: MODE_TEXT.dark
 // }
+
+const DarkMode = () => {
+  return (
+    <span sx={{ height: '100%', width: '100%', position: 'relative' }}>
+      <svg
+        sx={{
+          position: 'absolute',
+          right: '0.2em',
+          top: '0.2em',
+          height: '0.65em',
+          width: '0.65em',
+          transform: 'rotate(90deg)'
+          // animation: `${pulsingStarAnimation} infinite 5s ease`
+
+          // transform: 'scale(0.4)'
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M12,17.877L18.831,22l-1.813-7.77l6.035-5.228l-7.947-0.674L12,1L8.894,8.328L0.947,9.002l6.035,5.228L5.169,22L12,17.877z"
+        />
+      </svg>
+      <svg
+        sx={{
+          position: 'absolute',
+          right: '1em',
+          top: '0.45em',
+          height: '0.35em',
+          width: '0.35em'
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M12,17.877L18.831,22l-1.813-7.77l6.035-5.228l-7.947-0.674L12,1L8.894,8.328L0.947,9.002l6.035,5.228L5.169,22L12,17.877z"
+        />
+      </svg>
+      <svg
+        sx={{
+          position: 'absolute',
+          right: '0.5em',
+          top: '0.95em',
+          height: '0.35em',
+          width: '0.35em'
+          // animation: `${pulsingStarAnimation} infinite 5s ease`
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M12,17.877L18.831,22l-1.813-7.77l6.035-5.228l-7.947-0.674L12,1L8.894,8.328L0.947,9.002l6.035,5.228L5.169,22L12,17.877z"
+        />
+      </svg>
+      {/* <svg
+        sx={{
+          position: 'absolute',
+          left: '0.3em',
+          bottom: '0.3em',
+          height: '0.2em',
+          width: '0.2em'
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentColor"
+          d="M12,17.877L18.831,22l-1.813-7.77l6.035-5.228l-7.947-0.674L12,1L8.894,8.328L0.947,9.002l6.035,5.228L5.169,22L12,17.877z"
+        />
+      </svg> */}
+      <svg
+        css={{
+          position: 'absolute',
+          top: '30%',
+          left: 0,
+          animation: `${floatingAnimation} 10s ease infinite`
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 26 26"
+        width="1em"
+        height="1em"
+      >
+        <path
+          fill="currentColor"
+          d="M 25.34375 0.59375 L 21.4375 3.15625 L 16.8125 6.21875 L 18.375 3.3125 L 15.4375 4.90625 C 15.4375 4.90625 13.054688 6.203125 10.34375 7.84375 C 7.632813 9.484375 4.636719 11.402344 3.09375 13 C 0.320313 15.773438 0.320313 20.226563 3.09375 23 C 5.867188 25.773438 10.320313 25.773438 13.09375 23 C 14.636719 21.457031 16.398438 18.867188 17.8125 16.59375 C 19.226563 14.320313 20.28125 12.375 20.28125 12.375 L 21.5625 10.0625 L 19.0625 10.96875 L 18.6875 11.09375 L 22.84375 4.53125 Z M 18.65625 7.40625 L 15.46875 12.46875 L 13.90625 14.90625 L 16.625 13.9375 L 17.15625 13.75 C 16.742188 14.460938 16.691406 14.566406 16.09375 15.53125 C 14.707031 17.757813 12.945313 20.335938 11.6875 21.59375 C 9.660156 23.621094 6.527344 23.621094 4.5 21.59375 C 2.472656 19.566406 2.472656 16.433594 4.5 14.40625 L 4.53125 14.40625 C 5.6875 13.207031 8.710938 11.171875 11.375 9.5625 C 12.421875 8.929688 12.519531 8.90625 13.34375 8.4375 L 13.125 8.8125 L 11.21875 12.34375 L 14.5625 10.125 Z M 8 15 C 6.300781 15 5 16.300781 5 18 C 5 19.699219 6.300781 21 8 21 C 9.699219 21 11 19.699219 11 18 C 11 16.300781 9.699219 15 8 15 Z"
+        />
+      </svg>
+    </span>
+  )
+}
+
+const LightMode = () => {
+  return (
+    <span sx={{ height: '100%', width: '100%', position: 'relative' }}>
+      <svg
+        version="1.1"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 612.001 612.001"
+        sx={{
+          position: 'absolute',
+          right: '0.0em',
+          top: '0.0em',
+          height: '1em',
+          width: '1em',
+          animation: `${rotateAnimation} 10s linear infinite`
+          // transform: 'scale(0.4)'
+        }}
+      >
+        <g>
+          <path
+            fill="currentColor"
+            d="M306,149.341c-86.382,0-156.661,70.278-156.661,156.661c0,86.382,70.278,156.66,156.661,156.66
+			s156.66-70.278,156.66-156.66C462.66,219.618,392.382,149.341,306,149.341z"
+          />
+          <path
+            fill="currentColor"
+            d="M274.194,117.278h63.612c5.032,0,9.356-2.101,11.863-5.763c2.508-3.662,2.9-8.453,1.079-13.146L315.749,8.257
+			c-2.789-7.184-7.305-8.256-9.749-8.256s-6.96,1.073-9.749,8.255l-35,90.114c-1.821,4.692-1.427,9.482,1.079,13.145
+			C264.837,115.178,269.162,117.278,274.194,117.278z"
+          />
+          <path
+            fill="currentColor"
+            d="M337.806,494.723h-63.612c-5.032,0-9.357,2.102-11.863,5.764c-2.506,3.663-2.9,8.453-1.079,13.145l34.999,90.114
+			c2.789,7.182,7.305,8.254,9.749,8.254c2.444,0,6.96-1.072,9.749-8.254l34.999-90.115c1.821-4.69,1.429-9.48-1.079-13.144
+			C347.162,496.825,342.838,494.723,337.806,494.723z"
+          />
+          <path
+            fill="currentColor"
+            d="M127.54,190.824c2.412,5.477,7.028,8.746,12.348,8.746c3.644,0,7.257-1.608,10.174-4.526l44.981-44.98
+			c3.558-3.558,5.13-8.102,4.312-12.466c-0.819-4.362-3.928-8.028-8.532-10.056l-88.467-38.973c-2.233-0.983-4.336-1.482-6.25-1.482
+			c-3.201,0-5.959,1.415-7.568,3.882c-1.357,2.081-2.454,5.747,0.031,11.389L127.54,190.824z"
+          />
+          <path
+            fill="currentColor"
+            d="M484.46,421.178c-2.412-5.477-7.027-8.746-12.346-8.746c-3.645,0-7.259,1.609-10.177,4.527l-44.981,44.98
+			c-3.558,3.559-5.13,8.104-4.312,12.466c0.818,4.362,3.929,8.028,8.532,10.055l88.466,38.974c2.233,0.983,4.336,1.482,6.25,1.482
+			c3.201,0,5.959-1.417,7.568-3.882c1.358-2.083,2.455-5.748-0.03-11.389L484.46,421.178z"
+          />
+          <path
+            fill="currentColor"
+            d="M461.937,195.044c2.918,2.918,6.532,4.526,10.176,4.526c5.319,0,9.934-3.269,12.348-8.746l38.972-88.465
+			c2.486-5.643,1.389-9.308,0.031-11.389c-1.609-2.467-4.367-3.882-7.568-3.882c-1.914,0-4.017,0.499-6.251,1.483l-88.466,38.97
+			c-4.604,2.029-7.715,5.694-8.532,10.057c-0.818,4.363,0.754,8.908,4.312,12.466L461.937,195.044z"
+          />
+          <path
+            fill="currentColor"
+            d="M150.063,416.959c-2.918-2.918-6.532-4.527-10.177-4.527c-5.319,0-9.934,3.269-12.346,8.746l-38.972,88.465
+			c-2.486,5.643-1.389,9.308-0.031,11.39c1.609,2.466,4.368,3.882,7.568,3.882c1.914,0,4.017-0.499,6.251-1.484l88.466-38.972
+			c4.604-2.028,7.715-5.694,8.532-10.056c0.818-4.362-0.753-8.907-4.312-12.466L150.063,416.959z"
+          />
+          <path
+            fill="currentColor"
+            d="M603.745,296.251l-90.111-34.996c-1.942-0.755-3.896-1.137-5.806-1.137c-7.593,0-13.104,5.921-13.104,14.078l0.001,63.613
+			c0,8.157,5.511,14.078,13.104,14.078c1.912,0,3.866-0.382,5.806-1.136l90.112-34.999c7.182-2.79,8.254-7.306,8.254-9.751
+			C612.001,303.558,610.926,299.04,603.745,296.251z"
+          />
+          <path
+            fill="currentColor"
+            d="M104.173,351.886c7.594,0,13.106-5.921,13.106-14.078v-63.613c0-8.157-5.511-14.078-13.106-14.078
+			c-1.912,0-3.864,0.382-5.805,1.136L8.255,296.251C1.073,299.04,0,303.556,0,306.001c0,2.444,1.072,6.96,8.255,9.752l90.111,34.996
+			C100.308,351.503,102.261,351.886,104.173,351.886z"
+          />
+        </g>
+      </svg>
+      <svg
+        sx={{
+          position: 'absolute',
+          left: '0em',
+          bottom: '0.25em',
+          height: '0.7em',
+          width: '0.7em',
+          animation: `${slidingCloudAnimation} 17s`,
+          animationIterationCount: 'infinite'
+
+          // transform: 'scale(0.4)'
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 30 30"
+      >
+        <path
+          fill="currentColor"
+          d="M 18 5 A 8 8 0 0 0 10.878906 9.3691406 A 5 5 0 0 0 9 9 A 5 5 0 0 0 4.0507812 13.333984 A 6 6 0 0 0 0 19 A 6 6 0 0 0 6 25 L 24 25 A 6 6 0 0 0 30 19 A 6 6 0 0 0 25.982422 13.345703 A 8 8 0 0 0 26 13 A 8 8 0 0 0 18 5 z"
+        />
+      </svg>
+      <svg
+        sx={{
+          position: 'absolute',
+          left: '0em',
+          bottom: '0.05em',
+          height: '0.6em',
+          width: '0.6em',
+          animation: `${slidingCloudAnimation} 8s ease-in-out`,
+          animationIterationCount: 'infinite'
+          // transform: 'scale(0.4)'
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 30 30"
+      >
+        <path
+          fill="currentColor"
+          d="M 18 5 A 8 8 0 0 0 10.878906 9.3691406 A 5 5 0 0 0 9 9 A 5 5 0 0 0 4.0507812 13.333984 A 6 6 0 0 0 0 19 A 6 6 0 0 0 6 25 L 24 25 A 6 6 0 0 0 30 19 A 6 6 0 0 0 25.982422 13.345703 A 8 8 0 0 0 26 13 A 8 8 0 0 0 18 5 z"
+        />
+      </svg>
+    </span>
+  )
+}
 
 const Moon = () => (
   <svg
@@ -127,7 +387,9 @@ const ColorModeToggle: React.FC<ColorModeToggle> = ({ variant }) => {
     <Toggle
       checked={mode === Modes.dark}
       CheckedIcon={MODE_ICON.light}
+      CheckedCircleIcon={DarkMode}
       UncheckedIcon={MODE_ICON.dark}
+      UncheckedCircleIcon={LightMode}
       onChange={toggleMode}
       id="darkmode-toggle"
     />
