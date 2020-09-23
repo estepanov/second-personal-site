@@ -42,14 +42,15 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
               alt="dude"
             />
             <Box>
-              <Box sx={{ fontSize: [4, 5, 6], fontFamily: 'heading', color: 'primary' }}>Howdy 👋 I'm Evans</Box>
+              <Box sx={{ fontSize: [4, 5, 6], fontFamily: 'heading', color: 'primary', fontWeight: 'heading' }}>Howdy 👋 I'm Evans</Box>
               <Text
                 sx={{
                   marginTop: 2,
                   color: 'mutedText',
                   fontSize: [2, 3, 4],
                   // fontStyle: 'italic',
-                  fontFamily: 'heading'
+                  fontFamily: 'heading',
+                  fontWeight: 'heading'
                 }}
               >
                 I love crafting scalable web applications that delight users.
@@ -61,7 +62,7 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
             highlight of every winter. Occasionally, I can be found binge-playing Halo on 🎮 or Battlefield One on 🖱.
           </Box>
           <Work />
-          <Flex sx={{ justifyContent: 'center', alignItems: 'center', marginTop: 2 }}>
+          <Flex sx={{ justifyContent: 'center', alignItems: 'center', marginTop: 4 }}>
             <GitHubActivity />
           </Flex>
           <TechSection />

@@ -126,7 +126,7 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
           right: 0,
           bottom: 0,
           backgroundColor: 'background',
-          color: t => transparentize('text', 0.8),
+          color: t => transparentize('text', 0.7),
           borderRadius: '1.5em',
           transition: `${TIMEOUT}ms ${TRANSITION}`,
           overflow: 'hidden'

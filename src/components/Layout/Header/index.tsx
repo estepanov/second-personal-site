@@ -137,13 +137,13 @@ const Header = () => {
                 }
                 if (item.to) {
                   component = (
-                    <Box ml={4} my="auto">
+                    <Box ml={3} my="auto">
                       <NavLink to={item.to}>{item.title}</NavLink>
                     </Box>
                   )
                 }
                 return (
-                  <Box key={item.title} ml={4} my="auto">
+                  <Box key={item.title} ml={3} my="auto">
                     {component}
                   </Box>
                 )

@@ -17,17 +17,17 @@ export const defaultTheme = {
   // space: { ...space },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    nav: "'Roboto Slab', serif",
-    body: "'Lato', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+    nav: "'Archivo', serif",
+    body: "'Open San', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
     // heading: "'DM Mono', monospace",
-    heading: "'Roboto Slab', serif",
+    heading: "'Archivo', serif",
     monospace: 'Menlo, monospace'
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
-    body: 400,
-    heading: 400,
-    display: 900
+    body: 300,
+    heading: 500,
+    display: 500
   },
   lineHeights: {
     body: 1.5,
@@ -63,8 +63,9 @@ export const defaultTheme = {
       paddingTop: 1,
       paddingBottom: 1,
       paddingRight: 2,
-      fontSize: 3,
+      fontSize: 1,
       fontWeight: '500',
+      textTransform: 'uppercase',
       color: 'headerMobile',
       '&:visited': {
         color: 'headerMobile'
@@ -82,13 +83,13 @@ export const defaultTheme = {
     },
     nav: {
       fontFamily: 'nav',
-
+      textTransform: 'uppercase',
       transition: 'ease-in-out 0.5s',
       paddingTop: 2,
       paddingBottom: 2,
       paddingLeft: 2,
       paddingRight: 2,
-      fontSize: 3,
+      fontSize: 1,
       fontWeight: '500',
       color: 'text',
       '&:visited': {
@@ -99,7 +100,7 @@ export const defaultTheme = {
         color: 'headerActive'
       },
       '&.active': {
-        color: 'headerActive'
+        color: 'secondary'
       }
     }
   },

@@ -57,7 +57,7 @@ const TAG_MAP: TagMap = {
   },
   emotion: {
     order: 4,
-    name: 'Emotion CSS-in-JS',
+    name: 'Emotion',
     color: '#b71c91',
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
