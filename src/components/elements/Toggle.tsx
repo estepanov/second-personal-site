@@ -6,7 +6,10 @@ import { Transition } from 'react-transition-group'
 import { keyframes } from '@emotion/core'
 
 const TIMEOUT = 500
+const TIMEOUT_CIRCLE = 800
+
 const TRANSITION = 'ease'
+const TRANSITION_CIRCLE = 'ease-out'
 
 const enteringSpinAnimation = (dir: number) => {
   return keyframes`
@@ -19,20 +22,43 @@ const enteringSpinAnimation = (dir: number) => {
 `
 }
 
+const spinInAnimation = (dir: number) => {
+  return keyframes`
+    0%   {
+      transform: scale(0.6) rotate(${dir * 180}deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+`
+}
+
 const transitionStyles = (dir: number) => ({
   entering: { opacity: 1, animation: `${enteringSpinAnimation(dir)} ${TIMEOUT}ms ${TRANSITION}` },
   entered: { opacity: 1 },
   exiting: { opacity: 0 },
   exited: { opacity: 0 }
-  // entering: { opacity: 1, transform: 'scale(1.05) rotate(-90deg)' },
-  // entered: { opacity: 1, transform: 'scale(1) rotate(0deg)' },
-  // exiting: { opacity: 0, transform: 'scale(0.8) rotate(90deg)' },
-  // exited: { opacity: 0, transform: 'scale(0.8) rotate(-90deg)' }
+})
+
+const transitionStylesBasic = (dir: number) => ({
+  entering: { opacity: 1, animation: `${spinInAnimation(dir)} ${TIMEOUT_CIRCLE}ms ${TRANSITION_CIRCLE}` },
+  entered: { opacity: 1, transform: 'scale(1) rotate(0deg)' },
+  exiting: { opacity: 0, animation: `${spinInAnimation(dir * -1)} ${TIMEOUT_CIRCLE}ms ${TRANSITION_CIRCLE} reverse` },
+  exited: { opacity: 0, transform: `scale(0.6) rotate(${dir * 180}deg)` }
 })
 
 const baseStyle = {
   display: 'inline-flex',
-  transition: `all ${TRANSITION} 500ms`
+  transition: `all ${TRANSITION} ${TIMEOUT}ms`
+}
+
+const baseCircleStyle = {
+  position: 'absolute',
+  display: 'inline-flex',
+  flex: 1,
+  width: '100%',
+  height: '100%',
+  transition: `opacity ${TRANSITION} ${TIMEOUT_CIRCLE * 0.67}ms, transform  ${TRANSITION_CIRCLE} ${TIMEOUT_CIRCLE}ms`
 }
 
 interface ToggleProps {
@@ -144,8 +170,36 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
           // }
         }}
       >
-        {checked && CheckedCircleIcon && <CheckedCircleIcon />}
-        {!checked && !!UncheckedCircleIcon && <UncheckedCircleIcon />}
+        <Transition
+          in={checked && !!CheckedCircleIcon}
+          timeout={TIMEOUT_CIRCLE}
+        // unmountOnExit
+        // mountOnEnter
+        // appear={checked && !!CheckedCircleIcon}
+        >
+          {state => {
+            return (
+              <span css={css({ ...transitionStylesBasic(-1)[state], ...baseCircleStyle })}>
+                <CheckedCircleIcon />
+              </span>
+            )
+          }}
+        </Transition>
+        <Transition
+          in={!checked && !!UncheckedCircleIcon}
+          timeout={TIMEOUT_CIRCLE}
+        // unmountOnExit
+        // mountOnEnter
+        // appear={!checked && !!UncheckedCircleIcon}
+        >
+          {state => {
+            return (
+              <span css={css({ ...transitionStylesBasic(1)[state], ...baseCircleStyle })}>
+                <UncheckedCircleIcon />
+              </span>
+            )
+          }}
+        </Transition>
       </span>
     </label>
   )
