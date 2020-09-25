@@ -6,10 +6,10 @@ import { Transition } from 'react-transition-group'
 import { keyframes } from '@emotion/core'
 
 const TIMEOUT = 500
-const TIMEOUT_CIRCLE = 800
+const TIMEOUT_CIRCLE = 500
 
 const TRANSITION = 'ease'
-const TRANSITION_CIRCLE = 'ease-out'
+const TRANSITION_CIRCLE = 'ease'
 
 const enteringSpinAnimation = (dir: number) => {
   return keyframes`
@@ -25,7 +25,7 @@ const enteringSpinAnimation = (dir: number) => {
 const spinInAnimation = (dir: number) => {
   return keyframes`
     0%   {
-      transform: scale(0.6) rotate(${dir * 180}deg);
+      transform: scale(0.5) rotate(${dir * 180}deg);
     }
     100% {
       transform: scale(1) rotate(0deg);
@@ -34,17 +34,21 @@ const spinInAnimation = (dir: number) => {
 }
 
 const transitionStyles = (dir: number) => ({
-  entering: { opacity: 1, animation: `${enteringSpinAnimation(dir)} ${TIMEOUT}ms ${TRANSITION}` },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 }
+  entering: { opacity: 1, animation: `${enteringSpinAnimation(dir)} ${TIMEOUT}ms ${TRANSITION}`, animationPlayState: 'running' },
+  entered: { opacity: 1, animationPlayState: 'running' },
+  exiting: { opacity: 0, animationPlayState: 'running' },
+  exited: { opacity: 0, animationPlayState: 'paused' }
 })
 
 const transitionStylesBasic = (dir: number) => ({
-  entering: { opacity: 1, animation: `${spinInAnimation(dir)} ${TIMEOUT_CIRCLE}ms ${TRANSITION_CIRCLE}` },
-  entered: { opacity: 1, transform: 'scale(1) rotate(0deg)' },
-  exiting: { opacity: 0, animation: `${spinInAnimation(dir * -1)} ${TIMEOUT_CIRCLE}ms ${TRANSITION_CIRCLE} reverse` },
-  exited: { opacity: 0, transform: `scale(0.6) rotate(${dir * 180}deg)` }
+  entering: { opacity: 1, animation: `${spinInAnimation(dir)} ${TIMEOUT_CIRCLE}ms ${TRANSITION_CIRCLE}`, animationPlayState: 'running' },
+  entered: { opacity: 1, transform: 'scale(1) rotate(0deg)', animationPlayState: 'running' },
+  exiting: {
+    opacity: 0,
+    animation: `${spinInAnimation(dir * -1)} ${TIMEOUT_CIRCLE}ms ${TRANSITION_CIRCLE} reverse`,
+    animationPlayState: 'running'
+  },
+  exited: { opacity: 0, transform: `scale(0.6) rotate(${dir * 360}deg)`, animationPlayState: 'paused' }
 })
 
 const baseStyle = {
@@ -85,7 +89,7 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
         width: '3.75em',
         height: '2.125em',
         backgroundColor: t => lighten('listBgAlt', 0.1)(t),
-        boxShadow: t => `0px 0px 0.3em ${darken('listBgAlt', 0.05)(t)} inset`,
+        boxShadow: t => `0px 0px 0.3em ${darken('listBgAlt', 0.1)(t)} inset`,
         borderRadius: '1.5em',
         '&:focus-within': {
           boxShadow: t => `0px 0px 0px 3px ${lighten('secondary', 0.1)(t)}`
@@ -138,6 +142,7 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
       <span
         id="slider"
         sx={{
+          boxShadow: t => `0px 0px 0.3em ${darken('listBgAlt', 0.1)(t)}`,
           transform: checked ? 'translateX(1.625em)' : 'translateX(0px)',
           position: 'absolute',
           zIndex: 1,
@@ -152,7 +157,7 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
           right: 0,
           bottom: 0,
           backgroundColor: 'background',
-          color: t => transparentize('text', 0.7),
+          color: t => transparentize('text', 0.5),
           borderRadius: '1.5em',
           transition: `${TIMEOUT}ms ${TRANSITION}`,
           overflow: 'hidden'
@@ -173,9 +178,9 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
         <Transition
           in={checked && !!CheckedCircleIcon}
           timeout={TIMEOUT_CIRCLE}
-        // unmountOnExit
-        // mountOnEnter
-        // appear={checked && !!CheckedCircleIcon}
+          // unmountOnExit
+          // mountOnEnter
+          appear={checked && !!CheckedCircleIcon}
         >
           {state => {
             return (
@@ -188,9 +193,9 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
         <Transition
           in={!checked && !!UncheckedCircleIcon}
           timeout={TIMEOUT_CIRCLE}
-        // unmountOnExit
-        // mountOnEnter
-        // appear={!checked && !!UncheckedCircleIcon}
+          // unmountOnExit
+          // mountOnEnter
+          appear={!checked && !!UncheckedCircleIcon}
         >
           {state => {
             return (

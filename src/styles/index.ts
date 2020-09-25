@@ -27,7 +27,7 @@ export const defaultTheme = {
   fontWeights: {
     body: 300,
     heading: 500,
-    display: 500
+    display: 700
   },
   lineHeights: {
     body: 1.5,

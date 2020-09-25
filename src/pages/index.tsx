@@ -45,12 +45,11 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
               <Box sx={{ fontSize: [4, 5, 6], fontFamily: 'heading', color: 'primary', fontWeight: 'heading' }}>Howdy 👋 I'm Evans</Box>
               <Text
                 sx={{
-                  marginTop: 2,
                   color: 'mutedText',
-                  fontSize: [2, 3, 4],
+                  fontSize: [2, 3],
                   // fontStyle: 'italic',
-                  fontFamily: 'heading',
-                  fontWeight: 'heading'
+                  fontFamily: 'body',
+                  fontWeight: 'body'
                 }}
               >
                 I love crafting scalable web applications that delight users.

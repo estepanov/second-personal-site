@@ -9,22 +9,22 @@ const options = Object.values(Modes)
 
 const floatingAnimation = keyframes`
     from {
-      /* opacity: 0.3; */
-      transform: translate3d(-300%, -300%, 0em) scale(0.7) rotate(-90deg);
+      opacity: 0.6;
+      transform: translate3d(0em, 0em, 0em) scale(0.7) rotate(-90deg);
       }
     to   {
-      /* opacity: 0.7; */
-      transform: translate3d(300%, 300%, 0em) scale(1) rotate(-90deg);
+      opacity: 1;
+      transform: translate3d(3em, 3em, 0em) scale(1) rotate(-90deg);
       }
 `
 const slidingCloudAnimation = keyframes`
     from {
       opacity: 0.7;
-      transform: translate3d(-100%, 0em, 0em);
+      transform: translate3d(0em, 0em, 0em);
       }
     to   {
       opacity: 0.9;
-      transform: translate3d(300%, 0em, 0em);
+      transform: translate3d(3em, 0em, 0em);
       }
 `
 
@@ -69,13 +69,15 @@ const DarkMode = () => {
     <span sx={{ height: '100%', width: '100%', position: 'relative' }}>
       <svg
         sx={{
+          opacity: 0.6,
           position: 'absolute',
           right: '0em',
           top: '0em',
           height: '1em',
           width: '1em',
           transform: 'rotate(90deg)',
-          animation: `${rotateAnimation} 10s linear infinite`
+          animation: `${rotateAnimation} 10s linear infinite`,
+          animationPlayState: 'inherit'
         }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -87,14 +89,16 @@ const DarkMode = () => {
       </svg>
       <svg
         sx={{
+          opacity: 0.7,
           position: 'absolute',
-          // right: '2em',
-          top: '45%',
+          left: '-0.4em',
+          top: '-0.1em',
           height: '0.35em',
           width: '0.35em',
-          animation: `${floatingAnimation} 8s ease-in`,
+          animation: `${floatingAnimation} 18s ease-in`,
           animationIterationCount: 'infinite',
-          animationDelay: '300ms'
+          animationDelay: '7500ms',
+          animationPlayState: 'inherit'
         }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -106,14 +110,16 @@ const DarkMode = () => {
       </svg>
       <svg
         sx={{
+          opacity: 0.65,
           position: 'absolute',
-          left: '5%',
-          top: '15%',
+          left: '-0.5em',
+          top: '-0.2',
           height: '0.4em',
           width: '0.4em',
-          animation: `${floatingAnimation} 10s ease-in`,
-          animationIterationCount: 'infinite'
-          // animation: `${pulsingStarAnimation} infinite 5s ease`
+          animation: `${floatingAnimation} 18s ease-in`,
+          animationDelay: '3900ms',
+          animationIterationCount: 'infinite',
+          animationPlayState: 'inherit'
         }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -125,10 +131,13 @@ const DarkMode = () => {
       </svg>
       <svg
         css={{
+          opacity: 0.7,
           position: 'absolute',
-          top: '30%',
-          left: 0,
-          animation: `${floatingAnimation} 10s ease-out infinite`
+          top: '-1em',
+          left: '-1.5em',
+          animation: `${floatingAnimation} 18s ease-out infinite`,
+          // animationDelay: '1000ms',
+          animationPlayState: 'inherit'
         }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 26 26"
@@ -155,12 +164,14 @@ const LightMode = () => {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 612.001 612.001"
         sx={{
+          opacity: 0.6,
           position: 'absolute',
           right: '0.0em',
           top: '0.0em',
           height: '1em',
           width: '1em',
-          animation: `${rotateAnimation} 10s linear infinite`
+          animation: `${rotateAnimation} 12s linear infinite`,
+          animationPlayState: 'inherit'
           // transform: 'scale(0.4)'
         }}
       >
@@ -222,14 +233,15 @@ const LightMode = () => {
       </svg>
       <svg
         sx={{
+          opacity: 0.75,
           position: 'absolute',
-          left: '0%',
+          left: '-0.8em',
           bottom: '0.25em',
           height: '0.7em',
           width: '0.7em',
-          animation: `${slidingCloudAnimation} 17s ease-in`,
-          animationIterationCount: 'infinite'
-
+          animation: `${slidingCloudAnimation} 19s ease-in`,
+          animationIterationCount: 'infinite',
+          animationPlayState: 'inherit'
           // transform: 'scale(0.4)'
         }}
         xmlns="http://www.w3.org/2000/svg"
@@ -242,14 +254,17 @@ const LightMode = () => {
       </svg>
       <svg
         sx={{
+          opacity: 0.7,
           position: 'absolute',
-          left: '-30%',
+          left: '-0.7em',
           bottom: '0%',
           height: '0.6em',
           width: '0.6em',
-          animation: `${slidingCloudAnimation} 8s ease-in`,
-          animationDelay: '900ms',
-          animationIterationCount: 'infinite'
+          animation: `${slidingCloudAnimation} 17s ease-in`,
+          animationDelay: '10000ms',
+          animationIterationCount: 'infinite',
+          animationPlayState: 'inherit'
+
           // transform: 'scale(0.4)'
         }}
         xmlns="http://www.w3.org/2000/svg"
