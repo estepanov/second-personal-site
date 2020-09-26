@@ -6,7 +6,7 @@ import Layout from '../layouts'
 import Work from '../components/home/Work'
 import Container from '../components/Layout/Container'
 import GitHubActivity from '../components/GitHubActivityBook'
-import TechSection from '../components/home/Tech'
+import TechSection from '../components/home/TechCloud'
 
 interface IndexProps {
   location: Location

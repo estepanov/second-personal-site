@@ -123,7 +123,7 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
       }, [data.weeks])
       return (
         <Box>
-          <Heading as="h4" sx={{ paddingBottom: 1, fontSize: 3 }}>
+          <Heading as="h2" sx={{ paddingBottom: 1 }}>
             Github Activity
             <span sx={{ fontSize: 0, color: 'mutedText', marginLeft: 2 }}>as of {build.from(now, false)}</span>
           </Heading>

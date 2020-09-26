@@ -76,8 +76,8 @@ const DarkMode = () => {
           height: '1em',
           width: '1em',
           transform: 'rotate(90deg)',
-          animation: `${rotateAnimation} 10s linear infinite`,
-          animationPlayState: 'inherit'
+          animation: `${rotateAnimation} 10s linear infinite`
+          // animationPlayState: 'inherit'
         }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -97,8 +97,8 @@ const DarkMode = () => {
           width: '0.35em',
           animation: `${floatingAnimation} 18s ease-in`,
           animationIterationCount: 'infinite',
-          animationDelay: '7500ms',
-          animationPlayState: 'inherit'
+          animationDelay: '7500ms'
+          // animationPlayState: 'inherit'
         }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -118,8 +118,8 @@ const DarkMode = () => {
           width: '0.4em',
           animation: `${floatingAnimation} 18s ease-in`,
           animationDelay: '3900ms',
-          animationIterationCount: 'infinite',
-          animationPlayState: 'inherit'
+          animationIterationCount: 'infinite'
+          // animationPlayState: 'inherit'
         }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -135,9 +135,9 @@ const DarkMode = () => {
           position: 'absolute',
           top: '-1em',
           left: '-1.5em',
-          animation: `${floatingAnimation} 18s ease-out infinite`,
+          animation: `${floatingAnimation} 18s ease-out infinite`
           // animationDelay: '1000ms',
-          animationPlayState: 'inherit'
+          // animationPlayState: 'inherit'
         }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 26 26"
@@ -170,8 +170,8 @@ const LightMode = () => {
           top: '0.0em',
           height: '1em',
           width: '1em',
-          animation: `${rotateAnimation} 12s linear infinite`,
-          animationPlayState: 'inherit'
+          animation: `${rotateAnimation} 12s linear infinite`
+          // animationPlayState: 'inherit'
           // transform: 'scale(0.4)'
         }}
       >

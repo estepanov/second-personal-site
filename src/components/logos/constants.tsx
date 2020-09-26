@@ -44,7 +44,8 @@ const TAG_MAP: TagMap = {
     name: 'Python',
     type: TechTypes.language,
     color: '#0277BD',
-    icon: <Python />
+    icon: <Python />,
+    includes: [TechRunTimeEnv.backend, TechTypes.language]
   },
   node: {
     order: 0,
@@ -53,7 +54,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.runtime,
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
-    icon: <Node />
+    icon: <Node />,
+    includes: [TechRunTimeEnv.backend, TechTypes.runtime]
   },
   emotion: {
     order: 4,
@@ -61,21 +63,24 @@ const TAG_MAP: TagMap = {
     color: '#b71c91',
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
-    icon: <Emotion />
+    icon: <Emotion />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   jest: {
     order: 3,
     name: 'Jest',
     color: '#14c213',
     type: TechTypes.testing,
-    icon: <Jest />
+    icon: <Jest />,
+    includes: [TechRunTimeEnv.backend, TechRunTimeEnv.frontend, TechTypes.framebrary, TechTypes.testing]
   },
   cypress: {
     order: 4,
     name: 'Cypress.io',
     color: '#4A4A4D',
     type: TechTypes.testing,
-    icon: <Cypress />
+    icon: <Cypress />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary, TechTypes.testing]
   },
   express: {
     order: 3,
@@ -84,14 +89,16 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
-    icon: <Express />
+    icon: <Express />,
+    includes: [TechRunTimeEnv.backend, TechTypes.framebrary]
   },
   javascript: {
     order: 0,
     name: 'JavaScript',
     color: '#ffd603',
     type: TechTypes.language,
-    icon: <JavaScript />
+    icon: <JavaScript />,
+    includes: [TechRunTimeEnv.backend, TechRunTimeEnv.frontend, TechTypes.language]
     // icon: <i className="fab fa-js" />
   },
   typescript: {
@@ -99,7 +106,8 @@ const TAG_MAP: TagMap = {
     name: 'TypeScript',
     type: TechTypes.language,
     color: '#294e80',
-    icon: <TypeScript />
+    icon: <TypeScript />,
+    includes: [TechRunTimeEnv.backend, TechRunTimeEnv.frontend, TechTypes.language]
   },
   angular: {
     order: 3,
@@ -108,7 +116,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <Angular />
+    icon: <Angular />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   react: {
     order: 2,
@@ -117,7 +126,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <i className="fab fa-react" />
+    icon: <i className="fab fa-react" />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   nextjs: {
     order: 2.1,
@@ -126,7 +136,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <NextJs />
+    icon: <NextJs />,
+    includes: [TechRunTimeEnv.frontend, TechRunTimeEnv.backend, TechTypes.framebrary]
   },
   gatsby: {
     order: 2.2,
@@ -135,7 +146,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <Gatsby />
+    icon: <Gatsby />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   graphql: {
     order: 4,
@@ -143,7 +155,8 @@ const TAG_MAP: TagMap = {
     color: '#e10098',
     type: TechTypes.language,
     environment: TechRunTimeEnv.backend,
-    icon: <GraphQL />
+    icon: <GraphQL />,
+    includes: [TechRunTimeEnv.frontend, TechRunTimeEnv.backend]
   },
   'react-native': {
     order: 2.3,
@@ -152,7 +165,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <ReactNative />
+    icon: <ReactNative />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   redux: {
     order: 3,
@@ -161,7 +175,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <Redux />
+    icon: <Redux />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   electron: {
     order: 2.3,
@@ -170,7 +185,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <ElectronLogo />
+    icon: <ElectronLogo />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   postgres: {
     order: 1.1,
@@ -178,7 +194,8 @@ const TAG_MAP: TagMap = {
     color: '#32668f',
     type: TechTypes.database,
     // environment: TechRunTimeEnv.backend,
-    icon: <Postgres />
+    icon: <Postgres />,
+    includes: [TechRunTimeEnv.backend, TechTypes.database]
   },
   mongodb: {
     order: 1,
@@ -186,7 +203,8 @@ const TAG_MAP: TagMap = {
     color: '#4caf50',
     type: TechTypes.database,
     // environment: TechRunTimeEnv.backend,
-    icon: <MongoDB />
+    icon: <MongoDB />,
+    includes: [TechRunTimeEnv.backend, TechTypes.database]
   },
   redis: {
     order: 1.2,
@@ -194,7 +212,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.database,
     // environment: TechRunTimeEnv.backend,
     color: '#d92a21',
-    icon: <Redis />
+    icon: <Redis />,
+    includes: [TechRunTimeEnv.backend, TechTypes.database]
   },
   firebase: {
     order: 4,
@@ -203,7 +222,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.database,
     // environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <Firebase />
+    icon: <Firebase />,
+    includes: [TechRunTimeEnv.frontend, TechRunTimeEnv.backend, TechTypes.database]
   },
   'styled-components': {
     order: 3,
@@ -211,8 +231,9 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    color: '#da9a62',
-    icon: <StyledComponents />
+    color: '#ffd546',
+    icon: <StyledComponents />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   sass: {
     order: 3,
@@ -220,7 +241,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     color: '#cf649a',
-    icon: <Sass />
+    icon: <Sass />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   'theme-ui': {
     order: 3,
@@ -228,7 +250,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     color: '#000',
-    icon: <ThemeUI />
+    icon: <ThemeUI />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   feathers: {
     order: 3,
@@ -236,7 +259,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
     color: '#333',
-    icon: <Feathers />
+    icon: <Feathers />,
+    includes: [TechRunTimeEnv.backend, TechTypes.framebrary]
   },
   'mobx-state-tree': {
     order: 3,
@@ -245,7 +269,8 @@ const TAG_MAP: TagMap = {
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
     color: '#ff7102',
-    icon: <MobxStateTree />
+    icon: <MobxStateTree />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   css3: {
     order: 9,
@@ -253,7 +278,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.language,
     environment: TechRunTimeEnv.frontend,
     color: '#2168ed',
-    icon: <i className="fab fa-css3-alt" />
+    icon: <i className="fab fa-css3-alt" />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   html5: {
     order: 9,
@@ -261,35 +287,40 @@ const TAG_MAP: TagMap = {
     type: TechTypes.language,
     environment: TechRunTimeEnv.frontend,
     color: '#e44e27',
-    icon: <i className="fab fa-html5" />
+    icon: <i className="fab fa-html5" />,
+    includes: [TechRunTimeEnv.frontend]
   },
   heroku: {
     order: 4,
     name: 'Heroku',
     color: '#7e57c2',
     type: TechTypes.deployment,
-    icon: <Heroku />
+    icon: <Heroku />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.deployment, TechRunTimeEnv.backend]
   },
   aws: {
     order: 2,
     name: 'Amazon Web Services',
     color: '#252f3e',
     type: TechTypes.deployment,
-    icon: <AWS />
+    icon: <AWS />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.deployment, TechRunTimeEnv.backend]
   },
   azure: {
     order: 4,
     name: 'Azure',
     color: '#035bda',
     type: TechTypes.deployment,
-    icon: <Azure />
+    icon: <Azure />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.deployment, TechRunTimeEnv.backend]
   },
   netlify: {
     order: 4,
     name: 'Netlify',
     color: '#20C6B7',
     type: TechTypes.deployment,
-    icon: <Netlify />
+    icon: <Netlify />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.deployment]
   },
   parse: {
     order: 3,
@@ -298,7 +329,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
-    icon: <Parse />
+    icon: <Parse />,
+    includes: [TechRunTimeEnv.backend, TechTypes.framebrary]
   },
   sequelize: {
     order: 3,
@@ -307,7 +339,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
-    icon: <Sequelize />
+    icon: <Sequelize />,
+    includes: [TechRunTimeEnv.backend, TechTypes.framebrary, TechTypes.database]
   },
   serverless: {
     order: 3,
@@ -316,7 +349,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
     language: 'Serverless',
-    icon: <Serverless />
+    icon: <Serverless />,
+    includes: [TechRunTimeEnv.backend, TechTypes.framebrary]
   },
   tailwind: {
     order: 3,
@@ -324,7 +358,8 @@ const TAG_MAP: TagMap = {
     color: '#2298BD',
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
-    icon: <Tailwind />
+    icon: <Tailwind />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   mongoose: {
     order: 3,
@@ -333,7 +368,8 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
-    icon: <Mongoose />
+    icon: <Mongoose />,
+    includes: [TechRunTimeEnv.backend, TechTypes.framebrary, TechTypes.database]
   },
   docker: {
     order: 5,
@@ -341,7 +377,8 @@ const TAG_MAP: TagMap = {
     color: '#394d54',
     type: TechTypes.devops,
     language: 'javascript',
-    icon: <Docker />
+    icon: <Docker />,
+    includes: [TechRunTimeEnv.backend, TechRunTimeEnv.frontend, TechTypes.devops]
   },
   socketio: {
     order: 4,
@@ -349,14 +386,15 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
     color: '#010101',
-    icon: <SocketIO />
+    icon: <SocketIO />,
+    includes: [TechRunTimeEnv.backend, TechRunTimeEnv.frontend, TechTypes.framebrary]
   }
 }
 
 export default TAG_MAP
 
-export const techTagFilter = (field: string, value: string) => {
-  return (tag: TechTag) => {
+export const techTagFilter = (field: keyof TechTag, value: string) => {
+  return (tag: keyof typeof TAG_MAP) => {
     const fullTag = TAG_MAP[tag]
     if (!fullTag || !fullTag[field]) return false
     return fullTag[field] === value

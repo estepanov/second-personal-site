@@ -48,7 +48,7 @@ const transitionStylesBasic = (dir: number) => ({
     animation: `${spinInAnimation(dir * -1)} ${TIMEOUT_CIRCLE}ms ${TRANSITION_CIRCLE} reverse`,
     animationPlayState: 'running'
   },
-  exited: { opacity: 0, transform: `scale(0.6) rotate(${dir * 360}deg)`, animationPlayState: 'paused' }
+  exited: { opacity: 0, transform: `scale(0) rotate(${0}deg)`, animationPlayState: 'paused' }
 })
 
 const baseStyle = {
