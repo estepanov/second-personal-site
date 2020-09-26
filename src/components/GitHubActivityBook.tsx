@@ -1,11 +1,12 @@
 import React, { useMemo, Fragment } from 'react'
 import dayjs from 'dayjs'
 import { StaticQuery, graphql } from 'gatsby'
-import { transparentize, lighten } from '@theme-ui/color'
+import { lighten } from '@theme-ui/color'
 /** @jsx jsx */
-import { jsx, Flex, Box, Heading } from 'theme-ui'
+import { jsx, Flex, Box, Heading, useThemeUI } from 'theme-ui'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { scaleLinear } from 'd3-scale'
+import { mix, readableColor } from 'polished'
 import { ContributionCount } from '../interfaces/GitHub'
 
 dayjs.extend(relativeTime)
@@ -52,6 +53,8 @@ export interface GitHubActivityProps {
   article?: boolean
 }
 
+const SIZES = [15, 20]
+
 const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, image, pathname, article }) => (
   <StaticQuery
     query={query}
@@ -90,6 +93,7 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
 
       const now = dayjs()
       const build = dayjs(buildDate)
+      const { theme } = useThemeUI()
 
       const months: GitHubActivityMonths[] = useMemo(() => {
         const MonthsMap = new Map<string, GitHubActivityMonths>()
@@ -117,7 +121,6 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
 
         return Array.from(MonthsMap.values()).reverse()
       }, [data.weeks])
-
       return (
         <Box>
           <Heading as="h4" sx={{ paddingBottom: 1, fontSize: 3 }}>
@@ -130,65 +133,80 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
                 <Fragment key={`${month.year}${month.month}`}>
                   {month.days.map((day, dayInd) => {
                     const scaled = day.contributionCount > 0 ? contributionRange.scale(day.contributionCount) : 0
+                    const backgroundColor =
+                      scaled > 0
+                        ? mix(scaled / contributionRange.levels, theme.colors.primary, theme.colors.background)
+                        : mix(0.04, theme.colors.text, theme.colors.background)
                     return (
                       <Box
                         key={`${dayInd}-${day}`}
                         sx={{
-                          height: 15,
-                          width: 15,
+                          height: SIZES,
+                          width: SIZES,
                           fontSize: 0,
-                          backgroundColor:
-                            scaled > 0 ? transparentize('primary', 1 - scaled / contributionRange.levels) : transparentize('text', 0.9),
+                          backgroundColor,
                           marginBottom: 1,
                           marginRight: 1,
 
                           position: 'relative',
-                          cursor: 'pointer',
-                          transition: 'ease-in 0.3s',
                           '& span': {
-                            width: '110px',
-                            transform: 'scale(0.95)',
-                            padding: 2,
-                            transition: 'ease-in 0.3s',
+                            overflow: 'hidden',
+                            zIndex: 1,
+                            pointerEvents: 'none',
+                            maxHeight: SIZES,
+                            maxWidth: SIZES,
+                            whiteSpace: 'nowrap',
+                            // transform: 'scale(1)',
+                            paddingX: 2,
+                            paddingY: 1,
+                            transition: 'ease-out 0.5s',
                             position: 'absolute',
                             bottom: 0,
                             left: 0,
                             visibility: 'hidden',
-                            pointerEvents: 'none',
-                            color: 'white',
-                            // backgroundColor: 'primary',
-                            backgroundImage: t => `linear-gradient(to bottom right, ${lighten('primary', 0.2)(t)}, ${t.colors.primary})`,
-                            // backgroundImage: t =>
-                            //   `linear-gradient(to top left, ${lighten('primary', 0.1)(t)}, ${darken('primary', 0.1)(t)})`,
+                            color:
+                              scaled !== 0
+                                ? theme.colors.white
+                                : readableColor(backgroundColor, theme.colors.white, theme.colors.black, true),
+                            backgroundColor,
+                            backgroundImage:
+                              scaled > 0
+                                ? `linear-gradient(to bottom left, ${lighten('primary', 0.0)(theme)}, ${backgroundColor})`
+                                : undefined,
                             opacity: 0,
                             fontSize: 0
                           },
                           '&:hover': {
                             '& span': {
-                              transform: 'scale(1)',
-                              pointerEvents: 'auto',
+                              maxHeight: '4em',
+                              whiteSpace: 'nowrap',
+                              maxWidth: '10em',
+                              // transform: 'scale(1)',
                               visibility: 'visible',
                               display: 'block',
-                              opacity: 1,
-                              bottom: '110%'
+                              opacity: 1
                             },
                             color: 'primary'
                           },
                           '&:focus': {
                             '& span': {
-                              transform: 'scale(1)',
-                              pointerEvents: 'auto',
+                              maxHeight: '4em',
+                              whiteSpace: 'nowrap',
+                              maxWidth: '10em',
+                              // transform: 'scale(1)',
                               visibility: 'visible',
                               display: 'block',
-                              opacity: 1,
-                              bottom: '110%'
+                              opacity: 1
                             },
                             color: 'primary'
                           }
                         }}
                       >
                         <span>
-                          <b>{day.contributionCount}</b>&nbsp; {dayjs(day.date).format('MMM D YYYY')}
+                          <b sx={{ fontSize: '1.1em' }}>{day.contributionCount}</b>&nbsp;commit
+                          {day.contributionCount > 1 || day.contributionCount === 0 ? 's' : ''}
+                          <br />
+                          {dayjs(day.date).format('MMM D YYYY')}
                         </span>
                       </Box>
                     )
