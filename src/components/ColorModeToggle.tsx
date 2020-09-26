@@ -239,9 +239,9 @@ const LightMode = () => {
           bottom: '0.25em',
           height: '0.7em',
           width: '0.7em',
-          animation: `${slidingCloudAnimation} 19s ease-in`,
-          animationIterationCount: 'infinite',
-          animationPlayState: 'inherit'
+          animation: `${slidingCloudAnimation} 18s ease-in`,
+          animationIterationCount: 'infinite'
+          // animationPlayState: 'inherit'
           // transform: 'scale(0.4)'
         }}
         xmlns="http://www.w3.org/2000/svg"
@@ -262,9 +262,8 @@ const LightMode = () => {
           width: '0.6em',
           animation: `${slidingCloudAnimation} 17s ease-in`,
           animationDelay: '10000ms',
-          animationIterationCount: 'infinite',
-          animationPlayState: 'inherit'
-
+          animationIterationCount: 'infinite'
+          // animationPlayState: 'inherit'
           // transform: 'scale(0.4)'
         }}
         xmlns="http://www.w3.org/2000/svg"

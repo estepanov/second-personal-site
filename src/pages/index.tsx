@@ -5,7 +5,7 @@ import Layout from '../layouts'
 
 import Work from '../components/home/Work'
 import Container from '../components/Layout/Container'
-import GitHubActivity from '../components/GitHubActivity'
+import GitHubActivity from '../components/GitHubActivityBook'
 import TechSection from '../components/home/Tech'
 
 interface IndexProps {
@@ -32,8 +32,8 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
           >
             <img
               sx={{
-                width: [100, 125, 150],
-                height: [100, 125, 150],
+                width: [125, 100],
+                height: [125, 100],
                 borderRadius: '50%',
                 filter: 'grayscale(100%)',
                 marginRight: [3, 4]

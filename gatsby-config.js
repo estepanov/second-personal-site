@@ -13,6 +13,7 @@ const githubQuery = `query {
         weeks {
           contributionDays {
             contributionCount
+            date
           }
           firstDay
         }
