@@ -1,8 +1,9 @@
 import React, { Fragment, useMemo, useState } from 'react'
 /** @jsx jsx */
 import { jsx, Box, Flex, Heading, useThemeUI } from 'theme-ui'
+import { css } from '@emotion/core'
 // import { lighten } from '@theme-ui/color'
-
+import { Transition, TransitionGroup } from 'react-transition-group'
 import { StaticQuery, graphql } from 'gatsby'
 
 import { mix, readableColor } from 'polished'
@@ -13,6 +14,42 @@ import TechLogo from '../projects/TechLogoBig'
 
 interface NodeWork {
   node: Work
+}
+
+const TIMEOUT = 1000
+
+const TRANSITION = 'ease'
+
+const transitionStyles = {
+  entering: {
+    opacity: 0,
+    transform: 'scale(0.5)',
+    maxWidth: 0
+    //  backgroundColor: 'red'
+  },
+  entered: {
+    opacity: 1,
+    transform: 'none',
+    maxWidth: '20em'
+    //  backgroundColor: 'blue'
+  },
+  exiting: {
+    opacity: 0,
+    transform: 'scale(0.5)',
+    maxWidth: 0
+    //  backgroundColor: 'green'
+  },
+  exited: {
+    opacity: 0,
+    transform: 'scale(0)',
+    maxWidth: 0
+    //  backgroundColor: 'yellow'
+  }
+}
+
+const baseStyle = {
+  display: 'inline-block',
+  transition: `all ${TRANSITION} ${TIMEOUT}ms`
 }
 
 const currentQuery = graphql`
@@ -62,6 +99,10 @@ const highlightSort = (highlight?: TechFilter) => (a: string, b: string) => {
   const left = TAG_MAP[a].includes.includes(highlight.target)
   const right = TAG_MAP[b].includes.includes(highlight.target)
   return left === right ? 0 : left ? -1 : 1
+}
+const highlightFilter = (highlight?: TechFilter) => (a: string) => {
+  if (!highlight) return true
+  return TAG_MAP[a].includes.includes(highlight.target)
 }
 
 const FILTERS: TechFilter[] = [
@@ -148,11 +189,12 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight }) => {
           maxHeight: 0,
           maxWidth: 0,
           zIndex: 1,
+          // overflow: 'hidden',
           // height: '100%',
           color: readableColor(TAG_MAP[tag].color),
           pointerEvents: 'none',
           whiteSpace: 'nowrap',
-          transition: 'ease-in-out 0.7s',
+          transition: 'ease-out 0.7s',
           wordBreak: 'keep-all',
           padding: 2,
           position: 'absolute',
@@ -195,15 +237,21 @@ const TechCloudSection: React.FC<WorkProps> = () => (
           }
         })
 
-        const unsortedAllTech = Array.from(allTech)
+        const allTechArr = Array.from(allTech).sort(techSort)
+        const allLanguagesArr = Array.from(allLanguages).sort(techSort)
         return {
-          allLanguages: Array.from(allLanguages).sort(techSort),
-          allTech: unsortedAllTech.sort(techSort)
+          all: [...allLanguagesArr, ...allTechArr],
+          allLanguages: allLanguagesArr,
+          allTech: allTechArr
         }
       }, [list])
 
       const [highlight, setHighlight] = useState<TechFilter>()
-
+      let tags = data.all
+      if (highlight) {
+        tags = tags.filter(highlightFilter(highlight))
+        // tags = tags.sort(highlightSort(highlight))
+      }
       return (
         <Box
           sx={{
@@ -246,9 +294,29 @@ const TechCloudSection: React.FC<WorkProps> = () => (
               paddingY: 0
             }}
           >
-            {[...data.allLanguages, ...data.allTech.sort(techSort)].sort(highlightSort(highlight)).map(tag => (
-              <LogoContainer highlight={highlight} key={tag} tag={tag} />
-            ))}
+            <TransitionGroup component={null}>
+              {tags.map(tag => {
+                const isHighlighted = highlight && TAG_MAP[tag].includes?.includes(highlight.target)
+                return (
+                  <Transition
+                    key={tag}
+                    in={!highlight || (highlight && isHighlighted)}
+                    // appear={!highlight || (highlight && isHighlighted)}
+                    mountOnEnter
+                    unmountOnExit
+                    timeout={TIMEOUT}
+                  >
+                    {state => {
+                      return (
+                        <div css={css({ ...baseStyle, ...transitionStyles[state] })}>
+                          <LogoContainer highlight={highlight} tag={tag} />
+                        </div>
+                      )
+                    }}
+                  </Transition>
+                )
+              })}
+            </TransitionGroup>
           </Flex>
         </Box>
       )
