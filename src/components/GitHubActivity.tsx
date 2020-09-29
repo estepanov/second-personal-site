@@ -25,6 +25,7 @@ const query = graphql`
               weeks {
                 contributionDays {
                   contributionCount
+                  date
                 }
                 firstDay
               }

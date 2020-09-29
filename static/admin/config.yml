@@ -63,6 +63,56 @@ collections:
           required: true,
         }
       - { label: "Body", name: "body", widget: "markdown" }
+      - {
+          label: "Technologies",
+          name: "tech",
+          widget: "select",
+          required: false,
+          multiple: true,
+          options:
+            [
+              "python",
+              "node",
+              "express",
+              "javascript",
+              "typescript",
+              "angular",
+              "react",
+              "nextjs",
+              "gatsby",
+              "graphql",
+              "react-native",
+              "redux",
+              "electron",
+              "postgres",
+              "mongodb",
+              "redis",
+              "firebase",
+              "styled-components",
+              "sass",
+              "theme-ui",
+              "feathers",
+              "mobx-state-tree",
+              "css3",
+              "html5",
+              "heroku",
+              "aws",
+              "azure",
+              "netlify",
+              "parse",
+              "sequelize",
+              "serverless",
+              "mongoose",
+              "docker",
+              "socketio",
+            ],
+        }
+      - {
+          label: "Images",
+          name: "images",
+          widget: "list",
+          field: { label: Image, name: image, widget: "file" },
+        }
   - name: "projects"
     extension: mdx
     format: frontmatter

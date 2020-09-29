@@ -1,4 +1,5 @@
-interface ContributionCount {
+export interface ContributionCount {
+  date: string
   contributionCount: number
 }
 

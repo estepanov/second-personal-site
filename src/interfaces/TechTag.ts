@@ -1,3 +1,5 @@
+type TechTagIncludes = number | string | TechTypes | TechRunTimeEnv
+
 export interface TechTag {
   order: number
   name: string
@@ -6,6 +8,7 @@ export interface TechTag {
   type: TechTypes
   language?: string
   environment?: TechRunTimeEnv
+  includes?: TechTagIncludes[]
 }
 
 export interface TagMap {

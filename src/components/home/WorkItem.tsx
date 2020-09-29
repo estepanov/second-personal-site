@@ -44,6 +44,7 @@ const WorkItem: React.FC<WorkItemProps> = ({ item }) => {
           rel="noopener noreferrer"
           href={item.frontmatter.website}
           sx={{
+            variant: 'links.default',
             fontWeight: 'bold',
             color: 'secondary',
             transition: 'ease-in-out 0.3s',
