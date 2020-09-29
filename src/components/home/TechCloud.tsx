@@ -11,6 +11,7 @@ import { Work } from '../../interfaces/Work'
 import TAG_MAP from '../logos/constants'
 import { TechRunTimeEnv, TechTypes, TechTag } from '../../interfaces/TechTag'
 import TechLogo from '../projects/TechLogoBig'
+import TinyButton from '../elements/TinyButton'
 
 interface NodeWork {
   node: Work
@@ -189,7 +190,7 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight }) => {
           maxHeight: 0,
           maxWidth: 0,
           zIndex: 1,
-          // overflow: 'hidden',
+          overflow: 'hidden',
           // height: '100%',
           color: readableColor(TAG_MAP[tag].color),
           pointerEvents: 'none',
@@ -267,21 +268,11 @@ const TechCloudSection: React.FC<WorkProps> = () => (
             const isSelected = highlight && filter.name === highlight.name
             return (
               <Fragment key={filter.name}>
-                <span
-                  sx={{
-                    cursor: 'pointer',
-                    textDecoration: 'none',
-                    '&:hover': {
-                      textDecoration: 'underline'
-                    },
-                    color: isSelected ? 'text' : 'mutedText'
-                  }}
-                  onClick={() => setHighlight(isSelected ? undefined : filter)}
-                >
+                <TinyButton onClick={() => setHighlight(isSelected ? undefined : filter)} isSelected={isSelected}>
                   {filter.name.toLowerCase()}
-                </span>
+                </TinyButton>
                     &nbsp;
-                {FILTERS.length - 1 !== ind ? ' / ' : null}
+                {/* {FILTERS.length - 1 !== ind ? ' / ' : null} */}
               </Fragment>
             )
           })}

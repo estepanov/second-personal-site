@@ -1,9 +1,19 @@
+import { lighten } from '@theme-ui/color'
 import { colors, modes } from './colors'
 
 const heading = {
   fontFamily: 'heading',
   fontWeight: 'heading',
   lineHeight: 'heading'
+}
+
+const LINK_FOCUS = {
+  borderRadius: 3,
+  userSelect: 'none',
+  outline: 'none',
+  '&:focus': {
+    boxShadow: t => `0px 0px 0px 3px ${lighten('secondary', 0.1)(t)}`
+  }
 }
 
 export const defaultTheme = {
@@ -55,6 +65,15 @@ export const defaultTheme = {
     }
   },
   links: {
+    default: {
+      color: 'secondary',
+      userSelect: 'none',
+      outline: 'none',
+      '&:hover': {
+        color: 'primary'
+      },
+      ...LINK_FOCUS
+    },
     mobileNav: {
       fontFamily: 'nav',
       transition: 'ease-in-out 0.5s',
@@ -101,10 +120,10 @@ export const defaultTheme = {
       },
       '&.active': {
         color: 'secondary'
-      }
+      },
+      ...LINK_FOCUS
     }
   },
-  variants: {},
   styles: {
     Container: {
       p: 3,
@@ -139,10 +158,7 @@ export const defaultTheme = {
       fontSize: 1
     },
     a: {
-      color: 'secondary',
-      '&:hover': {
-        color: 'primary'
-      }
+      variant: 'links.default'
     },
     pre: {
       variant: 'prism',

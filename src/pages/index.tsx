@@ -61,10 +61,10 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
             highlight of every winter. Occasionally, I can be found binge-playing Halo on 🎮 or Battlefield One on 🖱.
           </Box>
           <Work />
+          <TechSection />
           <Flex sx={{ justifyContent: 'center', alignItems: 'center', marginTop: 4 }}>
             <GitHubActivity />
           </Flex>
-          <TechSection />
         </Flex>
       </Container>
     </Layout>
