@@ -53,7 +53,7 @@ export interface GitHubActivityProps {
   article?: boolean
 }
 
-const SIZES = [15, 20]
+const SIZES = [18, 22]
 
 const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, image, pathname, article }) => (
   <StaticQuery

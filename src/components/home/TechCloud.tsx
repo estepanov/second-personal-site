@@ -6,7 +6,7 @@ import { css } from '@emotion/core'
 import { Transition, TransitionGroup } from 'react-transition-group'
 import { StaticQuery, graphql } from 'gatsby'
 
-import { mix, readableColor } from 'polished'
+import { mix, readableColor, getContrast, lighten } from 'polished'
 import { Work } from '../../interfaces/Work'
 import TAG_MAP from '../logos/constants'
 import { TechRunTimeEnv, TechTypes, TechTag } from '../../interfaces/TechTag'
@@ -132,6 +132,12 @@ interface LogoContrainerProps {
 const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight }) => {
   const { theme } = useThemeUI()
   const isHighlighted = highlight && TAG_MAP[tag].includes?.includes(highlight.target)
+  const themeBackgroundColor = useMemo(() => mix(0.04, theme.colors.text, theme.colors.background), [theme])
+  // const contrast = useMemo(() => getContrast(themeBackgroundColor, '#000000'), [themeBackgroundColor])
+  // const backgroundColor = useMemo(() => (contrast < 15 ? lighten(0.0, themeBackgroundColor) : themeBackgroundColor), [
+  //   themeBackgroundColor,
+  //   contrast
+  // ])
   // const isHighlighted = highlight && TAG_MAP[tag][highlight.key] === highlight.target
   return (
     <Box
@@ -145,8 +151,9 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight }) => {
         fontSize: ['2.5em', '2.8em'],
         height: '2em',
         width: '2em',
-        backgroundColor:
-          !highlight || (highlight && isHighlighted) ? mix(0.04, theme.colors.text, theme.colors.background) : theme.colors?.background,
+        backgroundColor: themeBackgroundColor,
+        // backgroundColor: mix(0.04, theme.colors.text, theme.colors.background),
+        // !highlight || (highlight && isHighlighted) ? mix(0.04, theme.colors.text, theme.colors.background) : theme.colors?.background,
         '&:hover': {
           '& #sub': {
             // maxHeight: '1.7em',
@@ -267,13 +274,9 @@ const TechCloudSection: React.FC<WorkProps> = () => (
               {FILTERS.map((filter, ind) => {
             const isSelected = highlight && filter.name === highlight.name
             return (
-              <Fragment key={filter.name}>
-                <TinyButton onClick={() => setHighlight(isSelected ? undefined : filter)} isSelected={isSelected}>
-                  {filter.name.toLowerCase()}
-                </TinyButton>
-                    &nbsp;
-                {/* {FILTERS.length - 1 !== ind ? ' / ' : null} */}
-              </Fragment>
+              <TinyButton key={filter.name} onClick={() => setHighlight(isSelected ? undefined : filter)} isSelected={isSelected}>
+                {filter.name.toLowerCase()}
+              </TinyButton>
             )
           })}
             </span>
