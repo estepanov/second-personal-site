@@ -77,6 +77,23 @@ export const query = graphql`
           title
           date
           permalink
+          banner {
+            id
+            publicURL
+            childImageSharp {
+              resize(
+                width: 800
+                jpegProgressive: true
+                quality: 100
+                pngQuality: 100
+                pngCompressionLevel: 1
+                pngCompressionSpeed: 10
+                jpegQuality: 100
+              ) {
+                src
+              }
+            }
+          }
         }
         fields {
           date

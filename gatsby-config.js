@@ -84,8 +84,8 @@ const plugins = [
         {
           resolve: 'gatsby-remark-images',
           options: {
-            maxWidth: 1140,
-            quality: 90,
+            maxWidth: 1200,
+            quality: 100,
             linkImagesToOriginal: false
           }
         },
@@ -117,7 +117,6 @@ const plugins = [
   },
   'gatsby-transformer-sharp',
   'gatsby-plugin-react-helmet',
-  'gatsby-plugin-mdx',
   'gatsby-plugin-netlify-cms'
 ]
 

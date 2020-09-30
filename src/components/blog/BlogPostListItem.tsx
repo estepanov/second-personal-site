@@ -16,6 +16,7 @@ const BlogPostListItem: React.FC<BlogPostListItemProps> = ({ post }) => {
       tech={post.frontmatter.tech}
       date={post.fields.date ? dayjs(new Date(post.fields.date)).format('MMMM D YYYY') : undefined}
       excerpt={post.excerpt}
+      banner={post.frontmatter.banner}
       banners={post.frontmatter.banners}
       title={post.frontmatter.title}
     />
