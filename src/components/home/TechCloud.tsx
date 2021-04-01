@@ -154,19 +154,14 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
         transition: 'all 0.3s ease-in-out',
         svg: {
           transition: 'all 0.3s ease-in-out',
-          color: 'text',
-          transform: 'scale(1)'
+          color: 'text'
         },
         // backgroundColor: mix(0.04, theme.colors.text, theme.colors.background),
         // !highlight || (highlight && isHighlighted) ? mix(0.04, theme.colors.text, theme.colors.background) : theme.colors?.background,
         '&:hover': {
           backgroundColor: TAG_MAP[tag].color,
           svg: {
-            color: readableColor(TAG_MAP[tag].color),
-            transform: 'scale(1.15)',
-            filter: 'drop-shadow( 3px 3px 2px rgba(0, 0, 0, .03))'
-
-            // boxShadow: t => `0px 0px 0px 2px ${themeLighten('secondary', 0.2)(t)}`
+            color: readableColor(TAG_MAP[tag].color)
           },
           '& > span': {
             zIndex: 1,
@@ -182,8 +177,7 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
         '&:focus': {
           backgroundColor: TAG_MAP[tag].color,
           svg: {
-            color: readableColor(TAG_MAP[tag].color),
-            transform: 'scale(1.15)'
+            color: readableColor(TAG_MAP[tag].color)
           },
           '& span': {
             bottom: '100%',
