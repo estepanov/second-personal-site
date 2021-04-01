@@ -11,9 +11,11 @@ import ListImages from './projects/ListImages'
 import Banner from './projects/Banners'
 import { ProjectBannersEnum, ProjectSizeEnum } from '../interfaces/Project'
 import { Images } from '../interfaces/Work'
+import BannerImageList from './blog/BannerImageList'
 
 interface PageListItemProps {
   size?: string
+  banner?: Images
   images?: Images[]
   tech?: string[] | null
   date?: string | number
@@ -23,7 +25,7 @@ interface PageListItemProps {
   banners?: ProjectBannersEnum[]
 }
 
-const PageListItem: React.FC<PageListItemProps> = ({ banners, excerpt, date, size, tech, title, images, linkTo }) => {
+const PageListItem: React.FC<PageListItemProps> = ({ banner, banners, excerpt, date, size, tech, title, images, linkTo }) => {
   return (
     <Link
       to={linkTo}
@@ -97,7 +99,8 @@ const PageListItem: React.FC<PageListItemProps> = ({ banners, excerpt, date, siz
           {tech && tech.length ? <TechLogoList tags={tech} marginRight={3} marginBottom={3} /> : null}
         </Flex>
       </Flex>
-      {ProjectSizeEnum.small !== size && (
+      {banner && <BannerImageList image={banner} />}
+      {ProjectSizeEnum.small !== size && images && images.length && (
         <Flex
           sx={{
             flexDirection: 'row',

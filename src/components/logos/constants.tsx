@@ -39,6 +39,7 @@ import Tailwind from './Tailwind'
 import Emotion from './Emotion'
 import Jest from './Jest'
 import Cypress from './Cypress'
+import MobX from './Mobx'
 
 const TAG_MAP: TagMap = {
   python: {
@@ -196,6 +197,16 @@ const TAG_MAP: TagMap = {
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
     icon: <Redux />,
+    includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
+  },
+  mobx: {
+    order: 3.1,
+    name: 'MobX',
+    color: '#FF9955',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.frontend,
+    language: 'typescript',
+    icon: <MobX />,
     includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   electron: {

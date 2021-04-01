@@ -9,6 +9,8 @@ export interface BlogPost {
   frontmatter: {
     title: string
     permalink: string
+    date: Date
+    banner: Images
     banners?: ProjectBannersEnum[]
     languages: null | string[]
     tech: null | string[]

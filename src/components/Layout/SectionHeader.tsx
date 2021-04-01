@@ -15,11 +15,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle }) => {
         paddingY: 3
       }}
     >
-      <Heading
-        sx={{
-          fontSize: 5
-        }}
-      >
+      <Heading as="h1" sx={{ margin: 0 }}>
         {title}
       </Heading>
       <Text

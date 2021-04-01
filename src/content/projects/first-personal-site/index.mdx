@@ -1,6 +1,7 @@
 ---
 layout: project
 title: First Personal Site
+banner:
 date: "2018-05-01"
 tech:
   - react
@@ -16,8 +17,14 @@ images:
 repo: https://github.com/estepanov/first-personal-site
 ---
 
-My very first personal website. Bootstrapped this thing with create-react-app and went along with vanilla CSS3 modules.
+My very first personal website. Bootstrapped this thing with [create-react-app](https://github.com/facebook/create-react-app) and went along with vanilla CSS3 modules.
 
-This project was about simplicity with simple CSS and create react app. The contact form was powered by an email sent from serverless function deployed on Azure.
+This project was all about simplicity, with simple CSS and create-react-app.
+A clean landing page, a list of my projects, and a contact form.
+The project list had a tag cloud and selecting a tag would show projects that applied to the tag.
+The contact form was powered by an email sent from serverless function deployed on Azure.
 
-The frontend deployed with Netlify. Each project had a simple page with tagss that can be clicked to show projects using tag.
+One thing I did not like about this project was the lack of SSR support.
+Create-react-app is great for getting something up quickly, but ejecting the application and taking over the configuration isn't that fun.
+
+The frontend deployed with Netlify.

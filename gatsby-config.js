@@ -46,13 +46,13 @@ const plugins = [
       path: `${__dirname}/src/content/projects`
     }
   },
-  // {
-  //   resolve: 'gatsby-source-filesystem',
-  //   options: {
-  //     name: 'blog',
-  //     path: `${__dirname}/src/content/blog`
-  //   }
-  // },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'blog',
+      path: `${__dirname}/src/content/blog`
+    }
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -84,8 +84,8 @@ const plugins = [
         {
           resolve: 'gatsby-remark-images',
           options: {
-            maxWidth: 1140,
-            quality: 90,
+            maxWidth: 1200,
+            quality: 100,
             linkImagesToOriginal: false
           }
         },
@@ -117,7 +117,6 @@ const plugins = [
   },
   'gatsby-transformer-sharp',
   'gatsby-plugin-react-helmet',
-  'gatsby-plugin-mdx',
   'gatsby-plugin-netlify-cms'
 ]
 
