@@ -51,7 +51,7 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) =>
       pathname={location.pathname}
     >
       <Flex my={1} sx={{ alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap' }}>
-        <Heading as="h1" color="secondary" my={1} sx={{ width: ['100%', 'auto'] }}>
+        <Heading as="h1" my={1} sx={{ width: ['100%', 'auto'] }}>
           {data.post.frontmatter.title}
         </Heading>
         {data.post.frontmatter.banners ? (

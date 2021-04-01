@@ -43,10 +43,10 @@ const BlogPostListPageTemplate: React.FC<BlogPostListPageTemplateProps> = ({ dat
           )
         })
       ) : (
-          <Flex sx={{ justifyContent: 'center', alignItems: 'center', padding: 2 }}>
-            <Text>content is coming soon!</Text>
-          </Flex>
-        )}
+        <Flex sx={{ justifyContent: 'center', alignItems: 'center', padding: 2 }}>
+          <Text>content is coming soon!</Text>
+        </Flex>
+      )}
     </Layout>
   )
 }
@@ -77,6 +77,7 @@ export const query = graphql`
           title
           date
           permalink
+          tech
           banner {
             id
             publicURL

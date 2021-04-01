@@ -16,8 +16,8 @@ const BannerImageList: React.FC<BannerImageListProps> = ({ image }) => {
         flexShrink: 0,
         overflow: 'hidden',
         marginX: [2, 3],
-        maxHeight: [125, 150],
-        maxWidth: [205, 400],
+        display: 'flex',
+        justifyContent: 'center',
         opacity: 1,
         transition: 'ease-in-out 0.3s'
         // '&:hover': {
@@ -31,6 +31,8 @@ const BannerImageList: React.FC<BannerImageListProps> = ({ image }) => {
         sx={{
           height: '100%',
           width: '100%',
+          maxHeight: [125, 150],
+          maxWidth: [200, 400],
           objectFit: 'cover'
         }}
         alt=""

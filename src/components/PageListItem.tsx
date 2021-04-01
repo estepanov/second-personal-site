@@ -100,7 +100,7 @@ const PageListItem: React.FC<PageListItemProps> = ({ banner, banners, excerpt, d
         </Flex>
       </Flex>
       {banner && <BannerImageList image={banner} />}
-      {ProjectSizeEnum.small !== size && (
+      {ProjectSizeEnum.small !== size && images && images.length && (
         <Flex
           sx={{
             flexDirection: 'row',

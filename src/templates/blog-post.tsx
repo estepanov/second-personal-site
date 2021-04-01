@@ -1,8 +1,13 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
+import { Heading, Flex, Image } from 'theme-ui'
+import dayjs from 'dayjs'
 import MDX from '../components/MDX'
+import TechLogoBox from '../components/projects/TechLogoBox'
+import TechLogoList from '../components/projects/TechLogoList'
 
 import Layout from '../layouts'
+import { BlogPost } from '../interfaces/BlogPost'
 
 interface BlogPostPageTemplateProps {
   location: Location
@@ -17,18 +22,28 @@ interface BlogPostPageTemplateProps {
         }
       }
     }
-    post: {
-      body: string
-      excerpt: string
-      frontmatter: {
-        title: string
-      }
-    }
+    post: BlogPost
   }
 }
 
 const BlogPostPageTemplate: React.FC<BlogPostPageTemplateProps> = ({ data, location }) => (
   <Layout pathname={location.pathname}>
+    {data.post?.frontmatter?.banner?.publicURL && (
+      <Image
+        src={data.post.frontmatter.banner.publicURL}
+        sx={{
+          objectFit: 'cover',
+          paddingY: 3
+        }}
+      />
+    )}
+    <Heading as="h1" my={1} sx={{ width: ['100%', 'auto'] }}>
+      {data.post.frontmatter.title}
+    </Heading>
+    <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+      {data.post.frontmatter.date && <TechLogoBox tag={dayjs(data.post.frontmatter.date).format('MMMM D YYYY')} />}
+      <TechLogoList tags={data.post.frontmatter.tech || []} renderItem={TechLogoBox} />
+    </Flex>
     <MDX>{data.post.body}</MDX>
   </Layout>
 )
@@ -52,6 +67,12 @@ export const query = graphql`
       excerpt
       frontmatter {
         title
+        tech
+        date
+        banner {
+          id
+          publicURL
+        }
       }
     }
   }

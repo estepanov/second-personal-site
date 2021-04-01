@@ -135,9 +135,9 @@ export const defaultTheme = {
       fontWeight: 'body'
     },
     h1: {
-      color: 'secondary',
+      // color: 'secondary',
       variant: 'textStyles.heading',
-      fontSize: 5
+      fontSize: 6
     },
     h2: {
       variant: 'textStyles.heading',
