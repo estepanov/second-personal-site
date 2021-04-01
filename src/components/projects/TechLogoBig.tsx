@@ -10,7 +10,7 @@ interface TechLogoProps {
 }
 
 const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) => {
-  const color = TAG_MAP[tag] ? TAG_MAP[tag].color : 'mutedText'
+  // const color = TAG_MAP[tag] ? TAG_MAP[tag].color : 'mutedText'
   return (
     <Flex
       sx={{
@@ -19,7 +19,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) =
         fontSize: TAG_MAP[tag] ? 'inherit' : '0.6em',
         cursor: 'default',
         padding: 0,
-        color,
+        // color,
         transition: 'ease-in 0.3s',
         justifyContent: 'center',
         alignItems: 'center',

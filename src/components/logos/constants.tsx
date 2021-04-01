@@ -18,6 +18,8 @@ import MobxStateTree from './MobxStateTree'
 import NextJs from './NextJs'
 import Netlify from './Netlify'
 import Parse from './Parse'
+import Ruby from './Ruby'
+import Rails from './Rails'
 import Sequelize from './Sequelize'
 import Gatsby from './Gatsby'
 import GraphQL from './GraphQL'
@@ -47,9 +49,17 @@ const TAG_MAP: TagMap = {
     icon: <Python />,
     includes: [TechRunTimeEnv.backend, TechTypes.language]
   },
+  ruby: {
+    order: 2,
+    name: 'Ruby',
+    type: TechTypes.language,
+    color: '#db0000',
+    icon: <Ruby />,
+    includes: [TechRunTimeEnv.backend, TechTypes.language]
+  },
   node: {
     order: 0,
-    name: 'Node',
+    name: 'Node.js',
     color: '#69bd47',
     type: TechTypes.runtime,
     environment: TechRunTimeEnv.backend,
@@ -90,6 +100,16 @@ const TAG_MAP: TagMap = {
     environment: TechRunTimeEnv.backend,
     language: 'javascript',
     icon: <Express />,
+    includes: [TechRunTimeEnv.backend, TechTypes.framebrary]
+  },
+  rails: {
+    order: 4,
+    name: 'Ruby on Rails',
+    color: '#db0000',
+    type: TechTypes.framebrary,
+    environment: TechRunTimeEnv.backend,
+    language: 'rails',
+    icon: <Rails />,
     includes: [TechRunTimeEnv.backend, TechTypes.framebrary]
   },
   javascript: {
@@ -191,7 +211,7 @@ const TAG_MAP: TagMap = {
   postgres: {
     order: 1.1,
     name: 'PostgreSQL',
-    color: '#32668f',
+    color: '#336791',
     type: TechTypes.database,
     // environment: TechRunTimeEnv.backend,
     icon: <Postgres />,
@@ -211,7 +231,7 @@ const TAG_MAP: TagMap = {
     name: 'Redis',
     type: TechTypes.database,
     // environment: TechRunTimeEnv.backend,
-    color: '#d92a21',
+    color: '#DC382D',
     icon: <Redis />,
     includes: [TechRunTimeEnv.backend, TechTypes.database]
   },
@@ -258,7 +278,7 @@ const TAG_MAP: TagMap = {
     name: 'FeathersJS',
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.backend,
-    color: '#333',
+    color: '#d414a5',
     icon: <Feathers />,
     includes: [TechRunTimeEnv.backend, TechTypes.framebrary]
   },
