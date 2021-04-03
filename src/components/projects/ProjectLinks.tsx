@@ -1,7 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { jsx, Flex } from 'theme-ui'
-import { lighten, darken } from '@theme-ui/color'
+// import { lighten, darken } from '@theme-ui/color'
 
 interface LinkProps {
   href: string
@@ -19,15 +19,14 @@ const Link: React.FC<LinkProps> = ({ href, name, icon }) => {
         marginBottom: 2,
         borderColor: 'primary',
         borderStyle: 'solid',
-        borderWidth: 1,
+        borderWidth: 0,
         color: 'primary',
         textDecoration: 'none',
         paddingY: 1,
         paddingX: 2,
-        transition: 'ease-in-out 0.3s',
         '&:hover': {
-          backgroundImage: t => `linear-gradient(to top left, ${lighten('primary', 0.2)(t)}, ${darken('primary', 0.1)(t)})`,
-          color: 'white'
+          // background: t => `linear-gradient(to top left, ${lighten('primary', 0.2)(t)}, ${darken('primary', 0.1)(t)})`,
+          textDecoration: 'underline'
         }
       }}
     >

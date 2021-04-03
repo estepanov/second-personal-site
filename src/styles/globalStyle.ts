@@ -1,8 +1,6 @@
 import { css } from '@emotion/core'
 
 const globalStyle = css`
-  /* @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap'); */
-  /* @import url('https://fonts.googleapis.com/css2?family=Lato&family=DM+Mono:wght@400&display=swap'); */
   @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500&family=Open+Sans:wght@300;700&display=swap');
 
   html {

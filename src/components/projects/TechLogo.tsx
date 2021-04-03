@@ -1,6 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, Flex } from 'theme-ui'
+import { jsx, Flex, useThemeUI } from 'theme-ui'
+import { readableColor } from 'polished'
 
 import TAG_MAP from '../logos/constants'
 
@@ -11,6 +12,8 @@ interface TechLogoProps {
 
 const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) => {
   const color = TAG_MAP[tag] ? TAG_MAP[tag].color : 'mutedText'
+  const backgroundColor = useThemeUI().theme.colors?.background
+  const hoverColor: string = TAG_MAP[tag] ? TAG_MAP[tag].color : backgroundColor || 'white'
   return (
     <Flex
       sx={{
@@ -25,29 +28,38 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) =
         alignItems: 'center',
         marginRight,
         marginBottom,
+        backgroundColor: 'transparent',
         '&:hover': {
-          '& span': {
+          color: readableColor(hoverColor),
+          '& span.bg': {
+            opacity: 1
+          },
+          '& span.name': {
             transform: 'scale(1)',
             visibility: 'visible',
             display: 'block',
-            left: 0,
+            left: -1,
             opacity: 1,
-            color: 'white',
-            bottom: '105%'
-          },
-          color
+            top: '100%',
+            maxHeight: '13em',
+            maxWidth: '13em'
+          }
         },
         '&:focus': {
-          '& span': {
+          color: readableColor(hoverColor),
+          '& span.bg': {
+            opacity: 1
+          },
+          '& span.name': {
             transform: 'scale(1)',
             visibility: 'visible',
             display: 'block',
-            left: 0,
+            left: -1,
             opacity: 1,
-            color: 'white',
-            bottom: '105%'
-          },
-          color
+            top: '100%',
+            maxHeight: '13em',
+            maxWidth: '13em'
+          }
         }
       }}
     >
@@ -55,19 +67,40 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) =
         <React.Fragment>
           {TAG_MAP[tag].icon}
           <span
+            className="bg"
             sx={{
+              position: 'absolute',
+              left: -1,
+              right: -1,
+              top: -1,
+              bottom: -1,
+              opacity: 0,
+              zIndex: -1,
+              transition: 'all ease 0.2s',
+              backgroundColor: TAG_MAP[tag]?.color || 'text'
+            }}
+          />
+          <span
+            className="name"
+            sx={{
+              overflow: 'hidden',
+              maxHeight: 0,
+              maxWidth: 0,
               pointerEvents: 'none',
               whiteSpace: 'nowrap',
               transition: 'ease-in-out 0.5s',
               wordBreak: 'keep-all',
-              padding: 2,
+              paddingX: 2,
+              paddingY: 1,
               position: 'absolute',
-              bottom: 0,
-              left: 0,
+              top: '100%',
+              left: -1,
               visibility: 'hidden',
               backgroundColor: color,
               opacity: 0,
               fontSize: 1,
+              fontFamily: 'heading',
+              fontWeight: 'heading',
               transform: 'scale(0.9)'
             }}
           >
@@ -75,8 +108,8 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom }) =
           </span>
         </React.Fragment>
       ) : (
-          tag
-        )}
+        tag
+      )}
     </Flex>
   )
 }

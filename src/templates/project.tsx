@@ -63,7 +63,7 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) =>
           </>
         ) : null}
       </Flex>
-      <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+      <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap', backgroundColor: 'muted' }}>
         {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
         <TechLogoList tags={data.post.frontmatter.tech} renderItem={TechLogoBox} />
       </Flex>
