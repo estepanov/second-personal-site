@@ -99,8 +99,8 @@ export const query = graphql`
               publicURL
               childImageSharp {
                 resize(
-                  height: 500
-                  width: 500
+                  height: 1000
+                  width: 1000
                   cropFocus: NORTH
                   jpegProgressive: true
                   quality: 100

@@ -1,8 +1,8 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, Text, Box, Flex, Heading } from 'theme-ui'
+import { jsx, Text, Box, Flex, Heading, useThemeUI } from 'theme-ui'
 import { Link } from 'gatsby'
-// import { lighten, darken } from '@theme-ui/color'
+import { lighten, darken } from '@theme-ui/color'
 
 import TechLogo from './projects/TechLogo'
 import TechLogoList from './projects/TechLogoList'
@@ -11,6 +11,7 @@ import Banner from './projects/Banners'
 import { ProjectBannersEnum, ProjectSizeEnum } from '../interfaces/Project'
 import { Images } from '../interfaces/Work'
 import BannerImageList from './blog/BannerImageList'
+import { Modes } from '../styles/colors'
 
 interface SquareListItemProps {
   size?: string
@@ -26,12 +27,14 @@ interface SquareListItemProps {
 
 const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerpt, date, size, tech, title, images, linkTo }) => {
   let bgImg = images?.[0].childImageSharp?.resize?.src
+  const theme = useThemeUI()
+  const oppositeDeep = theme.colorMode === Modes.dark ? lighten : darken
   return (
     <Link
       to={linkTo}
       sx={{
         padding: 3,
-        backgroundColor: 'muted',
+        background: bgImg ? t => `linear-gradient(to bottom right, ${lighten('muted', 0.05)(t)}, ${darken('muted', 0.1)(t)})` : 'muted',
         marginRight: [0, 3],
         marginBottom: 3,
         flex: 1,
@@ -44,19 +47,19 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
         flexDirection: ['column', 'row'],
         flexWrap: 'wrap',
         '&:hover': {
-          backgroundColor: 'text',
+          background: t => `linear-gradient(to bottom right, ${lighten('text', 0.05)(t)}, ${darken('text', 0.1)(t)})`,
           color: 'background',
-          // backgroundImage: t => `linear-gradient(to bottom right, ${lighten('listBg', 0.01)(t)}, ${darken('listBg', 0.1)(t)})`,
-          // boxShadow: t => `0px 0px 20px ${lighten('gray', 0.1)(t)}`
+          boxShadow: t => `0px 0px 10px ${oppositeDeep('muted', 0.1)(t)}`,
           '& .proj-name': {
             color: 'background',
-            // textShadow: `0px 0px 0px ${theme.theme.colors?.background}`
+            textShadow: `0px 0px 0px ${theme.theme.colors?.background}`
           },
           '& .proj-body': {
-            color: 'background'
+            color: 'background',
+            textShadow: `1px 1px 0px ${theme.theme.colors?.text}`
           },
           '& .proj-bg img': {
-            transform: 'rotate(-35deg) scale(1.8)',
+            transform: 'rotate3D(0,-0.5,-0.5,0.1turn) scale(1.43) ',
             opacity: 0.2
           }
         }
@@ -73,7 +76,7 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-        <img sx={{ transform: 'rotate(-20deg) scale(1.29)', opacity: 0.1, width: '100%', transition: 'all ease 2.5s' }} src={bgImg} />
+        <img sx={{ transform: 'rotate3D(1,-1,-1,-20deg) scale(2)', opacity: 0.15, width: '100%', transition: 'all ease 2.5s' }} src={bgImg} />
       </Flex>
       <Flex
         sx={{
@@ -93,15 +96,17 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
             fontWeight: 'display',
             lineHeight: '1.5em',
             color: 'listHeader',
-            transition: 'ease 0.3s',
             marginBottom: 3,
-            // textShadow: `3px 3px 5px ${theme.theme.colors?.background}`
+            textShadow: `1px 1px 1px ${theme.theme.colors?.background}`
           }}
         >
           {title}
         </Heading>
-        <Text className="proj-body" sx={{ fontSize: 1, color: 'text', flex: 1 }}>{excerpt}</Text>
+        <Text className="proj-body" sx={{
+          fontSize: 1, color: 'text', flex: 1, textShadow: `1px 1px 1px ${theme.theme.colors?.background}`
+        }}>{excerpt}</Text>
         <Flex sx={{ flexDirection: 'row', fontSize: 6, marginTop: 2, flexWrap: 'wrap-reverse', alignItems: 'center' }}>
+          {date ? <TechLogoList tags={[date.toString()]} marginRight={3} marginBottom={2} /> : null}
           {tech && tech.length ? <TechLogoList tags={tech} marginRight={3} marginBottom={2} /> : null}
           {banners ? (
             <React.Fragment>
