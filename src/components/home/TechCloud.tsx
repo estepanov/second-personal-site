@@ -2,11 +2,9 @@ import React, { useMemo, useState } from 'react'
 /** @jsx jsx */
 import { jsx, Box, Flex, Heading, useThemeUI } from 'theme-ui'
 import { css } from '@emotion/core'
-// import { lighten } from '@theme-ui/color'
 import { Transition, TransitionGroup } from 'react-transition-group'
 import { StaticQuery, graphql } from 'gatsby'
-import { lighten as themeLighten } from '@theme-ui/color'
-import { mix, readableColor, getContrast, lighten, opacify } from 'polished'
+import { readableColor, opacify } from 'polished'
 import { Work } from '../../interfaces/Work'
 import TAG_MAP from '../logos/constants'
 import { TechRunTimeEnv, TechTypes, TechTag } from '../../interfaces/TechTag'
@@ -26,25 +24,21 @@ const transitionStyles = {
     opacity: 0,
     transform: 'scale(0.5)',
     maxWidth: 0
-    //  backgroundColor: 'red'
   },
   entered: {
     opacity: 1,
     transform: 'none',
     maxWidth: '20em'
-    //  backgroundColor: 'blue'
   },
   exiting: {
     opacity: 0,
     transform: 'scale(0.5)',
     maxWidth: 0
-    //  backgroundColor: 'green'
   },
   exited: {
     opacity: 0,
     transform: 'scale(0)',
     maxWidth: 0
-    //  backgroundColor: 'yellow'
   }
 }
 
@@ -132,12 +126,6 @@ interface LogoContrainerProps {
 
 const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgroundColor }) => {
   const isHighlighted = highlight && TAG_MAP[tag].includes?.includes(highlight.target)
-  // const contrast = useMemo(() => getContrast(themeBackgroundColor, '#000000'), [themeBackgroundColor])
-  // const backgroundColor = useMemo(() => (contrast < 15 ? lighten(0.0, themeBackgroundColor) : themeBackgroundColor), [
-  //   themeBackgroundColor,
-  //   contrast
-  // ])
-  // const isHighlighted = highlight && TAG_MAP[tag][highlight.key] === highlight.target
   return (
     <Box
       sx={{
@@ -156,8 +144,6 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
           transition: 'all 0.3s ease-in-out',
           color: 'text'
         },
-        // backgroundColor: mix(0.04, theme.colors.text, theme.colors.background),
-        // !highlight || (highlight && isHighlighted) ? mix(0.04, theme.colors.text, theme.colors.background) : theme.colors?.background,
         '&:hover': {
           backgroundColor: TAG_MAP[tag].color,
           svg: {
@@ -208,7 +194,6 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
           overflow: 'hidden',
           fontFamily: 'heading',
           fontWeight: 'heading',
-          // height: '100%',
           color: readableColor(TAG_MAP[tag].color),
           pointerEvents: 'none',
           whiteSpace: 'nowrap',
@@ -218,7 +203,6 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
           paddingY: 1,
           position: 'absolute',
           bottom: '70%',
-          // top: '-10%',
           left: 0,
           visibility: 'hidden',
           backgroundColor: opacify(0.4)(TAG_MAP[tag].color),
@@ -272,31 +256,27 @@ const TechCloudSection: React.FC<WorkProps> = () => (
       let tags = data.all
       if (highlight) {
         tags = tags.filter(highlightFilter(highlight))
-        // tags = tags.sort(highlightSort(highlight))
       }
       const boxBackgroundColor = theme.colors?.muted
-      // const boxBackgroundColor = useMemo(() => mix(0.04, theme.colors.text, theme.colors.background), [theme])
       return (
         <Box
           sx={{
             marginTop: 4
-            // backgroundImage: t => `linear-gradient(to bottom left, ${lighten('orange', 0.1)(t)}, ${lighten('yellow', 0.1)(t)})`
           }}
         >
-          <Heading id="technologies" as="h2" sx={{ paddingBottom: 1 }}>
+          <Heading id="technologies" as="h2">
             Technologies&nbsp;
-            <span sx={{ display: ['block', 'inline-block'], fontSize: 0, color: 'mutedText' }}>
-              filter by:&nbsp;
-              {FILTERS.map((filter, ind) => {
-            const isSelected = highlight && filter.name === highlight.name
-            return (
-              <TinyButton key={filter.name} onClick={() => setHighlight(isSelected ? undefined : filter)} isSelected={isSelected}>
-                {filter.name.toLowerCase()}
-              </TinyButton>
-            )
-          })}
-            </span>
           </Heading>
+          <div sx={{ fontSize: 1, fontFamily: 'heading', color: 'mutedText', marginBottom: 2, marginTop: 2 }}>
+            {FILTERS.map(filter => {
+              const isSelected = highlight && filter.name === highlight.name
+              return (
+                <TinyButton key={filter.name} onClick={() => setHighlight(isSelected ? undefined : filter)} isSelected={isSelected}>
+                  {filter.name.toLowerCase()}
+                </TinyButton>
+              )
+            })}
+          </div>
           <Flex
             sx={{
               flexDirection: 'row',
@@ -308,14 +288,7 @@ const TechCloudSection: React.FC<WorkProps> = () => (
               {tags.map(tag => {
                 const isHighlighted = highlight && TAG_MAP[tag].includes?.includes(highlight.target)
                 return (
-                  <Transition
-                    key={tag}
-                    in={!highlight || (highlight && isHighlighted)}
-                    // appear={!highlight || (highlight && isHighlighted)}
-                    mountOnEnter
-                    unmountOnExit
-                    timeout={TIMEOUT}
-                  >
+                  <Transition key={tag} in={!highlight || (highlight && isHighlighted)} mountOnEnter unmountOnExit timeout={TIMEOUT}>
                     {state => {
                       return (
                         <div css={css({ ...baseStyle, ...transitionStyles[state] })}>

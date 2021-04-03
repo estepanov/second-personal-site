@@ -13,6 +13,7 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
     <Flex
       sx={{
         // cursor: 'pointer',
+        marginRight: 2,
         justifyContent: 'center',
         alignItems: 'center',
         // fontSize: TAG_MAP[tag] ? 3 : 1,
@@ -24,7 +25,9 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
         '& span': {
           // transition: 'ease-in 0.3s',
           whiteSpace: 'nowrap',
-          // fontSize: 1,
+          fontSize: 2,
+          fontFamily: 'heading',
+          fontWeight: 'heading',
           marginLeft: 2,
           padding: 1,
           opacity: 0.8
@@ -46,8 +49,8 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
           <span>{TAG_MAP[tag].name}</span>
         </React.Fragment>
       ) : (
-          tag
-        )}
+        tag
+      )}
     </Flex>
   )
 }

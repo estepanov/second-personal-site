@@ -177,11 +177,15 @@ export const defaultTheme = {
     code: {
       fontFamily: 'monospace',
       // color: 'secondary',
-      fontSize: 1
+      fontSize: 1,
+      padding: 4
     },
     inlineCode: {
+      fontSize: 1,
+      paddingX: 2,
+      paddingY: 1,
       fontFamily: 'monospace',
-      color: 'secondary',
+      color: 'highlight',
       bg: 'muted'
     },
     table: {
@@ -217,7 +221,7 @@ export const defaultTheme = {
   },
   prism: {
     '.comment,.prolog,.doctype,.cdata,.punctuation,.operator,.entity,.url': {
-      color: 'gray'
+      color: 'gray600'
     },
     '.comment': {
       fontStyle: 'italic'
@@ -229,7 +233,7 @@ export const defaultTheme = {
       color: 'primary'
     },
     '.selector,.attr-name,.string,.char,.bultin,.inserted': {
-      color: 'text'
+      color: 'highlight'
     }
   }
 }

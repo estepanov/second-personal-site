@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 /** @jsx jsx */
-import { jsx, Text, Box, Flex, Heading } from 'theme-ui'
-import { lighten } from '@theme-ui/color'
+import { jsx, Text, Box, Flex } from 'theme-ui'
 
 import { StaticQuery, graphql } from 'gatsby'
 
@@ -69,26 +68,22 @@ const WorkSection: React.FC<WorkProps> = () => (
       return (
         <Box
           sx={{
-            marginTop: 2
-            // color: 'white'
+            marginY: 4
           }}
         >
           {data.currentPositions.length ? (
             <Flex sx={{ marginBottom: 2, flex: 1, flexWrap: 'wrap' }}>
-              <Text as="h4" sx={{ marginRight: 2, fontSize: 2, color: 'mutedText' }}>
+              <Text as="h2" sx={{ marginRight: 2, fontSize: 2, color: 'mutedText' }}>
                 Currently
               </Text>
-              {/* <Heading as="h4" sx={{ paddingBottom: 1, fontSize: 3 }}>
-                    Currently
-                  </Heading> */}
               {data.currentPositions.map(item => {
                 return <WorkItem item={item} key={item.id} />
               })}
             </Flex>
           ) : null}
           {data.previousPositions.length ? (
-            <Flex sx={{ marginBottom: 2, flex: 1, flexWrap: 'wrap' }}>
-              <Text as="h4" sx={{ marginRight: 2, fontSize: 2, color: 'mutedText' }}>
+            <Flex sx={{ flex: 1, flexWrap: 'wrap' }}>
+              <Text as="h2" sx={{ marginRight: 2, fontSize: 2, color: 'mutedText' }}>
                 Previously
               </Text>
               {data.previousPositions.map(item => {

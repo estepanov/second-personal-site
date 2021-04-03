@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import dayjs from 'dayjs'
 import { StaticQuery, graphql } from 'gatsby'
 /** @jsx jsx */
-import { jsx, Flex, Box, Text, Heading } from 'theme-ui'
+import { jsx, Flex, Box, Text } from 'theme-ui'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { scaleLinear } from 'd3-scale'
 import { ContributionCalendarWeeks } from '../interfaces/GitHub'
@@ -86,9 +86,6 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
 
       return (
         <Box>
-          {/* <Heading as="h4" sx={{ paddingBottom: 1, fontSize: 3 }}>
-            Github Activity
-          </Heading> */}
           <Flex sx={{ overflowX: 'scroll' }}>
             {data.weeks.map((week, ind, weekArray) => {
               const previousMonth = ind !== 0 ? dayjs(weekArray[ind - 1].firstDay) : null
