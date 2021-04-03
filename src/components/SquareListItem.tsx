@@ -34,7 +34,7 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
       to={linkTo}
       sx={{
         padding: 3,
-        background: bgImg ? t => `linear-gradient(to bottom right, ${lighten('muted', 0.05)(t)}, ${darken('muted', 0.1)(t)})` : 'muted',
+        background: bgImg ? t => `linear-gradient(to bottom right, ${lighten('muted', 0.08)(t)}, ${darken('muted', 0.1)(t)})` : 'muted',
         marginRight: [0, 3],
         marginBottom: 3,
         flex: 1,
@@ -59,8 +59,8 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
             textShadow: `1px 1px 0px ${theme.theme.colors?.text}`
           },
           '& .proj-bg img': {
-            transform: 'rotate3D(0,-0.5,-0.5,0.1turn) scale(1.43) ',
-            opacity: 0.2
+            transform: 'rotate3D(0,-0.5,-0.5,0.1turn) scale(1.43)',
+            opacity: 0.15
           }
         }
       }}
@@ -76,7 +76,7 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-        <img sx={{ transform: 'rotate3D(1,-1,-1,-20deg) scale(2)', opacity: 0.15, width: '100%', transition: 'all ease 2.5s' }} src={bgImg} />
+        <img sx={{ transform: 'rotate3D(1,0,-3,-20deg) scale(2)', opacity: 0.10, width: '100%', transition: 'transform ease-in-out 2s' }} src={bgImg} />
       </Flex>
       <Flex
         sx={{
