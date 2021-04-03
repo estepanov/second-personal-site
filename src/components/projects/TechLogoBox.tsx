@@ -12,16 +12,13 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
   return (
     <Flex
       sx={{
-        // cursor: 'pointer',
         marginRight: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        // fontSize: TAG_MAP[tag] ? 3 : 1,
-        color: TAG_MAP[tag] ? TAG_MAP[tag].color : 'primaryLight',
+        color: TAG_MAP[tag] ? TAG_MAP[tag].color : 'mutedText',
         paddingX: 2,
         paddingY: 1,
         // transition: 'ease-in 0.3s',
-        // transform: 'scale(1)',
         '& span': {
           // transition: 'ease-in 0.3s',
           whiteSpace: 'nowrap',
@@ -32,14 +29,6 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
           padding: 1,
           opacity: 0.8
         }
-        // '&:hover': {
-        //   '& span': {
-        //     opacity: 1
-        //   },
-        //   transform: 'scale(1.05)',
-        //   bg: 'white',
-        //   color: TAG_MAP[tag] ? TAG_MAP[tag].color : 'primaryLight'
-        // }
       }}
       key={tag}
     >

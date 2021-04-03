@@ -185,8 +185,8 @@ export const defaultTheme = {
       paddingX: 2,
       paddingY: 1,
       fontFamily: 'monospace',
-      color: 'highlight',
-      bg: 'muted'
+      color: 'text',
+      bg: 'listBg'
     },
     table: {
       width: '100%',
@@ -227,13 +227,13 @@ export const defaultTheme = {
       fontStyle: 'italic'
     },
     '.property,.tag,.boolean,.number,.constant,.symbol,.deleted,.function,.class-name,.regex,.important,.variable': {
-      color: 'secondary'
+      color: 'pink'
     },
     '.atrule,.attr-value,.keyword': {
-      color: 'primary'
+      color: 'orange'
     },
     '.selector,.attr-name,.string,.char,.bultin,.inserted': {
-      color: 'highlight'
+      color: 'green'
     }
   }
 }

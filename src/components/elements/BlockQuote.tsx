@@ -4,7 +4,7 @@ import { jsx } from 'theme-ui'
 
 const BlockQuote: React.FC = ({ children }) => {
   return (
-    <div sx={{ backgroundColor: 'listBg', color: 'listContent' }}>
+    <div sx={{ backgroundColor: 'listBg', color: 'text' }}>
       <blockquote>{children}</blockquote>
     </div>
   )

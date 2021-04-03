@@ -63,11 +63,31 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) =>
           </>
         ) : null}
       </Flex>
-      <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap', backgroundColor: 'muted' }}>
-        {data.post.frontmatter.date && <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />}
-        <TechLogoList tags={data.post.frontmatter.tech} renderItem={TechLogoBox} />
+      <Flex
+        my={1}
+        sx={{
+          flexDirection: ['column', 'row'],
+          flexWrap: 'wrap',
+          backgroundColor: 'muted',
+          paddingY: 2,
+          paddingX: 1,
+          alignItems: ['center'],
+          fontSize: 4
+        }}
+      >
+        {data.post.frontmatter.date && (
+          <Box sx={{ fontSize: 2, fontWeight: 'bold', width: ['100%', 'auto'], justifyContent: 'flex-start', marginRight: [0, 2] }}>
+            <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />
+          </Box>
+        )}
+        <Flex sx={{ marginY: [1, 0], fontSize: 4 }}>
+          <TechLogoList tags={data.post.frontmatter.tech} marginRight={3} marginBottom={1} />
+        </Flex>
+        <Flex sx={{ flexGrow: 1 }} />
+        <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap', position: 'relative' }}>
+          <ProjectLinks marginRight={3} marginBottom={1} repo={data.post.frontmatter.repo} website={data.post.frontmatter.website} />
+        </Flex>
       </Flex>
-      <ProjectLinks repo={data.post.frontmatter.repo} website={data.post.frontmatter.website} />
       <Demos items={data.post.frontmatter.demos} />
       <ImageGallery items={data.post.frontmatter.images} />
       <MDX>{data.post.body}</MDX>

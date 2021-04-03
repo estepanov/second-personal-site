@@ -94,9 +94,8 @@ const PageListItem: React.FC<PageListItemProps> = ({ banner, banners, excerpt, d
           ) : null}
         </Flex>
         <Text sx={{ fontSize: 1, color: 'text' }}>{excerpt}</Text>
-        <Flex my={2} sx={{ flexDirection: 'row', fontSize: 4 }}>
-          {date && <TechLogo marginRight={3} marginBottom={3} tag={date} />}
-          {tech && tech.length ? <TechLogoList tags={tech} marginRight={3} marginBottom={3} /> : null}
+        <Flex sx={{ flexDirection: 'row', fontSize: 4, marginTop: 2 }}>
+          {tech && tech.length ? <TechLogoList tags={tech} marginRight={3} marginBottom={1} /> : null}
         </Flex>
       </Flex>
       {banner && <BannerImageList image={banner} />}

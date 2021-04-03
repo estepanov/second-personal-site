@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Heading, Flex, Image } from 'theme-ui'
+import { Heading, Flex, Box, Image } from 'theme-ui'
 import dayjs from 'dayjs'
 import MDX from '../components/MDX'
 import TechLogoBox from '../components/projects/TechLogoBox'
@@ -31,9 +31,15 @@ const BlogPostPageTemplate: React.FC<BlogPostPageTemplateProps> = ({ data, locat
     <Heading as="h1" my={1} sx={{ width: ['100%', 'auto'] }}>
       {data.post.frontmatter.title}
     </Heading>
-    <Flex my={1} sx={{ flexDirection: 'row', flexWrap: 'wrap', backgroundColor: 'muted' }}>
-      {data.post.frontmatter.date && <TechLogoBox tag={dayjs(data.post.frontmatter.date).format('MMMM D YYYY')} />}
-      <TechLogoList tags={data.post.frontmatter.tech || []} renderItem={TechLogoBox} />
+    <Flex
+      sx={{ flexDirection: 'row', flexWrap: 'wrap', backgroundColor: 'muted', paddingY: 2, paddingX: 1, alignItems: 'center', fontSize: 4 }}
+    >
+      <Box sx={{ fontSize: 2, fontWeight: 'bold', width: ['100%', 'auto'], justifyContent: 'flex-start', marginRight: [0, 2] }}>
+        {data.post.frontmatter.date && <TechLogoBox tag={dayjs(data.post.frontmatter.date).format('MMMM D YYYY')} />}
+      </Box>
+      <Flex sx={{ fontSize: 4 }}>
+        <TechLogoList tags={data.post.frontmatter.tech || []} marginRight={3} marginBottom={1} />
+      </Flex>
     </Flex>
     {data.post?.frontmatter?.banner?.publicURL && (
       <Image

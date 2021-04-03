@@ -8,6 +8,7 @@ interface TechLogoListProps {
   renderItem?: React.ReactNode
   marginRight?: number
   marginBottom?: number
+  fontSize?: number
 }
 
 const techSort = (a: string, b: string) => {
@@ -20,11 +21,11 @@ const techSort = (a: string, b: string) => {
   return 0
 }
 
-const TechLogoList: React.FC<TechLogoListProps> = ({ tags, renderItem, marginRight, marginBottom }) => {
+const TechLogoList: React.FC<TechLogoListProps> = ({ tags, renderItem, marginRight, marginBottom, fontSize }) => {
   const sorted = useMemo(() => tags.sort(techSort), [tags])
   const Render = renderItem || TechLogo
   return sorted.map(tag => {
-    return <Render tag={tag} key={tag} marginRight={marginRight} marginBottom={marginBottom} />
+    return <Render tag={tag} key={tag} marginRight={marginRight} marginBottom={marginBottom} fontSize={fontSize} />
   })
 }
 

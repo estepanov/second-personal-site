@@ -179,6 +179,7 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
     >
       <Box
         sx={{
+          zIndex: 2,
           opacity: highlight && !isHighlighted ? 0.2 : 1
         }}
       >
@@ -190,7 +191,7 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
           alignItems: 'center',
           maxHeight: 0,
           maxWidth: 0,
-          zIndex: -1,
+          zIndex: 1,
           overflow: 'hidden',
           fontFamily: 'heading',
           fontWeight: 'heading',
