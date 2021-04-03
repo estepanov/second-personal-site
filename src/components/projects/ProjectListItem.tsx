@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Project } from '../../interfaces/Project'
-import PageListItem from '../PageListItem'
+import SquareListItem from '../SquareListItem'
 
 interface Props {
   project: Project
@@ -9,7 +9,7 @@ interface Props {
 
 const ProjectListItem: React.FC<Props> = ({ project }) => {
   return (
-    <PageListItem
+    <SquareListItem
       linkTo={project.fields.slug}
       size={project.frontmatter.size}
       images={project.frontmatter.images}

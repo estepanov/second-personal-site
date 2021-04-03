@@ -26,8 +26,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom, fon
         position: 'relative',
         fontSize: fontSize || TAG_MAP[tag] ? 'inherit' : '0.6em',
         padding: 0,
-        color: 'text',
-        transition: 'ease-in 0.3s',
+        // color: 'text',
         justifyContent: 'center',
         alignItems: 'center',
         marginRight,
@@ -36,6 +35,9 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom, fon
         backgroundColor: 'transparent',
         '&:hover': {
           color: hoverTextColor,
+          '& span.icon': {
+            color: hoverTextColor,
+          },
           '& span.bg': {
             opacity: 1
           },
@@ -69,9 +71,10 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom, fon
       {TAG_MAP[tag] ? (
         <React.Fragment>
           <span
+            className="icon"
             sx={{
               display: 'flex',
-              zIndex: 2
+              zIndex: 1
             }}
           >
             {TAG_MAP[tag].icon}
@@ -85,7 +88,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom, fon
               top: -2,
               bottom: -2,
               opacity: 0,
-              zIndex: 1,
+              zIndex: 0,
               transition: 'all ease 0.2s',
               backgroundColor: TAG_MAP[tag]?.color || 'text'
             }}
@@ -105,6 +108,7 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom, fon
               position: 'absolute',
               top: '100%',
               left: -2,
+              zIndex: 1,
               visibility: 'hidden',
               color: hoverTextColor,
               backgroundColor: color,
@@ -118,8 +122,8 @@ const TechLogo: React.FC<TechLogoProps> = ({ tag, marginRight, marginBottom, fon
           </span>
         </React.Fragment>
       ) : (
-        tag
-      )}
+          tag
+        )}
     </Flex>
   )
 }

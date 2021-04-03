@@ -76,6 +76,8 @@ const PageListItem: React.FC<PageListItemProps> = ({ banner, banners, excerpt, d
             sx={{
               width: ['100%', 'auto'],
               fontSize: 3,
+              fontFamily: 'heading',
+              fontWeight: 'bold',
               color: 'listHeader',
               transition: 'ease-in-out 0.3s',
               float: 'left'

@@ -31,7 +31,7 @@ interface BlogPostListPageTemplateProps {
 const BlogPostListPageTemplate: React.FC<BlogPostListPageTemplateProps> = ({ data, location }) => {
   return (
     <Layout pathname={location.pathname}>
-      <SectionHeader title="Blog" subtitle="A collection of random musings" />
+      {/* <SectionHeader title="Blog" subtitle="A collection of random musings" /> */}
       {data.posts.nodes && data.posts.nodes.length ? (
         data.posts.nodes.map((post, ind) => {
           return (
@@ -43,10 +43,10 @@ const BlogPostListPageTemplate: React.FC<BlogPostListPageTemplateProps> = ({ dat
           )
         })
       ) : (
-        <Flex sx={{ justifyContent: 'center', alignItems: 'center', padding: 2 }}>
-          <Text>content is coming soon!</Text>
-        </Flex>
-      )}
+          <Flex sx={{ justifyContent: 'center', alignItems: 'center', padding: 2 }}>
+            <Text>content is coming soon!</Text>
+          </Flex>
+        )}
     </Layout>
   )
 }

@@ -24,16 +24,14 @@ export const defaultTheme = {
       ...modes
     }
   },
-  // space: { ...space },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     nav: "'Archivo', serif",
     body: "'Open San', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-    // heading: "'DM Mono', monospace",
     heading: "'Archivo', serif",
     monospace: 'Menlo, monospace'
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48, 64],
   fontWeights: {
     body: 300,
     heading: 500,
@@ -82,7 +80,7 @@ export const defaultTheme = {
       paddingTop: 1,
       paddingBottom: 1,
       paddingRight: 2,
-      fontSize: 1,
+      fontSize: 2,
       fontWeight: '500',
       textTransform: 'uppercase',
       color: 'headerMobile',

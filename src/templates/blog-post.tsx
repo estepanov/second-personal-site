@@ -32,7 +32,7 @@ const BlogPostPageTemplate: React.FC<BlogPostPageTemplateProps> = ({ data, locat
       {data.post.frontmatter.title}
     </Heading>
     <Flex
-      sx={{ flexDirection: 'row', flexWrap: 'wrap', backgroundColor: 'muted', paddingY: 2, paddingX: 1, alignItems: 'center', fontSize: 4 }}
+      sx={{ flexDirection: ['column', 'row'], flexWrap: 'wrap', backgroundColor: 'muted', paddingY: 2, paddingX: 1, alignItems: 'center', fontSize: 4, marginY: 2 }}
     >
       <Box sx={{ fontSize: 2, fontWeight: 'bold', width: ['100%', 'auto'], justifyContent: 'flex-start', marginRight: [0, 2] }}>
         {data.post.frontmatter.date && <TechLogoBox tag={dayjs(data.post.frontmatter.date).format('MMMM D YYYY')} />}

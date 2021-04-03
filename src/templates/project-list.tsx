@@ -8,6 +8,7 @@ import { Project } from '../interfaces/Project'
 import SectionHeader from '../components/Layout/SectionHeader'
 import Pagination from '../components/Pagination'
 import HR from '../components/elements/HR'
+import { Flex } from 'theme-ui'
 
 interface EdgeNode {
   node: Project
@@ -45,16 +46,14 @@ const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
   const description = 'Random stuff I have built.'
   return (
     <Layout title={title} description={description} pathname={location.pathname}>
-      <SectionHeader title={title} subtitle={description} />
-      {data.post.edges.map(({ node }, ind) => {
-        return (
-          <React.Fragment key={node.id}>
-            <HR />
+      {/* <SectionHeader title={title} subtitle={description} /> */}
+      <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+        {data.post.edges.map(({ node }, ind) => {
+          return (
             <ProjectListItem project={node} />
-            {ind + 1 === data.post.edges.length && <HR />}
-          </React.Fragment>
-        )
-      })}
+          )
+        })}
+      </Flex>
       <Pagination
         displayRange={5}
         getPath={(page: number) => {
@@ -100,8 +99,8 @@ export const query = graphql`
               publicURL
               childImageSharp {
                 resize(
-                  height: 300
-                  width: 300
+                  height: 500
+                  width: 500
                   cropFocus: NORTH
                   jpegProgressive: true
                   quality: 100

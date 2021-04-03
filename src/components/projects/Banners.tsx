@@ -7,9 +7,11 @@ import { ProjectBannersEnum } from '../../interfaces/Project'
 
 interface BannerProps {
   type: ProjectBannersEnum
+  marginRight?: number,
+  marginBottom?: number,
 }
 
-const Banner: React.FC<BannerProps> = ({ type }) => {
+const Banner: React.FC<BannerProps> = ({ type, marginRight, marginBottom }) => {
   const sx: SxStyleProp = {
     backgroundColor: undefined,
     backgroundImage: undefined,
@@ -19,8 +21,9 @@ const Banner: React.FC<BannerProps> = ({ type }) => {
     paddingY: 1,
     fontSize: 0,
     textTransform: 'uppercase',
-    marginRight: 1,
-    marginY: 1
+    marginRight,
+    marginTop: marginBottom,
+    marginBottom,
   }
   switch (type) {
     case ProjectBannersEnum.hackathon:

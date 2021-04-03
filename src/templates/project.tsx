@@ -64,7 +64,7 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) =>
         ) : null}
       </Flex>
       <Flex
-        my={1}
+        my={2}
         sx={{
           flexDirection: ['column', 'row'],
           flexWrap: 'wrap',
