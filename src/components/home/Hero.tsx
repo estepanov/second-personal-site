@@ -10,10 +10,8 @@ const Hero = ({ children }) => {
         // backgroundRepeat: 'no-repeat',
         // backgroundSize: 'cover',
         // backgroundPosition: ['70% 50%', '50% 50%'],
-        minHeight: 400,
-        height: `calc(100vh - ${250}px)`,
-        flex: '1 0 auto',
-        opacity: 0.85
+        minHeight: `calc(80vh - ${90}px)`,
+        flex: '1 0 auto'
         // filter: ' hue-rotate(100deg)'
         // filter: 'grayscale(1)'
       }}

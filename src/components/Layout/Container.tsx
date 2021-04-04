@@ -7,7 +7,7 @@ const Container: React.FC = ({ children, sx, ...props }) => (
     sx={{
       ...sx,
       flexShrink: 0,
-      maxWidth: 1024,
+      maxWidth: 1140,
       width: '100%',
       flexDirection: 'column'
     }}

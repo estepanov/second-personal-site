@@ -28,10 +28,11 @@ export const defaultTheme = {
   fonts: {
     nav: "'Archivo', serif",
     body: "'Open San', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-    heading: "'Archivo', serif",
+    heading: "'Roboto Condensed', sans-serif",
+    writing: "'Shadows Into Light', cursive",
     monospace: 'Menlo, monospace'
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48, 64],
+  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48, 64, 72],
   fontWeights: {
     body: 300,
     heading: 500,
@@ -101,23 +102,31 @@ export const defaultTheme = {
     nav: {
       fontFamily: 'nav',
       textTransform: 'uppercase',
-      transition: 'ease-in-out 0.5s',
-      paddingTop: 2,
-      paddingBottom: 2,
+      paddingTop: 1,
+      paddingBottom: 1,
       paddingLeft: 2,
       paddingRight: 2,
-      fontSize: 1,
-      fontWeight: '500',
+      fontSize: 2,
+      letterSpacing: 1,
+      fontWeight: '700',
       color: 'text',
       '&:visited': {
         color: 'text'
       },
       textDecoration: 'none',
       '&:hover': {
-        color: 'headerActive'
+        borderRadius: 0,
+        color: 'primary',
+        borderBottomStyle: 'solid',
+        borderBottomSize: '2px',
+        borderBottomColor: 'primary'
       },
       '&.active': {
-        color: 'secondary'
+        color: 'text',
+        borderRadius: 0,
+        borderBottomStyle: 'solid',
+        borderBottomSize: '2px',
+        borderBottomColor: 'text'
       },
       ...LINK_FOCUS
     }

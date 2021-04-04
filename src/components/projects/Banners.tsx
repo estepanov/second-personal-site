@@ -7,8 +7,8 @@ import { ProjectBannersEnum } from '../../interfaces/Project'
 
 interface BannerProps {
   type: ProjectBannersEnum
-  marginRight?: number,
-  marginBottom?: number,
+  marginRight?: number
+  marginBottom?: number
 }
 
 const Banner: React.FC<BannerProps> = ({ type, marginRight, marginBottom }) => {
@@ -23,7 +23,7 @@ const Banner: React.FC<BannerProps> = ({ type, marginRight, marginBottom }) => {
     textTransform: 'uppercase',
     marginRight,
     marginTop: marginBottom,
-    marginBottom,
+    marginBottom
   }
   switch (type) {
     case ProjectBannersEnum.hackathon:

@@ -26,7 +26,7 @@ interface SquareListItemProps {
 }
 
 const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerpt, date, size, tech, title, images, linkTo }) => {
-  let bgImg = images?.[0].childImageSharp?.resize?.src
+  const bgImg = images?.[0].childImageSharp?.resize?.src
   const theme = useThemeUI()
   const oppositeDeep = theme.colorMode === Modes.dark ? lighten : darken
   return (
@@ -65,18 +65,24 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
         }
       }}
     >
-      <Flex className="proj-bg" sx={{
-        position: 'absolute',
-        zIndex: 0,
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        overflow: 'hidden',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
-        <img sx={{ transform: 'rotate3D(1,0,-3,-20deg) scale(2)', opacity: 0.10, width: '100%', transition: 'transform ease-in-out 2s' }} src={bgImg} />
+      <Flex
+        className="proj-bg"
+        sx={{
+          position: 'absolute',
+          zIndex: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          overflow: 'hidden',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <img
+          sx={{ transform: 'rotate3D(1,0,-3,-20deg) scale(2)', opacity: 0.1, width: '100%', transition: 'transform ease-in-out 2s' }}
+          src={bgImg}
+        />
       </Flex>
       <Flex
         sx={{
@@ -87,38 +93,72 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
           flexDirection: 'column'
         }}
       >
-        <Heading
-          className="proj-name"
+        <Flex sx={{ justifyContent: 'space-between', marginBottom: 2, alignItems: 'flex-start' }}>
+          <Heading
+            className="proj-name"
+            sx={{
+              width: ['100%', 'auto'],
+              fontSize: [3, 4],
+              fontFamily: 'heading',
+              fontWeight: 'display',
+              lineHeight: '1.5em',
+              color: 'listHeader',
+              textShadow: `1px 1px 1px ${theme.theme.colors?.background}`
+            }}
+          >
+            {title}
+          </Heading>
+          {date ? (
+            <Box
+              className="proj-name"
+              sx={{
+                lineHeight: '1.5em',
+                fontSize: 2,
+                fontWeight: 'heading',
+                fontFamily: 'body',
+                color: 'mutedText',
+                flexShrink: 0,
+                padding: 2,
+                marginLeft: 2
+              }}
+            >
+              {date.toString()}{' '}
+            </Box>
+          ) : null}
+        </Flex>
+        <Text
+          className="proj-body"
           sx={{
-            width: ['100%', 'auto'],
-            fontSize: [3, 4],
-            fontFamily: 'heading',
-            fontWeight: 'display',
-            lineHeight: '1.5em',
-            color: 'listHeader',
-            marginBottom: 3,
+            fontSize: 1,
+            color: 'text',
+            flex: 1,
             textShadow: `1px 1px 1px ${theme.theme.colors?.background}`
           }}
         >
-          {title}
-        </Heading>
-        <Text className="proj-body" sx={{
-          fontSize: 1, color: 'text', flex: 1, textShadow: `1px 1px 1px ${theme.theme.colors?.background}`
-        }}>{excerpt}</Text>
+          {excerpt}
+        </Text>
+        {banners ? (
+          <Flex
+            sx={{
+              fontSize: 2,
+              flexShrink: 0,
+              flexWrap: 'no-wrap',
+              alignItems: 'center'
+            }}
+          >
+            {banners.map(item => (
+              <span>
+                <Banner key={item} type={item} marginRight={3} marginBottom={2} />
+              </span>
+            ))}
+          </Flex>
+        ) : null}
         <Flex sx={{ flexDirection: 'row', fontSize: 6, marginTop: 2, flexWrap: 'wrap-reverse', alignItems: 'center' }}>
-          {date ? <TechLogoList tags={[date.toString()]} marginRight={3} marginBottom={2} /> : null}
           {tech && tech.length ? <TechLogoList tags={tech} marginRight={3} marginBottom={2} /> : null}
-          {banners ? (
-            <React.Fragment>
-              {banners.map(item => (
-                <span><Banner key={item} type={item} marginRight={3} marginBottom={2} /></span>
-              ))}
-            </React.Fragment>
-          ) : null}
         </Flex>
       </Flex>
       {banner && <BannerImageList image={banner} />}
-    </Link >
+    </Link>
   )
 }
 

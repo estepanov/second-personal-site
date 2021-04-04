@@ -4,6 +4,7 @@ import { jsx, Box } from 'theme-ui'
 
 interface LogoProps {
   alt?: string
+  className?: string
 }
 const Logo: React.FC<LogoProps> = ({ alt, sx, ...props }) => (
   <Box sx={sx} {...props}>

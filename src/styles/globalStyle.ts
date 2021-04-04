@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 
 const globalStyle = css`
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Open+Sans:wght@300;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Open+Sans:wght@300;700&family=Roboto+Condensed:ital,wght@0,700;1,700&family=Shadows+Into+Light&display=swap');
 
   html {
     width: 100%;

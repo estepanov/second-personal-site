@@ -75,15 +75,15 @@ const lightTheme = {
   muted200: mains.gray400,
   mutedText: mains.gray600, // added
   gray: mains.gray700,
-  logo: mains.gray700,
-  logoActive: mains.gray200,
+  logo: mains.gray700, // added
+  logoActive: mains.white,
   headerActive: mains.gray900,
   headerMobile: mains.gray500,
   headerMobileActive: mains.gray200,
   headerMobileBg: mains.gray800,
   headerMobileBgActive: mains.gray400,
   /// GENERAL
-  highlight: mains.indigo, // added
+  highlight: mains.pink, // added
   success: mains.green,
   info: mains.cyan,
   warning: mains.yellow,
@@ -101,7 +101,7 @@ export const modes: ModeTypes = {
   },
   [Modes.dark]: {
     ...lightTheme,
-    logo: mains.gray500,
+    text: mains.gray400,
     logoActive: mains.gray300,
     headerActive: mains.gray300,
     headerMobile: mains.gray400,
@@ -109,7 +109,7 @@ export const modes: ModeTypes = {
     headerMobileBg: mains.gray800,
     headerMobileBgActive: mains.gray300,
 
-    text: mains.gray400,
+    logo: mains.gray400,
     background: mains.gray900,
     muted: mains.gray800,
     muted200: mains.gray700,
