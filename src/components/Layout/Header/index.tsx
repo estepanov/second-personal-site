@@ -152,16 +152,8 @@ const Header = () => {
                   className="icon"
                   sx={{
                     zIndex: 1,
-                    display: ['none', 'block'],
                     height: '30px',
                     transition: 'scale ease-in 0.3s'
-                  }}
-                />
-                <Name
-                  sx={{
-                    display: ['block', 'none'],
-                    height: '30px',
-                    width: '190px'
                   }}
                 />
                 <span
@@ -273,8 +265,8 @@ const Header = () => {
                   {showMobileMenu ? (
                     <path d="M 5.7070312 4.2929688 L 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 L 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 L 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 L 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 z" />
                   ) : (
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-                  )}
+                      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                    )}
                 </svg>
               </Button>
             </Box>

@@ -9,6 +9,7 @@ import Container from '../components/Layout/Container'
 import GitHubActivity from '../components/GitHubActivityBook'
 import TechSection from '../components/home/TechCloud'
 import Hero from '../components/home/Hero'
+import LatestProjects from '../components/home/LatestProjects'
 
 interface IndexProps {
   location: Location
@@ -104,6 +105,7 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
         <Flex sx={{ justifyContent: 'center', alignItems: 'center', marginTop: 4 }}>
           <GitHubActivity />
         </Flex>
+        <LatestProjects />
         {/* </Flex> */}
       </Container>
     </Layout>

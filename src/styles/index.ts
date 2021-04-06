@@ -61,6 +61,16 @@ export const defaultTheme = {
       color: 'primary',
       bg: 'transparent',
       boxShadow: 'inset 0 0 0 2px'
+    },
+    text: {
+      bg: 'muted',
+      fontFamily: 'heading',
+      fontWeight: 'heading',
+      paddingY: 1,
+      paddingX: 2,
+      border: 'none',
+      color: 'text',
+      borderRadius: 0
     }
   },
   links: {
@@ -100,6 +110,7 @@ export const defaultTheme = {
       }
     },
     nav: {
+      transition: "border ease 0.3s",
       fontFamily: 'nav',
       textTransform: 'uppercase',
       paddingTop: 1,
@@ -110,6 +121,9 @@ export const defaultTheme = {
       letterSpacing: 1,
       fontWeight: '700',
       color: 'text',
+      borderBottomStyle: 'solid',
+      borderBottomSize: '2px',
+      borderBottomColor: 'transparent',
       '&:visited': {
         color: 'text'
       },
@@ -117,8 +131,6 @@ export const defaultTheme = {
       '&:hover': {
         borderRadius: 0,
         color: 'primary',
-        borderBottomStyle: 'solid',
-        borderBottomSize: '2px',
         borderBottomColor: 'primary'
       },
       '&.active': {
