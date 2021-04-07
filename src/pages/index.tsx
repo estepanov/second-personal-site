@@ -31,9 +31,10 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
           >
             <Text
               sx={{
+                textAlign: ['center','left'],
                 color: 'text',
                 lineHeight: '1.5em',
-                fontSize: [6, 9],
+                fontSize: [5, 9],
                 // fontStyle: 'italic',
                 fontFamily: 'heading',
                 fontWeight: 'display',

@@ -32,7 +32,7 @@ export const defaultTheme = {
     writing: "'Shadows Into Light', cursive",
     monospace: 'Menlo, monospace'
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48, 64, 72],
+  fontSizes: [12, 14, 16, 20, 24, 32, 40, 48, 64, 72, 80],
   fontWeights: {
     body: 300,
     heading: 500,
