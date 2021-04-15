@@ -19,7 +19,7 @@ const Banner: React.FC<BannerProps> = ({ type, marginRight, marginBottom }) => {
     flexShrink: 0,
     paddingX: 2,
     paddingY: 1,
-    fontSize: 0,
+    fontSize: "0.6em",
     textTransform: 'uppercase',
     marginRight,
     marginTop: marginBottom,

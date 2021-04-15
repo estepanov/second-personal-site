@@ -10,21 +10,21 @@ const bounce = keyframes`
     opacity: 1;
   }
   to {
-    transform: translateY(-25px) scale(0.9);
+    transform: translateY(-30px) scale(0.9);
     opacity: 0.5;
   }
 `
 
 const Hero = ({ children }) => {
   const arrowRef = useRef()
-  const {isIntersecting} = useIntersectionObserver(arrowRef, { 
-      rootMargin: "-90% 0px 0px 0px"
-    })
+  const { isIntersecting } = useIntersectionObserver(arrowRef, {
+    rootMargin: "-90% 0px 0px 0px"
+  })
   return (
     <Flex
       sx={{
         position: 'relative',
-        minHeight: [`calc(100vh - ${110 + 82}px)`,`calc(100vh - ${110 + 58}px)`],
+        minHeight: [`calc(100vh - ${110 + 82}px)`, `calc(100vh - ${110 + 58}px)`],
         flex: '1 0 auto'
       }}
     >
@@ -39,7 +39,7 @@ const Hero = ({ children }) => {
         <source src="https://estepanov.s3.amazonaws.com/fallMini.mp4" type="video/mp4" />
       </video> */}
       {children}
-      <Flex 
+      <Flex
         ref={arrowRef}
         sx={{
           position: 'absolute',
@@ -49,7 +49,7 @@ const Hero = ({ children }) => {
           justifyContent: 'center',
           fontSize: [4, 5],
           animation: `${bounce} 1s infinite alternate`,
-          animationPlayStat: isIntersecting? 'running' : 'paused',
+          animationPlayStat: isIntersecting ? 'running' : 'paused',
           animationTimingFunction: 'ease-in-out'
         }} >
         <Box sx={{

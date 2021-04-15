@@ -86,7 +86,7 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
         alignItems: 'center',
         paddingX: '0.5em',
         flexDirection: 'row',
-        width: '3.75em',
+        width: '4em',
         height: '2.125em',
         backgroundColor: t => lighten('listBgAlt', 0.1)(t),
         boxShadow: t => `0px 0px 0.3em ${darken('listBgAlt', 0.1)(t)} inset`,
@@ -143,7 +143,7 @@ const Toggle: React.FC<ToggleProps> = ({ id, checked, UncheckedIcon, UncheckedCi
         id="slider"
         sx={{
           boxShadow: t => `0px 0px 0.3em ${darken('listBgAlt', 0.1)(t)}`,
-          transform: checked ? 'translateX(1.625em)' : 'translateX(0px)',
+          transform: checked ? 'translateX(1.8em)' : 'translateX(0px)',
           position: 'absolute',
           zIndex: 1,
           cursor: 'pointer',

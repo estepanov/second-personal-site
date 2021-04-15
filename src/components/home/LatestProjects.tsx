@@ -90,6 +90,7 @@ const LatestProjects: React.FC<WorkProps> = () => (
         >
           <Heading id="latest-projects" as="h2">
             Latest Projects
+            <Link to="/projects" sx={{ fontSize: 0, color: 'mutedText', marginLeft: 2 }}>view all</Link>
           </Heading>
           <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 2 }}>
             {list.map(({ node }) => {
@@ -97,9 +98,6 @@ const LatestProjects: React.FC<WorkProps> = () => (
                 <ProjectListItem project={node} />
               )
             })}
-          </Flex>
-          <Flex sx={{ justifyContent: "center" }}>
-            <Link to="/projects" sx={{}}>View more projects</Link>
           </Flex>
         </Box>
       )
