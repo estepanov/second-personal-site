@@ -229,9 +229,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: tagTemplate,
         context: {
           tag: uniqTag,
-          // this is here for future pagination... but i dont need it right now.
-          limit: undefined,
-          skip: 0,
         },
       })
     })

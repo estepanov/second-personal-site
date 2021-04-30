@@ -35,11 +35,11 @@ interface ProjectProps {
   pageContext: {
     tag: string
     // currentPage: number
-    limit: number
+    // limit: number
     // nextPage: null | number
     // pages: number
     // previousPage: null | number
-    skip: number
+    // skip: number
   }
 }
 
@@ -63,7 +63,7 @@ const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
 export default Projects
 
 export const query = graphql`
-  query tagListQuery($tag: String!, $skip: Int!, $limit: Int!) {
+  query tagListQuery($tag: String!) {
     site {
       siteMetadata {
         title
@@ -72,8 +72,6 @@ export const query = graphql`
     }
     post: allMdx(
       filter: { frontmatter: { tech: { in: [$tag] } }, fields: {type: {eq: "projects"}, isMain: {eq: true}} }
-      limit: $limit
-      skip: $skip
       sort: { fields: [frontmatter___date, frontmatter___title], order: [DESC, DESC] }
     ) {
       edges {
