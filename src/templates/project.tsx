@@ -77,11 +77,11 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) =>
       >
         {data.post.frontmatter.date && (
           <Box sx={{ fontSize: 2, fontWeight: 'bold', width: ['100%', 'auto'], justifyContent: 'flex-start', marginRight: [0, 2] }}>
-            <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear()} />
+            <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear().toString() || ""} />
           </Box>
         )}
         <Flex sx={{ marginY: [1, 0], fontSize: 4 }}>
-          <TechLogoList tags={data.post.frontmatter.tech} marginRight={3} marginBottom={1} />
+          <TechLogoList tags={data.post.frontmatter.tech} marginRight={3} marginBottom={1} isLink />
         </Flex>
         <Flex sx={{ flexGrow: 1 }} />
         <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap', position: 'relative' }}>

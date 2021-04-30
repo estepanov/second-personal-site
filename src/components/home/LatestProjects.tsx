@@ -95,7 +95,7 @@ const LatestProjects: React.FC<WorkProps> = () => (
           <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 2 }}>
             {list.map(({ node }) => {
               return (
-                <ProjectListItem project={node} />
+                <ProjectListItem key={node.id} project={node} />
               )
             })}
           </Flex>

@@ -147,8 +147,8 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
             }}
           >
             {banners.map(item => (
-              <span>
-                <Banner key={item} type={item} marginRight={3} marginBottom={2} />
+              <span key={item}>
+                <Banner type={item} marginRight={3} marginBottom={2} />
               </span>
             ))}
           </Flex>

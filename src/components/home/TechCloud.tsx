@@ -3,7 +3,7 @@ import React, { useMemo, useState } from 'react'
 import { jsx, Box, Flex, Heading, useThemeUI } from 'theme-ui'
 import { css } from '@emotion/core'
 import { Transition, TransitionGroup } from 'react-transition-group'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import { readableColor, opacify } from 'polished'
 import { Work } from '../../interfaces/Work'
 import TAG_MAP from '../logos/constants'
@@ -122,11 +122,13 @@ interface LogoContrainerProps {
   backgroundColor: string | any
   tag: keyof typeof TAG_MAP
   highlight?: TechFilter
+  isLink?: boolean
 }
 
-const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgroundColor }) => {
+const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgroundColor, isLink }) => {
   const isHighlighted = highlight && TAG_MAP[tag].includes?.includes(highlight.target)
-  return (
+
+  const logo = (
     <Box
       sx={{
         marginRight: 1,
@@ -141,6 +143,7 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
         backgroundColor,
         transition: 'all 0.3s ease-in-out',
         svg: {
+          cursor: isLink ? 'pointer' : 'default',
           transition: 'all 0.3s ease-in-out',
           color: 'text'
         },
@@ -216,6 +219,13 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
       </span>
     </Box>
   )
+
+  if (isLink) {
+    return <Link to={`/technology/${tag}`} sx={{ color: 'unset' }}>
+      {logo}
+    </Link>
+  }
+  return logo
 }
 
 const TechCloudSection: React.FC<WorkProps> = () => (
@@ -293,7 +303,7 @@ const TechCloudSection: React.FC<WorkProps> = () => (
                     {state => {
                       return (
                         <div css={css({ ...baseStyle, ...transitionStyles[state] })}>
-                          <LogoContainer backgroundColor={boxBackgroundColor} highlight={highlight} tag={tag} />
+                          <LogoContainer backgroundColor={boxBackgroundColor} highlight={highlight} tag={tag} isLink={true} />
                         </div>
                       )
                     }}

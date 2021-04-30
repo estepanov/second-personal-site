@@ -84,6 +84,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const ProjectTemplate = require.resolve('./src/templates/project.tsx')
   const ProjectListTemplate = require.resolve('./src/templates/project-list.tsx')
   const PageTemplate = require.resolve('./src/templates/page.tsx')
+  const tagTemplate = require.resolve('./src/templates/tag.tsx')
 
   const allMarkdownQuery = await graphql(`
     {
@@ -96,6 +97,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             fileAbsolutePath
             frontmatter {
               title
+              tech
             }
           }
         }
@@ -215,19 +217,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
 
   // generate tags
-  // markdownFiles
-  //   .filter(item => item.node.frontmatter.tags !== null)
-  //   .reduce(
-  //     (acc, cur) => [...new Set([...acc, ...cur.node.frontmatter.tags])],
-  //     []
-  //   )
-  //   .forEach(uniqTag => {
-  //     createPage({
-  //       path: `tags/${uniqTag}`,
-  //       component: PostsBytagTemplate,
-  //       context: {
-  //         tag: uniqTag,
-  //       },
-  //     })
-  //   })
+  markdownFiles
+    .filter(item => item.node.frontmatter?.tech?.length)
+    .reduce(
+      (acc, cur) => [...new Set([...acc, ...cur.node.frontmatter.tech])],
+      []
+    )
+    .forEach(uniqTag => {
+      createPage({
+        path: `/technology/${uniqTag}`,
+        component: tagTemplate,
+        context: {
+          tag: uniqTag,
+          // this is here for future pagination... but i dont need it right now.
+          limit: undefined,
+          skip: 0,
+        },
+      })
+    })
 }

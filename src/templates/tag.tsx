@@ -9,6 +9,7 @@ import SectionHeader from '../components/Layout/SectionHeader'
 import Pagination from '../components/Pagination'
 import HR from '../components/elements/HR'
 import { Flex } from 'theme-ui'
+import TAG_MAP from '../components/logos/constants'
 
 interface EdgeNode {
   node: Project
@@ -32,21 +33,22 @@ interface ProjectProps {
     }
   }
   pageContext: {
-    currentPage: number
+    tag: string
+    // currentPage: number
     limit: number
-    nextPage: null | number
-    pages: number
-    previousPage: null | number
+    // nextPage: null | number
+    // pages: number
+    // previousPage: null | number
     skip: number
   }
 }
 
 const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
-  const title = 'Projects'
-  const description = 'Random stuff I have built.'
+  const title = `Projects using ${TAG_MAP[pageContext.tag].name}`
+  const description = 'This only includes projects at the moment. It will include more soon!'
   return (
     <Layout title={title} description={description} pathname={location.pathname}>
-      {/* <SectionHeader title={title} subtitle={description} /> */}
+      <SectionHeader title={title} subtitle={description} />
       <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
         {data.post.edges.map(({ node }) => {
           return (
@@ -54,15 +56,6 @@ const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
           )
         })}
       </Flex>
-      <Pagination
-        displayRange={5}
-        getPath={(page: number) => {
-          const base = '/projects'
-          return page === 1 ? base : `${base}/pages/${page}`
-        }}
-        currentPage={pageContext.currentPage}
-        max={pageContext.pages}
-      />
     </Layout>
   )
 }
@@ -70,7 +63,7 @@ const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
 export default Projects
 
 export const query = graphql`
-  query projectListQuery($skip: Int!, $limit: Int!) {
+  query tagListQuery($tag: String!, $skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -78,7 +71,7 @@ export const query = graphql`
       }
     }
     post: allMdx(
-      filter: { fields: { type: { eq: "projects" }, isMain: { eq: true } } }
+      filter: { frontmatter: { tech: { in: [$tag] } }, fields: {type: {eq: "projects"}, isMain: {eq: true}} }
       limit: $limit
       skip: $skip
       sort: { fields: [frontmatter___date, frontmatter___title], order: [DESC, DESC] }

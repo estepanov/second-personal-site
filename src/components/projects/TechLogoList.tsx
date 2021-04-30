@@ -9,6 +9,7 @@ interface TechLogoListProps {
   marginRight?: number
   marginBottom?: number
   fontSize?: number
+  isLink?: boolean
 }
 
 const techSort = (a: string, b: string) => {
@@ -21,11 +22,11 @@ const techSort = (a: string, b: string) => {
   return 0
 }
 
-const TechLogoList: React.FC<TechLogoListProps> = ({ tags, renderItem, marginRight, marginBottom, fontSize }) => {
+const TechLogoList: React.FC<TechLogoListProps> = ({ tags, renderItem, marginRight, marginBottom, fontSize, isLink }) => {
   const sorted = useMemo(() => tags.sort(techSort), [tags])
   const Render = renderItem || TechLogo
   return sorted.map(tag => {
-    return <Render tag={tag} key={tag} marginRight={marginRight} marginBottom={marginBottom} fontSize={fontSize} />
+    return <Render tag={tag} key={tag} marginRight={marginRight} marginBottom={marginBottom} fontSize={fontSize} isLink={isLink} />
   })
 }
 

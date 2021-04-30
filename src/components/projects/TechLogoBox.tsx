@@ -38,8 +38,8 @@ const TechLogoBox: React.FC<TechLogoBoxProps> = ({ tag }) => {
           <span>{TAG_MAP[tag].name}</span>
         </React.Fragment>
       ) : (
-        tag
-      )}
+          tag
+        )}
     </Flex>
   )
 }
