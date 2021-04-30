@@ -218,7 +218,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // generate tags
   markdownFiles
-    .filter(item => item.node.frontmatter?.tech?.length)
+    .filter(item => Array.isArray(item.node.frontmatter.tech) && item.node.frontmatter.tech.length)
     .reduce(
       (acc, cur) => [...new Set([...acc, ...cur.node.frontmatter.tech])],
       []
