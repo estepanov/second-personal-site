@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from 'react'
 /** @jsx jsx */
 import { jsx, Box, Flex, Heading, useThemeUI } from 'theme-ui'
-import { css } from '@emotion/core'
+import { useMemo, useState } from 'react'
+import { css } from '@emotion/react'
 import { Transition, TransitionGroup } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { readableColor, opacify } from 'polished'

@@ -1,6 +1,6 @@
-import React from 'react'
+/** @jsxRuntime classic */ // real-dumb-fix https://github.com/system-ui/theme-ui/issues/1160#issuecomment-786822435
 /** @jsx jsx */
-import { jsx, Heading, Text, Flex } from 'theme-ui'
+import { jsx, Heading, Text } from 'theme-ui'
 
 interface SectionHeaderProps {
   title: string

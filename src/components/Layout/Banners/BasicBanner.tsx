@@ -26,9 +26,8 @@ const BasicBanner: React.FC<BasicBanerProps> = ({ heading, text, children }) => 
           <Heading
             sx={{
               fontSize: 2,
-              display: 'inline-box',
+              display: 'inline-flex',
               marginRight: 2,
-              float: 'left'
             }}
           >
             {heading}

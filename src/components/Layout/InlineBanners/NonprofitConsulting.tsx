@@ -23,10 +23,7 @@ const NonprofitConsulting = () => {
             }}
             to="/contact"
           >
-            Get in touch{' '}
-            <span aria-label="email" role="img">
-              📧
-            </span>
+            Get in touch here
           </Link>
         </React.Fragment>
       }

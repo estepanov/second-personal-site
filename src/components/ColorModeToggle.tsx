@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/react'
 import { Modes } from '../styles/colors'
 import Toggle from './elements/Toggle'
-
-const options = Object.values(Modes)
 
 const floatingAnimation = keyframes`
     from {
@@ -380,11 +378,15 @@ interface ColorModeToggle {
 
 const ColorModeToggle: React.FC<ColorModeToggle> = ({ variant }) => {
   const [mode, setMode] = useColorMode<Modes>()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   const toggleMode = () => {
-    const index = options.indexOf(mode)
-    const next = options[(index + 1) % options.length]
-    setMode(next)
+    setMode(mode === Modes.light ? Modes.dark : Modes.light)
   }
+  /** hack to fix issue where dark mode is not triggering update */
+  if (!mounted) return null
   return (
     <Toggle
       checked={mode === Modes.dark}

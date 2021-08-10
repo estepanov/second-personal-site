@@ -31,7 +31,7 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
           >
             <Text
               sx={{
-                textAlign: ['center','left'],
+                textAlign: ['center', 'left'],
                 color: 'text',
                 lineHeight: '1.5em',
                 fontSize: [5, 9],
@@ -40,10 +40,10 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
                 fontWeight: 'display',
                 background: t => `linear-gradient(135deg, ${lighten('text', 0.3)(t)}, ${darken('text', 0.3)(t)})`,
                 'background-clip': 'text',
-                '-webkit-background-clip': 'text',
-                '-moz-background-clip': 'text',
-                '-moz-text-fill-color': 'transparent',
-                '-webkit-text-fill-color': 'transparent'
+                // '-webkit-background-clip': 'text',
+                // '-moz-background-clip': 'text',
+                // '-moz-text-fill-color': 'transparent',
+                // '-webkit-text-fill-color': 'transparent'
               }}
             >
               Howdy, I'm{' '}
@@ -53,10 +53,10 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
                   fontFamily: 'monospace',
                   background: t => `linear-gradient(90deg, ${lighten('primary', 0.01)(t)}, ${darken('warning', 0.01)(t)})`,
                   'background-clip': 'text',
-                  '-webkit-background-clip': 'text',
-                  '-moz-background-clip': 'text',
-                  '-moz-text-fill-color': 'transparent',
-                  '-webkit-text-fill-color': 'transparent'
+                  // '-webkit-background-clip': 'text',
+                  // '-moz-background-clip': 'text',
+                  // '-moz-text-fill-color': 'transparent',
+                  // '-webkit-text-fill-color': 'transparent'
                 }}
               >
                 Evans
@@ -68,10 +68,10 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
                   fontFamily: 'monospace',
                   background: t => `linear-gradient(90deg, ${lighten('highlight', 0.01)(t)}, ${darken('primary', 0.01)(t)})`,
                   'background-clip': 'text',
-                  '-webkit-background-clip': 'text',
-                  '-moz-background-clip': 'text',
-                  '-moz-text-fill-color': 'transparent',
-                  '-webkit-text-fill-color': 'transparent'
+                  // '-webkit-background-clip': 'text',
+                  // '-moz-background-clip': 'text',
+                  // '-moz-text-fill-color': 'transparent',
+                  // '-webkit-text-fill-color': 'transparent'
                 }}
               >
                 crafting
@@ -83,10 +83,10 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
                   fontFamily: 'monospace',
                   background: t => `linear-gradient(90deg, ${lighten('teal', 0.01)(t)}, ${darken('green', 0.01)(t)})`,
                   'background-clip': 'text',
-                  '-webkit-background-clip': 'text',
-                  '-moz-background-clip': 'text',
-                  '-moz-text-fill-color': 'transparent',
-                  '-webkit-text-fill-color': 'transparent'
+                  // '-webkit-background-clip': 'text',
+                  // '-moz-background-clip': 'text',
+                  // '-moz-text-fill-color': 'transparent',
+                  // '-webkit-text-fill-color': 'transparent'
                 }}
               >
                 delight

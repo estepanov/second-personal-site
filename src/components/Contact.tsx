@@ -1,13 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers'
-// import HCaptcha from '@hcaptcha/react-hcaptcha'
-
+import { yupResolver } from '@hookform/resolvers/yup';
 /** @jsx jsx */
 import { jsx, Box, Input, Textarea, Button, Message, Spinner, Flex } from 'theme-ui'
 import * as yup from 'yup'
 import { InputGroup } from './elements/Form/InputGroup'
-// import { Error } from './elements/Form/Error'
 
 import { api } from '../Request'
 import { Captcha } from './Captcha'
@@ -43,7 +40,7 @@ export const Contact: React.FC = () => {
   const [isSuccess, setIsSuccess] = useState(false)
   const [serverError, setServerError] = useState('')
   const captchaRef = useRef()
-  const { register, handleSubmit, errors, control } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors }, control } = useForm<FormData>({
     resolver: yupResolver(ContactSchema)
   })
   const onSubmit = handleSubmit(async ({ name, email, message, captchaToken }, e) => {
@@ -70,7 +67,9 @@ export const Contact: React.FC = () => {
     setIsStending(false)
   })
 
-  useEffect(() => register({ name: 'captchaToken' }, { required: true }))
+  useEffect(() => {
+    register('captchaToken', { required: true })
+  })
 
   return (
     <React.Fragment>
@@ -103,7 +102,7 @@ export const Contact: React.FC = () => {
           disabled={isSending}
           label="Name"
           name="name"
-          register={register({ required: true })}
+          register={register('name', { required: true })}
           Component={Input}
           errors={errors}
         />
@@ -111,7 +110,7 @@ export const Contact: React.FC = () => {
           disabled={isSending}
           label="Email address"
           name="email"
-          register={register({ required: true })}
+          register={register('email', { required: true })}
           Component={Input}
           errors={errors}
         />
@@ -119,25 +118,15 @@ export const Contact: React.FC = () => {
           disabled={isSending}
           label="Message"
           name="message"
-          register={register({ required: true })}
+          register={register('message', { required: true })}
           Component={Textarea}
           errors={errors}
         />
         <Controller
           control={control}
           name="captchaToken"
-          render={({ onChange }) => <Captcha id="contact-form" ref={captchaRef} name="captchaToken" onChange={onChange} errors={errors} />}
+          render={({ field: { onChange, onBlur } }) => <Captcha id="contact-form" ref={captchaRef} name="captchaToken" onChange={onChange} onBlur={onBlur} errors={errors} />}
         />
-        {/* <HCaptcha
-          size="normal"
-          ref={captchaRef}
-          sitekey={process.env.GATSBY_HCAPTCHA_SITE_ID}
-          onVerify={tok => setValue('captchaToken', tok, { shouldDirty: true, shouldValidate: true })}
-          onExpire={() => setValue('captchaToken', null, { shouldDirty: true, shouldValidate: true })}
-          onError={err => console.error('Hcap error', err)}
-        />
-        <Error errors={errors} name="captchaToken" /> */}
-
         <Flex>
           <Button type="submit" disabled={isSending}>
             {isSending ? 'Sending...' : 'Send'}

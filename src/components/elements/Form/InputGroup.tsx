@@ -31,7 +31,7 @@ export const InputGroup: React.FC<InputGroupProps> = ({ name, disabled, label, C
         }}
         name={name}
         id={name}
-        ref={register}
+        {...register}
       />
       <Error errors={errors} name={name} />
     </Box>

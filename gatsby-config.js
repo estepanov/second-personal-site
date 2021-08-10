@@ -1,3 +1,4 @@
+const defaultTheme = require('./src/styles/theme')
 const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
 console.log(`Using environment config: '${activeEnv}'`)
 
@@ -107,7 +108,19 @@ const plugins = [
     }
   },
   'gatsby-plugin-emotion',
-  'gatsby-plugin-theme-ui',
+  {
+    resolve: 'gatsby-plugin-theme-ui',
+    options: {
+      preset: defaultTheme
+    },
+  },
+  {
+    resolve: 'gatsby-theme-style-guide',
+    options: {
+      // sets path for generated page
+      basePath: '/design-system',
+    },
+  },
   'gatsby-plugin-typescript',
   {
     resolve: `gatsby-plugin-sharp`,
