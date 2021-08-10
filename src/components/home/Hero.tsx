@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 /** @jsx jsx */
 import { jsx, Flex, Box } from 'theme-ui'
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/react'
 import useIntersectionObserver from '@react-hook/intersection-observer'
 
 const bounce = keyframes`

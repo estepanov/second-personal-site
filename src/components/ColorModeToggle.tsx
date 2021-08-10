@@ -1,7 +1,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui'
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/react'
 import { Modes } from '../styles/colors'
 import Toggle from './elements/Toggle'
 

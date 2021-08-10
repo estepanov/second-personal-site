@@ -135,8 +135,8 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
                     const scaled = day.contributionCount > 0 ? contributionRange.scale(day.contributionCount) : 0
                     const backgroundColor =
                       scaled > 0
-                        ? mix(scaled / contributionRange.levels, theme.colors.primary, theme.colors.background)
-                        : mix(0.04, theme.colors.text, theme.colors.background)
+                        ? mix(scaled / contributionRange.levels, theme?.rawColors?.primary || '' as string, theme?.rawColors?.background || '' as string)
+                        : mix(0.04, theme?.rawColors?.text || '' as string, theme?.rawColors?.background || '' as string)
                     return (
                       <Box
                         key={`${dayInd}-${day}`}
@@ -166,8 +166,8 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
                             visibility: 'hidden',
                             color:
                               scaled !== 0
-                                ? theme.colors.white
-                                : readableColor(backgroundColor, theme.colors.white, theme.colors.black, true),
+                                ? theme.rawColors.white
+                                : readableColor(backgroundColor, theme.rawColors.white, theme.rawColors.black, true),
                             backgroundColor,
                             backgroundImage:
                               scaled > 0

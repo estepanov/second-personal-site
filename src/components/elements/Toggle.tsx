@@ -3,7 +3,7 @@ import React from 'react'
 import { css, jsx } from 'theme-ui'
 import { lighten, darken, transparentize } from '@theme-ui/color'
 import { Transition } from 'react-transition-group'
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/react'
 
 const TIMEOUT = 500
 const TIMEOUT_CIRCLE = 500
