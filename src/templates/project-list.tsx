@@ -47,7 +47,7 @@ const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
   return (
     <Layout title={title} description={description} pathname={location.pathname}>
       {/* <SectionHeader title={title} subtitle={description} /> */}
-      <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap', marginRight: [0,-4] }}>
+      <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap', marginRight: [0, -2] }}>
         {data.post.edges.map(({ node }) => {
           return (
             <ProjectListItem key={node.id} project={node} />

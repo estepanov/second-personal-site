@@ -30,8 +30,8 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
       sx={{
         padding: 3,
         // background: bgImg ? t => `linear-gradient(to bottom right, ${lighten('muted', 0.08)(t)}, ${darken('muted', 0.1)(t)})` : 'muted',
-        marginRight: [0, 4],
-        marginBottom: 4,
+        marginRight: [0, 1],
+        marginBottom: 1,
         flex: 1,
         flexBasis: ['100%', '45%'],
         minHeight: bgImg ? ['unset', '300px'] : undefined,
@@ -42,12 +42,12 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
         flexDirection: ['column', 'row'],
         flexWrap: 'wrap',
         '&:hover': {
-          background: t => `linear-gradient(to bottom right, ${lighten('text', 0.5)(t)}, ${darken('text', 0.1)(t)})`,
+          backgroundColor: 'text',
           color: 'background',
           // boxShadow: t => `0px 0px 10px ${oppositeDeep('muted', 0.1)(t)}`,
           '& .proj-name': {
             color: 'background',
-            textShadow: `0px 0px 0px ${theme?.colors?.background}`
+            textShadow: `0px 0px 0px ${theme?.colors?.text}`
           },
           '& .proj-body': {
             color: 'background',
