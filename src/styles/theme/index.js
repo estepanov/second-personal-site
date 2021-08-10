@@ -1,5 +1,5 @@
 const { lighten } = require('@theme-ui/color')
-const { modes } = require('./colors')
+const { modes, lightTheme } = require('./colors')
 
 const heading = {
   fontFamily: 'heading',
@@ -17,11 +17,12 @@ const LINK_FOCUS = {
 }
 
 module.exports = {
+  initialColorModeName: 'light',
   config: {
-    initialColorModeName: 'light',
     useColorSchemeMediaQuery: true,
   },
   colors: {
+    ...lightTheme,
     modes: {
       ...modes
     }

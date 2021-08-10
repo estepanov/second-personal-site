@@ -1,12 +1,11 @@
 import React, { useMemo, Fragment } from 'react'
 import dayjs from 'dayjs'
 import { StaticQuery, graphql } from 'gatsby'
-import { lighten } from '@theme-ui/color'
+import { lighten, alpha } from '@theme-ui/color'
 /** @jsx jsx */
 import { jsx, Flex, Box, Heading, useThemeUI } from 'theme-ui'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { scaleLinear } from 'd3-scale'
-import { mix, readableColor } from 'polished'
 import { ContributionCount } from '../interfaces/GitHub'
 
 dayjs.extend(relativeTime)
@@ -94,7 +93,6 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
       const now = dayjs()
       const build = dayjs(buildDate)
       const { theme } = useThemeUI()
-
       const months: GitHubActivityMonths[] = useMemo(() => {
         const MonthsMap = new Map<string, GitHubActivityMonths>()
         data.weeks.forEach(week => {
@@ -135,19 +133,15 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
                     const scaled = day.contributionCount > 0 ? contributionRange.scale(day.contributionCount) : 0
                     const backgroundColor =
                       scaled > 0
-                        ? mix(scaled / contributionRange.levels, theme?.rawColors?.primary || '' as string, theme?.rawColors?.background || '' as string)
-                        : mix(0.04, theme?.rawColors?.text || '' as string, theme?.rawColors?.background || '' as string)
+                        ? alpha('primary', scaled / contributionRange.levels)(theme)
+                        : alpha('text', 0.06)(theme)
+                    const innerBGColor = scaled > 0 ? 'primary' : 'text'
                     return (
                       <Box
                         key={`${dayInd}-${day}`}
                         sx={{
-                          height: SIZES,
-                          width: SIZES,
-                          fontSize: 0,
-                          backgroundColor,
-                          marginBottom: 1,
                           marginRight: 1,
-
+                          marginBottom: 1,
                           position: 'relative',
                           '& span': {
                             overflow: 'hidden',
@@ -165,10 +159,10 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
                             left: 0,
                             visibility: 'hidden',
                             color:
-                              scaled !== 0
-                                ? theme.rawColors.white
-                                : readableColor(backgroundColor, theme.rawColors.white, theme.rawColors.black, true),
-                            backgroundColor,
+                              scaled > 0
+                                ? theme.colors?.white
+                                : theme.colors?.background,
+                            backgroundColor: innerBGColor,
                             backgroundImage:
                               scaled > 0
                                 ? `linear-gradient(to bottom left, ${lighten('primary', 0.0)(theme)}, ${backgroundColor})`
@@ -202,6 +196,11 @@ const GitHubActivity: React.FC<GitHubActivityProps> = ({ title, description, ima
                           }
                         }}
                       >
+                        <Box sx={{
+                          height: SIZES,
+                          width: SIZES,
+                          backgroundColor,
+                        }} />
                         <span>
                           <b sx={{ fontSize: '1.1em' }}>{day.contributionCount}</b>&nbsp;commit
                           {day.contributionCount > 1 || day.contributionCount === 0 ? 's' : ''}

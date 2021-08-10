@@ -1,17 +1,13 @@
-import React from 'react'
+/** @jsxRuntime classic */ // real-dumb-fix https://github.com/system-ui/theme-ui/issues/1160#issuecomment-786822435
 /** @jsx jsx */
-import { jsx, Text, Box, Flex, Heading, useThemeUI } from 'theme-ui'
+import { jsx, Text, Box, Flex, Heading, useThemeUI, useColorMode } from 'theme-ui'
 import { Link } from 'gatsby'
 import { lighten, darken } from '@theme-ui/color'
-
-import TechLogo from './projects/TechLogo'
 import TechLogoList from './projects/TechLogoList'
-
 import Banner from './projects/Banners'
-import { ProjectBannersEnum, ProjectSizeEnum } from '../interfaces/Project'
+import { ProjectBannersEnum } from '../interfaces/Project'
 import { Images } from '../interfaces/Work'
 import BannerImageList from './blog/BannerImageList'
-import { Modes } from '../styles/colors'
 
 interface SquareListItemProps {
   size?: string
@@ -27,18 +23,17 @@ interface SquareListItemProps {
 
 const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerpt, date, size, tech, title, images, linkTo }) => {
   const bgImg = images?.[0].childImageSharp?.resize?.src
-  const theme = useThemeUI()
-  const oppositeDeep = theme.colorMode === Modes.dark ? lighten : darken
+  const { theme } = useThemeUI()
   return (
     <Link
       to={linkTo}
       sx={{
         padding: 3,
-        background: bgImg ? t => `linear-gradient(to bottom right, ${lighten('muted', 0.08)(t)}, ${darken('muted', 0.1)(t)})` : 'muted',
-        marginRight: [0, 3],
-        marginBottom: 3,
+        // background: bgImg ? t => `linear-gradient(to bottom right, ${lighten('muted', 0.08)(t)}, ${darken('muted', 0.1)(t)})` : 'muted',
+        marginRight: [0, 4],
+        marginBottom: 4,
         flex: 1,
-        flexBasis: ['100%', '30%'],
+        flexBasis: ['100%', '45%'],
         minHeight: bgImg ? ['unset', '300px'] : undefined,
         color: 'listContent',
         textDecoration: 'none',
@@ -47,16 +42,16 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
         flexDirection: ['column', 'row'],
         flexWrap: 'wrap',
         '&:hover': {
-          background: t => `linear-gradient(to bottom right, ${lighten('text', 0.05)(t)}, ${darken('text', 0.1)(t)})`,
+          background: t => `linear-gradient(to bottom right, ${lighten('text', 0.5)(t)}, ${darken('text', 0.1)(t)})`,
           color: 'background',
-          boxShadow: t => `0px 0px 10px ${oppositeDeep('muted', 0.1)(t)}`,
+          // boxShadow: t => `0px 0px 10px ${oppositeDeep('muted', 0.1)(t)}`,
           '& .proj-name': {
             color: 'background',
-            textShadow: `0px 0px 0px ${theme.theme.colors?.background}`
+            textShadow: `0px 0px 0px ${theme?.colors?.background}`
           },
           '& .proj-body': {
             color: 'background',
-            textShadow: `1px 1px 0px ${theme.theme.colors?.text}`
+            textShadow: `1px 1px 0px ${theme?.colors?.text}`
           },
           '& .proj-bg img': {
             transform: 'rotate3D(0,-0.5,-0.5,0.1turn) scale(1.43)',
@@ -103,7 +98,7 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
               fontWeight: 'display',
               lineHeight: '1.5em',
               color: 'listHeader',
-              textShadow: `1px 1px 1px ${theme.theme.colors?.background}`
+              // textShadow: t => `1px 1px 1px ${getColor(t, 'background')}`
             }}
           >
             {title}
@@ -132,7 +127,7 @@ const SquareListItem: React.FC<SquareListItemProps> = ({ banner, banners, excerp
             fontSize: 1,
             color: 'text',
             flex: 1,
-            textShadow: `1px 1px 1px ${theme.theme.colors?.background}`
+            textShadow: `1px 1px 1px ${theme.colors?.background}`
           }}
         >
           {excerpt}
