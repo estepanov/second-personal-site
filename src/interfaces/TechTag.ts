@@ -3,6 +3,7 @@ type TechTagIncludes = number | string | TechTypes | TechRunTimeEnv
 export interface TechTag {
   order: number
   name: string
+  slug: string
   color: string
   icon: React.ReactFragment
   type: TechTypes

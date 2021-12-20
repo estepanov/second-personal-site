@@ -6,7 +6,7 @@ import { Transition, TransitionGroup } from 'react-transition-group'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { readableColor, opacify } from 'polished'
 import { Work } from '../../interfaces/Work'
-import TAG_MAP from '../logos/constants'
+import TAG_MAP, { techTagURL } from '../logos/constants'
 import { TechRunTimeEnv, TechTypes, TechTag } from '../../interfaces/TechTag'
 import TechLogo from '../projects/TechLogoBig'
 import TinyButton from '../elements/TinyButton'
@@ -221,7 +221,7 @@ const LogoContainer: React.FC<LogoContrainerProps> = ({ tag, highlight, backgrou
   )
 
   if (isLink) {
-    return <Link to={`/technology/${tag}`} sx={{ color: 'unset' }}>
+    return <Link to={techTagURL(TAG_MAP[tag])} sx={{ color: 'unset' }}>
       {logo}
     </Link>
   }

@@ -29,6 +29,10 @@ export interface Project {
   body: string
   excerpt: string
   frontmatter: {
+    companyName?: string
+    position?: string
+    startDate?: String
+    endDate?: String
     size: ProjectSizeEnum
     banners?: ProjectBannersEnum[]
     date: string
@@ -41,5 +45,6 @@ export interface Project {
   }
   fields: {
     slug: string
+    type: string
   }
 }

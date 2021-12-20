@@ -23,7 +23,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
             const noncontent = node.fileAbsolutePath.indexOf('/src/content/')
             const { length } = '/src/content/'
             const full = path.parse(node.fileAbsolutePath.slice(noncontent + length))
-            if (full.name.toLowerCase() === 'index') {
+            if (full.name.toLowerCase() === 'index' || node.fileAbsolutePath.indexOf("src/content/work/")) {
               isMain = true
               slug = `/${full.dir}/`
             } else {
@@ -85,6 +85,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const ProjectListTemplate = require.resolve('./src/templates/project-list.tsx')
   const PageTemplate = require.resolve('./src/templates/page.tsx')
   const tagTemplate = require.resolve('./src/templates/tag.tsx')
+  const languageTemplate = require.resolve('./src/templates/language.tsx')
 
   const allMarkdownQuery = await graphql(`
     {
@@ -98,6 +99,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             frontmatter {
               title
               tech
+              languages
             }
           }
         }
@@ -216,7 +218,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
 
-  // generate tags
+  // generate tag pages
   markdownFiles
     .filter(item => Array.isArray(item.node.frontmatter.tech) && item.node.frontmatter.tech.length)
     .reduce(
@@ -227,6 +229,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: `/technology/${uniqTag}`,
         component: tagTemplate,
+        context: {
+          tag: uniqTag,
+        },
+      })
+    })
+
+  // generate language pages
+  markdownFiles
+    .filter(item => Array.isArray(item.node.frontmatter.languages) && item.node.frontmatter.languages.length)
+    .reduce(
+      (acc, cur) => [...new Set([...acc, ...cur.node.frontmatter.languages])],
+      []
+    )
+    .forEach(uniqTag => {
+      createPage({
+        path: `/language/${uniqTag}`,
+        component: languageTemplate,
         context: {
           tag: uniqTag,
         },

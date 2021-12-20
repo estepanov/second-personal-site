@@ -6,6 +6,7 @@ import ProjectListItem from '../components/projects/ProjectListItem'
 
 import { Project } from '../interfaces/Project'
 import SectionHeader from '../components/Layout/SectionHeader'
+
 import { Flex } from 'theme-ui'
 import TAG_MAP from '../components/logos/constants'
 import WorkListItem from '../components/projects/WorkListItem'
@@ -36,20 +37,21 @@ interface ProjectProps {
   }
 }
 
-const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
-  const title = `Projects using ${TAG_MAP[pageContext.tag].name}`
+const LanguagePage: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
+  const title = `${TAG_MAP[pageContext.tag].name}`
   const workItems = data.post.edges.filter(({ node }) => node.fields.type === "work").sort((a, b) => new Date(b.node?.frontmatter?.startDate) - new Date(a.node?.frontmatter?.startDate))
+
   const projectItems = data.post.edges.filter(({ node }) => node.fields.type === "projects")
   return (
-    <Layout title={title} pathname={location.pathname}>
-      {workItems.length > 0 && (<><SectionHeader title={`${TAG_MAP[pageContext.tag].name} at work`} />
+    <Layout title={title} description={`Where I have worked with ${TAG_MAP[pageContext.tag].name}`} pathname={location.pathname}>
+      {workItems.length > 0 && <><SectionHeader title={`${TAG_MAP[pageContext.tag].name} at work`} />
         <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
           {workItems.map(({ node }) => {
             return (
               <WorkListItem key={node.id} project={node} />
             )
           })}
-        </Flex></>)}
+        </Flex></>}
       {projectItems.length > 0 && <><SectionHeader title={`${TAG_MAP[pageContext.tag].name} for fun`} />
         <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
           {projectItems.map(({ node }) => {
@@ -62,10 +64,10 @@ const Projects: React.FC<ProjectProps> = ({ data, location, pageContext }) => {
   )
 }
 
-export default Projects
+export default LanguagePage
 
 export const query = graphql`
-  query tagListQuery($tag: String!) {
+  query languageListQuery($tag: String!) {
     site {
       siteMetadata {
         title
@@ -73,7 +75,7 @@ export const query = graphql`
       }
     }
     post: allMdx(
-      filter: { frontmatter: { tech: { in: [$tag] } }, fields: {type: {in: ["projects","work"]}, isMain: {eq: true}} }
+      filter: { frontmatter: { languages: { in: [$tag] } }, fields: {type: {in: ["projects","work"]}, isMain: {eq: true}} }
       sort: { fields: [frontmatter___date, frontmatter___title], order: [DESC, DESC] }
     ) {
       edges {

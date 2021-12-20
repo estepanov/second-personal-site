@@ -11,9 +11,6 @@ export interface Images {
 export interface Work {
   id: string
   excerpt: string
-  fields: {
-    type: string
-  }
   frontmatter: {
     // banners?: ProjectBannersEnum[]
     startDate: string
@@ -24,5 +21,9 @@ export interface Work {
     position: string
     languages: string[]
     tech: string[]
+  }
+  fields: {
+    slug: string
+    type: string
   }
 }
