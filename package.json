@@ -37,7 +37,7 @@
     "@theme-ui/prism": "^0.10.0",
     "@types/hcaptcha__react-hcaptcha": "^0.1.5",
     "@types/theme-ui": "^0.6.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "babel-plugin-styled-components": "^1.13.2",
     "classnames": "^2.3.1",
     "csstype": "^3.0.8",
