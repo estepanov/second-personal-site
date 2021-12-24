@@ -31,8 +31,8 @@ export interface Project {
   frontmatter: {
     companyName?: string
     position?: string
-    startDate?: String
-    endDate?: String
+    startDate?: string
+    endDate?: string
     size: ProjectSizeEnum
     banners?: ProjectBannersEnum[]
     date: string

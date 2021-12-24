@@ -10,6 +10,7 @@ import SectionHeader from '../components/Layout/SectionHeader'
 import { Flex } from 'theme-ui'
 import TAG_MAP from '../components/logos/constants'
 import WorkListItem from '../components/projects/WorkListItem'
+// import useGroupedWork from '../hooks/useGroupedWork'
 
 interface EdgeNode {
   node: Project
@@ -42,6 +43,9 @@ const LanguagePage: React.FC<ProjectProps> = ({ data, location, pageContext }) =
   const workItems = data.post.edges.filter(({ node }) => node.fields.type === "work").sort((a, b) => new Date(b.node?.frontmatter?.startDate) - new Date(a.node?.frontmatter?.startDate))
 
   const projectItems = data.post.edges.filter(({ node }) => node.fields.type === "projects")
+
+  // const groupedWork = useGroupedWork(workItems.map(wI => wI.node))
+  // console.log('groupedWork', groupedWork)
   return (
     <Layout title={title} description={`Where I have worked with ${TAG_MAP[pageContext.tag].name}`} pathname={location.pathname}>
       {workItems.length > 0 && <><SectionHeader title={`${TAG_MAP[pageContext.tag].name} at work`} />

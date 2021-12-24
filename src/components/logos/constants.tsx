@@ -40,6 +40,9 @@ import Emotion from './Emotion'
 import Jest from './Jest'
 import Cypress from './Cypress'
 import MobX from './Mobx'
+import ReactLogo from './React'
+import CSS3 from './CSS3'
+import HTML5 from './HTML5'
 
 const TAG_MAP: TagMap = {
   python: {
@@ -129,7 +132,6 @@ const TAG_MAP: TagMap = {
     type: TechTypes.language,
     icon: <JavaScript />,
     includes: [TechRunTimeEnv.backend, TechRunTimeEnv.frontend, TechTypes.language]
-    // icon: <i className="fab fa-js" />
   },
   typescript: {
     order: 0,
@@ -159,7 +161,7 @@ const TAG_MAP: TagMap = {
     type: TechTypes.framebrary,
     environment: TechRunTimeEnv.frontend,
     language: 'javascript',
-    icon: <i className="fab fa-react" />,
+    icon: <ReactLogo />,
     includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   nextjs: {
@@ -338,7 +340,7 @@ const TAG_MAP: TagMap = {
     type: TechTypes.language,
     environment: TechRunTimeEnv.frontend,
     color: '#2168ed',
-    icon: <i className="fab fa-css3-alt" />,
+    icon: <CSS3 />,
     includes: [TechRunTimeEnv.frontend, TechTypes.framebrary]
   },
   html5: {
@@ -348,7 +350,7 @@ const TAG_MAP: TagMap = {
     type: TechTypes.language,
     environment: TechRunTimeEnv.frontend,
     color: '#e44e27',
-    icon: <i className="fab fa-html5" />,
+    icon: <HTML5 />,
     includes: [TechRunTimeEnv.frontend]
   },
   heroku: {

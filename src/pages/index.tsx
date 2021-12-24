@@ -10,6 +10,7 @@ import GitHubActivity from '../components/GitHubActivityBook'
 import TechSection from '../components/home/TechCloud'
 import Hero from '../components/home/Hero'
 import LatestProjects from '../components/home/LatestProjects'
+import { StatsOverview } from '../components/Halo/StatsOverview'
 
 interface IndexProps {
   location: Location
@@ -79,10 +80,13 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
           </Flex>
         </Container>
       </Hero>
+      <Box sx={{ marginTop: 3, marginBottom: 5 }}>
+        <StatsOverview />
+      </Box>
       <Container>
         <Box sx={{ marginTop: 2 }}>
           Usually you can find me coding or reading about software. Winter is my favorite season and ⛷ or 🏂 on fresh pow 🌨 is the highlight
-          of every winter. Occasionally, I can be found binge-playing Halo on 🎮 or Battlefield One on 🖱.
+          of every winter. Occasionally, I can be found binge-playing Halo Infinite on 🎮.
         </Box>
         <Work />
         <TechSection />
