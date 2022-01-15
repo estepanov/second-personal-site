@@ -16,13 +16,14 @@ interface Props {
   image?: string
   pathname?: string
   article?: boolean
+  wrapped?: boolean
 }
 
-const IndexLayout: React.FC<Props> = ({ children, container = true, title, description, image, article, pathname }) => (
+const IndexLayout: React.FC<Props> = ({ children, container = true, wrapped = false, title, description, image, article, pathname }) => (
   <>
     <Global styles={globalStyle} />
     <SEO title={title} description={description} image={image} article={article} pathname={pathname} />
-    <Header />
+    <Header wrapped={wrapped} />
     {container ? <Container sx={{ flex: '1 0 auto' }}>{children}</Container> : children}
     <Footer />
   </>

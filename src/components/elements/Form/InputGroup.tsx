@@ -18,7 +18,8 @@ export const InputGroup: React.FC<InputGroupProps> = ({ name, disabled, label, C
       <Label
         htmlFor={name}
         sx={{
-          marginBottom: 1
+          marginBottom: 2,
+          fontWeight: 'bold'
           // color: hasError ? 'red' : undefined
         }}
       >
@@ -27,7 +28,7 @@ export const InputGroup: React.FC<InputGroupProps> = ({ name, disabled, label, C
       <Component
         disabled={disabled}
         sx={{
-          borderColor: hasError ? 'red' : undefined
+          borderColor: hasError ? 'secondary' : undefined
         }}
         name={name}
         id={name}

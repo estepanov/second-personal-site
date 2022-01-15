@@ -1,94 +1,34 @@
 import { Link } from "gatsby"
-import { useState, useEffect } from "react"
 /** @jsx jsx */
-import { jsx, Box, Donut, Flex, Image } from "theme-ui"
-import { useCountDown } from "../../hooks/useCountDown"
-import { StatOption, useStatsHook } from "../../hooks/useStatsHook"
-import { OverviewStats, OverviewStatsResponse } from "../../interfaces/Halo/Stats"
-import { api } from "../../Request"
+import { jsx, Box, Flex, Image, Container } from "theme-ui"
+import useHaloStats, { HaloEndPoints } from "../../hooks/useHaloStats"
+import { useStatsCycleHook } from "../../hooks/useStatsCycleHook"
+import { OverviewStats } from "../../interfaces/Halo/Stats"
+import { OverviewStatsKeys } from "../../utils/haloStatFormatter"
 import { shuffleArray } from "../../utils/shuffle"
-import { StatSquare } from "./elements/StatSquare"
+// import { StatSquare } from "./elements/StatSquare"
+import { StatSquareMini } from "./elements/StatSquareMini"
 
-const STAT_OPTIONS: StatOption[] = shuffleArray([
-  {
-    accessor: 'matches_played',
-    title: 'Matches',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.summary.assists',
-    title: 'Assists',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.shots.fired',
-    title: 'Shots Fired',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.shots.missed',
-    title: 'Shots Missed',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.shots.landed',
-    title: 'Shots Landed',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.shots.accuracy',
-    title: 'accuracy',
-    format: val => `${val?.toFixed(2)}%`
-  },
-  {
-    accessor: 'core.summary.vehicles.destroys',
-    title: 'Vehicles Destroyed',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.summary.vehicles.hijacks',
-    title: 'Vehicles Hijacked',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.summary.medals',
-    title: 'Medals',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.breakdowns.matches.wins',
-    title: 'Wins',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.breakdowns.assists.driver',
-    title: 'Driver Assists',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'core.breakdowns.assists.callouts',
-    title: 'Callout Assists',
-    format: val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  },
-  {
-    accessor: 'win_rate',
-    title: 'Win Rate',
-    format: val => `${val?.toFixed(2)}%`
-  },
+const STAT_OPTIONS: OverviewStatsKeys[] = shuffleArray([
+  OverviewStatsKeys.MatchesPlayed,
+  OverviewStatsKeys.CoreSummaryAssists,
+  OverviewStatsKeys.CoreShotsFired,
+  OverviewStatsKeys.CoreShotsMissed,
+  OverviewStatsKeys.CoreShotsLanded,
+  OverviewStatsKeys.CoreShotsAccuracy,
+  OverviewStatsKeys.CoreSummaryVehiclesDestroys,
+  OverviewStatsKeys.CoreSummaryVehiclesHijacks,
+  OverviewStatsKeys.CoreSummaryMedals,
+  OverviewStatsKeys.CoreBreakdownsMatchesWins,
+  OverviewStatsKeys.CoreBreakdownsAssistsDriver,
+  OverviewStatsKeys.CoreBreakdownsAssistsCallouts,
+  OverviewStatsKeys.WinRate,
 ])
 
-const INTERVAL = 3500
+const INTERVAL = 4200
 export const StatsOverview = () => {
-  const [stats, setStats] = useState<null | OverviewStats>(null)
-  useEffect(() => {
-    const fetch = async () => {
-      const response = await api.get<OverviewStatsResponse>('/halo/stats/overview')
-      setStats(response.data.data)
-    }
-    fetch()
-  }, []);
-  const [option, stat] = useStatsHook(STAT_OPTIONS, stats, INTERVAL)
-  const [timeLeft] = useCountDown(INTERVAL, 50)
+  const stats = useHaloStats<OverviewStats>(HaloEndPoints.overview)
+  const [option, stat] = useStatsCycleHook(STAT_OPTIONS, stats, INTERVAL)
 
   return <Flex
     sx={{
@@ -98,80 +38,154 @@ export const StatsOverview = () => {
       borderBottomWidth: 1,
       borderBottomColor: 'muted',
       borderBottomStyle: 'solid',
-      paddingY: 10,
+      paddingY: [4, 4],
       paddingX: 3,
-      minHeight: 200,
-      justifyContent: 'center',
+      height: ['100vh', '300px'],
+      minHeight: [400, 300],
+      justifyContent: 'space-around',
       alignItems: 'center',
       flexDirection: 'column',
-      position: 'relative'
+      position: 'relative',
+      overflow: 'hidden',
+
     }}
   >
     <Box
       sx={{
         position: 'absolute',
         zIndex: -1,
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        minHeight: '100%',
+        minWidth: '100%',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPositionY: '30%',
-        backgroundImage: 'url(/halo-infinite-chief-helmet.jpeg)',
-      }}
-    />
-    <Flex
-      sx={{
-        position: 'relative',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        flex: 1,
-        width: '100%'
+        backgroundPositionY: 'center',
+        backgroundPositionX: 'center',
       }}
     >
-      <Image sx={{ marginBottom: 3 }} width="130px" src="/halo-infinite-logo.png" alt="Halo Infinite logo" />
-      {option ? <StatSquare title={option.title} value={stat} /> : 'There was a problem fetching my stats'}
-      {option && <Flex
-        sx={{
-          position: ['relative', 'absolute'],
-          left: 0,
-          bottom: 0,
-          flexDirection: ['column', 'row'],
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginY: [2, 3]
-        }}
+      <video
+        id="background-video"
+        autoPlay
+        loop
+        muted
+        poster="/halo-infinite-chief-helmet.jpeg"
+        sx={{ minWidth: '100vw', minHeight: ['100vh', '300px'] }}
       >
+        <source src="https://estepanov.s3.amazonaws.com/halo-infinite-mini-mod.webm" type="video/webm" />
+        <source src="https://estepanov.s3.amazonaws.com/halo-infinite-mini-mod.mp4" type="video/mp4" />
+      </video>
+    </Box>
+    <Container sx={{
+      position: 'relative',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      flexDirection: ['column', 'row'],
+      height: ['100%'],
+      maxWidth: '1024px',
+      display: 'flex'
+    }}>
+      {/* <Flex sx={{
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'column',
+        width: ['100%', 'auto'],
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        paddingX: 4,
+        paddingY: 4,
+        height: ['auto', '100%']
+      }}>
+        <Image
+          sx={{ marginBottom: 2 }}
+          width="130px" src="/halo-infinite-logo.png" alt="Halo Infinite logo" /> */}
+      {/* <StatSquareMini key={option?.title} title={option?.title} value={stat} /> */}
+      {/* </Flex> */}
+      {/* {option ? <StatSquare key={option.title} title={option.title} value={stat} /> : 'loading stats'} */}
+      {
+        option &&
+        <Flex sx={{
+          flexDirection: 'column',
+          width: ['100%', 'auto']
+        }}>
+          <StatSquareMini key={option.title} title={option.title} value={stat} />
+          <Link
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              backgroundColor: 'black',
+              alignItems: 'center',
+              color: 'white',
+              paddingX: 3,
+              paddingY: 2,
+              width: ['100%', '170'],
+              textDecoration: 'none',
+              lineHeight: '1rem',
+              fontWeight: 'bold',
+              fontSize: 1,
+              borderColor: 'white',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              transform: 'scale(1)',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'scale(1.2)',
+                backgroundColor: 'white',
+                color: 'black'
+              }
+            }}
+            to="/halo"><span>View More</span><span sx={{ paddingLeft: 2 }}>&#10095;</span>
+          </Link>
+        </Flex>
+      }
+      {/* {option &&
         <Link
           sx={{
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
             backgroundColor: 'black',
+            alignItems: 'center',
             color: 'white',
-            // borderRadius: 10,
-            paddingX: 4,
+            paddingX: 3,
             paddingY: 2,
+            width: 170,
             textDecoration: 'none',
             lineHeight: '1rem',
-            fontSize: 0,
+            fontWeight: 'bold',
+            fontSize: 1,
+            borderColor: 'white',
+            borderWidth: 1,
+            borderStyle: 'solid',
+            transform: 'scale(1)',
+            transition: 'all 0.3s ease-in-out',
+            '&:hover': {
+              transform: 'scale(1.2)',
+              backgroundColor: 'white',
+              color: 'black'
+            }
           }}
-          to="/halo">view more</Link>
-      </Flex>}
-      {option ? <Donut
-        sx={{
-          position: 'absolute',
-          right: 1,
-          bottom: 1,
-          color: 'muted'
-        }}
-        size={40}
-        strokeWidth={5}
-        value={timeLeft ? timeLeft / INTERVAL : 0}
-      /> : null}
+          to="/halo"><span>View More</span><span sx={{ paddingLeft: 2 }}>&#10095;</span></Link>} */}
+    </Container >
+    <Flex
+      sx={{
+        position: 'absolute',
+        right: 2,
+        bottom: 1,
+        flexDirection: ['column', 'row'],
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: 0.9
+      }}
+    >
+      <Box sx={{
+        color: 'white',
+        fontSize: '10px',
+      }}>
+        Halo © Microsoft
+      </Box>
     </Flex>
-  </Flex>
+  </Flex >
 }
 

@@ -1,4 +1,3 @@
-
 export interface CoreStats {
   summary: {
     kills: number;
@@ -59,8 +58,18 @@ export interface OverviewStats {
   win_rate: number;
 }
 
-export interface OverviewStatsResponse {
+export interface StatsResponse<T> {
   code: number;
   message: string;
+  data: T;
+}
+
+export interface TagOverviewStats {
+  name: string;
   data: OverviewStats;
+}
+
+export interface CompareStatsBody {
+  me: OverviewStats
+  tag: TagOverviewStats
 }

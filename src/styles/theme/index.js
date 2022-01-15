@@ -8,7 +8,7 @@ const heading = {
 }
 
 const LINK_FOCUS = {
-  borderRadius: 3,
+  borderRadius: 0,
   userSelect: 'none',
   outline: 'none',
   '&:focus': {
@@ -20,6 +20,29 @@ module.exports = {
   initialColorModeName: 'light',
   config: {
     useColorSchemeMediaQuery: true,
+  },
+  forms: {
+    input: {
+      backgroundColor: 'background',
+      '&:focus': {
+        boxShadow: t => `0px 0px 0px 3px ${lighten('secondary', 0.1)(t)}`
+      },
+      '&:disabled': {
+        opacity: 0.8,
+        borderColor: 'transparent',
+        cursor: 'not-allowed'
+      },
+      borderRadius: 0,
+      outline: 'none',
+    },
+    textarea: {
+      backgroundColor: 'background',
+      '&:focus': {
+        boxShadow: t => `0px 0px 0px 3px ${lighten('secondary', 0.1)(t)}`
+      },
+      borderRadius: 0,
+      outline: 'none',
+    },
   },
   colors: {
     ...lightTheme,
@@ -57,10 +80,16 @@ module.exports = {
   },
   buttons: {
     primary: {
+      '&:focus': {
+        boxShadow: t => `0px 0px 0px 3px ${lighten('secondary', 0.2)(t)}`
+      },
+      outline: 'none',
+      borderRadius: 0,
       color: 'white',
       bg: 'primary'
     },
     outline: {
+      borderRadius: 0,
       color: 'primary',
       bg: 'transparent',
       boxShadow: 'inset 0 0 0 2px'
@@ -133,8 +162,8 @@ module.exports = {
       textDecoration: 'none',
       '&:hover': {
         borderRadius: 0,
-        color: 'primary',
-        borderBottomColor: 'primary'
+        color: 'text',
+        borderBottomColor: 'text'
       },
       '&.active': {
         color: 'text',

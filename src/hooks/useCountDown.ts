@@ -5,7 +5,7 @@ export const useCountDown = (target: number, interval: number) => {
   useEffect(() => {
     const timer = target && setInterval(() => {
       setTimeLeft(val => {
-        if (val-interval <= 0) return target
+        if (val-interval < 0) return target
         return val-interval
       })
     }, interval)

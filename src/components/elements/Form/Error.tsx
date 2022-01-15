@@ -1,11 +1,11 @@
 import React from 'react'
 /** @jsx jsx */
-import { jsx, Box, Text } from 'theme-ui'
+import { jsx, Text } from 'theme-ui'
 import { ErrorMessage } from '@hookform/error-message'
 
 interface ErrorProps {
   errors: object
-  name: stringl
+  name: string
 }
 
 export const Error: React.FC<ErrorProps> = ({ errors, name }) => {
@@ -13,7 +13,7 @@ export const Error: React.FC<ErrorProps> = ({ errors, name }) => {
     <Text
       sx={{
         fontSize: 0,
-        color: 'red'
+        color: 'secondary'
       }}
     >
       <ErrorMessage errors={errors} name={name}>

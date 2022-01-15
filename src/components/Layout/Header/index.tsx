@@ -25,15 +25,15 @@ const LINKS = [
   // }
 ]
 
-const Header = () => {
+const Header = ({ wrapped }: { wrapped?: boolean }) => {
   const [showMobileMenu, setMobileMenu] = useState(false)
   const toggleMobileMenu = () => setMobileMenu(!showMobileMenu)
   return (
     <React.Fragment>
-      <NonProfitConsulting />
+      {!wrapped && <NonProfitConsulting />}
       <Flex
         sx={{
-          position: 'relative'
+          position: 'relative',
         }}
       >
         {/* <Box
@@ -265,8 +265,8 @@ const Header = () => {
                   {showMobileMenu ? (
                     <path d="M 5.7070312 4.2929688 L 4.2929688 5.7070312 L 10.585938 12 L 4.2929688 18.292969 L 5.7070312 19.707031 L 12 13.414062 L 18.292969 19.707031 L 19.707031 18.292969 L 13.414062 12 L 19.707031 5.7070312 L 18.292969 4.2929688 L 12 10.585938 L 5.7070312 4.2929688 z" />
                   ) : (
-                      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-                    )}
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                  )}
                 </svg>
               </Button>
             </Box>
@@ -306,6 +306,18 @@ const Header = () => {
             })}
             <ColorModeToggle />
           </Flex>
+          {/* {wrapped && <Box
+            sx={{
+              backgroundColor: 'background',
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              opacity: 0.9,
+              zIndex: -1
+            }}
+          />} */}
         </Container>
       </Flex>
     </React.Fragment>

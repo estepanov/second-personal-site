@@ -6,39 +6,47 @@ interface StatSquareProps {
   value: string | number;
 }
 
-export const StatSquare = ({ title, value }: StatSquareProps) => {
+export const StatSquareMini = ({ title, value }: StatSquareProps) => {
   return <Flex sx={{
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    minWidth: ['auto', '300px'],
+    width: ['100%', 170],
     paddingY: 2,
     paddingX: 4,
-    alignSelf: 'flex-end'
+    // backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    marginBottom: [2],
+
   }}>
     <Flex
       sx={{
         fontFamily: 'nav',
         fontWeight: 'display',
-        fontSize: 7,
-        color: 'black',
+        fontSize: [5, 5],
+        color: 'white',
         lineHeight: 1,
-        textShadow: '0px 0px 12px white',
+        textShadow: '0px 0px 5px black',
+        marginBottom: 1,
       }}
     >
       {value}
     </Flex>
     <Flex
       sx={{
-        fontFamily: 'heading',
-        fontWeight: 'display',
+        // fontFamily: 'heading',
+        // fontWeight: 'display',
         color: 'white',
         textTransform: 'uppercase',
-        fontSize: 4,
+        fontSize: [3, 3],
+        // opacity: 0.7,
         letterSpacing: 1,
         textAlign: 'center',
         lineHeight: 1,
-        textShadow: '0px 0px 8px black'
+        height: 45,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        textShadow: '1px 1px 3px black'
       }}
     >
       {title}
