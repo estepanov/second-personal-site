@@ -1,8 +1,7 @@
 /** @jsxRuntime classic */ // real-dumb-fix https://github.com/system-ui/theme-ui/issues/1160#issuecomment-786822435
 /** @jsx jsx */
-import { jsx, Text, Box, Flex, Heading, useThemeUI, useColorMode } from 'theme-ui'
+import { jsx, Text, Box, Flex, Heading, useThemeUI } from 'theme-ui'
 import { Link } from 'gatsby'
-import { lighten, darken } from '@theme-ui/color'
 import TechLogoList from './projects/TechLogoList'
 import Banner from './projects/Banners'
 import { ProjectBannersEnum } from '../interfaces/Project'

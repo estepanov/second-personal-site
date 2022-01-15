@@ -25,6 +25,19 @@ const githubQuery = `query {
 
 const plugins = [
   {
+    resolve: 'gatsby-plugin-theme-ui',
+    options: {
+      preset: defaultTheme
+    },
+  },
+  {
+    resolve: 'gatsby-theme-style-guide',
+    options: {
+      // sets path for generated page
+      basePath: '/design-system',
+    },
+  },
+  {
     resolve: `gatsby-source-github-api`,
     options: {
       url: 'https://api.github.com/graphql',
@@ -108,19 +121,6 @@ const plugins = [
     }
   },
   'gatsby-plugin-emotion',
-  {
-    resolve: 'gatsby-plugin-theme-ui',
-    options: {
-      preset: defaultTheme
-    },
-  },
-  {
-    resolve: 'gatsby-theme-style-guide',
-    options: {
-      // sets path for generated page
-      basePath: '/design-system',
-    },
-  },
   'gatsby-plugin-typescript',
   {
     resolve: `gatsby-plugin-sharp`,

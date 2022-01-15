@@ -24,9 +24,6 @@ module.exports = {
   forms: {
     input: {
       backgroundColor: 'background',
-      '&:focus': {
-        boxShadow: t => `0px 0px 0px 3px ${lighten('secondary', 0.1)(t)}`
-      },
       '&:disabled': {
         opacity: 0.8,
         borderColor: 'transparent',
@@ -34,14 +31,17 @@ module.exports = {
       },
       borderRadius: 0,
       outline: 'none',
-    },
-    textarea: {
-      backgroundColor: 'background',
       '&:focus': {
         boxShadow: t => `0px 0px 0px 3px ${lighten('secondary', 0.1)(t)}`
       },
+    },
+    textarea: {
+      backgroundColor: 'background',
       borderRadius: 0,
       outline: 'none',
+      '&:focus': {
+        boxShadow: t => `0px 0px 0px 3px ${lighten('secondary', 0.1)(t)}`
+      },
     },
   },
   colors: {
