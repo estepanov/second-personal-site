@@ -101,7 +101,7 @@ const CompareStatsBoard = () => {
 
   const onSubmit = handleSubmit(async ({ tag1 }, e) => {
     if (isSending) return undefined
-    setIsSending(false)
+    setIsSending(true)
     setServerError('')
     try {
       const params = {
@@ -122,18 +122,6 @@ const CompareStatsBoard = () => {
   })
 
   return <Box>
-    {/* {isSuccess && (
-      <Message
-        sx={{
-          backgroundColor: 'green',
-          borderLeftWidth: 0,
-          color: 'white',
-          marginBottom: 2
-        }}
-      >
-        Success
-      </Message>
-    )} */}
     {serverError && (
       <Message
         sx={{

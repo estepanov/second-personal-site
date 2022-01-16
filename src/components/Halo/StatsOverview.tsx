@@ -1,12 +1,11 @@
 import { Link } from "gatsby"
 /** @jsx jsx */
-import { jsx, Box, Flex, Image, Container } from "theme-ui"
+import { jsx, Box, Flex, Container } from "theme-ui"
 import useHaloStats, { HaloEndPoints } from "../../hooks/useHaloStats"
 import { useStatsCycleHook } from "../../hooks/useStatsCycleHook"
 import { OverviewStats } from "../../interfaces/Halo/Stats"
 import { OverviewStatsKeys } from "../../utils/haloStatFormatter"
 import { shuffleArray } from "../../utils/shuffle"
-// import { StatSquare } from "./elements/StatSquare"
 import { StatSquareMini } from "./elements/StatSquareMini"
 
 const STAT_OPTIONS: OverviewStatsKeys[] = shuffleArray([
@@ -40,8 +39,8 @@ export const StatsOverview = () => {
       borderBottomStyle: 'solid',
       paddingY: [4, 4],
       paddingX: 3,
-      height: ['100vh', '300px'],
-      minHeight: [400, 300],
+      height: ['100vh', '350px'],
+      minHeight: [400, 350],
       justifyContent: 'space-around',
       alignItems: 'center',
       flexDirection: 'column',
@@ -70,6 +69,7 @@ export const StatsOverview = () => {
         autoPlay
         loop
         muted
+        playsInline
         poster="/halo-infinite-chief-helmet.jpeg"
         sx={{ minWidth: '100vw', minHeight: ['100vh', '300px'] }}
       >
@@ -86,22 +86,6 @@ export const StatsOverview = () => {
       maxWidth: '1024px',
       display: 'flex'
     }}>
-      {/* <Flex sx={{
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexDirection: 'column',
-        width: ['100%', 'auto'],
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
-        paddingX: 4,
-        paddingY: 4,
-        height: ['auto', '100%']
-      }}>
-        <Image
-          sx={{ marginBottom: 2 }}
-          width="130px" src="/halo-infinite-logo.png" alt="Halo Infinite logo" /> */}
-      {/* <StatSquareMini key={option?.title} title={option?.title} value={stat} /> */}
-      {/* </Flex> */}
-      {/* {option ? <StatSquare key={option.title} title={option.title} value={stat} /> : 'loading stats'} */}
       {
         option &&
         <Flex sx={{
@@ -139,34 +123,6 @@ export const StatsOverview = () => {
           </Link>
         </Flex>
       }
-      {/* {option &&
-        <Link
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            backgroundColor: 'black',
-            alignItems: 'center',
-            color: 'white',
-            paddingX: 3,
-            paddingY: 2,
-            width: 170,
-            textDecoration: 'none',
-            lineHeight: '1rem',
-            fontWeight: 'bold',
-            fontSize: 1,
-            borderColor: 'white',
-            borderWidth: 1,
-            borderStyle: 'solid',
-            transform: 'scale(1)',
-            transition: 'all 0.3s ease-in-out',
-            '&:hover': {
-              transform: 'scale(1.2)',
-              backgroundColor: 'white',
-              color: 'black'
-            }
-          }}
-          to="/halo"><span>View More</span><span sx={{ paddingLeft: 2 }}>&#10095;</span></Link>} */}
     </Container >
     <Flex
       sx={{
