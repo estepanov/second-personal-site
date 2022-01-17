@@ -32,12 +32,12 @@ export enum OverviewStatsKeys {
   CoreSummarySuicides = 'core.summary.suicides',
   CoreSummaryVehiclesDestroys = 'core.summary.vehicles.destroys',
   CoreSummaryVehiclesHijacks = 'core.summary.vehicles.hijacks',
-  CoreDamageTaken ='core.damage.taken',
-  CoreDamageDealt ='core.damage.dealt',
-  CoreDamageAverage ='core.damage.average',
+  CoreDamageTaken = 'core.damage.taken',
+  CoreDamageDealt = 'core.damage.dealt',
+  CoreDamageAverage = 'core.damage.average',
   CoreShotsFired = 'core.shots.fired',
   CoreShotsMissed = 'core.shots.missed',
-  CoreShotsLanded= 'core.shots.landed',
+  CoreShotsLanded = 'core.shots.landed',
   CoreShotsAccuracy = 'core.shots.accuracy',
   CoreBreakdownsKillsMelee = 'core.breakdowns.kills.melee',
   CoreBreakdownsKillsGrenades = 'core.breakdowns.kills.grenades',
@@ -58,7 +58,7 @@ export enum OverviewStatsKeys {
   TimePlayedHuman = 'time_played.human',
 }
 
-const formatterMap: {[key in OverviewStatsKeys]: StatOption} = {
+const formatterMap: { [key in OverviewStatsKeys]: StatOption } = {
   [OverviewStatsKeys.MatchesPlayed]: {
     accessor: OverviewStatsKeys.MatchesPlayed,
     title: 'Matches',
@@ -144,13 +144,13 @@ const formatterMap: {[key in OverviewStatsKeys]: StatOption} = {
     biggerBetter: true,
   },
   [OverviewStatsKeys.CoreBreakdownsAssistsDriver]: {
-    accessor:  OverviewStatsKeys.CoreBreakdownsAssistsDriver,
+    accessor: OverviewStatsKeys.CoreBreakdownsAssistsDriver,
     title: 'Driver Assists',
     format: commaDisplays,
     biggerBetter: true,
   },
   [OverviewStatsKeys.CoreBreakdownsAssistsCallouts]: {
-    accessor:  OverviewStatsKeys.CoreBreakdownsAssistsCallouts,
+    accessor: OverviewStatsKeys.CoreBreakdownsAssistsCallouts,
     title: 'Callout Assists',
     format: commaDisplays,
     biggerBetter: true,
@@ -267,7 +267,7 @@ export const getStatOption = (option: OverviewStatsKeys) => {
   return formatterMap[option]
 }
 
-export const getStat = (stats:OverviewStats, accessor: OverviewStatsKeys ) => get(stats, accessor)
+export const getStat = (stats: OverviewStats, accessor: OverviewStatsKeys) => get(stats, accessor)
 
 export const formatStat = (key: OverviewStatsKeys, value: number | string) => {
   const option = getStatOption(key)
@@ -307,15 +307,15 @@ export const getBetterStatsCount = (statKeys: OverviewStatsKeys[], meStats: Over
       wins: []
     }
   }
-  console.log('statKeys',statKeys)
+
   statKeys.forEach(key => {
-    const {biggerBetter} = getStatOption(key)
+    const { biggerBetter } = getStatOption(key)
     const meValue = getStat(meStats, key)
     const themValue = getStat(themStats, key)
     let winner: BetterStatsResultKey
-    if(meValue === themValue) {
+    if (meValue === themValue) {
       winner = 'draw';
-    }else if(biggerBetter ? meValue > themValue : meValue < themValue) {
+    } else if (biggerBetter ? meValue > themValue : meValue < themValue) {
       winner = 'me';
     } else {
       winner = 'them'

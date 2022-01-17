@@ -96,18 +96,18 @@ const CompareStatsBoard = ({ statKeys, stats, loading }: CompareStatsBoardProps)
       {betterStats && <>
         <Flex sx={{
           flexDirection: ['column', 'row'],
-          width: '100%',
           color: 'white',
-          paddingBottom: 2
+          paddingBottom: 2,
         }}>
           <Flex sx={{
             flex: 1,
             backgroundColor: 'primary',
             padding: 2,
-            marginRight: [0, 1]
+            marginRight: [0, 1],
+            alignItems: 'center'
           }}>
-            <Flex sx={{ fontSize: 3, flex: 1 }}>
-              me
+            <Flex sx={{ fontSize: [2, 3], flex: 1, textTransform: 'uppercase', letterSpacing: 1 }}>
+              Evans
             </Flex>
             <Flex sx={{ fontSize: 4, fontWeight: 'bold' }}>
               {betterStats.me.count} / {statKeys.length}
@@ -119,10 +119,11 @@ const CompareStatsBoard = ({ statKeys, stats, loading }: CompareStatsBoardProps)
               backgroundColor: 'secondary',
               padding: 2,
               marginLeft: [0, 1],
-              marginTop: [2, 0]
+              marginTop: [2, 0],
+              alignItems: 'center',
             }}
           >
-            <Flex sx={{ fontSize: 3, flex: 1 }}>
+            <Flex sx={{ fontSize: [2, 3], flex: 1, textTransform: 'uppercase', letterSpacing: 1 }}>
               {stats.tag.name}
             </Flex>
             <Flex sx={{ fontSize: 4, fontWeight: 'bold' }}>
@@ -135,7 +136,7 @@ const CompareStatsBoard = ({ statKeys, stats, loading }: CompareStatsBoardProps)
       <CompareStatsTiles statKeys={statKeys} stats={stats} />
       {hasFetchedOn && <Box sx={{ fontSize: '10px', paddingY: 2, opacity: 0.8 }}>
         {stats?.me?.fetchedOn && <Box>My stats as of {dayjs(stats?.me?.fetchedOn).format('LLLL')}</Box>}
-        {stats?.tag.data?.fetchedOn && <Box>{stats?.tag?.name} stats as of {dayjs(stats?.me?.fetchedOn).format('LLLL')}</Box>}
+        {stats?.tag.data?.fetchedOn && <Box>{stats?.tag?.name} stats as of {dayjs(stats?.tag?.data?.fetchedOn).format('LLLL')}</Box>}
         <Box>
           To minimize impact on various services and tools, data is cached for atleast one hour.
         </Box>

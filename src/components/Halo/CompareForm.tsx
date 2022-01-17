@@ -5,11 +5,12 @@ interface CompareFormProps {
   onSubmit(): void;
   register(key: string, opts: any): any;
   errors?: any;
+  hideSubmit?: boolean;
   disabled?: boolean;
   loading?: boolean;
 }
 
-const CompareForm = ({ onSubmit, disabled, loading, errors, register }: CompareFormProps) => {
+const CompareForm = ({ onSubmit, hideSubmit, disabled, loading, errors, register }: CompareFormProps) => {
 
   return (
     <Flex sx={{
@@ -22,12 +23,12 @@ const CompareForm = ({ onSubmit, disabled, loading, errors, register }: CompareF
       onSubmit={onSubmit}>
 
       <Flex
-        sx={{ flex: 1, marginBottom: [1, 0] }}
+        sx={{ flex: 1, marginBottom: [2, 0] }}
       >
         <InputGroup
           autoFocus
           mb={0}
-          disabled={!!disabled}
+          disabled={!!loading}
           label="Xbox Gamer Tag"
           name="tag"
           register={register('tag', { required: true })}
@@ -35,12 +36,11 @@ const CompareForm = ({ onSubmit, disabled, loading, errors, register }: CompareF
           errors={errors}
         />
       </Flex>
-      <Flex
+      {!hideSubmit && <Flex
         sx={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          marginBottom: '1px',
           marginLeft: [0, 2]
         }}>
         <Button type="submit" disabled={disabled} sx={{
@@ -49,6 +49,9 @@ const CompareForm = ({ onSubmit, disabled, loading, errors, register }: CompareF
           alignItems: 'center',
           minWidth: 150,
           justifyContent: 'center',
+          borderColor: 'secondary',
+          borderWidth: '1px',
+          borderStyle: 'solid',
           '&:disabled': {
             background: 'background',
             color: 'secondary'
@@ -57,7 +60,7 @@ const CompareForm = ({ onSubmit, disabled, loading, errors, register }: CompareF
           {loading ? 'Loading...' : 'Compare'}
           {loading && <Spinner size={20} sx={{ marginLeft: 2, color: 'secondary' }} />}
         </Button>
-      </Flex>
+      </Flex>}
     </Flex>
   )
 }

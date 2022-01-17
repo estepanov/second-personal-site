@@ -1,5 +1,4 @@
-import { Link } from 'gatsby';
-import React, { useCallback } from 'react'
+import React from 'react'
 /** @jsx jsx */
 import { jsx, Flex, Button, Box } from "theme-ui";
 import Container from '../../components/Layout/Container'
@@ -9,17 +8,13 @@ import ChiefCroppedIcon from "./elements/ChiefCroppedIcon";
 
 interface CompareStatsBannerProps {
   toggle(): void;
+  fetchTag(input: { tag: string }, e?: any): void;
   expanded: boolean;
 }
 
-const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ children, toggle, expanded }) => {
+const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ fetchTag, children, toggle, expanded }) => {
   const [trackerOverview] = useHaloStats<TrackerOverview>(HaloEndPoints.statsTrackerOverview)
-  const expandIfNeccessary = useCallback(
-    () => {
-      if (!expanded) toggle()
-    },
-    [expanded],
-  )
+
   return (
     <Box sx={{
       backgroundColor: 'background',
@@ -106,63 +101,173 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ children, toggl
             </Flex>
           </Flex>
         </Flex>
-        <Box sx={{ display: expanded ? 'block' : 'none' }}>
-          {children}
-        </Box>
+
         {trackerOverview &&
-          <>
-            <Flex sx={{ flexDirection: 'row', alignItems: 'center', fontSize: 0, marginY: 2 }}>
+          <Box sx={{ marginY: 2 }}>
+            <Flex sx={{ flexDirection: 'row', alignItems: 'center', fontSize: 0, flexWrap: 'wrap' }}>
               <Box
-                sx={{
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                  // width: 'auto',
-                  fontSize: 0,
-                  fontWeight: 'bold'
-                  // margin: 1,
-                  // paddingY: 1,
-                  // paddingX: 2,
-                  // backgroundColor: 'listBg'
-                }}
-              >{trackerOverview.todaysCount}&nbsp;</Box>
-              <Box
-                sx={{
-                  color: 'mutedText',
-                  whiteSpace: 'nowrap', flexShrink: 0, paddingRight: 2,
-                  marginRight: 2, borderRightColor: 'muted', borderRightStyle: 'solid', borderRightWidth: '1px'
-                }}
-              >Lookups today</Box>
-              <Box
-                sx={{
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                  // width: 'auto',
-                  fontSize: 0,
-                  fontWeight: 'bold'
+                sx={{ whiteSpace: 'nowrap', flexShrink: 0, color: 'text', paddingRight: 2, width: ['auto', '120px'], marginRight: 1 }}
+              >Comparisons</Box>
+              <Flex>
+                <Box
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    // width: 'auto',
+                    fontSize: 0,
+                    fontWeight: 'bold'
+                    // margin: 1,
+                    // paddingY: 1,
+                    // paddingX: 2,
+                    // backgroundColor: 'listBg'
+                  }}
+                >{trackerOverview.todaysCount}&nbsp;</Box>
+                <Box
+                  sx={{
+                    color: 'mutedText',
+                    whiteSpace: 'nowrap', flexShrink: 0, paddingRight: [1, 2],
+                    marginRight: [1, 2]
+                    // , borderRightColor: 'muted', borderRightStyle: 'solid', borderRightWidth: '1px'
+                  }}
+                >
+                  today
+                </Box>
+              </Flex>
+              <Flex>
+                <Box
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    // width: 'auto',
+                    fontSize: 0,
+                    fontWeight: 'bold'
 
-                  // margin: 1,
-                  // paddingY: 1,
-                  // paddingX: 2,
-                  // backgroundColor: 'listBg'
-                }}
-              >{trackerOverview.monthCount}&nbsp;</Box>
-              <Box
-                sx={{
-                  color: 'mutedText',
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                  marginRight: 2,
-                  paddingRight: 2,
-                  // borderRightColor: 'muted',
-                  // borderRightStyle: 'solid',
-                  // borderRightWidth: '1px'
-                }}
-              >Lookups this month</Box>
+                    // margin: 1,
+                    // paddingY: 1,
+                    // paddingX: 2,
+                    // backgroundColor: 'listBg'
+                  }}
+                >{trackerOverview.yesterdayCount}&nbsp;</Box>
+                <Box
+                  sx={{
+                    color: 'mutedText',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0, paddingRight: [1, 2],
+                    marginRight: [1, 2]
+                    // borderRightColor: 'muted',
+                    // borderRightStyle: 'solid',
+                    // borderRightWidth: '1px'
+                  }}
+                >yesterday</Box>
+              </Flex>
+              <Flex>
+                <Box
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    // width: 'auto',
+                    fontSize: 0,
+                    fontWeight: 'bold'
+                    // margin: 1,
+                    // paddingY: 1,
+                    // paddingX: 2,
+                    // backgroundColor: 'listBg'
+                  }}
+                >{trackerOverview.weekCount}&nbsp;</Box>
+                <Box
+                  sx={{
+                    color: 'mutedText',
+                    whiteSpace: 'nowrap', flexShrink: 0, paddingRight: [1, 2],
+                    marginRight: [1, 2]
+                    // borderRightColor: 'muted', borderRightStyle: 'solid', borderRightWidth: '1px'
+                  }}
+                >this week
+                </Box>
+              </Flex>
+              <Flex>
 
+                <Box
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    // width: 'auto',
+                    fontSize: 0,
+                    fontWeight: 'bold'
+
+                    // margin: 1,
+                    // paddingY: 1,
+                    // paddingX: 2,
+                    // backgroundColor: 'listBg'
+                  }}
+                >{trackerOverview.lastWeekCount}&nbsp;</Box>
+                <Box
+                  sx={{
+                    color: 'mutedText',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    paddingRight: [1, 2],
+                    marginRight: [1, 2]
+                    // borderRightColor: 'muted',
+                    // borderRightStyle: 'solid',
+                    // borderRightWidth: '1px'
+                  }}
+                >last week</Box>
+              </Flex>
+              <Flex>
+                <Box
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    // width: 'auto',
+                    fontSize: 0,
+                    fontWeight: 'bold'
+                    // margin: 1,
+                    // paddingY: 1,
+                    // paddingX: 2,
+                    // backgroundColor: 'listBg'
+                  }}
+                >{trackerOverview.monthCount}&nbsp;</Box>
+                <Box
+                  sx={{
+                    color: 'mutedText',
+                    whiteSpace: 'nowrap', flexShrink: 0, paddingRight: [1, 2],
+                    marginRight: [1, 2]
+                    // borderRightColor: 'muted', borderRightStyle: 'solid', borderRightWidth: '1px'
+                  }}
+                >this month</Box>
+              </Flex>
+              <Flex>
+                <Box
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    // width: 'auto',
+                    fontSize: 0,
+                    fontWeight: 'bold'
+
+                    // margin: 1,
+                    // paddingY: 1,
+                    // paddingX: 2,
+                    // backgroundColor: 'listBg'
+                  }}
+                >{trackerOverview.lastMonthCount}&nbsp;</Box>
+                <Box
+                  sx={{
+                    color: 'mutedText',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    // marginRight: 2,
+                    // paddingRight: 2,
+                    // borderRightColor: 'muted',
+                    // borderRightStyle: 'solid',
+                    // borderRightWidth: '1px'
+                  }}
+                >last month</Box>
+              </Flex>
             </Flex>
-            <Flex sx={{ flexDirection: 'row', alignItems: 'center', fontSize: 0, marginBottom: 2 }}>
+            <Flex sx={{ flexDirection: 'row', alignItems: 'center', fontSize: 0, marginTop: 1 }}>
               <Box
-                sx={{ whiteSpace: 'nowrap', flexShrink: 0, color: 'mutedText', paddingRight: 2 }}
+                sx={{ whiteSpace: 'nowrap', flexShrink: 0, color: 'text', paddingRight: 2, width: ['auto', '120px'] }}
               >Recent searches</Box>
               <Flex sx={{
                 width: '100%',
@@ -176,10 +281,11 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ children, toggl
               }}>
                 {trackerOverview.recentLookups.map(({ gamerTag, date }) => {
                   return (
-                    <Link
-                      to={`/halo?tag=${encodeURI(gamerTag)}`}
-                      onClick={expandIfNeccessary}
+                    <Box
+                      as="button"
+                      onClick={(e) => fetchTag({ tag: gamerTag }, e)}
                       sx={{
+                        border: 'none',
                         whiteSpace: 'nowrap',
                         flexShrink: 0,
                         width: 'auto',
@@ -189,18 +295,22 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ children, toggl
                         paddingX: 2,
                         color: 'text',
                         textDecoration: 'none',
-                        backgroundColor: 'listBg'
+                        backgroundColor: 'listBg',
+                        cursor: 'pointer'
                       }}
                       key={`${gamerTag}-${date}`}>{gamerTag}
-                    </Link>
+                    </Box>
                   )
                 })}
               </Flex>
             </Flex>
-          </>
+          </Box>
         }
+        <Box sx={{ display: expanded ? 'block' : 'none', marginBottom: 1 }}>
+          {children}
+        </Box>
       </Container>
-    </Box>
+    </Box >
   )
 }
 

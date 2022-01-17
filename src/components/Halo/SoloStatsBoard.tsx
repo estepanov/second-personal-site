@@ -5,16 +5,17 @@ import { OverviewStats } from "../../interfaces/Halo/Stats";
 import StatsBoard from "./StatsBoard";
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import { OverviewStatsKeys } from "../../utils/haloStatFormatter";
+import useHaloStats, { HaloEndPoints } from "../../hooks/useHaloStats";
 
 dayjs.extend(localizedFormat)
 
 interface SoloStatsBoardProps {
-  stats: OverviewStats;
-  loading: boolean;
   statKeys: OverviewStatsKeys[];
 }
 
-const SoloStatsBoard = ({ statKeys, stats, loading }: SoloStatsBoardProps) => {
+const SoloStatsBoard = ({ statKeys }: SoloStatsBoardProps) => {
+  const [stats, loading] = useHaloStats<OverviewStats>(HaloEndPoints.overview)
+
   if (loading) {
     return (
       <Flex

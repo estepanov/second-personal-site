@@ -6,5 +6,9 @@ export interface RecentLookup {
 export interface TrackerOverview {
   recentLookups: RecentLookup[];
   todaysCount: number;
+  yesterdayCount: number;
+  weekCount: number;
+  lastWeekCount: number;
   monthCount: number;
+  lastMonthCount: number;
 }

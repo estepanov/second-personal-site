@@ -77,7 +77,7 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: CompareSt
             fontFamily: 'nav',
             fontWeight: 'display',
             fontSize: [2, 3],
-            lineHeight: 1,
+            lineHeight: 2,
             zIndex: 1,
             flex: 1,
             justifyContent: 'center',

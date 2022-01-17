@@ -5,6 +5,7 @@ import { api } from "../Request";
 export enum HaloEndPoints {
   statsTrackerOverview = "/halo/stats-tracker/overview",
   overview = "/halo/stats/overview",
+  recentMatches = "/halo/stats/recent-matches",
   pvp = "/halo/stats/pvp",
   pvpCompare = "/halo/stats/pvp/compare"
 }
