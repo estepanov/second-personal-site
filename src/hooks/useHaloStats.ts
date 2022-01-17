@@ -3,6 +3,7 @@ import { StatsResponse } from "../interfaces/Halo/Stats";
 import { api } from "../Request";
 
 export enum HaloEndPoints {
+  statsTrackerOverview = "/halo/stats-tracker/overview",
   overview = "/halo/stats/overview",
   pvp = "/halo/stats/pvp",
   pvpCompare = "/halo/stats/pvp/compare"
@@ -18,7 +19,7 @@ export enum HaloExperienceType {
   ALL = 'all'
 }
 
-const useHaloStats = <T>(endpoint: string, params?: object) => {
+const useHaloStats = <T>(endpoint: string, params?: object): [T, boolean, string | null] => {
  const [stats, setStats] = useState<null | T>(null);
  const [isLoading, setIsLoading] = useState(true);
  const [error, setError] = useState<null|string>(null);

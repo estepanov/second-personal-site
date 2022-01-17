@@ -10,6 +10,7 @@ interface CompareFormProps {
 }
 
 const CompareForm = ({ onSubmit, disabled, loading, errors, register }: CompareFormProps) => {
+
   return (
     <Flex sx={{
       flexDirection: ['column', 'row'],
@@ -24,11 +25,12 @@ const CompareForm = ({ onSubmit, disabled, loading, errors, register }: CompareF
         sx={{ flex: 1, marginBottom: [1, 0] }}
       >
         <InputGroup
+          autoFocus
           mb={0}
-          disabled={disabled}
+          disabled={!!disabled}
           label="Xbox Gamer Tag"
-          name="tag1"
-          register={register('tag1', { required: true })}
+          name="tag"
+          register={register('tag', { required: true })}
           Component={Input}
           errors={errors}
         />

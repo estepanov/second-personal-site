@@ -1,11 +1,15 @@
 import { Box, Flex } from "theme-ui"
 import { CompareStatsBody } from "../../interfaces/Halo/Stats";
-import { getFormattedStat, getStatOption, OverviewStatsKeys } from "../../utils/haloStatFormatter";
+import { getFormattedStat, getStat, getStatOption, OverviewStatsKeys } from "../../utils/haloStatFormatter";
 
 const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: CompareStatsBody | null }) => {
-  const title = getStatOption(statKey).title
+  const { title, biggerBetter } = getStatOption(statKey)
+  const rawMeValue = stats ? getStat(stats.me, statKey) : null
+  const rawThemValue = stats ? getStat(stats.tag.data, statKey) : null
   const meValue = stats ? getFormattedStat(stats.me, statKey) : null
   const themValue = stats ? getFormattedStat(stats.tag.data, statKey) : null
+  const isDraw = stats && rawMeValue === rawThemValue
+  const iWon = biggerBetter ? rawMeValue > rawThemValue : rawMeValue < rawThemValue;
   return (
     <Flex sx={{
       display: 'flex',
@@ -15,7 +19,7 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: CompareSt
       paddingY: 2,
       paddingX: 4,
       position: 'relative',
-      width: ['100%', '50%', '33%'],
+      width: ['100%', '50%', '33.33%'],
       height: ['100px', '130px'],
 
     }}>
@@ -54,7 +58,7 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: CompareSt
             fontFamily: 'nav',
             fontWeight: 'display',
             fontSize: [2, 3],
-            color: 'text',
+            color: iWon ? 'primary' : 'text',
             lineHeight: 2,
             zIndex: 1,
             borderRightWidth: '1px',
@@ -62,7 +66,7 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: CompareSt
             borderRightColor: 'mutedText',
             justifyContent: 'center',
             alignItems: 'center',
-            flex: 1
+            flex: 1,
           }}
         >
           {meValue}
@@ -73,17 +77,26 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: CompareSt
             fontFamily: 'nav',
             fontWeight: 'display',
             fontSize: [2, 3],
-            color: 'text',
             lineHeight: 1,
             zIndex: 1,
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
+            color: !iWon && !isDraw ? 'secondary' : 'text',
           }}
         >
           {themValue}
         </Flex>
       </Flex>
+      <Box sx={{
+        zIndex: 1,
+        padding: 1,
+        fontSize: 0,
+        color: isDraw ? 'text' : iWon ? 'primary' : 'secondary',
+
+      }}>
+        {isDraw ? 'DRAW' : iWon ? 'EVANS' : `${stats?.tag.name}`.toUpperCase()}
+      </Box>
     </Flex>
   )
 }

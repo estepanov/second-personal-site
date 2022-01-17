@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useMemo } from "react"
 import dayjs from "dayjs";
 import { Box, Flex, Spinner } from "theme-ui";
 import { CompareStatsBody } from "../../interfaces/Halo/Stats";
 import CompareStatsTiles from "./CompareStatsTiles";
 import localizedFormat from 'dayjs/plugin/localizedFormat'
-import { OverviewStatsKeys } from "../../utils/haloStatFormatter";
+import { getBetterStatsCount, OverviewStatsKeys } from "../../utils/haloStatFormatter";
 
 dayjs.extend(localizedFormat)
 
@@ -15,6 +15,11 @@ interface CompareStatsBoardProps {
 }
 
 const CompareStatsBoard = ({ statKeys, stats, loading }: CompareStatsBoardProps) => {
+  const betterStats = useMemo(() => {
+    if (!stats || !stats.me || !stats.tag.data) return null;
+    return getBetterStatsCount(statKeys, stats.me, stats.tag.data)
+  }, [statKeys, stats])
+
   if (loading) {
     return (
       <Flex
@@ -88,6 +93,45 @@ const CompareStatsBoard = ({ statKeys, stats, loading }: CompareStatsBoardProps)
   const hasFetchedOn = stats?.me?.fetchedOn || stats?.tag.data?.fetchedOn
   return (
     <>
+      {betterStats && <>
+        <Flex sx={{
+          flexDirection: ['column', 'row'],
+          width: '100%',
+          color: 'white',
+          paddingBottom: 2
+        }}>
+          <Flex sx={{
+            flex: 1,
+            backgroundColor: 'primary',
+            padding: 2,
+            marginRight: [0, 1]
+          }}>
+            <Flex sx={{ fontSize: 3, flex: 1 }}>
+              me
+            </Flex>
+            <Flex sx={{ fontSize: 4, fontWeight: 'bold' }}>
+              {betterStats.me.count} / {statKeys.length}
+            </Flex>
+          </Flex>
+          <Flex
+            sx={{
+              flex: 1,
+              backgroundColor: 'secondary',
+              padding: 2,
+              marginLeft: [0, 1],
+              marginTop: [2, 0]
+            }}
+          >
+            <Flex sx={{ fontSize: 3, flex: 1 }}>
+              {stats.tag.name}
+            </Flex>
+            <Flex sx={{ fontSize: 4, fontWeight: 'bold' }}>
+              {betterStats.them.count} / {statKeys.length}
+            </Flex>
+
+          </Flex>
+        </Flex>
+      </>}
       <CompareStatsTiles statKeys={statKeys} stats={stats} />
       {hasFetchedOn && <Box sx={{ fontSize: '10px', paddingY: 2, opacity: 0.8 }}>
         {stats?.me?.fetchedOn && <Box>My stats as of {dayjs(stats?.me?.fetchedOn).format('LLLL')}</Box>}

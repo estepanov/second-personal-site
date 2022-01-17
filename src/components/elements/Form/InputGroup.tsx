@@ -3,6 +3,7 @@ import { Flex } from 'theme-ui'
 import { Label } from 'theme-ui'
 import { Error } from './Error'
 
+
 interface InputGroupProps {
   name: string
   label: string
@@ -10,10 +11,11 @@ interface InputGroupProps {
   Component: React.FC
   register: any // eslint-disable-line @typescript-eslint/no-explicit-any
   errors: object
-  mb: number
+  mb: number;
+  autoFocus?: boolean;
 }
 
-export const InputGroup: React.FC<InputGroupProps> = ({ name, disabled, label, Component, register, errors, mb = 3 }) => {
+export const InputGroup = ({ name, disabled, label, Component, register, errors, mb = 3, autoFocus }: InputGroupProps) => {
   const hasError = errors[name]
   return (
     <Flex sx={{ flexDirection: 'column', flex: 1 }} mb={mb}>
@@ -28,6 +30,7 @@ export const InputGroup: React.FC<InputGroupProps> = ({ name, disabled, label, C
         {label}
       </Label>
       <Component
+        autoFocus={autoFocus}
         disabled={disabled}
         sx={{
           borderColor: hasError ? 'secondary' : undefined

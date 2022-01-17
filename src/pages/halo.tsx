@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 /** @jsx jsx */
 import { Box, jsx, Message } from 'theme-ui'
 import Layout from '../layouts'
@@ -15,6 +15,8 @@ import useToggle from '../hooks/useToggle'
 import SoloStatsBoard from '../components/Halo/SoloStatsBoard'
 import CompareStatsBoard from '../components/Halo/CompareStatsBoard'
 import { OverviewStatsKeys } from '../utils/haloStatFormatter'
+import useHaloGamerTagParam from '../hooks/useHaloGamerTagParam'
+import { navigate } from "gatsby"
 
 const STAT_KEYS = [
   OverviewStatsKeys.CoreSummaryKills,
@@ -40,7 +42,6 @@ const STAT_KEYS = [
   OverviewStatsKeys.CoreShotsLanded,
   OverviewStatsKeys.CoreShotsMissed,
   OverviewStatsKeys.CoreShotsAccuracy,
-  OverviewStatsKeys.CoreDamageTaken,
   OverviewStatsKeys.CoreBreakdownsAssistsCallouts,
   OverviewStatsKeys.CoreBreakdownsAssistsDriver,
   OverviewStatsKeys.CoreBreakdownsAssistsEmp,
@@ -53,56 +54,63 @@ const STAT_KEYS = [
 ]
 
 const CompareSchema = yup.object().shape({
-  tag1: yup
+  tag: yup
     .string()
-    .required()
+    .required("A gamer tag is required")
     .min(3)
     .max(20)
 })
 
 type FormData = {
-  tag1: string
+  tag: string
 }
 
-interface HaloPageProps {
-  location: Location
-}
+// interface HaloPageProps {
+//   location: Location
+// }
 
-const HaloPage = ({ location }: HaloPageProps) => {
-  const [compareMode, toggleCompareMode] = useToggle(false);
+const HaloPage = () => {
+  const tagFromUrl = useHaloGamerTagParam();
+  const [compareMode, toggleCompareMode] = useToggle(!!tagFromUrl);
   const [meStats, meStatsLoading] = useHaloStats<OverviewStats>(HaloEndPoints.overview)
 
   const [result, setResult] = useState<CompareStatsBody | null>(null)
   const [isSending, setIsSending] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
   const [serverError, setServerError] = useState('')
 
-  const { register, handleSubmit, formState: { errors }, control } = useForm<FormData>({
+  const { register, handleSubmit, getValues, setValue, setFocus, formState: { errors } } = useForm<FormData>({
+    defaultValues: { tag: tagFromUrl || "" },
     resolver: yupResolver(CompareSchema)
   })
 
-  const onSubmit = handleSubmit(async ({ tag1 }, e) => {
+  useEffect(() => {
+    if (compareMode) setFocus('tag')
+  }, [compareMode])
+
+  useEffect(() => {
+    if (tagFromUrl && tagFromUrl !== getValues('tag')) setValue('tag', tagFromUrl, { shouldDirty: true, shouldValidate: true })
+  }, [tagFromUrl])
+
+  const onSubmit = handleSubmit(async ({ tag }, e) => {
     if (isSending) return undefined
     setIsSending(true)
     setServerError('')
     try {
       const params = {
-        tag: tag1
+        tag: tag
       }
       const response = await api.get<StatsResponse<CompareStatsBody>>(HaloEndPoints.pvpCompare, { params })
       // e?.target.reset()
       setResult(response.data?.data)
-      setIsSuccess(true)
+      navigate(`?tag=${encodeURI(tag)}`, { replace: true })
     } catch (error) {
       let errorMessage = 'Something went wrong'
       if (error?.response?.data?.message) errorMessage = error.response.data.message
-      setIsSuccess(false)
       setServerError(errorMessage)
       console.error(error)
     }
     setIsSending(false)
   })
-
   return (
     <>
       <Box
