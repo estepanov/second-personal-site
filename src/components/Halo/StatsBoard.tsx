@@ -14,33 +14,20 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: OverviewS
       paddingY: 2,
       paddingX: 4,
       position: 'relative',
-      marginRight: 1,
-      marginBottom: 1,
-      width: ['45%', '33%', '24%'],
+      width: ['50%', '50%', '25%'],
       height: ['100px', '130px'],
 
     }}>
       <Box sx={{
         backgroundColor: 'background',
-        opacity: 0.5,
-        zIndex: -1,
+        opacity: 0.8,
+        zIndex: 0,
         position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0
+        left: '2px',
+        right: '2px',
+        top: '2px',
+        bottom: '2px'
       }} />
-      <Flex
-        sx={{
-          fontFamily: 'nav',
-          fontWeight: 'display',
-          fontSize: [3, 5],
-          color: 'text',
-          lineHeight: 1
-        }}
-      >
-        {value}
-      </Flex>
       <Flex
         sx={{
           color: 'text',
@@ -49,10 +36,23 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: OverviewS
           letterSpacing: 2,
           textAlign: 'center',
           lineHeight: 1,
-          opacity: 0.7
+          opacity: 0.7,
+          zIndex: 1,
         }}
       >
         {title}
+      </Flex>
+      <Flex
+        sx={{
+          fontFamily: 'nav',
+          fontWeight: 'display',
+          fontSize: [3, 5],
+          color: 'text',
+          lineHeight: 1,
+          zIndex: 1,
+        }}
+      >
+        {value}
       </Flex>
     </Flex>
   )
@@ -60,27 +60,13 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys, stats: OverviewS
 
 interface StatsBoardProps {
   stats: OverviewStats | null
+  statKeys: OverviewStatsKeys[]
 }
 
-const ROW_STATS = [
-  OverviewStatsKeys.CoreSummaryKills,
-  OverviewStatsKeys.CoreSummaryAssists,
-  OverviewStatsKeys.CoreSummaryDeaths,
-  OverviewStatsKeys.CoreSummaryBetrayals,
-  OverviewStatsKeys.CoreSummaryMedals,
-  OverviewStatsKeys.CoreSummarySuicides,
-  OverviewStatsKeys.CoreSummaryVehiclesDestroys,
-  OverviewStatsKeys.CoreSummaryVehiclesHijacks,
-  OverviewStatsKeys.CoreShotsFired,
-  OverviewStatsKeys.CoreShotsLanded,
-  OverviewStatsKeys.CoreShotsMissed,
-  OverviewStatsKeys.CoreShotsAccuracy,
-]
-
-const StatsBoard = ({ stats }: StatsBoardProps) => {
+const StatsBoard = ({ statKeys, stats }: StatsBoardProps) => {
   return <Box>
     <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-      {ROW_STATS.map(statKey => <Tile key={statKey} statKey={statKey} stats={stats} />)}
+      {statKeys.map(statKey => <Tile key={statKey} statKey={statKey} stats={stats} />)}
     </Flex>
   </Box>
 }

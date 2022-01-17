@@ -1,5 +1,6 @@
 import React from 'react'
-import { Box, Label } from 'theme-ui'
+import { Flex } from 'theme-ui'
+import { Label } from 'theme-ui'
 import { Error } from './Error'
 
 interface InputGroupProps {
@@ -9,12 +10,13 @@ interface InputGroupProps {
   Component: React.FC
   register: any // eslint-disable-line @typescript-eslint/no-explicit-any
   errors: object
+  mb: number
 }
 
-export const InputGroup: React.FC<InputGroupProps> = ({ name, disabled, label, Component, register, errors }) => {
+export const InputGroup: React.FC<InputGroupProps> = ({ name, disabled, label, Component, register, errors, mb = 3 }) => {
   const hasError = errors[name]
   return (
-    <Box mb={3}>
+    <Flex sx={{ flexDirection: 'column', flex: 1 }} mb={mb}>
       <Label
         htmlFor={name}
         sx={{
@@ -35,6 +37,6 @@ export const InputGroup: React.FC<InputGroupProps> = ({ name, disabled, label, C
         {...register}
       />
       <Error errors={errors} name={name} />
-    </Box>
+    </Flex>
   )
 }

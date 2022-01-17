@@ -56,6 +56,8 @@ export interface OverviewStats {
   matches_played: number;
   time_played: TimePlayed;
   win_rate: number;
+  fetchedOn: string; // not from original API
+  type: string; // not from original API - pvp,pve,btb, etc
 }
 
 export interface StatsResponse<T> {

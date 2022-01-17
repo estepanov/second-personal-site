@@ -1,6 +1,7 @@
+import React from 'react'
 import { Link } from "gatsby"
 /** @jsx jsx */
-import { jsx, Box, Flex, Container } from "theme-ui"
+import { jsx, Box, Flex, Container, Spinner } from "theme-ui"
 import useHaloStats, { HaloEndPoints } from "../../hooks/useHaloStats"
 import { useStatsCycleHook } from "../../hooks/useStatsCycleHook"
 import { OverviewStats } from "../../interfaces/Halo/Stats"
@@ -26,7 +27,7 @@ const STAT_OPTIONS: OverviewStatsKeys[] = shuffleArray([
 
 const INTERVAL = 4200
 export const StatsOverview = () => {
-  const stats = useHaloStats<OverviewStats>(HaloEndPoints.overview)
+  const [stats, statsLoading] = useHaloStats<OverviewStats>(HaloEndPoints.overview)
   const [option, stat] = useStatsCycleHook(STAT_OPTIONS, stats, INTERVAL)
 
   return <Flex
@@ -37,8 +38,8 @@ export const StatsOverview = () => {
       borderBottomWidth: 1,
       borderBottomColor: 'muted',
       borderBottomStyle: 'solid',
-      paddingY: [4, 4],
-      paddingX: 3,
+      paddingY: [5, 4],
+      paddingX: 4,
       height: ['100vh', '350px'],
       minHeight: [400, 350],
       justifyContent: 'space-around',
@@ -87,42 +88,66 @@ export const StatsOverview = () => {
       display: 'flex'
     }}>
       {
-        option &&
-        <Flex sx={{
-          flexDirection: 'column',
-          width: ['100%', 'auto']
-        }}>
-          <StatSquareMini key={option.title} title={option.title} value={stat} />
-          <Link
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              backgroundColor: 'black',
-              alignItems: 'center',
-              color: 'white',
-              paddingX: 3,
-              paddingY: 2,
-              width: ['100%', '170'],
-              textDecoration: 'none',
-              lineHeight: '1rem',
-              fontWeight: 'bold',
-              fontSize: 1,
-              borderColor: 'white',
-              borderWidth: 1,
-              borderStyle: 'solid',
-              transform: 'scale(1)',
-              transition: 'all 0.3s ease',
-              '&:hover': {
-                transform: 'scale(1.2)',
-                backgroundColor: 'white',
-                color: 'black'
-              }
-            }}
-            to="/halo"><span>View More</span><span sx={{ paddingLeft: 2 }}>&#10095;</span>
-          </Link>
-        </Flex>
+        statsLoading ? <>
+          <Flex sx={{
+            borderColor: 'text',
+            borderWidth: '1px',
+            background: 'background',
+            paddingX: 4,
+            paddingY: 3,
+            color: 'white',
+            fontWeight: 'bold',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderStyle: 'solid'
+          }}>
+            <Spinner sx={{ color: 'white', paddingBottom: 2 }} />
+            <Box>
+              Fetching latest stats...
+            </Box>
+          </Flex>
+        </> : <>
+          {
+            option &&
+            <Flex sx={{
+              flexDirection: 'column',
+              width: ['100%', 'auto']
+            }}>
+              <StatSquareMini key={option.title} title={option.title} value={stat} />
+              <Link
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  backgroundColor: 'black',
+                  alignItems: 'center',
+                  color: 'white',
+                  paddingX: 3,
+                  paddingY: 2,
+                  width: ['100%', '170'],
+                  textDecoration: 'none',
+                  lineHeight: '1rem',
+                  fontWeight: 'bold',
+                  fontSize: 1,
+                  borderColor: 'white',
+                  borderWidth: 1,
+                  borderStyle: 'solid',
+                  transform: 'scale(1)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.2)',
+                    backgroundColor: 'white',
+                    color: 'black'
+                  }
+                }}
+                to="/halo"><span>View More</span><span sx={{ paddingLeft: 2 }}>&#10095;</span>
+              </Link>
+            </Flex>
+          }
+        </>
       }
+
     </Container >
     <Flex
       sx={{

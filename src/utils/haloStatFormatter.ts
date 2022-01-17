@@ -16,6 +16,8 @@ export interface StatOption {
   format: StatFormatter
 }
 
+const doNothing = val => val;
+const fixedThreePlaces = val => val?.toFixed(3);
 const commaDisplays = val => val?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 const twoDigitPercentDisplays = val => `${val?.toFixed(2)}%`
 
@@ -29,14 +31,30 @@ export enum OverviewStatsKeys {
   CoreSummarySuicides = 'core.summary.suicides',
   CoreSummaryVehiclesDestroys = 'core.summary.vehicles.destroys',
   CoreSummaryVehiclesHijacks = 'core.summary.vehicles.hijacks',
+  CoreDamageTaken ='core.damage.taken',
+  CoreDamageDealt ='core.damage.dealt',
+  CoreDamageAverage ='core.damage.average',
   CoreShotsFired = 'core.shots.fired',
   CoreShotsMissed = 'core.shots.missed',
   CoreShotsLanded= 'core.shots.landed',
   CoreShotsAccuracy = 'core.shots.accuracy',
+  CoreBreakdownsKillsMelee = 'core.breakdowns.kills.melee',
+  CoreBreakdownsKillsGrenades = 'core.breakdowns.kills.grenades',
+  CoreBreakdownsKillsHeadshots = 'core.breakdowns.kills.headshots',
+  CoreBreakdownsKillsPowerWeapons = 'core.breakdowns.kills.power_weapons',
   CoreBreakdownsMatchesWins = 'core.breakdowns.matches.wins',
+  CoreBreakdownsMatchesLosses = 'core.breakdowns.matches.losses',
+  CoreBreakdownsMatchesLeft = 'core.breakdowns.matches.left',
+  CoreBreakdownsMatchesDraws = 'core.breakdowns.matches.draws',
   CoreBreakdownsAssistsDriver = 'core.breakdowns.assists.driver',
   CoreBreakdownsAssistsCallouts = 'core.breakdowns.assists.callouts',
-  WinRate = 'win_rate'
+  CoreBreakdownsAssistsEmp = 'core.breakdowns.assists.emp',
+  CoreKDA = 'core.kda',
+  CoreKDR = 'core.kdr',
+  CoreTotalScore = 'core.total_score',
+  WinRate = 'win_rate',
+  TimePlayedSeconds = 'time_played.seconds',
+  TimePlayedHuman = 'time_played.human',
 }
 
 const formatterMap: {[key in OverviewStatsKeys]: StatOption} = {
@@ -124,6 +142,86 @@ const formatterMap: {[key in OverviewStatsKeys]: StatOption} = {
     accessor: OverviewStatsKeys.WinRate,
     title: 'Win Rate',
     format: twoDigitPercentDisplays
+  },
+  [OverviewStatsKeys.CoreDamageTaken]: {
+    accessor: OverviewStatsKeys.CoreDamageTaken,
+    title: 'Damage Taken',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreDamageDealt]: {
+    accessor: OverviewStatsKeys.CoreDamageDealt,
+    title: 'Damage Dealt',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreDamageAverage]: {
+    accessor: OverviewStatsKeys.CoreDamageAverage,
+    title: 'Damage Average',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreBreakdownsKillsMelee]: {
+    accessor: OverviewStatsKeys.CoreBreakdownsKillsMelee,
+    title: 'Melee Kills',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreBreakdownsKillsGrenades]: {
+    accessor: OverviewStatsKeys.CoreBreakdownsKillsGrenades,
+    title: 'Grenade Kills',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreBreakdownsKillsHeadshots]: {
+    accessor: OverviewStatsKeys.CoreBreakdownsKillsHeadshots,
+    title: 'Headshot Kills',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreBreakdownsKillsPowerWeapons]: {
+    accessor: OverviewStatsKeys.CoreBreakdownsKillsPowerWeapons,
+    title: 'Power Weapon Kills',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreBreakdownsMatchesLosses]: {
+    accessor: OverviewStatsKeys.CoreBreakdownsMatchesLosses,
+    title: 'Matches Lost',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreBreakdownsMatchesLeft]: {
+    accessor: OverviewStatsKeys.CoreBreakdownsMatchesLeft,
+    title: 'Matches Left',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreBreakdownsMatchesDraws]: {
+    accessor: OverviewStatsKeys.CoreBreakdownsMatchesDraws,
+    title: 'Matches Draw',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreBreakdownsAssistsEmp]: {
+    accessor: OverviewStatsKeys.CoreBreakdownsAssistsEmp,
+    title: 'Assists Emp',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.CoreKDA]: {
+    accessor: OverviewStatsKeys.CoreKDA,
+    title: 'KDA',
+    format: fixedThreePlaces
+  },
+  [OverviewStatsKeys.CoreKDR]: {
+    accessor: OverviewStatsKeys.CoreKDR,
+    title: 'KDR',
+    format: fixedThreePlaces
+  },
+  [OverviewStatsKeys.CoreTotalScore]: {
+    accessor: OverviewStatsKeys.CoreTotalScore,
+    title: 'Total Score',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.TimePlayedSeconds]: {
+    accessor: OverviewStatsKeys.TimePlayedSeconds,
+    title: 'Time Played (seconds)',
+    format: commaDisplays
+  },
+  [OverviewStatsKeys.TimePlayedHuman]: {
+    accessor: OverviewStatsKeys.TimePlayedHuman,
+    title: 'Time Played (human)',
+    format: doNothing
   },
 }
 
