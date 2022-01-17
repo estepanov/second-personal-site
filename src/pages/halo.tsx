@@ -65,11 +65,11 @@ type FormData = {
   tag: string
 }
 
-// interface HaloPageProps {
-//   location: Location
-// }
+interface HaloPageProps {
+  location: Location
+}
 
-const HaloPage = () => {
+const HaloPage = ({ location }: HaloPageProps) => {
   const tagFromUrl = useHaloGamerTagParam();
   const [compareMode, toggleCompareMode] = useToggle(!!tagFromUrl);
   const [meStats, meStatsLoading] = useHaloStats<OverviewStats>(HaloEndPoints.overview)
