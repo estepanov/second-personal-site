@@ -1,48 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1466ea12-758a-4d9b-8193-afb2dda464be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../personal-site-api/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal-site-api/.idea/personal-site-api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal-site-api/.nvmrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal-site-api/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../personal-site-api/utils/getWeek.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+    <list default="true" id="1466ea12-758a-4d9b-8193-afb2dda464be" name="Changes" comment="clean up">
       <change beforePath="$PROJECT_DIR$/../personal-site-api/.eslintcache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/.prettierrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/models/dto/sendMessageDTO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/models/dto/sendMessageDTO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/models/vo/ResponseVo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/models/vo/ResponseVo.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../personal-site-api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/serverless.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/serverless.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/src/contact.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/src/contact.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/src/halo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/src/halo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/src/haloTracker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/src/haloTracker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/src/handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/src/handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/tests/example.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/tests/example.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/utils/Cache.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/utils/Cache.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/utils/HaloStats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/utils/HaloStats.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/utils/HaloStatsTracker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/utils/HaloStatsTracker.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/utils/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/utils/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/utils/mailer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/utils/mailer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/utils/message.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/utils/message.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/utils/result.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/utils/result.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/webpack.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../personal-site-api/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/personal-site.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/personal-site.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Halo/CompareStatsBanner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Halo/CompareStatsBanner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/Halo/Tracker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Halo/Tracker.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="FormatOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -136,7 +106,7 @@
       <workItem from="1642794926672" duration="1173000" />
       <workItem from="1642796111700" duration="1034000" />
       <workItem from="1642797158378" duration="1193000" />
-      <workItem from="1642798363889" duration="3002000" />
+      <workItem from="1642798363889" duration="3724000" />
     </task>
     <task id="LOCAL-00001" summary="add webstorm configs">
       <created>1642794299447</created>
@@ -145,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642794299447</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="clean up">
+      <created>1642801611382</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1642801611382</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,7 +133,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -170,7 +159,8 @@
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="add webstorm configs" />
-    <option name="LAST_COMMIT_MESSAGE" value="add webstorm configs" />
+    <MESSAGE value="clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean up" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
