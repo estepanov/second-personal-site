@@ -14,7 +14,6 @@ export const StatSquareMini = ({ title, value }: StatSquareProps) => {
     width: ['100%', 170],
     paddingY: 2,
     paddingX: 4,
-    // backgroundColor: 'rgba(255, 255, 255, 0.7)',
     marginBottom: [2],
 
   }}>
@@ -38,7 +37,6 @@ export const StatSquareMini = ({ title, value }: StatSquareProps) => {
         color: 'white',
         textTransform: 'uppercase',
         fontSize: [3, 3],
-        // opacity: 0.7,
         letterSpacing: 1,
         textAlign: 'center',
         lineHeight: 1,

@@ -2,11 +2,14 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.renderWhitespace": "boundary",
-  "editor.rulers": [140],
+  "editor.rulers": [
+    140
+  ],
   "editor.formatOnSave": true,
   "files.encoding": "utf8",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
+  "workbench.colorTheme": "Dracula Pro (Van Helsing)",
   "search.exclude": {
     "public/**": true,
     "node_modules/**": true
@@ -15,8 +18,14 @@
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    { "language": "typescript", "autoFix": true },
-    { "language": "typescriptreact", "autoFix": true }
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
