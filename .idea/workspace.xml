@@ -2,10 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1466ea12-758a-4d9b-8193-afb2dda464be" name="Changes" comment="clean up">
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/.eslintcache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../personal-site-api/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../personal-site-api/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Halo/MedalsBoard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby-browser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-browser.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ColorModeToggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ColorModeToggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ColorModeToggleText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ColorModeToggleText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Halo/CompareStatsBanner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Halo/CompareStatsBanner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Halo/SoloRecentMatchesBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Halo/SoloRecentMatchesBoard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Halo/SoloStatsBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Halo/SoloStatsBoard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Halo/StatsBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Halo/StatsBoard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MDX.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MDX.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/elements/Toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/elements/Toggle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useToggle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useToggle.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Halo/Stats.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Halo/Stats.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/404.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/404.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/halo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/halo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/colors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/theme/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/theme/colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/typings.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typings.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +39,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../personal-site-api" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -49,6 +71,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="code.cleanup.on.save" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Halo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -60,7 +83,22 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/../personal-site-api/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="npm.dev api">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/Halo" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev api" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/../personal-site-api/package.json" />
       <command value="run" />
@@ -84,7 +122,13 @@
     <list>
       <item itemvalue="npm.dev" />
       <item itemvalue="npm.dev api" />
+      <item itemvalue="npm.build" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -107,6 +151,9 @@
       <workItem from="1642796111700" duration="1034000" />
       <workItem from="1642797158378" duration="1193000" />
       <workItem from="1642798363889" duration="3724000" />
+      <workItem from="1642822790972" duration="648000" />
+      <workItem from="1642823442984" duration="143000" />
+      <workItem from="1642823596623" duration="19390000" />
     </task>
     <task id="LOCAL-00001" summary="add webstorm configs">
       <created>1642794299447</created>

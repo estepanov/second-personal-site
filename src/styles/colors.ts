@@ -1,7 +1,8 @@
-import { modes as modesBase, lightTheme } from './theme/colors'
-export enum Modes {
-  dark = 'dark',
-  light = 'light'
+import { modes as modesBase, lightTheme } from "./theme/colors";
+
+export enum CustomColorModes {
+  dark = "dark",
+  light = "light",
 }
 
 export interface ThemeColors {
@@ -9,12 +10,12 @@ export interface ThemeColors {
 }
 
 export interface ModeTypes {
-  [Modes.light]: ThemeColors
-  [Modes.dark]: ThemeColors
+  [CustomColorModes.light]: ThemeColors;
+  [CustomColorModes.dark]: ThemeColors;
 }
 
-export const modes = modesBase as ModeTypes
+export const modes = modesBase as ModeTypes;
 
 export const colors = {
-  ...lightTheme
-}
+  ...lightTheme,
+};

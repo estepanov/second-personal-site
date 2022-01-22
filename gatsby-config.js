@@ -1,10 +1,12 @@
-const defaultTheme = require('./src/styles/theme')
-const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
-console.log(`Using environment config: '${activeEnv}'`)
+const defaultTheme = require("./src/styles/theme");
 
-require('dotenv').config({
-  path: `.env.${activeEnv}`
-})
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
+// eslint-disable-next-line no-console
+console.log(`Using environment config: '${activeEnv}'`);
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+});
 
 const githubQuery = `query {
   viewer {
@@ -21,58 +23,58 @@ const githubQuery = `query {
       }
     }
   }
-}`
+}`;
 
 const plugins = [
   {
-    resolve: 'gatsby-plugin-theme-ui',
+    resolve: "gatsby-plugin-theme-ui",
     options: {
-      preset: defaultTheme
+      preset: defaultTheme,
     },
   },
   {
-    resolve: 'gatsby-theme-style-guide',
+    resolve: "gatsby-theme-style-guide",
     options: {
       // sets path for generated page
-      basePath: '/design-system',
+      basePath: "/design-system",
     },
   },
   {
     resolve: `gatsby-source-github-api`,
     options: {
-      url: 'https://api.github.com/graphql',
+      url: "https://api.github.com/graphql",
       token: process.env.GITHUB_TOKEN,
       graphQLQuery: githubQuery,
-      variables: {}
-    }
+      variables: {},
+    },
   },
   {
-    resolve: 'gatsby-source-filesystem',
+    resolve: "gatsby-source-filesystem",
     options: {
-      name: 'pages',
-      path: `${__dirname}/src/content/pages`
-    }
+      name: "pages",
+      path: `${__dirname}/src/content/pages`,
+    },
   },
   {
-    resolve: 'gatsby-source-filesystem',
+    resolve: "gatsby-source-filesystem",
     options: {
-      name: 'projects',
-      path: `${__dirname}/src/content/projects`
-    }
+      name: "projects",
+      path: `${__dirname}/src/content/projects`,
+    },
   },
   {
-    resolve: 'gatsby-source-filesystem',
+    resolve: "gatsby-source-filesystem",
     options: {
-      name: 'blog',
-      path: `${__dirname}/src/content/blog`
-    }
+      name: "blog",
+      path: `${__dirname}/src/content/blog`,
+    },
   },
   {
-    resolve: 'gatsby-source-filesystem',
+    resolve: "gatsby-source-filesystem",
     options: {
-      name: 'work',
-      path: `${__dirname}/src/content/work`
-    }
+      name: "work",
+      path: `${__dirname}/src/content/work`,
+    },
   },
   // not using json at the moment...
   // {
@@ -88,75 +90,75 @@ const plugins = [
     options: {
       gatsbyRemarkPlugins: [
         {
-          resolve: 'gatsby-remark-responsive-iframe',
+          resolve: "gatsby-remark-responsive-iframe",
           options: {
-            wrapperStyle: 'margin-bottom: 1rem'
-          }
+            wrapperStyle: "margin-bottom: 1rem",
+          },
         },
-        'gatsby-remark-copy-linked-files',
-        'gatsby-remark-smartypants',
+        "gatsby-remark-copy-linked-files",
+        "gatsby-remark-smartypants",
         {
-          resolve: 'gatsby-remark-images',
+          resolve: "gatsby-remark-images",
           options: {
             maxWidth: 1200,
             quality: 100,
-            linkImagesToOriginal: false
-          }
+            linkImagesToOriginal: false,
+          },
         },
         {
-          resolve: 'gatsby-remark-external-links',
+          resolve: "gatsby-remark-external-links",
           options: {
-            target: '_self',
-            rel: 'nofollow'
-          }
-        }
-      ]
-    }
+            target: "_self",
+            rel: "nofollow",
+          },
+        },
+      ],
+    },
   },
-  'gatsby-transformer-json',
+  "gatsby-transformer-json",
   {
-    resolve: 'gatsby-plugin-canonical-urls',
+    resolve: "gatsby-plugin-canonical-urls",
     options: {
-      siteUrl: 'https://estep.nyc'
-    }
+      siteUrl: "https://estep.nyc",
+    },
   },
-  'gatsby-plugin-emotion',
-  'gatsby-plugin-typescript',
+  "gatsby-plugin-emotion",
+  "gatsby-plugin-typescript",
   {
     resolve: `gatsby-plugin-sharp`,
     options: {
-      defaultQuality: 100
-    }
+      defaultQuality: 100,
+    },
   },
-  'gatsby-transformer-sharp',
-  'gatsby-plugin-react-helmet',
-  'gatsby-plugin-netlify-cms'
-]
+  "gatsby-transformer-sharp",
+  "gatsby-plugin-react-helmet",
+  "gatsby-plugin-netlify-cms",
+];
 
 if (process.env.GA_ID) {
   plugins.push({
     resolve: `gatsby-plugin-google-analytics`,
     options: {
-      trackingId: process.env.GA_ID
-    }
-  })
+      trackingId: process.env.GA_ID,
+    },
+  });
 }
 
 module.exports = {
   siteMetadata: {
-    titleTemplate: '%s | Evans Stepanov',
-    title: 'Full Stack Engineer',
-    description: 'Some information and a collection of musings.',
-    keywords: 'javascript, react, node, portfolio, resume, coding',
-    siteUrl: 'https://estep.nyc',
-    image: '',
-    twitterUsername: '',
+    titleTemplate: "%s | Evans Stepanov",
+    title: "Full Stack Engineer",
+    description: "Some information and a collection of musings.",
+    keywords: "javascript, react, node, portfolio, resume, coding",
+    siteUrl: "https://estep.nyc",
+    image: "",
+    twitterUsername: "",
     author: {
-      name: 'Evans Stepanov',
-      url: 'https://estep.nyc'
+      name: "Evans Stepanov",
+      url: "https://estep.nyc",
     },
     postsPerPage: 10,
-    buildDate: new Date().toISOString()
+    buildDate: new Date().toISOString(),
   },
-  plugins
-}
+  plugins,
+};

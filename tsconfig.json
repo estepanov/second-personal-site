@@ -3,6 +3,7 @@
     "module": "commonjs",
     "target": "esnext",
     "jsx": "preserve",
+    "jsxImportSource": "theme-ui",
     "lib": [
       "dom",
       "es2015",
@@ -13,11 +14,11 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "removeComments": false,
     "preserveConstEnums": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "./src/**/*"

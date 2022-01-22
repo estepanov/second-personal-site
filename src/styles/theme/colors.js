@@ -1,30 +1,30 @@
 const mainColors = {
-  blue: '#2780E3',
-  indigo: '#6610f2',
-  purple: '#613d7c',
-  pink: '#e83e8c',
-  red: '#FF0039',
-  orange: '#f0ad4e',
-  yellow: '#FF7518',
-  green: '#3FB618',
-  teal: '#20c997',
-  cyan: '#9954BB'
-}
+  blue: "#2780E3",
+  indigo: "#6610f2",
+  purple: "#613d7c",
+  pink: "#e83e8c",
+  red: "#FF0039",
+  orange: "#f0ad4e",
+  yellow: "#FF7518",
+  green: "#3FB618",
+  teal: "#20c997",
+  cyan: "#9954BB",
+};
 
 const mains = {
-  white: '#fff',
-  gray100: '#f8f9fa',
-  gray200: '#f7f7f9',
-  gray300: '#eceeef',
-  gray400: '#ced4da',
-  gray500: '#adb5bd',
-  gray600: '#919aa1',
-  gray700: '#55595c',
-  gray800: '#343a40',
-  gray900: '#1a1a1a',
-  black: '#000',
-  ...mainColors
-}
+  white: "#fff",
+  gray100: "#f8f9fa",
+  gray200: "#f7f7f9",
+  gray300: "#eceeef",
+  gray400: "#ced4da",
+  gray500: "#adb5bd",
+  gray600: "#919aa1",
+  gray700: "#55595c",
+  gray800: "#343a40",
+  gray900: "#1a1a1a",
+  black: "#000",
+  ...mainColors,
+};
 
 const lightTheme = {
   ...mains,
@@ -53,12 +53,12 @@ const lightTheme = {
   listBg: mains.gray300,
   listBgAlt: mains.gray500,
   listContent: mains.gray700,
-  listHeader: mains.gray900
-}
+  listHeader: mains.gray900,
+};
 
 const modes = {
   light: {
-    ...lightTheme
+    ...lightTheme,
   },
   dark: {
     ...lightTheme,
@@ -79,13 +79,13 @@ const modes = {
     listBg: mains.gray800,
     listBgAlt: mains.gray700,
     listContent: mains.gray600,
-    listHeader: mains.gray100
-  }
-}
+    listHeader: mains.gray100,
+  },
+};
 
 module.exports = {
   modes,
   mainColors,
   mains,
-  lightTheme
-}
+  lightTheme,
+};

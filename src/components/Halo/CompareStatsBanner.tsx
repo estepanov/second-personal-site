@@ -1,7 +1,7 @@
 import React from "react";
 /** @jsx jsx */
 import { jsx, Flex, Button, Box } from "theme-ui";
-import Container from "../../components/Layout/Container";
+import Container from "../Layout/Container";
 import useHaloStats, { HaloEndPoints } from "../../hooks/useHaloStats";
 import { TrackerOverview } from "../../interfaces/Halo/Tracker";
 import ChiefCroppedIcon from "./elements/ChiefCroppedIcon";
@@ -21,7 +21,7 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ fetchTag, child
     <Box
       sx={{
         backgroundColor: "background",
-        marginBottom: 2,
+        marginY: 4,
       }}
     >
       <Container>

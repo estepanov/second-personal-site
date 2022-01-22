@@ -1,9 +1,8 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import { Link } from "gatsby";
 /** @jsx jsx */
-import { jsx, Heading, AspectImage, Box } from 'theme-ui'
+import { jsx, Heading, AspectImage, Box } from "theme-ui";
 
-import Layout from '../layouts'
+import Layout from "../layouts";
 
 const NotFoundPage = () => (
   <Layout title="Page not found">
@@ -16,6 +15,6 @@ const NotFoundPage = () => (
       Would you like to go back?
     </Link>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;
