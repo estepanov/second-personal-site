@@ -45,12 +45,12 @@ const Tile = ({ medal }: { medal: HaloApiMedal }) => {
             textAlign: "right",
             color: "text",
             textTransform: "uppercase",
-            fontSize: [1, 2],
-            wordBreak: "break-all",
+            fontSize: [0, 2],
+            wordBreak: "break-word",
             letterSpacing: 2,
             lineHeight: 1,
             marginBottom: 1,
-            opacity: 0.7,
+            opacity: 0.8,
           }}
         >
           {medal.name}
@@ -75,19 +75,21 @@ const Tile = ({ medal }: { medal: HaloApiMedal }) => {
 const sortByCount = (a: HaloApiMedal, b: HaloApiMedal) => (a.count > b.count ? -1 : 1);
 
 interface MedalsBoardProps {
-  stats: OverviewStats | null;
+  stats: OverviewStats | undefined | null;
+  collapsedCount?: number;
 }
 
 const DEFAULT_SHOWN_MEDAL_COUNT = 8;
 
-const MedalsBoard = ({ stats }: MedalsBoardProps) => {
+const MedalsBoard = ({ stats, collapsedCount = DEFAULT_SHOWN_MEDAL_COUNT }: MedalsBoardProps) => {
   const [expanded, toggleExapnd] = useToggle();
   const sorted = useMemo(() => stats?.core?.breakdowns?.medals.sort(sortByCount) || [], [stats]);
+  const collapsedItems = useMemo(() => sorted.slice(0, collapsedCount), [sorted, collapsedCount]);
   const hasExtra = stats?.core?.breakdowns?.medals ? stats?.core?.breakdowns?.medals.length - DEFAULT_SHOWN_MEDAL_COUNT : 0;
   return (
-    <Box sx={{ marginBottom: 4 }}>
+    <Box sx={{}}>
       <Flex sx={{ flexDirection: "row", flexWrap: "wrap" }} key={`${expanded}`}>
-        {(expanded ? sorted : sorted.slice(0, DEFAULT_SHOWN_MEDAL_COUNT)).map((medal) => (
+        {(expanded ? sorted : collapsedItems).map((medal) => (
           <Tile key={medal.id} medal={medal} />
         ))}
       </Flex>
@@ -95,6 +97,7 @@ const MedalsBoard = ({ stats }: MedalsBoardProps) => {
         <Button
           sx={{
             display: "flex",
+            cursor: "pointer",
             width: "100%",
             marginTop: 1,
             marginX: "2px",

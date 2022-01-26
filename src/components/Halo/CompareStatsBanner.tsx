@@ -28,7 +28,7 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ fetchTag, child
         <Flex
           sx={{
             paddingX: 2,
-            paddingY: 2,
+            paddingY: 3,
             flexDirection: "column",
           }}
         >
@@ -54,6 +54,7 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ fetchTag, child
                   color: "secondary",
                   paddingRight: 3,
                   height: [70, 50],
+                  width: [120, 80],
                 }}
               >
                 <ChiefCroppedIcon />
@@ -94,6 +95,7 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ fetchTag, child
                   variant="outline"
                   onClick={toggle}
                   sx={{
+                    cursor: "pointer",
                     width: ["100%", 150],
                     borderColor: "text",
                     color: "text",
@@ -105,6 +107,7 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ fetchTag, child
                 <Button
                   onClick={toggle}
                   sx={{
+                    cursor: "pointer",
                     width: ["100%", 150],
                     backgroundColor: "secondary",
                   }}
@@ -118,7 +121,7 @@ const CompareStatsBanner: React.FC<CompareStatsBannerProps> = ({ fetchTag, child
 
         {trackerOverview && (
           <Box sx={{ marginY: 2 }}>
-            <Flex sx={{ flexDirection: "row", alignItems: "center", fontSize: 0, flexWrap: "wrap" }}>
+            <Flex sx={{ flexDirection: "row", alignItems: "center", fontSize: 0, lineHeight: 2, flexWrap: "wrap" }}>
               <Box
                 sx={{
                   whiteSpace: "nowrap",

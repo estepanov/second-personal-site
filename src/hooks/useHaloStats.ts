@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 import { StatsResponse } from "../interfaces/Halo/Stats";
 import { api } from "../Request";
 
@@ -7,39 +7,26 @@ export enum HaloEndPoints {
   overview = "/halo/stats/overview",
   recentMatches = "/halo/stats/recent-matches",
   pvp = "/halo/stats/pvp",
-  pvpCompare = "/halo/stats/pvp/compare"
+  pvpCompare = "/halo/stats/pvp/compare",
 }
 
-export enum HaloExperienceType {
-  PVP = 'pvp-only',
-  BOTS = 'pve-bots',
-  CUSTOM = 'custom',
-  FEATURED = 'featured',
-  ARENA = 'arena',
-  BTB = 'btb',
-  ALL = 'all'
-}
+// export enum HaloExperienceType {
+//   PVP = "pvp-only",
+//   BOTS = "pve-bots",
+//   CUSTOM = "custom",
+//   FEATURED = "featured",
+//   ARENA = "arena",
+//   BTB = "btb",
+//   ALL = "all",
+// }
 
-const useHaloStats = <T>(endpoint: string, params?: object): [T, boolean, string | null] => {
- const [stats, setStats] = useState<null | T>(null);
- const [isLoading, setIsLoading] = useState(true);
- const [error, setError] = useState<null|string>(null);
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        const response = await api.get<StatsResponse<T>>(endpoint, { params })
-        setStats(response.data.data)
-      } catch(error) {
-        let errorMessage = 'Issue fetching halo stats.'
-        console.error('could not fecth halo stats', error)
-        if (error?.response?.data?.message) errorMessage = error.response.data.message
-        setError(errorMessage);
-      }
-      setIsLoading(false)
-      }
-      fetch()
-    }, [endpoint]);
-  return [stats, isLoading, error]
-}
+const useHaloStats = <T>(endpoint: string): [T | undefined, boolean, string | null] => {
+  const { data, error, isValidating } = useSWR(endpoint, (url: string) =>
+    api.get<StatsResponse<T>>(url).then((res) => {
+      return res.data?.data;
+    }),
+  );
+  return [data, isValidating, error];
+};
 
 export default useHaloStats;

@@ -62,18 +62,20 @@ const Tile = ({ statKey, stats }: { statKey: OverviewStatsKeys; stats: OverviewS
 };
 
 interface StatsBoardProps {
-  stats: OverviewStats | null;
+  stats: OverviewStats | undefined | null;
   statKeys: OverviewStatsKeys[];
 }
 
 const StatsBoard = ({ statKeys, stats }: StatsBoardProps) => {
   return (
     <Box>
-      <Flex sx={{ flexDirection: "row", flexWrap: "wrap" }}>
-        {statKeys.map((statKey) => (
-          <Tile key={statKey} statKey={statKey} stats={stats} />
-        ))}
-      </Flex>
+      {stats && (
+        <Flex sx={{ flexDirection: "row", flexWrap: "wrap" }}>
+          {statKeys.map((statKey) => (
+            <Tile key={statKey} statKey={statKey} stats={stats} />
+          ))}
+        </Flex>
+      )}
     </Box>
   );
 };

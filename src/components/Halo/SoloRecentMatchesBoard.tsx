@@ -1,16 +1,15 @@
 import dayjs from "dayjs";
 import { Fragment } from "react";
-import { Badge, Box, Flex, Spinner } from "theme-ui";
+import { Badge, Box, Flex, Message, Spinner } from "theme-ui";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import useHaloStats, { HaloEndPoints } from "../../hooks/useHaloStats";
-import { OverviewStats, RecentMatch, RecentMatchesBody } from "../../interfaces/Halo/Stats";
-import { getFormattedStat, getStatOption, OverviewStatsKeys } from "../../utils/haloStatFormatter";
+import { RecentMatchesBody } from "../../interfaces/Halo/Stats";
 
 dayjs.extend(localizedFormat);
 
 const StatLineItem = ({ title, value }: { title: string; value: string | number }) => {
   return (
-    <Flex sx={{ width: ["25%", "25%"], alignItems: "center" }}>
+    <Flex sx={{ width: ["33.33%"], alignItems: "center" }}>
       <Box
         sx={{
           fontWeight: "bold",
@@ -34,8 +33,57 @@ const StatLineItem = ({ title, value }: { title: string; value: string | number 
 };
 
 const SoloRecentMatchesBoard = () => {
-  const [stats, loading] = useHaloStats<RecentMatchesBody>(HaloEndPoints.recentMatches);
-  if (loading) {
+  const [stats, loading, error] = useHaloStats<RecentMatchesBody>(HaloEndPoints.recentMatches);
+
+  if (error) {
+    return (
+      <Flex
+        sx={{
+          marginTop: 2,
+          paddingY: 4,
+          paddingX: 2,
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
+        }}
+      >
+        <Box
+          sx={{
+            fontSize: 2,
+            paddingTop: 3,
+            zIndex: 1,
+          }}
+        >
+          <Message
+            sx={{
+              backgroundColor: "red",
+              borderLeftWidth: 0,
+              color: "white",
+              marginBottom: 2,
+              borderRadius: 0,
+            }}
+          >
+            There was an error fetching my recent matches. Please try again later.
+          </Message>
+        </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            zIndex: 0,
+            backgroundColor: "background",
+            opacity: 0.8,
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+          }}
+        />
+      </Flex>
+    );
+  }
+
+  if (loading && !stats) {
     return (
       <Flex
         sx={{
@@ -62,7 +110,7 @@ const SoloRecentMatchesBoard = () => {
             zIndex: 1,
           }}
         >
-          Fetching latest multiplayer stats
+          Fetching latest multiplayer matches
         </Box>
         <Box
           sx={{
@@ -92,15 +140,16 @@ const SoloRecentMatchesBoard = () => {
               key={game.id}
               sx={{
                 flexDirection: "column",
+                paddingY: 3,
+                paddingX: 3,
                 position: "relative",
-                width: ["calc(100% - 4px)", "calc(50% - 4px)", "calc(33.33% - 4px)"],
-                padding: 3,
-                margin: "0px",
+                width: ["50%", "50%", "25%"],
               }}
             >
               <Flex
                 sx={{
                   flexDirection: "row",
+                  zIndex: 1,
                 }}
               >
                 <Flex
@@ -132,22 +181,6 @@ const SoloRecentMatchesBoard = () => {
                     >
                       {game?.details?.playlist?.name}
                     </Box>
-                    {/* <Box */}
-                    {/*  sx={{ */}
-                    {/*    // fontFamily: 'heading', */}
-                    {/*    // fontWeight: 'display', */}
-                    {/*    // lineHeight: '1.1em', */}
-                    {/*    color: "text", */}
-                    {/*    fontSize: "10px", */}
-                    {/*    // borderLeftColor: "text", */}
-                    {/*    // borderLeftStyle: "solid", */}
-                    {/*    // borderLeftWidth: 1, */}
-                    {/*    marginLeft: 1, */}
-                    {/*    opacity: 0.5, */}
-                    {/*  }} */}
-                    {/* > */}
-                    {/*  ({dayjs(game.played_at).format("MM/DD/YY HH:mm")}) */}
-                    {/* </Box> */}
                   </Flex>
                 </Flex>
                 <Flex
@@ -165,7 +198,7 @@ const SoloRecentMatchesBoard = () => {
                         paddingX: 2,
                         width: [60, 70],
                         lineHeight: 2,
-                        backgroundColor: game?.player?.outcome === "win" ? "success" : "warning",
+                        backgroundColor: game?.player?.outcome === "win" ? "success" : "red",
                       }}
                     >
                       {game?.player?.outcome?.toUpperCase()}
@@ -178,50 +211,31 @@ const SoloRecentMatchesBoard = () => {
                   position: "relative",
                   fontSize: 0,
                   zIndex: 1,
-                  color: "white",
-                  // flexDirection: ["column", "row"],
+                  color: "text",
                   marginTop: 1,
                 }}
               >
-                <Flex sx={{ flex: 1 }}>
+                <Flex sx={{ flex: 1, flexWrap: "wrap", marginTop: 2, lineHeight: "1.5em" }}>
                   <StatLineItem title="XP" value={game?.player?.stats?.core?.score} />
+                  <StatLineItem title="MEDALS" value={game?.player?.stats?.core?.breakdowns?.medals.length} />
+                  <StatLineItem title="KDA" value={game?.player?.stats?.core?.kda} />
                   <StatLineItem title="KILLS" value={game?.player?.stats?.core?.summary.kills} />
                   <StatLineItem title="ASSISTS" value={game?.player?.stats?.core?.summary.assists} />
-                  <StatLineItem title="MEDALS" value={game?.player?.stats?.core?.breakdowns?.medals.length} />
+                  <StatLineItem title="DEATHS" value={game?.player?.stats?.core?.summary.deaths} />
                 </Flex>
               </Flex>
               <Box
                 sx={{
                   position: "absolute",
-                  // left: 0,
-                  // right: 0,
-                  // top: 0,
-                  // bottom: 0,
-                  left: 1,
-                  right: 1,
-                  top: 1,
-                  bottom: 1,
-                  opacity: 0.75,
-                  zIndex: -1,
+                  left: "2px",
+                  right: "2px",
+                  top: "2px",
+                  bottom: "2px",
+                  opacity: 0.8,
+                  zIndex: 0,
                   backgroundColor: "background",
                 }}
               />
-              {/* <Box */}
-              {/*  sx={{ */}
-              {/*    position: "absolute", */}
-              {/*    left: 0, */}
-              {/*    right: 0, */}
-              {/*    top: 0, */}
-              {/*    bottom: 0, */}
-              {/*    zIndex: -1, */}
-              {/*    // opacity: 0.3, */}
-              {/*    backgroundImage: `url("${game?.details?.map?.asset.thumbnail_url}")`, */}
-              {/*    backgroundSize: "cover", */}
-              {/*    backgroundRepeat: "no-repeat", */}
-              {/*    backgroundPositionY: "center", */}
-              {/*    backgroundPositionX: "center", */}
-              {/*  }} */}
-              {/* /> */}
             </Flex>
           );
         })}
