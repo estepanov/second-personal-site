@@ -31,6 +31,7 @@ const lightTheme = {
   primary: mains.blue,
   text: mains.gray700, // added
   background: mains.gray100, // added
+  backgroundAlt: mains.gray200, // added
   secondary: mains.cyan, // added
   muted: mains.gray300, // added
   muted200: mains.gray400,
@@ -72,6 +73,7 @@ const modes = {
 
     logo: mains.gray400,
     background: mains.gray900,
+    backgroundAlt: mains.gray800,
     muted: mains.gray800,
     muted200: mains.gray700,
     mutedText: mains.gray600, // added
