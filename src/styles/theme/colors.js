@@ -38,11 +38,12 @@ const lightTheme = {
   mutedText: mains.gray600, // added
   gray: mains.gray700,
   logo: mains.gray700, // added
-  logoActive: mains.white,
+  logoAlt: mains.black, // added
+  logoActive: mains.black,
   headerActive: mains.gray900,
-  headerMobile: mains.gray500,
-  headerMobileActive: mains.gray200,
-  headerMobileBg: mains.gray800,
+  headerMobile: mains.gray800,
+  headerMobileActive: mains.gray800,
+  headerMobileBg: mains.white,
   headerMobileBgActive: mains.gray400,
   /// GENERAL
   highlight: mains.pink, // added
@@ -68,10 +69,11 @@ const modes = {
     headerActive: mains.gray300,
     headerMobile: mains.gray400,
     headerMobileActive: mains.gray200,
-    headerMobileBg: mains.gray800,
+    headerMobileBg: mains.black,
     headerMobileBgActive: mains.gray300,
 
     logo: mains.gray400,
+    logoAlt: mains.white,
     background: mains.gray900,
     backgroundAlt: mains.gray800,
     muted: mains.gray800,

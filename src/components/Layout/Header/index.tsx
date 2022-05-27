@@ -58,7 +58,7 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
             transition: ["ease-in-out 0.3s", "none"],
             backgroundImage: [
               showMobileMenu
-                ? (t) => `linear-gradient(to bottom left, ${lighten("headerMobileBg", 0.05)(t)}, ${darken("headerMobileBg", 0.05)(t)})`
+                ? (t) => `linear-gradient(to bottom left, ${lighten("headerMobileBg", 0.15)(t)}, ${darken("headerMobileBg", 0.05)(t)})`
                 : null,
               null,
             ],
@@ -306,7 +306,9 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
                 </Link>
               );
             })}
+            <Box sx={{ marginTop: 2 }} />
             <ColorModeToggle />
+            <Box sx={{ marginTop: 4 }} />
           </Flex>
           {/* {wrapped && <Box
             sx={{
@@ -322,6 +324,7 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
           />} */}
         </Container>
       </Flex>
+      <Box sx={{ height: showMobileMenu ? 20 : 0, transition: "ease-out 0.3s" }} />
     </React.Fragment>
   );
 };
