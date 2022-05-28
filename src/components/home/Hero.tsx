@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import React, { useEffect, useRef } from "react";
 /** @jsx jsx */
 import { jsx, Flex, Box } from "theme-ui";
@@ -40,10 +41,10 @@ const Hero = ({ children }) => {
           opacity: 0.5,
           filter: "grayscale(100%)",
         }}
-        playsInline="playsinline"
-        autoPlay="autoplay"
-        muted="muted"
-        loop="loop"
+        playsInline
+        autoPlay
+        muted
+        loop
         ref={videoRef}
       >
         <source src="https://estepanov.s3.amazonaws.com/fallMini.webm" type="video/webm" />

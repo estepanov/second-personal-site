@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "gatsby";
 import { lighten, darken } from "@theme-ui/color";
 /** @jsx jsx */
 import { jsx, Button, Box, Flex } from "theme-ui";
+import useIntersectionObserver from "@react-hook/intersection-observer";
 import NavLink from "../../elements/NavLink";
 import Name from "../../logo/Name";
 import Logo from "../../logo/Logo";
@@ -28,6 +29,14 @@ const LINKS = [
 const Header = ({ wrapped }: { wrapped?: boolean }) => {
   const [showMobileMenu, setMobileMenu] = useState(false);
   const toggleMobileMenu = () => setMobileMenu(!showMobileMenu);
+  const headerContainerRef = useRef<HTMLDivElement>();
+  const { isIntersecting: isIntersectingContainer } = useIntersectionObserver(headerContainerRef, {
+    rootMargin: "-40px 0px 0px 0px",
+  });
+  const headerContentRef = useRef();
+  const { isIntersecting: isIntersectingContent } = useIntersectionObserver(headerContentRef, {
+    rootMargin: "-45px 0px 0px 0px",
+  });
   return (
     <React.Fragment>
       {/* {!wrapped && <NonProfitConsulting />} */}
@@ -37,15 +46,17 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
         }}
       >
         <Box
+          ref={headerContainerRef}
           sx={{
+            transition: "all ease-in-out 0.2s",
             position: "absolute",
             backgroundColor: "background",
             top: 0,
             left: 0,
-            bottom: 0,
-            opacity: 0.75,
             right: 0,
-            // height: "200px",
+            bottom: isIntersectingContainer ? 0 : 20,
+            // bottom: 0,
+            opacity: isIntersectingContainer ? 0.7 : 0,
             zIndex: -1,
             // backgroundSize: "cover",
             // backgroundRepeat: "norepeat",
@@ -112,11 +123,15 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
             </Flex> */}
           {/* </Flex> */}
           <Flex
+            ref={headerContentRef}
             // py={2}
             sx={{
               flexDirection: "row",
               alignItems: "center",
               flexShrink: 0,
+              opacity: isIntersectingContent ? 1 : 0,
+              transition: "ease-in-out 0.3s",
+              // transitionDelay: "0.1s",
             }}
           >
             <Flex sx={{ flexDirection: "row", flex: 1, justifyContent: "space-between" }}>
