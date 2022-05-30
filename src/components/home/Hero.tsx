@@ -22,6 +22,22 @@ const Hero = ({ children }) => {
   const { isIntersecting } = useIntersectionObserver(arrowRef, {
     rootMargin: "-90% 0px 0px 0px",
   });
+  const { isIntersecting: isIntersectingVideo } = useIntersectionObserver(videoRef, {
+    rootMargin: "-30% 0px 0px 0px",
+  });
+  const { isIntersecting: isIntersectingVideoPlayback } = useIntersectionObserver(videoRef, {
+    rootMargin: "-35% 0px 0px 0px",
+  });
+  useEffect(() => {
+    if (videoRef.current) {
+      if (videoRef.current.paused && isIntersectingVideoPlayback) {
+        videoRef.current.play();
+      }
+      if (!videoRef.current.paused && !isIntersectingVideoPlayback) {
+        videoRef.current.pause();
+      }
+    }
+  }, [isIntersectingVideoPlayback]);
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.75;
@@ -36,9 +52,11 @@ const Hero = ({ children }) => {
           objectFit: "cover",
           position: "absolute",
           left: 0,
+          // top: isIntersectingVideo ? 0 : -10,
           top: 0,
           zIndex: -3,
-          opacity: 0.5,
+          opacity: isIntersectingVideo ? 0.55 : 0.3,
+          transition: "all ease-in-out 300ms",
           filter: "grayscale(100%)",
         }}
         playsInline
@@ -73,7 +91,7 @@ const Hero = ({ children }) => {
           ref={arrowRef}
           sx={{
             position: "absolute",
-            bottom: [2, 4],
+            bottom: [3, 4],
             left: 0,
             right: 0,
             justifyContent: "center",

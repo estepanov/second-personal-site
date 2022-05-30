@@ -97,7 +97,7 @@ export interface HaloApiMedal {
 export interface RecentMatch {
   id: string;
   details: {
-    category: {
+    gamevariant: {
       name: string;
       asset: HaloApiAsset;
     };
@@ -195,7 +195,9 @@ export interface RecentMatch {
 }
 
 export interface RecentMatchesBody {
-  games: RecentMatch[];
+  games: {
+    matches: RecentMatch[];
+  };
   fetchedOn: string;
   mode: string;
 }

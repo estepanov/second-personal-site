@@ -134,7 +134,7 @@ const SoloRecentMatchesBoard = () => {
           flexWrap: "wrap",
         }}
       >
-        {stats?.games?.map((game) => {
+        {stats?.games?.matches?.map((game) => {
           return (
             <Flex
               key={game.id}
@@ -166,7 +166,7 @@ const SoloRecentMatchesBoard = () => {
                       color: "text",
                     }}
                   >
-                    {game.details.category.name} on {game?.details?.map?.name}
+                    {game.details.gamevariant.name} on {game?.details?.map?.name}
                   </Box>
                   <Flex sx={{ marginTop: 1 }}>
                     <Box
@@ -216,9 +216,9 @@ const SoloRecentMatchesBoard = () => {
                 }}
               >
                 <Flex sx={{ flex: 1, flexWrap: "wrap", marginTop: 2, lineHeight: "1.5em" }}>
-                  <StatLineItem title="XP" value={game?.player?.stats?.core?.score} />
-                  <StatLineItem title="MEDALS" value={game?.player?.stats?.core?.breakdowns?.medals.length} />
-                  <StatLineItem title="KDA" value={game?.player?.stats?.core?.kda} />
+                  <StatLineItem title="% ACC." value={game?.player?.stats?.core?.shots?.accuracy?.toFixed(2)} />
+                  <StatLineItem title="MEDALS" value={game?.player?.stats?.core?.summary?.medals} />
+                  <StatLineItem title="KDA" value={game?.player?.stats?.core?.kda?.toFixed(3)} />
                   <StatLineItem title="KILLS" value={game?.player?.stats?.core?.summary.kills} />
                   <StatLineItem title="ASSISTS" value={game?.player?.stats?.core?.summary.assists} />
                   <StatLineItem title="DEATHS" value={game?.player?.stats?.core?.summary.deaths} />

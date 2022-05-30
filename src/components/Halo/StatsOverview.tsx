@@ -1,7 +1,8 @@
 import { Link } from "gatsby";
 /** @jsx jsx */
 import { jsx, Box, Flex, Container, Spinner } from "theme-ui";
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef } from "react";
+import useIntersectionObserver from "@react-hook/intersection-observer";
 import useHaloStats, { HaloEndPoints } from "../../hooks/useHaloStats";
 import { useStatsCycleHook } from "../../hooks/useStatsCycleHook";
 import { OverviewStats } from "../../interfaces/Halo/Stats";
@@ -29,16 +30,25 @@ const INTERVAL = 4200;
 export const StatsOverview = () => {
   const [stats, statsLoading] = useHaloStats<OverviewStats>(HaloEndPoints.overview);
   const [option, stat] = useStatsCycleHook(STAT_OPTIONS, stats, INTERVAL);
-
+  const videoRef = useRef<HTMLVideoElement>();
+  const videoContRef = useRef<HTMLDivElement>();
+  const { isIntersecting: isIntersectingVideoPlayback } = useIntersectionObserver(videoContRef, {
+    rootMargin: "-26%",
+  });
+  useEffect(() => {
+    if (videoRef.current) {
+      if (videoRef.current.paused && isIntersectingVideoPlayback) {
+        videoRef.current.play();
+      }
+      if (!videoRef.current.paused && !isIntersectingVideoPlayback) {
+        videoRef.current.pause();
+      }
+    }
+  }, [isIntersectingVideoPlayback]);
   return (
     <Flex
+      ref={videoContRef}
       sx={{
-        borderTopWidth: 1,
-        borderTopColor: "muted",
-        borderTopStyle: "solid",
-        borderBottomWidth: 1,
-        borderBottomColor: "muted",
-        borderBottomStyle: "solid",
         paddingY: [5, 4],
         paddingX: 4,
         height: ["100vh", "350px"],
@@ -66,13 +76,19 @@ export const StatsOverview = () => {
         }}
       >
         <video
+          ref={videoRef}
           id="background-video"
           autoPlay
           loop
           muted
           playsInline
           poster="/halo-infinite-chief-helmet.jpeg"
-          sx={{ minWidth: "100vw", minHeight: ["100vh", "300px"] }}
+          sx={{
+            minWidth: "100vw",
+            minHeight: ["100vh", "300px"],
+            opacity: isIntersectingVideoPlayback ? 1 : 0.4,
+            transition: "ease-in-out 0.45s",
+          }}
         >
           <source src="https://estepanov.s3.amazonaws.com/halo-infinite-mini-mod.webm" type="video/webm" />
           <source src="https://estepanov.s3.amazonaws.com/halo-infinite-mini-mod.mp4" type="video/mp4" />

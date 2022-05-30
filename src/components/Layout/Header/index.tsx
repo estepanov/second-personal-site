@@ -9,6 +9,8 @@ import Name from "../../logo/Name";
 import Logo from "../../logo/Logo";
 import Container from "../Container";
 import ColorModeToggle from "../../ColorModeToggle";
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import useIsFirstRender from "../../../hooks/useIsFirstRender";
 // import NonProfitConsulting from "../Banners/NonprofitConsulting";
 
 const LINKS = [
@@ -20,6 +22,10 @@ const LINKS = [
     title: "Blog",
     to: "/blog",
   },
+  {
+    title: "Contact",
+    to: "/contact",
+  },
   // {
   //   title: 'ColorMode',
   //   Component: ColorModeToggle
@@ -27,9 +33,18 @@ const LINKS = [
 ];
 
 const Header = ({ wrapped }: { wrapped?: boolean }) => {
+  const isFirstRender = useIsFirstRender();
   const [showMobileMenu, setMobileMenu] = useState(false);
   const toggleMobileMenu = () => setMobileMenu(!showMobileMenu);
+  const mobileHeaderContainerRef = useRef<HTMLDivElement>();
+
+  const handleOutsideClick = () => {
+    if (!showMobileMenu) return;
+    toggleMobileMenu();
+  };
+  useOnClickOutside(mobileHeaderContainerRef, handleOutsideClick);
   const headerContainerRef = useRef<HTMLDivElement>();
+
   const { isIntersecting: isIntersectingContainer } = useIntersectionObserver(headerContainerRef, {
     rootMargin: "-40px 0px 0px 0px",
   });
@@ -41,6 +56,7 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
     <React.Fragment>
       {/* {!wrapped && <NonProfitConsulting />} */}
       <Flex
+        ref={mobileHeaderContainerRef}
         sx={{
           position: "relative",
         }}
@@ -48,7 +64,7 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
         <Box
           ref={headerContainerRef}
           sx={{
-            transition: "all ease-in-out 0.2s",
+            transition: isIntersectingContainer ? "all ease-in-out 0.2s" : null,
             position: "absolute",
             backgroundColor: "background",
             top: 0,
@@ -56,7 +72,7 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
             right: 0,
             bottom: isIntersectingContainer ? 0 : 20,
             // bottom: 0,
-            opacity: isIntersectingContainer ? 0.7 : 0,
+            opacity: isIntersectingContainer ? 0.6 : 0,
             zIndex: -1,
             // backgroundSize: "cover",
             // backgroundRepeat: "norepeat",
@@ -130,8 +146,7 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
               alignItems: "center",
               flexShrink: 0,
               opacity: isIntersectingContent ? 1 : 0,
-              transition: "ease-in-out 0.3s",
-              // transitionDelay: "0.1s",
+              transition: "ease-in-out 0.4s",
             }}
           >
             <Flex sx={{ flexDirection: "row", flex: 1, justifyContent: "space-between" }}>

@@ -1,40 +1,40 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import MDX from '../components/MDX'
+import * as React from "react";
+import { graphql } from "gatsby";
+import MDX from "../components/MDX";
 
-import Layout from '../layouts'
+import Layout from "../layouts";
 
 interface PageTemplateProps {
-  location: Location
+  location: Location;
   data: {
     site: {
       siteMetadata: {
-        title: string
-        description: string
+        title: string;
+        description: string;
         author: {
-          name: string
-          url: string
-        }
-      }
-    }
+          name: string;
+          url: string;
+        };
+      };
+    };
     post: {
-      body: string
-      excerpt: string
+      body: string;
+      excerpt: string;
       frontmatter: {
-        title: string
-        description: string
-      }
-    }
-  }
+        title: string;
+        description: string;
+      };
+    };
+  };
 }
 
 const PageTemplate: React.FC<PageTemplateProps> = ({ data, location }) => (
   <Layout title={data.post.frontmatter.title} description={data.post.frontmatter.description} pathname={location.pathname}>
     <MDX>{data.post.body}</MDX>
   </Layout>
-)
+);
 
-export default PageTemplate
+export default PageTemplate;
 
 export const query = graphql`
   query PageTemplateQuery($slug: String!) {
@@ -57,4 +57,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

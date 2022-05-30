@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 /** @jsx jsx */
 import { jsx, Box, Text, Flex } from "theme-ui";
 import { lighten, darken } from "@theme-ui/color";
+import useIntersectionObserver from "@react-hook/intersection-observer";
 import Layout from "../layouts";
 
 import Work from "../components/home/Work";
@@ -11,6 +12,30 @@ import TechSection from "../components/home/TechCloud";
 import Hero from "../components/home/Hero";
 import LatestProjects from "../components/home/LatestProjects";
 import { StatsOverview } from "../components/Halo/StatsOverview";
+
+const ColorTextSection = ({ message, backgroundColor }) => {
+  const contRef = useRef();
+  const { isIntersecting: isIntersectingContRef } = useIntersectionObserver(contRef, {
+    rootMargin: "-10%",
+  });
+  return (
+    <Box
+      ref={contRef}
+      sx={{
+        paddingY: 6,
+        transition: "all ease 0.5s",
+        opacity: isIntersectingContRef ? 1 : 0.3,
+        backgroundColor,
+        color: "white",
+        fontFamily: "writing",
+      }}
+    >
+      <Container>
+        <Box sx={{ fontSize: [6, 7], lineHeight: 2, paddingX: [2, 0], fontWeight: 700, textAlign: "center" }}>{message}</Box>
+      </Container>
+    </Box>
+  );
+};
 
 interface IndexProps {
   location: Location;
@@ -46,7 +71,7 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
               <span
                 sx={{
                   color: "primary",
-                  fontFamily: "monospace",
+                  fontFamily: "writing",
                   background: (t) => `linear-gradient(90deg, ${lighten("primary", 0.01)(t)}, ${darken("warning", 0.01)(t)})`,
                   backgroundClip: "text",
                 }}
@@ -57,7 +82,7 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
               <span
                 sx={{
                   color: "highlight",
-                  fontFamily: "monospace",
+                  fontFamily: "writing",
                   background: (t) => `linear-gradient(90deg, ${lighten("highlight", 0.01)(t)}, ${darken("primary", 0.01)(t)})`,
                   backgroundClip: "text",
                 }}
@@ -68,7 +93,7 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
               <span
                 sx={{
                   color: "secondary",
-                  fontFamily: "monospace",
+                  fontFamily: "writing",
                   background: (t) => `linear-gradient(90deg, ${lighten("teal", 0.01)(t)}, ${darken("green", 0.01)(t)})`,
                   backgroundClip: "text",
                 }}
@@ -80,31 +105,50 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
           </Flex>
         </Container>
       </Hero>
-      <Box sx={{ marginY: 6 }}>
+      <Box sx={{ paddingY: 6 }}>
         <Container>
-          <Box sx={{ fontSize: [4], lineHeight: 2 }}>
-            Usually you can find me coding or reading about software. Winter is my favorite season and ⛷ or 🏂 on fresh pow 🌨 is the
-            highlight of every winter. Occasionally, I can be found binge-playing Halo Infinite on 🎮.
-          </Box>
+          <TechSection />
         </Container>
       </Box>
+      <ColorTextSection backgroundColor="yellow" message="I also really love to ⛷ or 🏂 on fresh pow 🌨" />
       <Box
         sx={{
-          borderTopColor: "secondary",
-          borderTopStyle: "solid",
-          borderTopWidth: 3,
-          borderBottomColor: "secondary",
-          borderBottomStyle: "solid",
-          borderBottomWidth: 3,
-          paddingY: 4,
-          backgroundColor: "backgroundAlt",
+          paddingY: 6,
+          // backgroundColor: "backgroundAlt",
         }}
       >
         <Container>
           <Work />
         </Container>
       </Box>
+      {/* <Box sx={{ paddingY: 6, backgroundColor: "primary", color: "white" }}>
+        <Container>
+          <Box sx={{ fontSize: [4, 6], lineHeight: 2, paddingX: 3 }}>
+            Usually you can find me coding or reading about software. Winter is my favorite season and ⛷ or 🏂 on fresh pow 🌨 is the
+            highlight of every winter. Occasionally, I can be found binge-playing Halo Infinite on 🎮.
+          </Box>
+        </Container>
+      </Box> */}
+      <ColorTextSection backgroundColor="primary" message="Usually you can find me coding or learning" />
       <Box sx={{ paddingY: 6 }}>
+        <Container>
+          <Flex sx={{ justifyContent: "center", alignItems: "center" }}>
+            <GitHubActivity />
+          </Flex>
+        </Container>
+      </Box>
+      <Box
+        sx={{
+          paddingY: 6,
+          backgroundColor: "backgroundAlt",
+        }}
+      >
+        <Container>
+          <LatestProjects />
+        </Container>
+      </Box>
+
+      {/* <Box sx={{ paddingY: 6 }}>
         <Container>
           <TechSection />
           <Box marginTop={6} />
@@ -114,8 +158,11 @@ const IndexPage: React.FC<IndexProps> = ({ location }) => {
           <Box marginTop={6} />
           <LatestProjects />
         </Container>
-      </Box>
+      </Box> */}
+      <ColorTextSection backgroundColor="secondary" message="Occasionally, I binge-play Halo Infinite on 🎮" />
+      {/* <Box sx={{ paddingY: 6 }}> */}
       <StatsOverview />
+      {/* </Box> */}
     </Layout>
   );
 };

@@ -1,7 +1,7 @@
-import { css } from '@emotion/react'
+import { css } from "@emotion/react";
 
 const globalStyle = css`
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Open+Sans:wght@300;700&family=Roboto+Condensed:ital,wght@0,700;1,700&family=Shadows+Into+Light&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Open+Sans:wght@300;700&family=Roboto+Condensed:ital,wght@0,700;1,700&family=Kalam:wght@400;700&display=swap");
 
   html {
     width: 100%;
@@ -20,6 +20,6 @@ const globalStyle = css`
     flex-grow: 1;
     flex-direction: column;
   }
-`
+`;
 
-export default globalStyle
+export default globalStyle;

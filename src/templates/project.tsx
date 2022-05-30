@@ -1,41 +1,41 @@
-import * as React from 'react'
-import { graphql } from 'gatsby'
-import { Heading, Flex, Box } from 'theme-ui'
+import * as React from "react";
+import { graphql } from "gatsby";
+import { Heading, Flex, Box } from "theme-ui";
 
-import MDX from '../components/MDX'
-import Layout from '../layouts'
-import TechLogoBox from '../components/projects/TechLogoBox'
-import TechLogoList from '../components/projects/TechLogoList'
-import { Project } from '../interfaces/Project'
-import NextPrev from '../components/projects/NextPrevious'
-import ImageGallery from '../components/projects/ImageGallery'
-import Banner from '../components/projects/Banners'
-import Demos from '../components/projects/Demos'
-import ProjectLinks from '../components/projects/ProjectLinks'
+import MDX from "../components/MDX";
+import Layout from "../layouts";
+import TechLogoBox from "../components/projects/TechLogoBox";
+import TechLogoList from "../components/projects/TechLogoList";
+import { Project } from "../interfaces/Project";
+import NextPrev from "../components/projects/NextPrevious";
+import ImageGallery from "../components/projects/ImageGallery";
+import Banner from "../components/projects/Banners";
+import Demos from "../components/projects/Demos";
+import ProjectLinks from "../components/projects/ProjectLinks";
 
 interface ProjectProps {
-  location: Location
+  location: Location;
   data: {
     site: {
       siteMetadata: {
-        title: string
-        description: string
+        title: string;
+        description: string;
         author: {
-          name: string
-          url: string
-        }
-      }
-    }
-    post: Project
+          name: string;
+          url: string;
+        };
+      };
+    };
+    post: Project;
     pageContext: {
-      next: Project
-      previous: Project
-    }
-  }
+      next: Project;
+      previous: Project;
+    };
+  };
   pageContext: {
-    next: Project
-    previous: Project
-  }
+    next: Project;
+    previous: Project;
+  };
 }
 
 const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) => {
@@ -50,33 +50,34 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) =>
       }
       pathname={location.pathname}
     >
-      <Flex my={1} sx={{ alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap' }}>
-        <Heading as="h1" my={1} sx={{ width: ['100%', 'auto'] }}>
+      <Flex mt={4} sx={{ alignItems: "center", flexDirection: "row", flexWrap: "wrap" }}>
+        <Heading as="h1" my={1} sx={{ width: ["100%", "auto"] }}>
           {data.post.frontmatter.title}
         </Heading>
         {data.post.frontmatter.banners ? (
           <>
             <Box sx={{ marginRight: [0, 4] }} />
-            {data.post.frontmatter.banners.map(item => (
+            {data.post.frontmatter.banners.map((item) => (
               <Banner key={item} type={item} />
             ))}
           </>
         ) : null}
       </Flex>
       <Flex
-        my={2}
+        mt={2}
+        mb={4}
         sx={{
-          flexDirection: ['column', 'row'],
-          flexWrap: 'wrap',
-          backgroundColor: 'muted',
+          flexDirection: ["column", "row"],
+          flexWrap: "wrap",
+          backgroundColor: "muted",
           paddingY: 2,
           paddingX: 1,
-          alignItems: ['center'],
-          fontSize: 4
+          alignItems: ["center"],
+          fontSize: 4,
         }}
       >
         {data.post.frontmatter.date && (
-          <Box sx={{ fontSize: 2, fontWeight: 'bold', width: ['100%', 'auto'], justifyContent: 'flex-start', marginRight: [0, 2] }}>
+          <Box sx={{ fontSize: 2, fontWeight: "bold", width: ["100%", "auto"], justifyContent: "flex-start", marginRight: [0, 2] }}>
             <TechLogoBox tag={new Date(data.post.frontmatter.date).getFullYear().toString() || ""} />
           </Box>
         )}
@@ -84,7 +85,7 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) =>
           <TechLogoList tags={data.post.frontmatter.tech} marginRight={3} marginBottom={1} isLink />
         </Flex>
         <Flex sx={{ flexGrow: 1 }} />
-        <Flex sx={{ flexDirection: 'row', flexWrap: 'wrap', position: 'relative' }}>
+        <Flex sx={{ flexDirection: "row", flexWrap: "wrap", position: "relative" }}>
           <ProjectLinks marginRight={3} marginBottom={1} repo={data.post.frontmatter.repo} website={data.post.frontmatter.website} />
         </Flex>
       </Flex>
@@ -93,10 +94,10 @@ const ProjectPage: React.FC<ProjectProps> = ({ data, pageContext, location }) =>
       <MDX>{data.post.body}</MDX>
       <NextPrev next={pageContext.next} previous={pageContext.previous} />
     </Layout>
-  )
-}
+  );
+};
 
-export default ProjectPage
+export default ProjectPage;
 
 export const query = graphql`
   query ProjectQuery($slug: String!) {
@@ -136,4 +137,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
