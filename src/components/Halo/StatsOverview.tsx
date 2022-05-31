@@ -11,7 +11,7 @@ import { shuffleArray } from "../../utils/shuffle";
 import { StatSquareMini } from "./elements/StatSquareMini";
 
 const STAT_OPTIONS: OverviewStatsKeys[] = shuffleArray([
-  OverviewStatsKeys.MatchesPlayed,
+  // OverviewStatsKeys.MatchesPlayed,
   OverviewStatsKeys.CoreSummaryAssists,
   OverviewStatsKeys.CoreShotsFired,
   OverviewStatsKeys.CoreShotsMissed,
@@ -20,10 +20,10 @@ const STAT_OPTIONS: OverviewStatsKeys[] = shuffleArray([
   OverviewStatsKeys.CoreSummaryVehiclesDestroys,
   OverviewStatsKeys.CoreSummaryVehiclesHijacks,
   OverviewStatsKeys.CoreSummaryMedals,
-  OverviewStatsKeys.CoreBreakdownsMatchesWins,
+  // OverviewStatsKeys.CoreBreakdownsMatchesWins,
   OverviewStatsKeys.CoreBreakdownsAssistsDriver,
   OverviewStatsKeys.CoreBreakdownsAssistsCallouts,
-  OverviewStatsKeys.WinRate,
+  // OverviewStatsKeys.WinRate,
 ]);
 
 const INTERVAL = 4200;
