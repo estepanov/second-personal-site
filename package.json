@@ -50,7 +50,7 @@
     "gatsby-plugin-canonical-urls": "^4.5.0",
     "gatsby-plugin-emotion": "^7.5.0",
     "gatsby-plugin-google-analytics": "^4.5.0",
-    "gatsby-plugin-mdx": "^3.5.2",
+    "gatsby-plugin-mdx": "^3.15.2",
     "gatsby-plugin-netlify-cms": "^6.5.0",
     "gatsby-plugin-page-creator": "^4.5.2",
     "gatsby-plugin-react-helmet": "^5.5.0",
