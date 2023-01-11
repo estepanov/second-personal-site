@@ -66,7 +66,7 @@
     "gatsby-source-github-api": "1.0.0",
     "gatsby-theme-style-guide": "^0.13.1",
     "gatsby-transformer-json": "^4.5.0",
-    "gatsby-transformer-remark": "^5.5.2",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^4.5.0",
     "lodash.get": "^4.4.2",
     "modern-normalize": "^1.1.0",
