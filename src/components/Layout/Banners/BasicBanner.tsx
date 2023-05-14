@@ -14,6 +14,7 @@ const BasicBanner: React.FC<BasicBanerProps> = ({ heading, text, children }) => 
     <BannerWrapper>
       <Flex
         sx={{
+          flexDirection: ["column", "row"],
           alignItems: "center",
         }}
       >

@@ -9,13 +9,15 @@ const DeprecatedSite = () => {
   return (
     <ControlledBanner
       id="deprecated-banner"
-      isClosable
-      heading="Attention‼️"
+      isClosable={false}
+      heading="Attention"
       text={
         <React.Fragment>
           <Box sx={{ lineHeight: 1.5 }}>
-            <Box>This old personal site of mine is no longer maintained. I only keep it up for demo purposes.</Box>
-            <Box>All backend functionality is now mocked client side to simplify maintenance.</Box>
+            <Box>
+              This old personal site of mine is no longer maintained. I only keep it up for demo purposes. All backend functionality is now
+              mocked client side to simplify maintenance.
+            </Box>
           </Box>
         </React.Fragment>
       }

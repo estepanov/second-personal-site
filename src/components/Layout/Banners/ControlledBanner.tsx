@@ -26,7 +26,7 @@ const ControlledBanner: React.FC<ControlledBanerProps> = ({ id, isClosable = fal
   return (
     <BasicBanner heading={heading} text={text}>
       {children}
-      {actions && <Box sx={{ paddingX: 2, flexShrink: 0 }}>{actions}</Box>}
+      {actions && <Box sx={{ paddingX: 2, flexShrink: 0, paddingY: [3, 0] }}>{actions}</Box>}
       {isClosable && (
         <Button
           aria-label="close banner"

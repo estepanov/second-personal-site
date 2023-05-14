@@ -11,7 +11,6 @@ import { shuffleArray } from "../../utils/shuffle";
 import { StatSquareMini } from "./elements/StatSquareMini";
 
 const STAT_OPTIONS: OverviewStatsKeys[] = shuffleArray([
-  OverviewStatsKeys.MatchesPlayed,
   OverviewStatsKeys.CoreSummaryAssists,
   OverviewStatsKeys.CoreShotsFired,
   OverviewStatsKeys.CoreShotsMissed,
@@ -75,6 +74,7 @@ export const StatsOverview = () => {
           backgroundRepeat: "no-repeat",
           backgroundPositionY: "center",
           backgroundPositionX: "center",
+          backgroundImage: "url(./halo-infinite-chief-helmet.jpeg)",
         }}
       >
         <video
@@ -84,7 +84,6 @@ export const StatsOverview = () => {
           loop
           muted
           playsInline
-          poster="/halo-infinite-chief-helmet.jpeg"
           sx={{
             minWidth: "100vw",
             minHeight: ["100vh", "300px"],
