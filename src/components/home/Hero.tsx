@@ -31,7 +31,9 @@ const Hero = ({ children }) => {
   useEffect(() => {
     if (videoRef.current) {
       if (videoRef.current.paused && isIntersectingVideoPlayback) {
-        videoRef.current.play();
+        videoRef.current.play().catch(() => {
+          // ARCHIVED SITE -- VIDEOS no longer exist. thus they will not load or play
+        });
       }
       if (!videoRef.current.paused && !isIntersectingVideoPlayback) {
         videoRef.current.pause();
@@ -52,6 +54,10 @@ const Hero = ({ children }) => {
           objectFit: "cover",
           position: "absolute",
           left: 0,
+          backgroundImage: "url(/uplift.jpg)",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           // top: isIntersectingVideo ? 0 : -10,
           top: 0,
           zIndex: -3,
@@ -65,8 +71,9 @@ const Hero = ({ children }) => {
         loop
         ref={videoRef}
       >
+        {/* ARCHIVED PROJECT - REMOVED VIDEOS TO SAVE $
         <source src="https://estepanov.s3.amazonaws.com/fallMini.webm" type="video/webm" />
-        <source src="https://estepanov.s3.amazonaws.com/fallMini.mp4" type="video/mp4" />
+        <source src="https://estepanov.s3.amazonaws.com/fallMini.mp4" type="video/mp4" /> */}
       </video>
       <Flex
         sx={{
@@ -91,7 +98,7 @@ const Hero = ({ children }) => {
           ref={arrowRef}
           sx={{
             position: "absolute",
-            bottom: [3, 4],
+            bottom: [0, 1],
             left: 0,
             right: 0,
             justifyContent: "center",

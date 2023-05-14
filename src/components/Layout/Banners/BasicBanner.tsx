@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from "react";
 /** @jsx jsx */
-import { jsx, Heading, Text, Flex, Box } from 'theme-ui'
+import { jsx, Heading, Text, Flex, Box } from "theme-ui";
 
-import BannerWrapper from './BannerWrapper'
+import BannerWrapper from "./BannerWrapper";
 
 export interface BasicBanerProps {
-  heading: string | ReactNode
-  text: string | ReactNode
+  heading: string | ReactNode;
+  text: string | ReactNode;
 }
 
 const BasicBanner: React.FC<BasicBanerProps> = ({ heading, text, children }) => {
@@ -14,20 +14,20 @@ const BasicBanner: React.FC<BasicBanerProps> = ({ heading, text, children }) => 
     <BannerWrapper>
       <Flex
         sx={{
-          alignItems: 'center'
+          alignItems: "center",
         }}
       >
         <Box
           sx={{
-            flexDirection: 'row',
-            flexGrow: 1
+            flexDirection: "row",
+            flexGrow: 1,
           }}
         >
           <Heading
             sx={{
               fontSize: 2,
-              display: 'inline-flex',
-              marginRight: 2,
+              display: "inline-flex",
+              marginRight: 4,
             }}
           >
             {heading}
@@ -37,7 +37,7 @@ const BasicBanner: React.FC<BasicBanerProps> = ({ heading, text, children }) => 
         {children}
       </Flex>
     </BannerWrapper>
-  )
-}
+  );
+};
 
-export default BasicBanner
+export default BasicBanner;

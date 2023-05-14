@@ -1,5 +1,7 @@
 import get from "lodash.get";
-import { OverviewStats } from "../interfaces/Halo/Stats";
+import { CompareStatsBody, OverviewStats } from "../interfaces/Halo/Stats";
+import { randomNumberWithin } from "./randomNumber";
+import { TrackerOverview } from "../interfaces/Halo/Tracker";
 
 type StatValue = number | string;
 
@@ -332,3 +334,104 @@ export const getBetterStatsCount = (statKeys: OverviewStatsKeys[], meStats: Over
   });
   return result;
 };
+
+export const mockMedal = () => ({
+  id: randomNumberWithin(100, 3000000),
+  name: `Medal #${randomNumberWithin(100, 3000000)}`,
+  count: randomNumberWithin(200, 3000000),
+  image_urls: {
+    small: "/logo/logo.svg",
+    medium: "/logo/logo.svg",
+    large: "/logo/logo.svg",
+  },
+});
+
+export const mockOverviewStats = (): OverviewStats => ({
+  matches_played: 892725,
+  time_played: {
+    seconds: 10222727,
+    human: "a lot of days",
+  },
+  win_rate: 1.2,
+  fetchedOn: new Date().toLocaleDateString(),
+  core: {
+    summary: {
+      kills: randomNumberWithin(2000000, 3000000),
+      deaths: randomNumberWithin(10000, 20000),
+      assists: randomNumberWithin(90000, 140000),
+      betrayals: randomNumberWithin(0, 500),
+      suicides: randomNumberWithin(-1, -500),
+      vehicles: {
+        destroys: randomNumberWithin(90000, 140000),
+        hijacks: randomNumberWithin(90000, 140000),
+      },
+      medals: randomNumberWithin(100000, 900000),
+    },
+    damage: {
+      taken: randomNumberWithin(300000, 700000),
+      dealt: randomNumberWithin(300000, 700000),
+      average: randomNumberWithin(1000, 9000),
+    },
+    shots: {
+      fired: randomNumberWithin(20000, 30000),
+      landed: randomNumberWithin(20000, 30000),
+      missed: randomNumberWithin(20000, 30000),
+      accuracy: 98.998,
+    },
+    breakdowns: {
+      kills: {
+        melee: randomNumberWithin(100000, 900000),
+        grenades: randomNumberWithin(100000, 900000),
+        headshots: randomNumberWithin(100000, 900000),
+        power_weapons: randomNumberWithin(100000, 900000),
+      },
+      assists: {
+        emp: randomNumberWithin(100000, 900000),
+        driver: randomNumberWithin(100000, 900000),
+        callouts: randomNumberWithin(100000, 900000),
+      },
+      matches: {
+        wins: randomNumberWithin(1000, 9000),
+        losses: randomNumberWithin(1000, 9000),
+        left: randomNumberWithin(1000, 9000),
+        draws: randomNumberWithin(1000, 9000),
+      },
+      medals: new Array(30).fill(mockMedal()).map(() => mockMedal()),
+    },
+    kda: 0.998,
+    kdr: 0.994,
+    total_score: randomNumberWithin(10000000, 90000000),
+  },
+  type: "pvp",
+});
+
+export const mockTrackerOverviewStats = (): TrackerOverview => ({
+  recentLookups: [
+    {
+      gamerTag: "randoGamerTag",
+      date: new Date().toString(),
+    },
+    {
+      gamerTag: "c00l zebra",
+      date: new Date().toString(),
+    },
+    {
+      gamerTag: "chill git pull",
+      date: new Date().toString(),
+    },
+  ],
+  todayCount: randomNumberWithin(1000, 9000),
+  yesterdayCount: randomNumberWithin(1000, 9000),
+  weekCount: randomNumberWithin(1000, 9000),
+  lastWeekCount: randomNumberWithin(1000, 9000),
+  monthCount: randomNumberWithin(1000, 9000),
+  lastMonthCount: randomNumberWithin(1000, 9000),
+});
+
+export const mockPvpCompareStats = (tag: string): CompareStatsBody => ({
+  me: mockOverviewStats(),
+  tag: {
+    name: tag,
+    data: mockOverviewStats(),
+  },
+});

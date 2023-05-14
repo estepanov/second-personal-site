@@ -11,7 +11,7 @@ import Container from "../Container";
 import ColorModeToggle from "../../ColorModeToggle";
 import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import useIsFirstRender from "../../../hooks/useIsFirstRender";
-// import NonProfitConsulting from "../Banners/NonprofitConsulting";
+import DeprecatedSite from "../Banners/DeprecatedSite";
 
 const LINKS = [
   {
@@ -54,7 +54,7 @@ const Header = ({ wrapped }: { wrapped?: boolean }) => {
   });
   return (
     <React.Fragment>
-      {/* {!wrapped && <NonProfitConsulting />} */}
+      {!wrapped && <DeprecatedSite />}
       <Flex
         ref={mobileHeaderContainerRef}
         sx={{

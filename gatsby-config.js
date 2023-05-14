@@ -119,7 +119,7 @@ const plugins = [
   {
     resolve: "gatsby-plugin-canonical-urls",
     options: {
-      siteUrl: "https://estep.nyc",
+      siteUrl: "https://www.second-personal-site.builtbyevans.com/",
     },
   },
   "gatsby-plugin-emotion",
@@ -150,12 +150,11 @@ module.exports = {
     title: "Full Stack Engineer",
     description: "Some information and a collection of musings.",
     keywords: "javascript, react, node, portfolio, resume, coding",
-    siteUrl: "https://estep.nyc",
+    siteUrl: "https://www.second-personal-site.builtbyevans.com/",
     image: "",
-    twitterUsername: "",
     author: {
       name: "Evans Stepanov",
-      url: "https://estep.nyc",
+      url: "https://builtbyevans.com/",
     },
     postsPerPage: 10,
     buildDate: new Date().toISOString(),

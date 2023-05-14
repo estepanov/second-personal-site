@@ -33,7 +33,7 @@ const Tile = ({ medal }: { medal: HaloApiMedal }) => {
       />
       <Box sx={{ zIndex: 1, flexShrink: 0 }}>
         <Image
-          sx={{ flexShrink: 0, maxHeight: ["40px", "60px"] }}
+          sx={{ flexShrink: 0, height: ["20px", "40px"] }}
           src={medal.image_urls.small}
           alt={`halo infinite ${medal.name} medal icon`}
         />

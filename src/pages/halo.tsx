@@ -15,7 +15,7 @@ import { api } from "../Request";
 import useToggle from "../hooks/useToggle";
 import SoloStatsBoard from "../components/Halo/SoloStatsBoard";
 import CompareStatsBoard from "../components/Halo/CompareStatsBoard";
-import { OverviewStatsKeys } from "../utils/haloStatFormatter";
+import { mockPvpCompareStats, OverviewStatsKeys } from "../utils/haloStatFormatter";
 import useHaloGamerTagParam from "../hooks/useHaloGamerTagParam";
 import SoloRecentMatchesBoard from "../components/Halo/SoloRecentMatchesBoard";
 
@@ -118,7 +118,10 @@ const HaloPage = ({ location }: HaloPageProps) => {
       const params = {
         tag,
       };
-      const response = await api.get<StatsResponse<CompareStatsBody>>(HaloEndPoints.pvpCompare, { params });
+      // const response = await api.get<StatsResponse<CompareStatsBody>>(HaloEndPoints.pvpCompare, { params });
+      const response = {
+        data: { data: mockPvpCompareStats(params.tag) },
+      };
       // e?.target.reset()
       setResult(response.data?.data);
     } catch (error) {
