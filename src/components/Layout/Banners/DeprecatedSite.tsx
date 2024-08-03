@@ -40,7 +40,7 @@ const DeprecatedSite = () => {
               background: (t) => lighten("primary", 0.35)(t),
             },
           }}
-          to="https://builtbyevans.com"
+          to="https://evansstepanov.com"
         >
           View current site
         </Link>
